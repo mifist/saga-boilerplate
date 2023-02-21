@@ -1,0 +1,40 @@
+{
+  "appId": "com.schoolinked.app",
+  "appName": "Schoolinked",
+  "webDir": "app",
+  "npmClient": "npm",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "CapacitorUpdater": {
+			"autoUpdate": true
+		},
+    "PushNotifications": { "presentationOptions": ["badge", "sound", "alert"] },
+    "SplashScreen": {
+      "launchShowDuration": 3000,
+      "launchAutoHide": true,
+      "backgroundColor": "#000000",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": true,
+      "androidSpinnerStyle": "large",
+      "iosSpinnerStyle": "small",
+      "spinnerColor": "#005D9F",
+      "splashFullScreen": true,
+      "splashImmersive": true,
+      "layoutName": "launch_screen",
+      "useDialog": true
+    },
+    "Keyboard": { "resize": "body", "resizeOnFullScreen": true },
+    "Badge": { "persist": true, "autoClear": false },
+    "ios": {
+      "contentInset": "always",
+      "scheme": "AppName",
+      "limitsNavigationsToAppBoundDomains": true
+    }
+  },
+  "server": {
+    "url": "http://192.168.1.101:3000",
+    "allowNavigation": ["192.168.1.100"],
+    "cleartext": true
+  }
+}
