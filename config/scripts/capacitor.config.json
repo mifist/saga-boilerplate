@@ -1,6 +1,6 @@
 {
-  "appId": "com.schoolinked.app",
-  "appName": "Schoolinked",
+  "appId": "com.sagaboilerplate.app",
+  "appName": "SagaBoilerplate",
   "webDir": "app",
   "npmClient": "npm",
   "bundledWebRuntime": false,

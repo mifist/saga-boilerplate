@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "828221857025",
+    "project_id": "schoolinked-tcf",
+    "storage_bucket": "schoolinked-tcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828221857025:android:ab84f9e50735061c658f00",
+        "android_client_info": {
+          "package_name": "com.sagaboilerplate.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828221857025-bhtkm9hkheplrka0seuuui57eh4ghgpd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAukyilpCEFIfBFtr6h2bA97M80eYmNwmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828221857025-bhtkm9hkheplrka0seuuui57eh4ghgpd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

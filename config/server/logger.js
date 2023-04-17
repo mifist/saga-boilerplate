@@ -30,8 +30,6 @@ process.env.BASE_ENV: ${chalk.green(process.env.BASE_ENV)}${divider}`);
 
     console.log(`
 ${chalk.bold('Access URLs:')}${divider}
-Dev Link: ${chalk.magenta(`https://schoolinked.tcf-dev.com`)}
-Dev Documentation Link: ${chalk.magenta(`https://schoolinked-dev.herokuapp.com/docs`)}
 Localhost: ${chalk.magenta(`http://localhost:${port}`)}
       LAN: ${chalk.magenta(`http://${ip.address()}:${port}`) +
         (tunnelStarted

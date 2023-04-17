@@ -22,7 +22,7 @@ if (envKeys && Object.keys(envKeys).length > 0) {
 }
 
 if (process.env.BASE_ENV == 'local') {
-  console.log({ enviromentConstant });
+console.log({ envKeys });
 }
 
 /** ---- end block ---- */
@@ -35,7 +35,7 @@ module.exports = {
   ],
   output: {
     publicPath: '/',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(process.cwd(), 'build'),
     clean: false,
     libraryTarget: 'umd', 
   },
@@ -44,35 +44,55 @@ module.exports = {
       process: 'process/browser',
     }),
     new webpack.EnvironmentPlugin({
+      ...envKeys,
       NODE_ENV: envKeys.env,
       BASE_ENV: envKeys.envBase,
     }),
     // Makes the public URL available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
-   /*  new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+    new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
       PUBLIC_URL: `/${envKeys.public}`,
       // You can pass any key-value pairs, this was just an example.
       // WHATEVER: 42 will replace %WHATEVER% with 42 in index.html.
-    }), */
+    }),
     new webpack.DefinePlugin(envKeys),
   ].filter(Boolean),
   resolve: {
-    modules: ['node_modules', "src"],
+    modules: ['node_modules', envKeys.rootFolder],
     extensions: ['.js', '.jsx', '.react.js'],
     mainFields: ['browser', 'jsnext:main', 'main'],
     alias: {
-      'src': path.join(envKeys.root, "src"),
+      'public': path.join(envKeys.root, 'public'),
+      //   'config': path.join(envKeys.root, 'config'),
+      'src': path.join(envKeys.root, envKeys.rootFolder),
       'store': path.join(envKeys.root, envKeys.rootFolder, 'store'),
       'engine': path.join(envKeys.root, envKeys.rootFolder, 'engine'),
+      'appCapacitor': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'appCapacitor'),
+      'appContext': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'context'),
+      'appHooks': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'hooks'),
+      'appAPI': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'api'),
       'utils': path.join(envKeys.root, envKeys.rootFolder, 'utils'),
-      'config': path.join(envKeys.root, 'config'),
-      'public': path.join(envKeys.root, 'public'),
       // other
       'mobile': path.join(envKeys.root, envKeys.rootFolder, 'mobile'),
       'containers': path.join(envKeys.root, envKeys.rootFolder, 'containers'),
       'components': path.join(envKeys.root, envKeys.rootFolder, 'components'),
       'pages': path.join(envKeys.root, envKeys.rootFolder, 'pages'),
-
+      // capacitor
+      'android': path.join(envKeys.root, envKeys.rootFolder, 'android'),
+      'ios': path.join(envKeys.root, envKeys.rootFolder, 'ios'),
+    },
+    /* Starting from webpack version 5, polyfills for Node.js core modules are no longer included by default. Therefore, you need to configure webpack to provide fallbacks or polyfills for these missing modules. */
+    fallback: {
+      os: false,
+      fs: false,
+      util: false,
+      assert: false,
+      stream: false,
+      constants: false,
+      /*       util: require.resolve('util/'),
+      assert: require.resolve('assert/'),
+      stream: require.resolve('stream-browserify'),
+      constants: require.resolve('constants-browserify') */
     }
   },
   performance: {

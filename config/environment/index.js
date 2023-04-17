@@ -11,6 +11,7 @@ const ROOT_PATH = path.resolve(process.cwd());
 const LOCAL_HOST = `${ip.address().toString()}`;
 
 const env = dotenv.config().parsed || {};
+
 const { BASE_ENV, NODE_ENV, LOCAL_BACKEND, ...rest } = env;
 
 const envKeys = {
@@ -21,6 +22,8 @@ const envKeys = {
     LOCAL_BACKEND: LOCAL_BACKEND && LOCAL_BACKEND.toString() || 'localhost',
     BASE_API: LOCAL_BACKEND && LOCAL_BACKEND.toString() || LOCAL_HOST && LOCAL_HOST.toString() || 'localhost',
 };
+
+const BASE_NAME = process.env.BASE_NAME || '';
 
 // Default configuration
 // ============================================
@@ -36,13 +39,21 @@ let globEnv = {
     port: process.env.PORT || 3000,
     // Server IP
     ip: process.env.IP || LOCAL_HOST || '0.0.0.0',
+
+    STORAGE_BUCKET_URL: `https://storage.googleapis.com/${BASE_NAME}-dev`,
+    APPLE_STORE_URL: `https://apps.apple.com/fr/app/${BASE_NAME}/id1588569081`,
+    ANDROID_STORE_URL: `https://play.google.com/store/apps/details?id=com.${BASE_NAME}.app`,
+    PROXY_API_URL: 'https://tcf-reverse-proxy.herokuapp.com/',
 };
 
 // Extend and export the config base on NODE_ENV
 // ==============================================
 const constantFile = require(path.resolve(process.cwd(), 'config', 'environment', `constants.${process.env.BASE_ENV}.js`));
-module.exports = _.merge(
+
+const config = _.merge(
     envKeys,
     globEnv,
     constantFile || {}
 );
+
+module.exports = config;

@@ -7,15 +7,6 @@
     <!-- Allow installing the app to the homescreen -->
     <meta name="mobile-web-app-capable" content="yes" />
 
-   <!--  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
-    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
-    <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#005d9f">
-    <meta name="msapplication-TileColor" content="#005d9f">
- -->
-    <title>Schoolinked</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,40 +34,35 @@
         align-items: center;
         justify-content: center;
       }
-      #preloader .sp {
-        width: 65px;
-        min-width: 65px;
-        max-width: 65px;
-        height: 65px;
-        clear: both;
-        margin: 0 auto;
-        display: block;
-        position: absolute;
+      .preloader {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 102px;
+        height: 102px;
       }
-      #preloader .sp-sphere {
-        border-radius: 50%;
-        border-left: 0px #fff solid;
-        border-right: 0px #fff solid;
-        animation: spSphereIndex 1s infinite linear;
+      #preloader .small-circle {
+        stroke-dasharray: 210;
+        stroke-dashoffset: 210;
+        transform-origin: 50%;
+        animation: 1s draw-small infinite alternate;
       }
-      @keyframes spSphereIndex {
-        0% {
-          border-left: 0px #fff solid;
-          border-right: 0px #fff solid;
-        }
-        33% {
-          border-left: 65px #fff solid;
-          border-right: 0px #fff solid;
-        }
-        34% {
-          border-left: 0px #fff solid;
-          border-right: 65px #fff solid;
-        }
-        66% {
-          border-left: 0px #fff solid;
-          border-right: 0px #fff solid;
-        }
+      #preloader .big-circle {
+        stroke-dasharray: 240;
+        stroke-dashoffset: 240;
+        transform-origin: 50%;
+          animation: 1s draw-big infinite alternate 0.5s;
       }
+      @keyframes draw-small {
+        0% { stroke-dashoffset: 0; transform: rotate(0deg); }
+        100% { stroke-dashoffset: 210; transform: rotate(360deg); }
+      }
+      @keyframes draw-big {
+        0% { stroke-dashoffset: 0; transform: rotateY(180deg) rotate(360deg); }
+        100% { stroke-dashoffset: 240; transform: rotateY(180deg) rotate(0deg); }
+      }
+
 
       .cancel-scan {
         position: absolute;
@@ -107,7 +93,14 @@
 
     <!-- The app hooks into this div -->
     <div id="app" class='scanner-hide'>
-      <div id="preloader"><div class='sp sp-sphere'></div></div>
+      <div id="preloader">
+        <div class="preloader">
+          <svg viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="big-circle" d="M101 51C101 78.6142 78.6142 101 51 101C23.3858 101 1 78.6142 1 51" stroke="#fff" stroke-width="2"/>
+            <path class="small-circle" d="M91 51C91 28.9086 73.0914 11 51 11C28.9086 11 11 28.9086 11 51" stroke="#fff" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
     </div>
 
     <div class="scanner-ui" style="display: none;">

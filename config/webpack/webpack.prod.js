@@ -65,7 +65,7 @@ module.exports = merge(common, {
   plugins: [
     new RemoveServiceWorkerPlugin(),
     new HtmlWebpackPlugin({
-      title: "Schoolinked",
+      title: "SagaBoilerplate",
       template: path.join(process.cwd(), 'public', 'index.html'),
       filename: 'index.html',
       hash: true,
@@ -92,12 +92,12 @@ module.exports = merge(common, {
       related_applications: [
         {
           platform: 'play',
-          id: 'com.schollinked.app',
+          id: 'com.sagaboilerplate.app',
         },
       ],
-      name: 'Schollinked',
-      short_name: 'Schollinked',
-      description: 'The next generation of schools managing',
+      name: 'SagaBoilerplate',
+      short_name: 'SagaBoilerplate',
+      description: 'SagaBoilerplate',
       background_color: '#fafafa',
       theme_color: '#b1624d',
       inject: true,

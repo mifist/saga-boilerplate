@@ -64,7 +64,7 @@ fsPromises
       .catch(err => {
         if (err.code == 'ENOENT' && err.syscall == 'open' && Object.keys(initJSON).length > 0) {
           fsPromises
-            .writeFile('./capacitor.config.json', JSON.stringify(initJSON))
+            .writeFile(`${ROOT_PATH}/capacitor.config.json`, JSON.stringify(initJSON))
             .then(() => {
               console.log('CAPACITOR BUILD: Success');
             })
@@ -80,7 +80,7 @@ fsPromises
   .catch(err => {
     if (err.code == 'ENOENT' && err.syscall == 'open' && Object.keys(initJSON).length > 0) {
       fsPromises
-        .writeFile('./capacitor.config.json', JSON.stringify(initJSON))
+        .writeFile(`${ROOT_PATH}/capacitor.config.json`, JSON.stringify(initJSON))
         .then(() => {
           console.log('CAPACITOR BUILD: Success');
         })

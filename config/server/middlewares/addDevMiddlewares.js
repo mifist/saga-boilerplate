@@ -17,12 +17,13 @@ const webpackConfig = require(path.join(ROOT_PATH, 'config', 'webpack', 'webpack
 'summary'	none	Output webpack version, warnings count and errors count
 */
 
-module.exports = function addDevMiddlewares(app) {
+module.exports = function addDevMiddlewares(app, publicPath) {
   const compiler = webpack(webpackConfig);
   const middleware = webpackDevMiddleware(
     compiler,
     {
       stats: 'errors-warnings',
+      publicPath
     }
     
   );

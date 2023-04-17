@@ -1,4 +1,10 @@
 'use strict';
+
+const BASE_API = process.env.LOCAL_BACKEND || process.env.LOCAL_HOST || 'localhost'; 
+const BASE_NAME = process.env.BASE_NAME || '';
+
 module.exports = {
-  API_URL: 'https://production-api.example.com',
+  BASE_API: BASE_API,
+  API_URL: `https://${BASE_NAME}-dev.herokuapp.com/api/`,
+  HOSTING_URL: `https://dev.${BASE_NAME}.com/`,
 };

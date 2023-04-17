@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:versionCode="170"
+    android:versionName="1.7.0"
+>
+
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_icon"
+        android:resource="@drawable/ic_stat_ic_notification" />
+
+
+    <queries>
+        <package android:name="com.sagaboilerplate.app" />
+    </queries>
+
+    <!-- [END fcm_default_icon] -->
+    <!-- [START fcm_default_channel] -->
+
+    <!--
+    <application
+        tools:replace="android:label, android:icon, android:allowBackup, '...any other attribute you want to override with a value you set in this file for in case dependencies set them to other values...'"
+        '...your other attributes set here like android:label and android:icon...'
+        android:allowBackup="false" '...default is true, and setting this false prevents data backups of any kind (except device to device transfers if your app targets Android 11 (API 30) or higher)...'
+        android:fullBackupContent="@xml/backup_rules_android_11_and_below" '...optional, for Android 11 and below, referring to a file res/xml/backup_rules_android_11_and_below.xml you need to create...'
+        android:dataExtractionRules="@xml/backup_rules_android_12_and_above" '...optional, for Android 12 and above (fullBackupContent still needed along with this, assuming you support Android 11 and below), referring to a file res/xml/backup_rules_android_12_and_above.xml you need to create, with a slightly different required xml format...'
+        android:fullBackupOnly="false" '...optional, and default is false, but if set to true this field description says it enables auto backup on Android 6 (API 23) devices or higher (I am not sure how this matters compared to the more broadly reaching allowBackup)...'
+        android:hasFragileUserData="false" '...optional, and default is false, but if set to true this field description says it gives the user an option when they uninstall the app whether or not to backup their app data...'
+    >
+        '...contents of application element...'
+    </application>
+    -->
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true"
+        tools:replace="android:usesCleartextTraffic"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:hardwareAccelerated="true"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        >
+
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@mipmap/push_icon_name" />
+
+        <activity
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:name="com.sagaboilerplate.app.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBarLaunch"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:exported="true"
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="FCM_PLUGIN_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="sagaboilerplate" />
+            </intent-filter>
+
+            <intent-filter android:label="@string/title_activity_main">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "com.sagaboilerplate.app”; getting from strings.xml -->
+                <data android:scheme="https" android:host="app.sagaboilerplate.com" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https" android:host="app.sagaboilerplate.com" android:pathPattern="/oauth" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="http" android:host="localhost" android:port="3000" />
+            </intent-filter>
+
+            <!-- inserted by daria -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="sagaboilerplate" />
+            </intent-filter>
+
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+    </application>
+
+
+    <!-- Network API -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Camera, Photos, Audio, Voice Recorder input file -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.STORAGE"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+</manifest>
