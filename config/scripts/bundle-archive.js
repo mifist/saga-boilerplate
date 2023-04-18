@@ -10,7 +10,6 @@ const { BASE_ENV, APP_VERSION } = envKeys;
 
 const BUILD_PATH = path.resolve(`${ROOT_PATH}/build`);
 
-
 async function generateZipArchive() {
   const archive = archiver("zip");
 
@@ -51,5 +50,5 @@ async function generateZipArchive() {
 fsPromises.access(BUILD_PATH).then(() => {
   generateZipArchive();
 }).catch(err => {
-  console.error(err)
+  console.error('generateZipArchive: ', err)
 })

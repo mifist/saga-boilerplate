@@ -50,9 +50,9 @@
     "build-app:demo": "npm run build:demo && npm run capacitor-staging:pre && npm run sync",
     "build-app:prod": "npm run build:prod && npm run capacitor-prod:pre && npm run sync",
 
-    "build-app-zip:dev": "npm run build-app:dev && zip-dev:pre",
-    "build-app-zip:demo": "npm run build-app:demo && zip-demo:pre",
-    "build-app-zip:prod": "npm run build-app:prod && zip-prod:pre"
+    "build-app-zip:dev": "npm run build-app:dev && npm run zip-dev:pre",
+    "build-app-zip:demo": "npm run build-app:demo && npm run zip-demo:pre",
+    "build-app-zip:prod": "npm run build-app:prod && npm run zip-prod:pre"
     
   },
   "browserslist": [
