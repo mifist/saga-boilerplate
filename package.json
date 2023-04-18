@@ -43,8 +43,8 @@
     "build-prod:pre": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./config/webpack/webpack.prod.js",
 
     "build:dev": "npm run prebuild && npm run build-dev:pre",
-    "build:demo": "npm run prebuild && build-staging:pre",
-    "build:prod": "npm run prebuild && build-prod:pre",
+    "build:demo": "npm run prebuild && npm run build-staging:pre",
+    "build:prod": "npm run prebuild && npm run build-prod:pre",
 
     "build-app:dev": "npm run build:dev && npm run capacitor-dev:pre && npm run sync",
     "build-app:demo": "npm run build:demo && npm run capacitor-staging:pre && npm run sync",
