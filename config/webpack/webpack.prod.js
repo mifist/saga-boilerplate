@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { HashedModuleIdsPlugin } = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
-const RemoveServiceWorkerPlugin = require('webpack-remove-serviceworker-plugin');
+// const RemoveServiceWorkerPlugin = require('webpack-remove-serviceworker-plugin');
 
 const common = require('./webpack.common.js');
 
@@ -53,7 +53,7 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map', 
   entry: [
-    path.resolve(__dirname, 'src', 'root.js'), // Start with js/root.js
+    path.resolve(process.cwd(), 'src', 'root.js'), // Start with js/root.js
   ],
   // Utilize long-term caching by adding content hashes (not compilation hashes) to compiled assets
   output: {
@@ -63,7 +63,7 @@ module.exports = merge(common, {
   },
   optimization: optimization,
   plugins: [
-    new RemoveServiceWorkerPlugin(),
+  //  new RemoveServiceWorkerPlugin(),
     new HtmlWebpackPlugin({
       title: "SagaBoilerplate",
       template: path.join(process.cwd(), 'public', 'index.html'),
@@ -92,34 +92,36 @@ module.exports = merge(common, {
       related_applications: [
         {
           platform: 'play',
-          id: 'com.sagaboilerplate.app',
+          id: process.env.APP_ID,
         },
       ],
-      name: 'SagaBoilerplate',
-      short_name: 'SagaBoilerplate',
-      description: 'SagaBoilerplate',
+      name: process.env.APP_NAME,
+      short_name: process.env.APP_NAME,
+      description: process.env.APP_NAME,
       background_color: '#fafafa',
       theme_color: '#b1624d',
       inject: true,
       ios: true,
-      icons: [
+      /* icons: [
         {
           src: path.resolve(process.cwd(), 'public/images/icon-512x512.png'),
           sizes: [72, 96, 128, 144, 192, 384, 512],
+          "type": "image/png"
         },
         {
           src: path.resolve(process.cwd(), 'public/images/icon-512x512.png'),
           sizes: [120, 152, 167, 180],
           ios: true,
+          "type": "image/png"
         },
-      ],
+      ], */
     }),
 
-    new HashedModuleIdsPlugin({
+/*     new HashedModuleIdsPlugin({
       hashFunction: 'sha256',
       hashDigest: 'hex',
       hashDigestLength: 20,
-    }), 
+    }),  */
   ].filter(Boolean),
   performance: {
     assetFilter: assetFilename =>

@@ -6,6 +6,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const envKeys = require(path.resolve(process.cwd(), 'config', 'environment', 'index.js'));
 
@@ -56,6 +57,7 @@ module.exports = {
       // WHATEVER: 42 will replace %WHATEVER% with 42 in index.html.
     }),
     new webpack.DefinePlugin(envKeys),
+    new LodashModuleReplacementPlugin(),
   ].filter(Boolean),
   resolve: {
     modules: ['node_modules', envKeys.rootFolder],
@@ -109,7 +111,8 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
-          //  plugins: ['react-hot-loader/babel'],
+           // plugins: ['react-hot-loader/babel'],
+           // plugins: ["lodash"],
             // @remove-on-eject-end
             // This is a feature of `babel-loader` for webpack (not Babel itself).
             // It enables caching results in ./node_modules/.cache/babel-loader/

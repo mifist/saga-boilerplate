@@ -10,50 +10,39 @@
     "generate-resources": "node ./config/scripts/resources.js",
     "generate": "plop --plopfile  ./config/generators/index.js",
     "prebuild": "rimraf ./build",
-
     "zip-dev:pre": "cross-env NODE_ENV=production BASE_ENV=development node ./config/scripts/bundle-archive.js",
     "zip-demo:pre": "cross-env NODE_ENV=production BASE_ENV=staging node ./config/scripts/bundle-archive.js",
     "zip-prod:pre": "cross-env NODE_ENV=production BASE_ENV=production node ./config/scripts/bundle-archive.js",
-
     "capacitor-local:pre": "node ./config/scripts/capacitor.config.js",
     "capacitor": "npm run capacitor-local:pre && npx cap sync",
     "sync": "npx cap sync",
     "android": "npx cap open android",
     "ios": "npx cap open ios",
-
     "capacitor-dev-local:pre": "cross-env NODE_OPTIONS='--openssl-legacy-provider' NODE_ENV=production BASE_ENV=development CAPACITOR_ENV=local-dev node ./config/scripts/capacitor.config.js",
     "capacitor-dev:pre": "cross-env NODE_OPTIONS='--openssl-legacy-provider' NODE_ENV=production BASE_ENV=development CAPACITOR_ENV=development node ./config/scripts/capacitor.config.js",
     "capacitor-staging:pre": "cross-env NODE_OPTIONS='--openssl-legacy-provider' NODE_ENV=production BASE_ENV=staging CAPACITOR_ENV=staging node ./config/scripts/capacitor.config.js",
     "capacitor-prod:pre": "cross-env NODE_OPTIONS='--openssl-legacy-provider' NODE_ENV=production BASE_ENV=production CAPACITOR_ENV=production node ./config/scripts/capacitor.config.js",
-    
-
     "start:pre": "cross-env NODE_ENV=development BASE_ENV=local nodemon ./config/server/server.js",
     "development:pre": "cross-env NODE_OPTIONS='--openssl-legacy-provider' NODE_ENV=development BASE_ENV=development node server",
     "staging:pre": "cross-env NODE_OPTIONS='--openssl-legacy-provider' NODE_ENV=development BASE_ENV=development node server",
     "production:pre": "cross-env NODE_OPTIONS='--openssl-legacy-provider' NODE_ENV=production BASE_ENV=production node server",
-
     "start": "npm run capacitor && npm run start:pre",
     "start-dev-local": "npm run capacitor-dev-local:pre && npm run development:pre",
     "start-dev": "npm run capacitor-dev:pre && npm run development:pre",
     "start-demo": "npm run capacitor-staging:pre && npm run staging:pre",
     "start-prod": "npm run capacitor-prod:pre && npm run production:pre",
-
     "build-dev:pre": "cross-env NODE_ENV=development BASE_ENV=development webpack --config ./config/webpack/webpack.dev.js",
     "build-staging:pre": "cross-env NODE_ENV=production BASE_ENV=staging webpack --config ./config/webpack/webpack.prod.js",
     "build-prod:pre": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./config/webpack/webpack.prod.js",
-
     "build:dev": "npm run prebuild && npm run build-dev:pre",
     "build:demo": "npm run prebuild && npm run build-staging:pre",
     "build:prod": "npm run prebuild && npm run build-prod:pre",
-
     "build-app:dev": "npm run build:dev && npm run capacitor-dev:pre && npm run sync",
     "build-app:demo": "npm run build:demo && npm run capacitor-staging:pre && npm run sync",
     "build-app:prod": "npm run build:prod && npm run capacitor-prod:pre && npm run sync",
-
     "build-app-zip:dev": "npm run build-app:dev && npm run zip-dev:pre",
     "build-app-zip:demo": "npm run build-app:demo && npm run zip-demo:pre",
     "build-app-zip:prod": "npm run build-app:prod && npm run zip-prod:pre"
-    
   },
   "browserslist": [
     "last 2 versions",
@@ -92,6 +81,7 @@
     "@trapezedev/configure": "^7.0.8",
     "archiver": "^5.3.1",
     "axios": "^1.3.5",
+    "babel-plugin-lodash": "^3.3.4",
     "capacitor-voice-recorder": "^4.0.2",
     "chalk": "^4.1.2",
     "circular-dependency-plugin": "^5.2.2",
@@ -105,6 +95,7 @@
     "immer": "^9.0.19",
     "ip": "^1.1.8",
     "lodash": "^4.17.21",
+    "lodash-webpack-plugin": "^0.11.6",
     "minimist": "^1.2.8",
     "ngrok": "^4.3.3",
     "npm": "^9.5.0",
@@ -124,7 +115,8 @@
     "sanitize.css": "^13.0.0",
     "tiny-invariant": "^1.3.1",
     "webpack": "^5.79.0",
-    "webpack-merge": "^5.8.0"
+    "webpack-merge": "^5.8.0",
+    "workbox-webpack-plugin": "^6.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -132,18 +124,21 @@
     "@babel/plugin-proposal-optional-chaining": "^7.20.7",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-syntax-optional-chaining": "^7.8.3",
+    "@babel/plugin-transform-react-constant-elements": "^7.21.3",
+    "@babel/plugin-transform-react-inline-elements": "^7.21.0",
     "@babel/plugin-transform-react-jsx": "^7.20.13",
-    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/plugin-transform-runtime": "^7.21.4",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
     "@babel/register": "^7.18.9",
     "babel-loader": "^9.1.2",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "css-loader": "^6.7.3",
     "express": "^4.18.2",
     "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "image-webpack-loader": "^4.2.0",
+    "image-webpack-loader": "^8.1.0",
     "json-loader": "^0.5.7",
     "nodemon": "^2.0.20",
     "null-loader": "^4.0.1",
@@ -157,7 +152,6 @@
     "webpack-dev-middleware": "^6.0.1",
     "webpack-dev-server": "^4.11.1",
     "webpack-hot-middleware": "^2.25.3",
-    "webpack-pwa-manifest": "^4.0.0",
-    "webpack-remove-serviceworker-plugin": "^1.0.0"
+    "webpack-pwa-manifest": "^4.0.0"
   }
 }
