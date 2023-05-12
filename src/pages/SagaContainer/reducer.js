@@ -10,7 +10,6 @@
 import produce from 'immer';
 import * as CONSTANS from './constants';
 
-
 // The initial state of the App
 export const initialState = {
   loading: false,
@@ -20,21 +19,23 @@ export const initialState = {
 };
 
 const appReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
       case CONSTANS.FLUSH_STATE:
         return initialState;
-      
+
       case CONSTANS.LOAD_LIST:
         console.log('LOAD_LIST', { draft, state, action });
         draft.count = action.count;
+        draft.loading = true;
         break;
-      
+
       case CONSTANS.LOAD_LIST_SUCCESS:
         console.log('LOAD_LIST_SUCCESS', { draft, state, action });
         draft.list = action.list;
+        draft.loading = false;
         break;
-      
+
       default:
         return state;
     }

@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, t } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 import { createReduxHistoryContext } from 'redux-first-history';
@@ -12,6 +12,7 @@ const { createReduxHistory, routerMiddleware, routerReducer } =
 
 const sagaMiddleware = createSagaMiddleware();
 
+// Custom middleware
 const middleware = [sagaMiddleware, routerMiddleware];
 
 export const storeNew = configureStore({

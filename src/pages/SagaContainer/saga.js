@@ -7,7 +7,7 @@ import * as ACTIONS from './actions';
 
 export function* loadList(action) {
   try {
-    const { count } = action; 
+    const { count } = action;
     const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
     // we get the campaigns linked to the plans
     const result = yield requestWrapper(
@@ -16,7 +16,7 @@ export function* loadList(action) {
       '',
       null,
       null,
-      null
+      null,
     );
     console.log({ result });
 
@@ -26,7 +26,7 @@ export function* loadList(action) {
       yield put(ACTIONS.onLoadListSuccess(result?.results));
     }
   } catch (error) {
-    console.error({error})
+    console.error({ error });
   }
 }
 

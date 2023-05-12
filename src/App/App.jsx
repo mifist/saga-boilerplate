@@ -6,40 +6,26 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 import React, { memo } from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { compose } from '@reduxjs/toolkit';
 import { Helmet } from 'react-helmet';
 // store
-import { useInjectSaga, useInjectReducer } from 'store';
-import reducer from './reducer';
-import saga from './saga';
 // actions
-import { flushState } from './actions';
 //selectors
-import {
-  makeSelectError,
-  makeSelectLoading,
-} from './selectors';
 
 // antd component
-import { Layout, Button } from 'antd';
-const { Content } = Layout;
-
+import { Layout } from 'antd';
 // pages
 import Home from 'pages/Home';
 
 // containers
-import SagaContainer from "pages/SagaContainer";
+import SagaContainer from 'pages/SagaContainer';
 
 // utils
 import useDeviceDetect from 'appHooks/useDeviceDetect';
 
+const { Content } = Layout;
 
 
 function App({ history }) {
-  useInjectReducer({ key: 'appSaga', reducer });
-  useInjectSaga({ key: 'appSaga', saga });
 
   const { isMobile } = useDeviceDetect();
 
@@ -68,25 +54,5 @@ function App({ history }) {
   );
 }
 
-const mapStateToProps = createStructuredSelector({
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushState()),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-export default compose(
-  withConnect,
-  memo,
-)(App);
+export default memo(App);
 

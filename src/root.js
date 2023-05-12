@@ -9,7 +9,7 @@ import 'react-app-polyfill/stable';
 // Import all the third party stuff
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { Router } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 
 import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import { Provider } from 'react-redux';
@@ -43,40 +43,15 @@ openSansObserver.load().then(() => {
   document.body.classList.add('fontLoaded');
 });
 
-// Create redux store with history
-const initialState = {};
-// const store = configureAppStore(initialState, history);
+const root = ReactDOM.createRoot(document.getElementById('app'));
 
-// const cleanStore = storeNew;
-
-// Tell React to take control of that element
-// In TypeScript, since there is a bug, you need to add the "!" element!
-// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/43848
-const MOUNT_NODE = document.getElementById('app');
-const root = ReactDOM.createRoot(MOUNT_NODE);
-
-const render = () =>
-  root.render(
-    <StrictMode>
-      <Provider store={storeNew}>
-        <AppProviders>
-          <Router history={history}>
-          </Router>
-          <App/>
-
-        </AppProviders>
-      </Provider>
-    </StrictMode>,
-  );
-
-
-if (process.env.NODE_ENV !== 'production' && module.hot) {
-  // Hot reloadable React components and translation json files
-  // modules.hot.accept does not accept dynamic dependencies,
-  // have to be constants at compile-time
-  module.hot.accept(['./App'], () => {
-    const NextRootContainer = require('./App/App').default;
-    //root.unmountComponentAtNode(document.getElementById('app'));
-    render(NextRootContainer);
-  });
-}
+root.render(
+  <StrictMode>
+    <Provider store={storeNew}>
+      <AppProviders>
+        <BrowserRouter history={history}></BrowserRouter>
+        <App history={history} />
+      </AppProviders>
+    </Provider>
+  </StrictMode>,
+);

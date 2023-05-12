@@ -6,7 +6,6 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { createRouterReducer } from '@lagunovsky/redux-react-router';
 
 import history from 'utils/history';
-import globalReducer from '../App/reducer';
 //import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 /**
@@ -14,7 +13,6 @@ import globalReducer from '../App/reducer';
  */
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
-    global: globalReducer,
     // language: languageProviderReducer,
     router: createRouterReducer(history),
     ...injectedReducers
