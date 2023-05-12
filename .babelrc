@@ -20,11 +20,6 @@
     "@babel/preset-react"
   ],
   "plugins": [
-    "@babel/plugin-transform-react-jsx",
-    "@babel/plugin-proposal-optional-chaining",
-    "@babel/plugin-syntax-optional-chaining",
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-syntax-dynamic-import",
     [
       "@babel/plugin-transform-runtime",
       {
@@ -40,11 +35,8 @@
     "production": {
       "only": ["src"],
       "plugins": [
-        "lodash",
         "@babel/plugin-transform-runtime",
-        "transform-react-remove-prop-types",
-        "@babel/plugin-transform-react-inline-elements",
-        "@babel/plugin-transform-react-constant-elements"
+        "transform-react-remove-prop-types"
       ]
     }
   }

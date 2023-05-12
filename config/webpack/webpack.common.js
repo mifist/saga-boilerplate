@@ -80,9 +80,10 @@ module.exports = {
       'utils': path.join(envKeys.root, envKeys.rootFolder, 'utils'),
       // other
       'mobile': path.join(envKeys.root, envKeys.rootFolder, 'mobile'),
-      'containers': path.join(envKeys.root, envKeys.rootFolder, 'containers'),
-      'components': path.join(envKeys.root, envKeys.rootFolder, 'components'),
       'pages': path.join(envKeys.root, envKeys.rootFolder, 'pages'),
+
+      'containers': path.join(envKeys.root, envKeys.rootFolder, 'shared', 'containers'),
+      'components': path.join(envKeys.root, envKeys.rootFolder, 'shared', 'components'),
       // capacitor
       'android': path.join(envKeys.root, envKeys.rootFolder, 'android'),
       'ios': path.join(envKeys.root, envKeys.rootFolder, 'ios'),

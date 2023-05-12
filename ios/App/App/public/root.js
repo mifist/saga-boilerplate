@@ -14,13 +14,15 @@ import { Provider } from 'react-redux';
 import FontFaceObserver from 'fontfaceobserver';
 
 import 'sanitize.css/sanitize.css';
+
 // Global Styles
-// import 'scss/app.scss';
+import 'theme/root.scss';
+// ant styles
+import 'antd/dist/antd.css';
 
 // Import Other Providers
-import AppProviders from 'engine/context/AppProviders';
+import AppProviders from 'appContext/AppProviders';
 import App from './App';
-import Start from 'pages/Start';
 
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!public/favicon.ico';
@@ -70,7 +72,7 @@ if (process.env.NODE_ENV !== 'production' && module.hot) {
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
   module.hot.accept(['./App'], () => {
-    const NextRootContainer = require('./App').default;
+    const NextRootContainer = require('./App/App').default;
 //root.unmountComponentAtNode(document.getElementById('app'));
     render(NextRootContainer);
   });

@@ -12,13 +12,13 @@ export default function* requestWrapper(
   body,
   token,
   url = process.env.BASE_NAME,
-  bearer = false,
+  bearer = false
 ) {
   // Workaround for prevent UnauthorizedError from backend
  // token = null;
 
   let apiURL = getBaseApiUrl();
-  let requestURL;
+  let requestURL = route;
 
   // tcf api here
   if (url === process.env.BASE_NAME) {

@@ -105,7 +105,7 @@ export const UserProvider = ({ children }) => {
       if (UserProviderData.isPublicPath()) {
         return false;
       } else {
-        history.push('/login');
+        // history.push('/login');
       }
 
     }
@@ -210,7 +210,7 @@ export const UserProvider = ({ children }) => {
 
     const logOutTimer = setTimeout(function () {
       //window.location.href = '/login';
-      history.push('/login');
+     //  history.push('/login');
     }, 0);
     setLogOutTimer(logOutTimer);
 
