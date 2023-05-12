@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Route, Routes, Outlet, BrowserRouter } from 'react-router-dom';
 import { routes } from './routes';
-import { HistoryRouter as Router } from 'redux-first-history/rr6';
-
 import { history } from 'store/store.new';
 
 // pages

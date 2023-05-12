@@ -3,7 +3,9 @@
  */
 
 import SagaContainer from 'pages/SagaContainer/reducer';
+import Testtest from 'legacy/containers/Testtest/reducer';
 
 export default {
-  SagaContainer
+  SagaContainer,
+  Testtest
 };

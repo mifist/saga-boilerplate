@@ -35,7 +35,7 @@ import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line imp
 
 // root
 import { storeNew, history } from 'store/store.new';
-import AppRouter from 'engine/app-router';
+import AppRouter from 'engine/AppRouter';
 
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
@@ -52,15 +52,9 @@ const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
   <StrictMode>
     <Provider store={storeNew}>
-      {/* <AppProviders> */}
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" index element={<Home />} />
-          <Route path="/test" element={<Testtest />} />
-          <Route path="/events" element={<Testtest />} />
-        </Routes>
-      </BrowserRouter>
-      {/* </AppProviders> */}
+      <AppProviders> 
+        <AppRouter />
+      </AppProviders>
     </Provider>
   </StrictMode>,
 );

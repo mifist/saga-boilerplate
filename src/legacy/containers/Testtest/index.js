@@ -17,7 +17,7 @@ import { flushState, onLoadList } from 'pages/SagaContainer/actions';
 function Testtest() {
   // const { id: initId } = Params();
 
-  const { list, loading } = useSelector((state) => state.appSagaContainer);
+  const { list, loading } = useSelector((state) => state.Testtest);
 
   const dispatch = useDispatch();
 
