@@ -20,9 +20,6 @@ export function* loadList(action) {
       null,
       null,
     );
-    console.log({ result });
-
-    yield put(push('/random'));
 
     if (!result) {
       yield put(ACTIONS.onLoadListSuccess([]));
