@@ -18,7 +18,7 @@ export const initialState = {
   list: [],
 };
 
-const appReducer = (state = initialState, action) =>
+const reducerSagaContainer = (state = initialState, action = CONSTANS) =>
   produce(state, (draft) => {
     switch (action.type) {
       case CONSTANS.FLUSH_STATE:
@@ -41,4 +41,4 @@ const appReducer = (state = initialState, action) =>
     }
   });
 
-export default appReducer;
+export default reducerSagaContainer;

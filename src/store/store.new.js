@@ -4,11 +4,13 @@ import { all } from 'redux-saga/effects';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { createBrowserHistory } from 'history';
 
-import mainSagaContainer from '../pages/SagaContainer/saga';
-import appReducer from '../pages/SagaContainer/reducer';
+import reducers from './reducers';
+import sagas from './sagas';
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
-  createReduxHistoryContext({ history: createBrowserHistory() });
+  createReduxHistoryContext(
+    { history: createBrowserHistory() }
+  );
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,8 +19,8 @@ const middleware = [sagaMiddleware, routerMiddleware];
 
 export const storeNew = configureStore({
   reducer: {
-    appSagaContainer: appReducer,
     router: routerReducer,
+    ...reducers
     // ALL Reducers
     // units: unitsReducer,
     // unit: unitReducer,
@@ -30,7 +32,10 @@ export const storeNew = configureStore({
 export const history = createReduxHistory(storeNew);
 
 export default function* rootSaga() {
-  yield all([mainSagaContainer()]);
+  const sagaArray = Object.values(sagas);
+  if (sagaArray?.length > 0) {
+    yield all(sagaArray.map((saga) => saga()));
+  }
 }
 
 sagaMiddleware.run(rootSaga);

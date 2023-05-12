@@ -32,7 +32,7 @@ import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line imp
 
 // root
 // import { configureAppStore } from 'store';
-import { storeNew, history } from './store/store.new';
+import { storeNew, history } from 'store/store.new';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)

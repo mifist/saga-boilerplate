@@ -20,9 +20,8 @@ export function* loadList(action) {
       null,
       null,
     );
-    console.log({ result });
 
-    yield put(push('/random'));
+  //  yield put(push('/random'));
 
     if (!result) {
       yield put(ACTIONS.onLoadListSuccess([]));
@@ -34,7 +33,7 @@ export function* loadList(action) {
   }
 }
 
-export default function* mainSagaContainer() {
+export default function* sagaSagaContainer() {
   // See example in src/SagaContainer/saga.js
   yield takeLatest(CONSTANS.LOAD_LIST, loadList);
 }

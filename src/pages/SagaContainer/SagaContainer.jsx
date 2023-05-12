@@ -7,13 +7,9 @@
  */
 import React, { memo, useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { compose } from '@reduxjs/toolkit';
 import { Helmet } from 'react-helmet';
-// store
-import { useInjectSaga, useInjectReducer } from 'store';
-import reducer from './reducer';
-import saga from './saga';
+
 // actions
 import { flushState, onLoadList } from './actions';
 //selectors
@@ -25,7 +21,7 @@ function SagaContainer({}) {
   const { list, loading } = useSelector((state) => {
     console.log(state);
 
-    return state.appSagaContainer;
+    return state.SagaContainer;
   });
 
   const dispatch = useDispatch();
