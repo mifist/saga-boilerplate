@@ -9,6 +9,7 @@ import React, { memo, useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { compose } from '@reduxjs/toolkit';
 import { Helmet } from 'react-helmet';
+import { useParams  } from 'react-router-dom';
 
 // actions
 import { flushState, onLoadList } from './actions';
@@ -20,11 +21,12 @@ import { Skeleton, List, Avatar, Button } from 'antd';
 function SagaContainer({}) {
   const { list, loading } = useSelector((state) => {
     console.log(state);
-
     return state.SagaContainer;
   });
-
   const dispatch = useDispatch();
+
+  const { eventID } = useParams();
+
 
   const count = 5;
 
@@ -48,6 +50,9 @@ function SagaContainer({}) {
   return (
     <>
       <h2>SagaContainer</h2>
+      
+      <h2>Event ID: {eventID}</h2>
+
       <List
         className="demo-loadmore-list"
         loading={loading}

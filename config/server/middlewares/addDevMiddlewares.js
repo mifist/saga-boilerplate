@@ -2,9 +2,16 @@ const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const path = require('path');
+const express = require('express');
 
 const ROOT_PATH = path.resolve(process.cwd());
 const webpackConfig = require(path.join(ROOT_PATH, 'config', 'webpack', 'webpack.dev.js'));
+function createWebpackMiddleware(compiler, publicPath) {
+  return webpackDevMiddleware(compiler, {
+    publicPath,
+    stats: 'errors-warnings',
+  });
+}
 
 /* 
 'errors-only'	none	Only output when errors happen
@@ -18,12 +25,15 @@ const webpackConfig = require(path.join(ROOT_PATH, 'config', 'webpack', 'webpack
 */
 
 module.exports = function addDevMiddlewares(app) {
+  const publicPath = webpackConfig?.output?.publicPath;
+  const outputPath = webpackConfig?.output?.path;
+  const indexPath = path.resolve(outputPath, 'index.html');
+
   const compiler = webpack(webpackConfig);
-  const middleware = webpackDevMiddleware(
+
+  const middleware = createWebpackMiddleware(
     compiler,
-    {
-      stats: 'errors-warnings',
-    } 
+    webpackConfig.output.publicPath,
   );
   
   app.use(middleware);
@@ -32,11 +42,10 @@ module.exports = function addDevMiddlewares(app) {
     heartbeat: 2000,
   }));
 
-  const ROOT_PATH = path.resolve(process.cwd());
-  const indexPath = path.join(ROOT_PATH, 'public', 'index.html');
+  app.use(publicPath, express.static(outputPath));
 
-  app.get('*', (req, res) => {
-    res.sendFile(indexPath);
+  app.get('/*', (req, res) => {
+    res.sendFile(indexPath)
   }); 
 
 };

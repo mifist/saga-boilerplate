@@ -102,26 +102,7 @@ module.exports = merge(common, {
       theme_color: '#b1624d',
       inject: true,
       ios: true,
-      /* icons: [
-        {
-          src: path.resolve(process.cwd(), 'public/images/icon-512x512.png'),
-          sizes: [72, 96, 128, 144, 192, 384, 512],
-          "type": "image/png"
-        },
-        {
-          src: path.resolve(process.cwd(), 'public/images/icon-512x512.png'),
-          sizes: [120, 152, 167, 180],
-          ios: true,
-          "type": "image/png"
-        },
-      ], */
     }),
-
-/*     new HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
-      hashDigest: 'hex',
-      hashDigestLength: 20,
-    }),  */
   ].filter(Boolean),
   performance: {
     assetFilter: assetFilename =>

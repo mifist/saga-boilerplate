@@ -6,20 +6,15 @@
  */
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
+
 // Import all the third party stuff
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
-import { Route, Routes, Outlet, BrowserRouter } from 'react-router-dom';
 
-import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import { Provider } from 'react-redux';
 import FontFaceObserver from 'fontfaceobserver';
-import Home from 'pages/Home';
-import SagaContainer from 'pages/SagaContainer';
-import Testtest from 'legacy/containers/Testtest';
 
 import 'sanitize.css/sanitize.css';
-
 // Global Styles
 import 'theme/root.scss';
 // ant styles
@@ -35,7 +30,6 @@ import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line imp
 
 // root
 import { storeNew, history } from 'store/store.new';
-import AppRouter from 'engine/AppRouter';
 
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
@@ -53,8 +47,35 @@ root.render(
   <StrictMode>
     <Provider store={storeNew}>
       <AppProviders> 
-        <AppRouter />
+        <App />
       </AppProviders>
     </Provider>
   </StrictMode>,
 );
+
+/* 
+const render = (Component) =>
+  root.render(
+    <StrictMode>
+      <Provider store={storeNew}>
+        <AppProviders> 
+          <BrowserRouter>
+            <Component history={history} />
+          </BrowserRouter>
+        </AppProviders>
+      </Provider>
+    </StrictMode>,
+  );
+
+render(App);
+
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+  // Hot reloadable React components and translation json files
+  // modules.hot.accept does not accept dynamic dependencies,
+  // have to be constants at compile-time
+  module.hot.accept(['./App'], () => {
+    const NextRootContainer = require('./App').default;
+//root.unmountComponentAtNode(document.getElementById('app'));
+    render(NextRootContainer);
+  });
+} */

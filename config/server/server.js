@@ -38,14 +38,14 @@ app.use((req, res, next) => {
 }); */
 
 // In production we need to pass these values in instead of relying on webpack
+const options = {
+  outputPath: path.resolve(process.cwd(), 'build'),
+  publicPath: '/',
+};
 if (process.env.NODE_ENV === 'production') {
-  const options = {
-    outputPath: path.resolve(process.cwd(), 'build'),
-    publicPath: '/',
-  }
   addProdMiddlewares(app, options);
 } else {
-  addDevMiddlewares(app);
+  addDevMiddlewares(app, options);
 }
 
 app.use(express.static(path.join(ROOT_PATH, 'public')));
@@ -74,3 +74,5 @@ if (host) {
     }
   });
 } 
+
+app.use(express.json());

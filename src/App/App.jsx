@@ -5,31 +5,19 @@
  * This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
-import React, { memo } from 'react';
-import { Helmet } from 'react-helmet';
-// store
-// actions
-//selectors
+import React from 'react';
+import Helmet from 'react-helmet';
 
-// antd component
-import { Layout } from 'antd';
-// pages
-import Home from 'pages/Home';
-
-// containers
-import SagaContainer from 'pages/SagaContainer';
-
-// utils
-import useDeviceDetect from 'appHooks/useDeviceDetect';
-
-const { Content } = Layout;
+import { Route, Routes, Link, BrowserRouter } from 'react-router-dom';
+import { routes } from 'engine/routes';
+import { history } from 'store/store.new';
 
 
-function App({ history }) {
+import AppRouter from 'engine/AppRouter';
 
-  const { isMobile } = useDeviceDetect();
+function App({  }) {
 
-
+  
   return (
     <>
 
@@ -47,12 +35,13 @@ function App({ history }) {
         <meta property="og:image" content="" />
       </Helmet>
 
-      <Home />
-      <SagaContainer />
+
+      <AppRouter />
+
 
     </>
   );
 }
 
-export default memo(App);
+export default App;
 
