@@ -141,7 +141,7 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         exclude: /node_modules/,
         use: [
           // Creates `style` nodes from JS strings
