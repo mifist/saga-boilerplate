@@ -7,8 +7,10 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 // Import all the third party stuff
-import React, { StrictMode } from "react";
-import * as ReactDOM from "react-dom/client";
+import React, { StrictMode } from 'react';
+import * as ReactDOM from 'react-dom/client';
+import { Router } from "react-router-dom";
+
 import { ReduxRouter } from '@lagunovsky/redux-react-router';
 import { Provider } from 'react-redux';
 import FontFaceObserver from 'fontfaceobserver';
@@ -29,8 +31,8 @@ import '!file-loader?name=[name].[ext]!public/favicon.ico';
 import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line import/extensions
 
 // root
-import { configureAppStore } from 'store';
-import history from 'utils/history';
+// import { configureAppStore } from 'store';
+import { storeNew, history } from './store/store.new';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -43,7 +45,9 @@ openSansObserver.load().then(() => {
 
 // Create redux store with history
 const initialState = {};
-const store = configureAppStore(initialState, history);
+// const store = configureAppStore(initialState, history);
+
+// const cleanStore = storeNew;
 
 // Tell React to take control of that element
 // In TypeScript, since there is a bug, you need to add the "!" element!
@@ -51,21 +55,20 @@ const store = configureAppStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 const root = ReactDOM.createRoot(MOUNT_NODE);
 
-
-const render = (Component) =>
+const render = () =>
   root.render(
     <StrictMode>
-      <Provider store={store} >
-        <ReduxRouter history={history}>
-          <AppProviders>
-            <Component history={history} />
-          </AppProviders>
-        </ReduxRouter>
+      <Provider store={storeNew}>
+        <AppProviders>
+          <Router history={history}>
+          </Router>
+          <App/>
+
+        </AppProviders>
       </Provider>
-    </StrictMode>
+    </StrictMode>,
   );
 
-render(App);
 
 if (process.env.NODE_ENV !== 'production' && module.hot) {
   // Hot reloadable React components and translation json files
@@ -73,7 +76,7 @@ if (process.env.NODE_ENV !== 'production' && module.hot) {
   // have to be constants at compile-time
   module.hot.accept(['./App'], () => {
     const NextRootContainer = require('./App/App').default;
-//root.unmountComponentAtNode(document.getElementById('app'));
+    //root.unmountComponentAtNode(document.getElementById('app'));
     render(NextRootContainer);
   });
 }
