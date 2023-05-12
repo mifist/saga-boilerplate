@@ -1,6 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 // utils
 import requestWrapper from 'utils/requestWrapper';
+import { push } from 'redux-first-history';
 
 import * as CONSTANS from './constants';
 import * as ACTIONS from './actions';
@@ -9,6 +10,7 @@ export function* loadList(action) {
   try {
     const { count } = action;
     const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
+
     // we get the campaigns linked to the plans
     const result = yield requestWrapper(
       'GET',
@@ -19,6 +21,8 @@ export function* loadList(action) {
       null,
     );
     console.log({ result });
+
+    yield put(push('/random'));
 
     if (!result) {
       yield put(ACTIONS.onLoadListSuccess([]));

@@ -22,9 +22,11 @@ import { flushState, onLoadList } from './actions';
 import { Skeleton, List, Avatar, Button } from 'antd';
 
 function SagaContainer({}) {
-  const { list, loading } = useSelector(
-    ({ appSagaContainer }) => appSagaContainer,
-  );
+  const { list, loading } = useSelector((state) => {
+    console.log(state);
+
+    return state.appSagaContainer;
+  });
 
   const dispatch = useDispatch();
 
