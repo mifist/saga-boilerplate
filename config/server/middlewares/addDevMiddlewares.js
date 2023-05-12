@@ -25,15 +25,17 @@ function createWebpackMiddleware(compiler, publicPath) {
 */
 
 module.exports = function addDevMiddlewares(app) {
+  const options = {
+    outputPath: path.resolve(process.cwd()),
+    publicPath: '/',
+  };
   const publicPath = webpackConfig?.output?.publicPath;
-  const outputPath = webpackConfig?.output?.path;
-  const indexPath = path.resolve(outputPath, 'index.html');
-
+ // const outputPath = options?.outputPath || path.resolve(process.cwd(), 'build');
   const compiler = webpack(webpackConfig);
 
   const middleware = createWebpackMiddleware(
     compiler,
-    webpackConfig.output.publicPath,
+    publicPath
   );
   
   app.use(middleware);
@@ -42,10 +44,16 @@ module.exports = function addDevMiddlewares(app) {
     heartbeat: 2000,
   }));
 
-  app.use(publicPath, express.static(outputPath));
+  app.use(publicPath, express.static(options?.outputPath));
 
-  app.get('/*', (req, res) => {
-    res.sendFile(indexPath)
-  }); 
+  app.get('*', (req, res) => {
+    compiler.outputFileSystem.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
+      if (err) {
+        res.sendStatus(404);
+      } else {
+        res.send(file.toString());
+      }
+    });
+  });
 
 };

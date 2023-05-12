@@ -68,6 +68,7 @@ module.exports = merge(common, {
       title: "SagaBoilerplate",
       template: path.join(process.cwd(), 'public', 'index.html'),
       filename: 'index.html',
+     // chunks: ['build'],
       hash: true,
       minify: {
         removeComments: true,
