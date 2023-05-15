@@ -1,0 +1,40 @@
+// Style for MainNewsFeed page
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.MainNewsFeed {
+  padding: 0 20px 20px 20px;
+  @media screen and (max-width: 800px) {
+    padding: 0;
+    > .ant-row {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      > .ant-col {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+.create_top_post {
+  background: white;
+  padding: 15px;
+  margin: 0 0 15px 0;
+}
+
+.avatar_create_post {
+  height: 45px;
+  border-radius: 50%;
+}
+
+.create_post_button {
+  color: black;
+  background: #f2f7f8;
+  margin-left: 20px;
+  display: inline-block;
+  width: calc(100% - 80px);
+  padding: 10px 10px 10px 20px;
+  border-radius: 20px;
+}

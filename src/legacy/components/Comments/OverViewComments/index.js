@@ -55,10 +55,10 @@ function OverViewComments({
   const { t, i18n } = useTranslation();
   const { _id, type, likes, comments } = post;
 
-  const active = likes.some(e => e?._id === user._id);
+  const active = likes.some((e) => e?._id === user._id);
 
   // Footer
-  const shareUrl = post => {
+  const shareUrl = (post) => {
     const postType = post?.type;
     switch (postType) {
       case 'post':
@@ -74,7 +74,7 @@ function OverViewComments({
     }
   };
 
-  const onPressLike = e => {
+  const onPressLike = (e) => {
     e.preventDefault();
 
     if (user?._id) {
@@ -83,7 +83,7 @@ function OverViewComments({
       }
 
       if (active) {
-        const withOutId = post.likes.filter(i => i?._id !== user._id);
+        const withOutId = post.likes.filter((i) => i?._id !== user._id);
         const newPostObj = { ...post, likes: withOutId };
 
         if (typeLike == 'post') {
@@ -205,11 +205,11 @@ function OverViewComments({
                     </Menu>
                   }
                   trigger={['click']}
-                  getPopupContainer={trigger => trigger.parentElement}
+                  getPopupContainer={(trigger) => trigger.parentElement}
                 >
                   <a
                     className="ant-dropdown-link"
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                   >
                     <CustomIcons type="dots-vertical" />
                   </a>
@@ -240,23 +240,16 @@ OverViewComments.propTypes = {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch,
-    updateLikes: publication => dispatch(updateLikes(publication)),
-    updateLikesCase: publication => dispatch(updateLikesCase(publication)),
-    updateLikesCommunity: publication =>
+    updateLikes: (publication) => dispatch(updateLikes(publication)),
+    updateLikesCase: (publication) => dispatch(updateLikesCase(publication)),
+    updateLikesCommunity: (publication) =>
       dispatch(updateLikesCommunity(publication)),
-    setReportPopup: data => dispatch(setReportPopupAction(data)),
-    setReportPopupCommunity: data =>
+    setReportPopup: (data) => dispatch(setReportPopupAction(data)),
+    setReportPopupCommunity: (data) =>
       dispatch(setReportPopupCommunityAction(data)),
   };
 }
 
-const withConnect = connect(
-  null,
-  mapDispatchToProps,
-);
+const withConnect = connect(null, mapDispatchToProps);
 
-export default compose(
-  withConnect,
-  withUser,
-  withAuthPopup,
-)(OverViewComments);
+export default compose(withConnect, withUser, withAuthPopup)(OverViewComments);

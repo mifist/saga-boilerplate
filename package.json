@@ -85,6 +85,7 @@
     "capacitor-voice-recorder": "^4.0.2",
     "chalk": "^4.1.2",
     "circular-dependency-plugin": "^5.2.2",
+    "classnames": "^2.3.2",
     "compression": "^1.7.4",
     "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
