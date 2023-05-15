@@ -36,7 +36,7 @@ import {
   makeSelectModifyPostTypePopupOpened,
 } from './selectors';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 

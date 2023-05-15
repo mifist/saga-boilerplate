@@ -13,7 +13,7 @@ import classNames from 'classnames';
 // styles
 import './style.scss';
 
-// import useDeviceDetect from 'utils/useDeviceDetect';
+// import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 //import { Card } from 'antd';

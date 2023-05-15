@@ -8,11 +8,9 @@ import React, { memo, useRef, useState } from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
 import ReactPlayer from 'react-player';
 import { Button, Slider } from 'antd';
 import { findDOMNode } from 'react-dom';
-import messages from './messages';
 import './style.scss';
 
 class VideoPlayer extends React.Component {

@@ -9,7 +9,7 @@ import './style.scss';
 // antd component
 import { Avatar } from 'antd';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // icons
 import { UserOutlined } from '@ant-design/icons';

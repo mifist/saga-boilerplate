@@ -24,7 +24,7 @@ import { withUser } from 'engine/context/User.context';
 import { withAuthPopup } from 'engine/context/AuthPopup.context';
 
 // helper
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 import { membersAmount, getObjId, getEmployment } from 'utils/generalHelper';
 import { communityTypes } from 'utils/categoryHelper';
 

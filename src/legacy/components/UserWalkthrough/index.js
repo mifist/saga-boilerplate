@@ -22,7 +22,6 @@ const { Step } = Steps;
 import moment from 'moment';
 import { withUser } from 'engine/context/User.context';
 
-import { FormattedMessage } from 'react-intl';
 import './style.scss';
 import { Link } from 'react-router-dom';
 

@@ -9,7 +9,7 @@ import groupsIcon from 'engine/CometChatWorkspace/src/legacy/components/CometCha
 import './style.scss';
 import { compose } from 'redux';
 import { useTranslation } from 'react-i18next';
-import { withUser } from '../../engine/context/User.context';
+import { withUser } from 'engine/context/User.context';
 import Translator from 'engine/CometChatWorkspace/src/resources/localization/translator';
 
 function ChatNavigation({ event, user, ...rest }) {

@@ -5,31 +5,12 @@
  */
 
 import React, { memo, useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 import classNames from 'classnames';
-// import { Link, useHistory } from 'react-router-dom';
-
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-
 // styles
 import './style.scss';
 
-// import useDeviceDetect from 'utils/useDeviceDetect';
-
-// antd component
-//import { Card } from 'antd';
-//const { Meta } = Card;
-
-// icons
-//import CustomIcons from 'legacy/components/CustomIcons';
-//import defaultUnitImage from 'images/default.jpg';
-
 // components
 import LinkWrapper from 'legacy/components/LinkWrapper';
-// global user
-// import { withUser } from 'engine/context/User.context';
 import { Widget } from 'react-typeform-embed';
 
 function TypeFormAsap({

@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 // styles
 import './style.scss';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 import { Col, Row, Skeleton, Form, Select, BackTop } from 'antd';

@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 // styles
 import './style.scss';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd components
 import { Modal, Button, List, Tooltip } from 'antd';

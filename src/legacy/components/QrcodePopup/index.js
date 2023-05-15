@@ -5,7 +5,7 @@ import api from 'engine/api/axiosAPI';
 
 import './style.scss';
 import { compose } from 'redux';
-import { withUser } from '../../engine/context/User.context';
+import { withUser } from 'engine/context/User.context';
 import i18n from 'i18next';
 
 const QrcodePopup = ({ qrcode, newsfeed, user }) => {

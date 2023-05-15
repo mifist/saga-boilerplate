@@ -9,7 +9,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import * as ReactDOM from 'react-dom';
 
 import { $createMentionNode } from '../nodes/MentionNode';
-import api from '../../../engine/api/axiosAPI';
+import api from '../engine/api/axiosAPI';
 import UserAvatar from '../../UserAvatar';
 
 const PUNCTUATION =

@@ -19,7 +19,7 @@ import saga from './saga';
 import './style.scss';
 
 
-import useDeviceDetect from '../../utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 import { Tabs } from 'antd';

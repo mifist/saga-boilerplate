@@ -31,7 +31,7 @@ import {
   selectDeleteSuccessful,
 } from './selectors';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 import { Button, Col, Empty, Layout, Row, Spin } from 'antd';
