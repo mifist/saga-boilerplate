@@ -1,0 +1,311 @@
+// Style for PersonalProfile page
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.main-single-layout {
+  padding: 58px 0 0 0;
+  background: transparent;
+  max-width: 100%;
+
+  &.with-sidebar {
+    &.personal-profile {
+      .ant-layout-sider {
+        padding-left: 48px;
+        @media screen and (max-width: 1024px) {
+          padding-left: 25px;
+        }
+
+        @media screen and (max-width: 980px) {
+          flex: 0 0 350px !important;
+          min-width: 300px !important;
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  &.personal-profile {
+    padding-top: 30px;
+    overflow: scroll;
+  }
+
+  &.personal-profile::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.main-single-content {
+  &.personal-profile {
+    max-width: 755px;
+    @media screen and (max-width: 800px) {
+      margin: 0 auto !important;
+    }
+
+    .main-single-content {
+      &__header {
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 25px;
+        border-radius: 5px;
+
+        @media screen and (max-width: 800px) {
+          padding: 20px 15px;
+          background-color: transparent;
+        }
+      }
+
+      &__main {
+        background: transparent;
+      }
+    }
+    .profile-header {
+      border-left: 14px solid #cba348;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+
+      .profile-section-wrapper__context {
+        padding: 40px 15px;
+        padding-top: 60px;
+      }
+
+      .user-photo {
+        align-items: flex-end;
+        margin-right: 6px;
+
+        @media screen and (max-width: 580px) {
+          align-items: center;
+          margin-right: auto;
+          margin-left: auto;
+        }
+      }
+
+      p {
+        color: #606060;
+        font-size: 16px;
+        font-weight: 400;
+
+        * {
+          color: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+      }
+
+      &__edit,
+      &__follow {
+        color: black;
+        display: flex;
+        align-items: center;
+        margin-left: 5px;
+        line-height: 1 !important;
+        max-width: max-content;
+        padding: 0 10px;
+
+        .anticon {
+          max-width: 15px;
+          display: inline-block;
+          margin-right: 6px;
+
+          svg {
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        img {
+          width: 15px;
+          margin: -5px 6px 0 0;
+        }
+      }
+
+      &__edit {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: $beemedblue1;
+        border-color: $beemedblue1;
+
+        svg {
+          fill: $beemedblue1;
+          transition: fill 0.3s;
+        }
+
+        &:hover,
+        &:focus {
+          color: $beemedocre1;
+          border-color: $beemedocre1;
+
+          svg {
+            fill: $beemedocre1;
+          }
+        }
+      }
+
+      &__title {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 36px !important;
+        line-height: 39px;
+        font-weight: 700;
+        margin-bottom: 15px;
+
+        @media screen and (max-width: 580px) {
+          margin-bottom: 0;
+        }
+
+        .badge {
+          margin-top: -5px;
+        }
+      }
+
+      &__description {
+        color: #606060;
+        font-size: 16px;
+        font-weight: 400;
+
+        * {
+          color: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+      }
+
+      &__title,
+      &__description {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.profile-custom-card {
+  background-color: white;
+  border-radius: 7px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 580px) {
+  .profile-credential {
+    margin-bottom: 100px !important;
+  }
+}
+
+.profile-small-custom-card {
+  background-color: white;
+  border-radius: 7px;
+  padding: 20px;
+  margin-bottom: 8px;
+}
+
+.profile-tabs-card {
+  margin-bottom: 25px;
+}
+
+.row-profile {
+  margin: 0 !important;
+  .ant-col {
+    @media screen and (max-width: 580px) {
+      width: 100%;
+    }
+  }
+}
+
+.profile-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+  gap: 15px;
+
+  .chat-button {
+    margin: 0;
+  }
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  span {
+    border-radius: 7px;
+    padding: 2px 10px;
+    font-size: 13px;
+    font-weight: 400;
+    min-height: 21px;
+    line-height: 21px;
+
+    &.qualifications {
+      color: $black;
+      background-color: $beemedocre2;
+    }
+
+    &.domains {
+      color: $beemedblue1;
+      background-color: #b2ced4;
+    }
+
+    &.anatomies {
+      color: $white;
+      background-color: $beemedblue1;
+    }
+  }
+}
+
+.personal-profile-tabs {
+  .tabs-tcf__tab-content {
+    @media screen and (max-width: 800px) {
+      width: calc(100% - 30px);
+      margin: 0 auto;
+    }
+  }
+}
+
+.profile-photo {
+  margin-left: 20px;
+}
+
+.profile-about {
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+  }
+}
+
+.profile-comment-type {
+  font-size: 12px;
+  font-weight: 700;
+  color: #989898;
+  text-transform: capitalize;
+}
+
+.profile-comment-title {
+  color: #005d72;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile-comment-content {
+  color: black;
+  font-size: 16px !important;
+  font-weight: 400;
+  overflow: hidden;
+  * {
+    font-size: 16px !important;
+    color: black !important;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif !important;
+  }
+}
+
+.profile-comment-type,
+.profile-comment-title,
+.profile-comment-content {
+  width: 100%;
+  display: inline-block;
+}

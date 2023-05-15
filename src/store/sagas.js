@@ -18,6 +18,11 @@ import NewsFeed from 'legacy/pages/NewsFeed/saga';
 import Register from 'legacy/pages/Register/saga';
 import ResetPassword from 'legacy/pages/ResetPassword/saga';
 import SearchBar from 'legacy/pages/SearchBar/saga';
+import ForgotPassword from 'legacy/pages/ForgotPassword/saga';
+import HiddenPosts from 'legacy/pages/HiddenPosts/saga';
+import Login from 'legacy/pages/Login/saga';
+import Notifications from 'legacy/pages/Notifications/saga';
+import PersonalProfile from 'legacy/pages/PersonalProfile/saga';
 // containers
 import TestContainer from 'legacy/containers/TestContainer/saga';
 import CommentsOverview from 'legacy/containers/CommentsOverview/saga';
@@ -43,6 +48,11 @@ export default {
   Register,
   ResetPassword,
   SearchBar,
+  ForgotPassword,
+  HiddenPosts,
+  Login,
+  Notifications,
+  PersonalProfile,
   // containers
   TestContainer,
   CommentsOverview,

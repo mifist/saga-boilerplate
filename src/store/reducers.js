@@ -18,6 +18,11 @@ import NewsFeed from 'legacy/pages/NewsFeed/reducer';
 import Register from 'legacy/pages/Register/reducer';
 import ResetPassword from 'legacy/pages/ResetPassword/reducer';
 import SearchBar from 'legacy/pages/SearchBar/reducer';
+import ForgotPassword from 'legacy/pages/ForgotPassword/reducer';
+import HiddenPosts from 'legacy/pages/HiddenPosts/reducer';
+import Login from 'legacy/pages/Login/reducer';
+import Notifications from 'legacy/pages/Notifications/reducer';
+import PersonalProfile from 'legacy/pages/PersonalProfile/reducer';
 // containers
 import TestContainer from 'legacy/containers/TestContainer/reducer';
 import CommentsOverview from 'legacy/containers/CommentsOverview/reducer';
@@ -42,6 +47,11 @@ export default {
   Register,
   ResetPassword,
   SearchBar,
+  ForgotPassword,
+  HiddenPosts,
+  Login,
+  Notifications,
+  PersonalProfile,
   // containers
   TestContainer,
   CommentsOverview,

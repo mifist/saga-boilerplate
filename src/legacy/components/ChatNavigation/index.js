@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import './style.scss';
 
 // assets
-import chatsIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChatUI/CometChatNavBar/resources/chats.svg';
-import usersIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChatUI/CometChatNavBar/resources/users.svg';
-import groupsIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChatUI/CometChatNavBar/resources/groups.svg';
+import chatsIcon from 'engine/CometChatWorkspace/src/components/CometChatUI/CometChatNavBar/resources/chats.svg';
+import usersIcon from 'engine/CometChatWorkspace/src/components/CometChatUI/CometChatNavBar/resources/users.svg';
+import groupsIcon from 'engine/CometChatWorkspace/src/components/CometChatUI/CometChatNavBar/resources/groups.svg';
 
 // contexts
 import { withUser } from 'appContext/User.context';

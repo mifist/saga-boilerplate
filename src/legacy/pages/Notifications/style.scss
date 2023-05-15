@@ -1,0 +1,27 @@
+.checkedNotification {
+  background-color: #f2f7f8 !important;
+  transition: border-bottom 0.5s ease-in-out;
+}
+
+.uncheckedNotification {
+  transition: border-bottom 0.5s ease-in-out;
+}
+
+.skeleton {
+  max-width: 40vw;
+  margin: 20px 0 0 40px;
+}
+
+.ant-list-pagination {
+  padding-right: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  .dot {
+    margin: 20px 15px !important;
+  }
+}
+
+.notifications-list {
+  margin-bottom: 40px;
+}
