@@ -4,51 +4,14 @@
  *
  */
 
-import {
-  LOAD_COMMUNITYDETAIL,
-  LOAD_COMMUNITYDETAIL_SUCCESS,
-  LOAD_COMMUNITYDETAIL_ERROR,
-  CHANGE_COMMUNITYDETAIL,
-  CHANGE_COMMUNITYDETAIL_SUCCESS,
-  CHANGE_COMMUNITYDETAIL_ERROR,
-  DELETE_COMMUNITYDETAIL,
-  DELETE_COMMUNITYDETAIL_SUCCESS,
-  DELETE_COMMUNITYDETAIL_ERROR,
-  // all tags for community
-  LOAD_TAGS,
-  LOAD_TAGS_SUCCESS,
-  LOAD_TAGS_ERROR,
-  // popular tags
-  LOAD_COMMUNITYDETAIL_TAGS,
-  LOAD_COMMUNITYDETAIL_TAGS_SUCCESS,
-  LOAD_COMMUNITYDETAIL_TAGS_ERROR,
-  // media
-  UPLOAD_MEDIA,
-  UPLOAD_MEDIA_SUCCESS,
-  UPLOAD_MEDIA_ERROR,
-  // feeds,
-  LOAD_FEEDS,
-  LOAD_FEEDS_SUCCESS,
-  LOAD_FEEDS_ERROR,
-  // post new ublication
-  POST_PUBLICATION,
-  POST_PUBLICATION_SUCCESS,
-  POST_PUBLICATION_ERROR,
-  // other
-  FLUSH_STATE_COMMUNITYDETAIL,
-  UPDATE_LIKES,
-  REPORT_POST,
-  REPORT_POST_ERROR,
-  REPORT_POST_SUCCESS,
-  SET_REPORT_POPOP,
-} from './constants';
+import * as CONSTANS from './constants';
 
 /**
  * Clearing the state for CommunityDetail
  */
 export function flushStateCommunityDetail() {
   return {
-    type: FLUSH_STATE_COMMUNITYDETAIL,
+    type: CONSTANS.FLUSH_STATE_COMMUNITYDETAIL,
   };
 }
 
@@ -63,7 +26,7 @@ export function flushStateCommunityDetail() {
  */
 export function loadCommunityDetail(id) {
   return {
-    type: LOAD_COMMUNITYDETAIL,
+    type: CONSTANS.LOAD_COMMUNITYDETAIL,
     id,
   };
 }
@@ -77,7 +40,7 @@ export function loadCommunityDetail(id) {
  */
 export function loadCommunityDetailSuccess(communityDetailData) {
   return {
-    type: LOAD_COMMUNITYDETAIL_SUCCESS,
+    type: CONSTANS.LOAD_COMMUNITYDETAIL_SUCCESS,
     communityDetailData,
   };
 }
@@ -91,7 +54,7 @@ export function loadCommunityDetailSuccess(communityDetailData) {
  */
 export function loadCommunityDetailError(error) {
   return {
-    type: LOAD_COMMUNITYDETAIL_ERROR,
+    type: CONSTANS.LOAD_COMMUNITYDETAIL_ERROR,
     error,
   };
 }
@@ -102,7 +65,7 @@ export function loadCommunityDetailError(error) {
 
 export function updateLikesCommunity(publication) {
   return {
-    type: UPDATE_LIKES,
+    type: CONSTANS.UPDATE_LIKES,
     publication,
   };
 }
@@ -114,7 +77,7 @@ export function updateLikesCommunity(publication) {
  */
 export function changeCommunityDetail(communityDetailData) {
   return {
-    type: CHANGE_COMMUNITYDETAIL,
+    type: CONSTANS.CHANGE_COMMUNITYDETAIL,
     communityDetailData,
   };
 }
@@ -128,7 +91,7 @@ export function changeCommunityDetail(communityDetailData) {
  */
 export function changeCommunityDetailSuccess(communityDetailData) {
   return {
-    type: CHANGE_COMMUNITYDETAIL_SUCCESS,
+    type: CONSTANS.CHANGE_COMMUNITYDETAIL_SUCCESS,
     communityDetailData,
   };
 }
@@ -142,7 +105,7 @@ export function changeCommunityDetailSuccess(communityDetailData) {
  */
 export function changeCommunityDetailError(error) {
   return {
-    type: CHANGE_COMMUNITYDETAIL_ERROR,
+    type: CONSTANS.CHANGE_COMMUNITYDETAIL_ERROR,
     error,
   };
 }
@@ -158,7 +121,7 @@ export function changeCommunityDetailError(error) {
  */
 export function deleteCommunityDetail(id) {
   return {
-    type: DELETE_COMMUNITYDETAIL,
+    type: CONSTANS.DELETE_COMMUNITYDETAIL,
     id,
   };
 }
@@ -172,7 +135,7 @@ export function deleteCommunityDetail(id) {
  */
 export function deleteCommunityDetailSuccess() {
   return {
-    type: DELETE_COMMUNITYDETAIL_SUCCESS,
+    type: CONSTANS.DELETE_COMMUNITYDETAIL_SUCCESS,
   };
 }
 
@@ -185,7 +148,7 @@ export function deleteCommunityDetailSuccess() {
  */
 export function deleteCommunityDetailError(error) {
   return {
-    type: DELETE_COMMUNITYDETAIL_ERROR,
+    type: CONSTANS.DELETE_COMMUNITYDETAIL_ERROR,
     error,
   };
 }
@@ -201,7 +164,7 @@ export function deleteCommunityDetailError(error) {
  */
 export function loadCommunityDetailTags(id) {
   return {
-    type: LOAD_COMMUNITYDETAIL_TAGS,
+    type: CONSTANS.LOAD_COMMUNITYDETAIL_TAGS,
     id,
   };
 }
@@ -215,7 +178,7 @@ export function loadCommunityDetailTags(id) {
  */
 export function loadCommunityDetailTagsSuccess(communityPopularTags) {
   return {
-    type: LOAD_COMMUNITYDETAIL_TAGS_SUCCESS,
+    type: CONSTANS.LOAD_COMMUNITYDETAIL_TAGS_SUCCESS,
     communityPopularTags,
   };
 }
@@ -229,7 +192,7 @@ export function loadCommunityDetailTagsSuccess(communityPopularTags) {
  */
 export function loadCommunityDetailTagsError(errorPopularTags) {
   return {
-    type: LOAD_COMMUNITYDETAIL_TAGS_ERROR,
+    type: CONSTANS.LOAD_COMMUNITYDETAIL_TAGS_ERROR,
     errorPopularTags,
   };
 }
@@ -245,7 +208,7 @@ export function loadCommunityDetailTagsError(errorPopularTags) {
  */
 export function uploadCommunityMedia(media) {
   return {
-    type: UPLOAD_MEDIA,
+    type: CONSTANS.UPLOAD_MEDIA,
     media,
   };
 }
@@ -259,7 +222,7 @@ export function uploadCommunityMedia(media) {
  */
 export function uploadCommunityMediaSuccess(uploadMedia) {
   return {
-    type: UPLOAD_MEDIA_SUCCESS,
+    type: CONSTANS.UPLOAD_MEDIA_SUCCESS,
     uploadMedia,
   };
 }
@@ -273,7 +236,7 @@ export function uploadCommunityMediaSuccess(uploadMedia) {
  */
 export function uploadCommunityMediaError(error) {
   return {
-    type: UPLOAD_MEDIA_ERROR,
+    type: CONSTANS.UPLOAD_MEDIA_ERROR,
     error,
   };
 }
@@ -284,7 +247,7 @@ export function uploadCommunityMediaError(error) {
 
 export function loadCommunityFeed(id, page, filter, entity = 'post') {
   return {
-    type: LOAD_FEEDS,
+    type: CONSTANS.LOAD_FEEDS,
     id,
     page,
     filter,
@@ -293,7 +256,7 @@ export function loadCommunityFeed(id, page, filter, entity = 'post') {
 }
 export function loadCommunityFeedSuccess(communityFeeds, page, total) {
   return {
-    type: LOAD_FEEDS_SUCCESS,
+    type: CONSTANS.LOAD_FEEDS_SUCCESS,
     communityFeeds,
     page,
     total,
@@ -301,7 +264,7 @@ export function loadCommunityFeedSuccess(communityFeeds, page, total) {
 }
 export function loadCommunityFeedError(errorFeeds) {
   return {
-    type: LOAD_FEEDS_ERROR,
+    type: CONSTANS.LOAD_FEEDS_ERROR,
     errorFeeds,
   };
 }
@@ -312,21 +275,21 @@ export function loadCommunityFeedError(errorFeeds) {
 
 export function postPublication(publication) {
   return {
-    type: POST_PUBLICATION,
+    type: CONSTANS.POST_PUBLICATION,
     publication,
   };
 }
 
 export function postPublicationSuccess(publication) {
   return {
-    type: POST_PUBLICATION_SUCCESS,
+    type: CONSTANS.POST_PUBLICATION_SUCCESS,
     publication,
   };
 }
 
 export function postPublicationError(errorPublication) {
   return {
-    type: POST_PUBLICATION_ERROR,
+    type: CONSTANS.POST_PUBLICATION_ERROR,
     errorPublication,
   };
 }
@@ -337,46 +300,46 @@ export function postPublicationError(errorPublication) {
 
 export function loadCommunityTags(id) {
   return {
-    type: LOAD_TAGS,
+    type: CONSTANS.LOAD_TAGS,
     id,
   };
 }
 export function loadCommunityTagsSuccess(communityTags) {
   return {
-    type: LOAD_TAGS_SUCCESS,
+    type: CONSTANS.LOAD_TAGS_SUCCESS,
     communityTags,
   };
 }
 export function loadCommunityTagsError(errorTags) {
   return {
-    type: LOAD_TAGS_ERROR,
+    type: CONSTANS.LOAD_TAGS_ERROR,
     errorTags,
   };
 }
 
 export function reportPost(data) {
   return {
-    type: REPORT_POST,
+    type: CONSTANS.REPORT_POST,
     data,
   };
 }
 
 export function reportPostSuccess() {
   return {
-    type: REPORT_POST_SUCCESS,
+    type: CONSTANS.REPORT_POST_SUCCESS,
   };
 }
 
 export function reportPostError(error) {
   return {
-    type: REPORT_POST_ERROR,
+    type: CONSTANS.REPORT_POST_ERROR,
     error,
   };
 }
 
 export function setReportPopup({ opened, _id }) {
   return {
-    type: SET_REPORT_POPOP,
+    type: CONSTANS.SET_REPORT_POPOP,
     opened,
     _id,
   };

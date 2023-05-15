@@ -4,26 +4,7 @@
  *
  */
 import produce from 'immer';
-import {
-  DEFAULT_ACTION,
-  FLUSH,
-  LOAD_EVENTS,
-  LOAD_EVENTS_ERROR,
-  LOAD_EVENTS_SUCCESS,
-  LOAD_POSTS,
-  LOAD_POSTS_ERROR,
-  LOAD_POSTS_SUCCESS,
-  POST_PUBLICATION,
-  POST_PUBLICATION_SUCCESS,
-  SET_NO_MORE,
-  UPDATE_LIKES,
-  UPLOAD_IMAGES_SUCCESS,
-  SET_DELETED_POSTS,
-  REPORT_POST,
-  REPORT_POST_ERROR,
-  REPORT_POST_SUCCESS,
-  SET_REPORT_POPOP,
-} from './constants';
+import * as CONSTANS from './constants';
 
 export const initialState = {
   loadingPosts: false,
@@ -50,12 +31,12 @@ export const initialState = {
 const NewsFeedPageReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case DEFAULT_ACTION:
+      case CONSTANS.DEFAULT_ACTION:
         break;
-      case FLUSH:
+      case CONSTANS.FLUSH:
         return initialState;
 
-      case SET_NO_MORE:
+      case CONSTANS.SET_NO_MORE:
         const { entity } = action;
         if (entity === 'event') {
           draft.noMoreEvent = true;
@@ -72,22 +53,22 @@ const NewsFeedPageReducer = (state = initialState, action) =>
 
         break;
 
-      case UPLOAD_IMAGES_SUCCESS:
+      case CONSTANS.UPLOAD_IMAGES_SUCCESS:
         draft.uploadImages = action.uploadImages;
         break;
 
-      case SET_DELETED_POSTS:
+      case CONSTANS.SET_DELETED_POSTS:
         draft.deletedPosts = [
           ...new Set([...draft.deletedPosts, ...action.deletedPosts]),
         ];
         break;
 
-      case POST_PUBLICATION:
+      case CONSTANS.POST_PUBLICATION:
         draft.publication = action.publication;
         draft.loadingNewPost = true;
         break;
 
-      case POST_PUBLICATION_SUCCESS:
+      case CONSTANS.POST_PUBLICATION_SUCCESS:
         if (state.posts && action.publication) {
           let i = state.posts.findIndex(
             po => po?._id === action.publication?._id,
@@ -102,33 +83,33 @@ const NewsFeedPageReducer = (state = initialState, action) =>
         draft.loadingNewPost = false;
         break;
 
-      case LOAD_EVENTS:
+      case CONSTANS.LOAD_EVENTS:
         draft.loadingEvents = true;
         draft.errorEvents = false;
         break;
 
-      case UPDATE_LIKES:
+      case CONSTANS.UPDATE_LIKES:
         const { publication } = action;
         const index = state.posts.findIndex(po => po?._id === publication?._id);
         if (index !== -1) draft.posts[index].likes = publication.likes;
         break;
 
-      case LOAD_EVENTS_SUCCESS:
+      case CONSTANS.LOAD_EVENTS_SUCCESS:
         draft.events.push(...action.events);
         draft.loadingEvents = false;
         break;
 
-      case LOAD_EVENTS_ERROR:
+      case CONSTANS.LOAD_EVENTS_ERROR:
         draft.errorEvents = action.error;
         draft.loadingEvents = false;
         break;
 
-      case LOAD_POSTS:
+      case CONSTANS.LOAD_POSTS:
         draft.loadingPosts = true;
         draft.errorPosts = false;
         break;
 
-      case LOAD_POSTS_SUCCESS:
+      case CONSTANS.LOAD_POSTS_SUCCESS:
         if (
           (action.page == '1' && state.posts && state.posts.length <= 0) ||
           action.page > '1'
@@ -140,25 +121,25 @@ const NewsFeedPageReducer = (state = initialState, action) =>
         draft.loadingPosts = false;
         break;
 
-      case LOAD_POSTS_ERROR:
+      case CONSTANS.LOAD_POSTS_ERROR:
         draft.errorEvents = action.error;
         draft.loadingPosts = false;
         break;
 
-      case REPORT_POST:
+      case CONSTANS.REPORT_POST:
         draft.loadingReport = true;
         break;
-      case REPORT_POST_SUCCESS:
+      case CONSTANS.REPORT_POST_SUCCESS:
         draft.loadingReport = false;
         draft.reportPopup.opened = false;
         draft.reportPopup._id = null;
         break;
-      case REPORT_POST_ERROR:
+      case CONSTANS.REPORT_POST_ERROR:
         draft.error = action.error;
         draft.loadingReport = false;
         break;
 
-      case SET_REPORT_POPOP:
+      case CONSTANS.SET_REPORT_POPOP:
         draft.reportPopup.opened = action.opened;
         draft.reportPopup._id = action._id;
         break;

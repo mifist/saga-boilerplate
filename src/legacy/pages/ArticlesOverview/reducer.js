@@ -1,14 +1,6 @@
 
 import produce from 'immer';
-import {
-  FLUSH_STATE,
-  LOAD_ARTICLES,
-  LOAD_ARTICLES_ERROR,
-  LOAD_ARTICLES_SUCCESS,
-  CREATE_ARTICLE,
-  CREATE_ARTICLE_SUCCESS,
-  CREATE_ARTICLE_ERROR,
-} from './constants';
+import * as CONSTANS from './constants';
 
 export const initialState = {
   loading: false,
@@ -22,32 +14,32 @@ export const initialState = {
 const articlesOverviewReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case FLUSH_STATE:
+      case CONSTANS.FLUSH_STATE:
         return initialState;
 
       // Load Articles by Filter
-      case LOAD_ARTICLES:
+      case CONSTANS.LOAD_ARTICLES:
         draft.filter = action.filter;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case LOAD_ARTICLES_SUCCESS:
+      case CONSTANS.LOAD_ARTICLES_SUCCESS:
         draft.articles = action.articles;
         draft.loading = false;
         break;
 
-      case LOAD_ARTICLES_ERROR:
+      case CONSTANS.LOAD_ARTICLES_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CREATE_ARTICLE:
+      case CONSTANS.CREATE_ARTICLE:
         draft.loading = false;
         draft.error = false;
         break;
 
-      case CREATE_ARTICLE_SUCCESS:
+      case CONSTANS.CREATE_ARTICLE_SUCCESS:
         draft.loading = false;
         const { data } = action;
         if (state.articles) {
@@ -62,7 +54,7 @@ const articlesOverviewReducer = (state = initialState, action) =>
 
         break;
 
-      case CREATE_ARTICLE_ERROR:
+      case CONSTANS.CREATE_ARTICLE_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

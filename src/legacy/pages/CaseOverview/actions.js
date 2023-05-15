@@ -1,37 +1,28 @@
-import {
-  FLUSH_STATE,
-  LOAD_CASES,
-  LOAD_CASES_ERROR,
-  LOAD_CASES_SUCCESS,
-  CREATE_CASE,
-  CREATE_CASE_ERROR,
-  CREATE_CASE_SUCCESS,
-  UPDATE_LIKES,
-} from './constants';
+import * as CONSTANS from './constants';
 
 export function flushState() {
   return {
-    type: FLUSH_STATE,
+    type: CONSTANS.FLUSH_STATE,
   };
 }
 
 export function loadCases(filter) {
   return {
-    type: LOAD_CASES,
+    type: CONSTANS.LOAD_CASES,
     filter,
   };
 }
 
 export function loadCasesSuccess(cases) {
   return {
-    type: LOAD_CASES_SUCCESS,
+    type: CONSTANS.LOAD_CASES_SUCCESS,
     cases,
   };
 }
 
 export function loadCasesError(error) {
   return {
-    type: LOAD_CASES_ERROR,
+    type: CONSTANS.LOAD_CASES_ERROR,
     error,
   };
 }
@@ -39,28 +30,28 @@ export function loadCasesError(error) {
 // CREATE CASE
 export function createCase(data) {
   return {
-    type: CREATE_CASE,
+    type: CONSTANS.CREATE_CASE,
     data,
   };
 }
 
 export function createCaseSuccess(caseDetail) {
   return {
-    type: CREATE_CASE_SUCCESS,
+    type: CONSTANS.CREATE_CASE_SUCCESS,
     caseDetail,
   };
 }
 
 export function createCaseError(error) {
   return {
-    type: CREATE_CASE_ERROR,
+    type: CONSTANS.CREATE_CASE_ERROR,
     error,
   };
 }
 
 export function updateLikesCase(publication) {
   return {
-    type: UPDATE_LIKES,
+    type: CONSTANS.UPDATE_LIKES,
     publication,
   };
 }

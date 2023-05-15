@@ -38,11 +38,11 @@ import { Button, Col, Empty, Layout, Row, Spin } from 'antd';
 
 // components
 import CommentsOverview from 'legacy/containers/CommentsOverview';
-import GoBackButton from 'components/GoBackButton';
-import BookmarkAction from 'components/BookmarkAction';
-import ShareAction from 'components/ShareAction';
-import SidebarAuthorsList from 'components/Sidebar/SidebarAuthorsList';
-import CreatePublicationv2 from 'components/CreatePublicationv2';
+import GoBackButton from 'legacy/components/GoBackButton';
+import BookmarkAction from 'legacy/components/BookmarkAction';
+import ShareAction from 'legacy/components/ShareAction';
+import SidebarAuthorsList from 'legacy/components/Sidebar/SidebarAuthorsList';
+import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 
 // contexts
 import { withUser } from 'appContext/User.context';

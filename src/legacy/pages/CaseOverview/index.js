@@ -22,8 +22,7 @@ import { Helmet } from 'react-helmet';
 import { useQuery } from 'utils/history';
 
 import { flushState, loadCases, createCase } from './actions';
-import saga from './saga';
-import reducer from './reducer';
+
 
 export function CaseOverview({ createCase, history }) {
   console.log('caseOverview');

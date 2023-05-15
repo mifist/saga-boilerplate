@@ -1,14 +1,8 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import { LOAD_ARTICLES, CREATE_ARTICLE } from './constants';
-
-import {
-  loadArticlesError,
-  loadArticlesSuccess,
-  createArticleError,
-  createArticleSuccess,
-} from './actions';
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
 
 // Load and Filter Articles
 export function* loadArticles(action) {
@@ -26,12 +20,12 @@ export function* loadArticles(action) {
     );
 
     if (!articles && articles.length === 0) {
-      yield put(loadArticlesSuccess(false));
+      yield put(ACTIONS.loadArticlesSuccess(false));
     } else {
-      yield put(loadArticlesSuccess(articles));
+      yield put(ACTIONS.loadArticlesSuccess(articles));
     }
   } catch (err) {
-    yield put(loadArticlesError(true));
+    yield put(ACTIONS.loadArticlesError(true));
   }
 }
 
@@ -47,17 +41,17 @@ export function* createArticle({ data }) {
     );
 
     if (!reponse) {
-      yield put(createArticleSuccess(false));
+      yield put(ACTIONS.createArticleSuccess(false));
     } else {
-      yield put(createArticleSuccess(reponse[0]));
+      yield put(ACTIONS.createArticleSuccess(reponse[0]));
     }
   } catch (err) {
-    yield put(createArticleError(true));
+    yield put(ACTIONS.createArticleError(true));
   }
 }
 
 // Individual exports for testing
 export default function* articlesOverviewSaga() {
-  yield takeLatest(LOAD_ARTICLES, loadArticles);
-  yield takeLatest(CREATE_ARTICLE, createArticle);
+  yield takeLatest(CONSTANS.LOAD_ARTICLES, loadArticles);
+  yield takeLatest(CONSTANS.CREATE_ARTICLE, createArticle);
 }

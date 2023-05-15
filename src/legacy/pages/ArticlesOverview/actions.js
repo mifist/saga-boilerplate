@@ -1,36 +1,28 @@
-import {
-  FLUSH_STATE,
-  LOAD_ARTICLES,
-  LOAD_ARTICLES_ERROR,
-  LOAD_ARTICLES_SUCCESS,
-  CREATE_ARTICLE,
-  CREATE_ARTICLE_SUCCESS,
-  CREATE_ARTICLE_ERROR,
-} from './constants';
+import * as CONSTANS from './constants';
 
 export function flushState() {
   return {
-    type: FLUSH_STATE,
+    type: CONSTANS.FLUSH_STATE,
   };
 }
 
 export function loadArticles(filter) {
   return {
-    type: LOAD_ARTICLES,
+    type: CONSTANS.LOAD_ARTICLES,
     filter,
   };
 }
 
 export function loadArticlesSuccess(articles) {
   return {
-    type: LOAD_ARTICLES_SUCCESS,
+    type: CONSTANS.LOAD_ARTICLES_SUCCESS,
     articles,
   };
 }
 
 export function loadArticlesError(error) {
   return {
-    type: LOAD_ARTICLES_ERROR,
+    type: CONSTANS.LOAD_ARTICLES_ERROR,
     error,
   };
 }
@@ -38,20 +30,20 @@ export function loadArticlesError(error) {
 // createArticle
 export function createArticle(data) {
   return {
-    type: CREATE_ARTICLE,
+    type: CONSTANS.CREATE_ARTICLE,
     data,
   };
 }
 export function createArticleSuccess(data) {
   return {
-    type: CREATE_ARTICLE_SUCCESS,
+    type: CONSTANS.CREATE_ARTICLE_SUCCESS,
     data,
   };
 }
 
 export function createArticleError(error) {
   return {
-    type: CREATE_ARTICLE_ERROR,
+    type: CONSTANS.CREATE_ARTICLE_ERROR,
     error,
   };
 }

@@ -1,11 +1,14 @@
-export const FLUSH_STATE = 'app/CaseOverview/FLUSH_STATE';
+const key = `CaseOverview`;
+const path = `src/${key}/`
 
-export const LOAD_CASES = 'app/CaseOverview/LOAD_CASES';
-export const LOAD_CASES_SUCCESS = 'app/CaseOverview/LOAD_CASES_SUCCESS';
-export const LOAD_CASES_ERROR = 'app/CaseOverview/LOAD_CASES_ERROR';
+export const FLUSH_STATE = `${path}FLUSH_STATE`;
 
-export const CREATE_CASE = 'app/CaseOverview/CREATE_CASE';
-export const CREATE_CASE_SUCCESS = 'app/CaseOverview/CREATE_CASE_SUCCESS';
-export const CREATE_CASE_ERROR = 'app/CaseOverview/CREATE_CASE_ERROR';
+export const LOAD_CASES = `${path}LOAD_CASES`;
+export const LOAD_CASES_SUCCESS = `${path}LOAD_CASES_SUCCESS`;
+export const LOAD_CASES_ERROR = `${path}LOAD_CASES_ERROR`;
 
-export const UPDATE_LIKES = 'app/CaseOverview/UPDATE_LIKES';
+export const CREATE_CASE = `${path}CREATE_CASE`;
+export const CREATE_CASE_SUCCESS = `${path}CREATE_CASE_SUCCESS`;
+export const CREATE_CASE_ERROR = `${path}CREATE_CASE_ERROR`;
+
+export const UPDATE_LIKES = `${path}UPDATE_LIKES`;

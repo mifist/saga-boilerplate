@@ -1,25 +1,8 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
-import {
-  LOAD_EVENTS,
-  LOAD_POSTS,
-  POST_PUBLICATION,
-  UPDATE_LIKES,
-  UPLOAD_IMAGES,
-  REPORT_POST,
-} from './constants';
-import {
-  loadEventsError,
-  loadEventsSuccess,
-  loadPostsError,
-  loadPostsSuccess,
-  postPublicationError,
-  postPublicationSuccess,
-  setNoMore,
-  uploadImagesSuccess,
-  reportPostError,
-  reportPostSuccess,
-} from './actions';
+
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
 import moment from 'moment';
@@ -40,10 +23,10 @@ export function* uploadImages(action) {
 
     if (!image) {
     } else {
-      yield put(uploadImagesSuccess(image));
+      yield put(ACTIONS.uploadImagesSuccess(image));
     }
   } catch (err) {
-    // yield put(uploadPropertyError(true));
+    // yield put(ACTIONS.uploadPropertyError(true));
   }
 }
 
@@ -65,12 +48,12 @@ export function* loadEvents(action) {
     });
 
     if (events.data.length !== 0) {
-      yield put(loadEventsSuccess(events.data));
+      yield put(ACTIONS.loadEventsSuccess(events.data));
     } else {
-      yield put(setNoMore('event'));
+      yield put(ACTIONS.setNoMore('event'));
     }
   } catch (err) {
-    yield put(loadEventsError(err));
+    yield put(ACTIONS.loadEventsError(err));
   }
 }
 
@@ -117,12 +100,12 @@ export function* loadPosts(action) {
     }
 
     if (newsFeedGroupedData.length !== 0) {
-      yield put(loadPostsSuccess(newsFeedGroupedData, action.page));
+      yield put(ACTIONS.loadPostsSuccess(newsFeedGroupedData, action.page));
     } else {
-      yield put(setNoMore('post'));
+      yield put(ACTIONS.setNoMore('post'));
     }
   } catch (err) {
-    yield put(loadPostsError(err));
+    yield put(ACTIONS.loadPostsError(err));
   }
 }
 
@@ -204,15 +187,15 @@ export function* postPublication(action) {
       );
     }
     if (updatedCase) {
-      yield put(postPublicationSuccess(updatedCase[0]));
+      yield put(ACTIONS.postPublicationSuccess(updatedCase[0]));
     } else {
-      yield put(postPublicationError('err'));
+      yield put(ACTIONS.postPublicationError('err'));
     }
     // if (publication._id === undefined) {
-    //   yield put(postPublicationSuccess(updatedCase));
+    //   yield put(ACTIONS.postPublicationSuccess(updatedCase));
     // }
   } catch (err) {
-    yield put(postPublicationError(err));
+    yield put(ACTIONS.postPublicationError(err));
   }
 }
 
@@ -231,24 +214,24 @@ export function* reportPost(action) {
 
     if (!report) {
       notification.error({ message: 'Something went wrong!' });
-      yield put(reportPostSuccess(false));
+      yield put(ACTIONS.reportPostSuccess(false));
     } else {
       notification.success({ message: report.data });
-      yield put(reportPostSuccess());
+      yield put(ACTIONS.reportPostSuccess());
     }
   } catch (error) {
     notification.error({ message: 'Something went wrong!' });
-    yield put(reportPostError(error));
+    yield put(ACTIONS.reportPostError(error));
   }
 }
 
 // Individual exports for testing
 export default function* newsFeedListSaga() {
   // See example in containers/HomePage/saga.js
-  yield takeLatest(LOAD_POSTS, loadPosts);
-  yield takeLatest(LOAD_EVENTS, loadEvents);
-  yield takeLatest(UPLOAD_IMAGES, uploadImages);
-  yield takeLatest(POST_PUBLICATION, postPublication);
-  yield takeLatest(UPDATE_LIKES, postPublication);
-  yield takeLatest(REPORT_POST, reportPost);
+  yield takeLatest(CONSTANS.LOAD_POSTS, loadPosts);
+  yield takeLatest(CONSTANS.LOAD_EVENTS, loadEvents);
+  yield takeLatest(CONSTANS.UPLOAD_IMAGES, uploadImages);
+  yield takeLatest(CONSTANS.POST_PUBLICATION, postPublication);
+  yield takeLatest(CONSTANS.UPDATE_LIKES, postPublication);
+  yield takeLatest(CONSTANS.REPORT_POST, reportPost);
 }

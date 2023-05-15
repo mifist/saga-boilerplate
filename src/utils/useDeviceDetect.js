@@ -1,4 +1,4 @@
-// utils/useDeviceDetect.js
+// appHooks/useDeviceDetect.js
 import React from 'react';
 
 export default function useDeviceDetect() {

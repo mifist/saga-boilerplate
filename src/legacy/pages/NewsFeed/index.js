@@ -6,6 +6,7 @@
 
 import React, { useEffect, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from '@reduxjs/toolkit';
@@ -51,14 +52,14 @@ import useDeviceDetect from 'appHooks/useDeviceDetect';
 import { Col, Row, Skeleton } from 'antd';
 
 // components
-import NewsFeedPost from 'components/NewsFeedPost';
+import NewsFeedPost from 'legacy/components/NewsFeedPost';
 import ProfileSuggestions from 'containers/ProfileSuggestions';
-import UserWalkthrough from 'components/UserWalkthrough';
-import EmptyFeed from 'components/EmptyFeed';
-import { ReportPopup } from 'components/ReportPopup';
-import CreatePublicationv2 from 'components/CreatePublicationv2';
+import UserWalkthrough from 'legacy/components/UserWalkthrough';
+import EmptyFeed from 'legacy/components/EmptyFeed';
+import { ReportPopup } from 'legacy/components/ReportPopup';
+import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 
-import { useHistory, useLocation } from 'react-router-dom';
+
 
 // contexts
 import { withUser } from 'engine/Contexts/User.context';

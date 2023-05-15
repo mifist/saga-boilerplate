@@ -1,52 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 import history from 'utils/history';
-import {
-  LOAD_COMMUNITYDETAIL,
-  CHANGE_COMMUNITYDETAIL,
-  DELETE_COMMUNITYDETAIL,
-  // all tags
-  LOAD_TAGS,
-  // popular tags
-  LOAD_COMMUNITYDETAIL_TAGS,
-  // media
-  UPLOAD_MEDIA,
-  // feeds
-  LOAD_FEEDS,
-  // publication post
-  POST_PUBLICATION,
-  UPDATE_LIKES,
-  REPORT_POST,
-} from './constants';
 
-import {
-  loadCommunityDetailError,
-  loadCommunityDetailSuccess,
-  changeCommunityDetailError,
-  changeCommunityDetailSuccess,
-  deleteCommunityDetailSuccess,
-  deleteCommunityDetailError,
-  // all tags
-  loadCommunityTagsSuccess,
-  loadCommunityTagsError,
-  // popular tags
-  loadCommunityDetailTagsSuccess,
-  loadCommunityDetailTagsError,
-  // media
-  uploadCommunityMediaSuccess,
-  uploadCommunityMediaError,
-  // feeds
-  loadCommunityFeedSuccess,
-  loadCommunityFeedError,
-  // publication post
-  postPublicationSuccess,
-  postPublicationError,
-  // report post
-  reportPostError,
-  reportPostSuccess,
-  // other
-  setNoMore,
-} from './actions';
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
 import i18n from 'i18next';
@@ -68,15 +25,15 @@ export function* loadCommunityDetail(action) {
       // TODO : check community result, if contain access denied => redirect to community overview page
 
       if (!communityDetailData) {
-        yield put(loadCommunityDetailSuccess(false));
+        yield put(ACTIONS.loadCommunityDetailSuccess(false));
       } else {
-        yield put(loadCommunityDetailSuccess(communityDetailData));
+        yield put(ACTIONS.loadCommunityDetailSuccess(communityDetailData));
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (error) {
-    yield put(loadCommunityDetailError(error));
+    yield put(ACTIONS.loadCommunityDetailError(error));
   }
 }
 
@@ -109,7 +66,7 @@ export function* changeCommunityDetail(action) {
       }
 
       if (!changedCommunityDetail) {
-        yield put(changeCommunityDetailSuccess(false));
+        yield put(ACTIONS.changeCommunityDetailSuccess(false));
       } else {
         // if new we update the url, item props will be updated
         if (isNew) {
@@ -117,13 +74,13 @@ export function* changeCommunityDetail(action) {
             pathname: `/community/detail/` + communityDetailData._id,
           });
         }
-        yield put(changeCommunityDetailSuccess(changedCommunityDetail));
+        yield put(ACTIONS.changeCommunityDetailSuccess(changedCommunityDetail));
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (error) {
-    yield put(changeCommunityDetailError(error));
+    yield put(ACTIONS.changeCommunityDetailError(error));
   }
 }
 
@@ -144,13 +101,13 @@ export function* deleteCommunityDetail(action) {
       );
 
       if (deleteCommunityDetail) {
-        yield put(deleteCommunityDetailSuccess());
+        yield put(ACTIONS.deleteCommunityDetailSuccess());
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (error) {
-    yield put(deleteCommunityDetailError(error));
+    yield put(ACTIONS.deleteCommunityDetailError(error));
   }
 }
 
@@ -170,15 +127,15 @@ export function* loadCommunityTags(action) {
       );
 
       if (!communityTags) {
-        yield put(loadCommunityTagsSuccess(false));
+        yield put(ACTIONS.loadCommunityTagsSuccess(false));
       } else {
-        yield put(loadCommunityTagsSuccess(communityTags));
+        yield put(ACTIONS.loadCommunityTagsSuccess(communityTags));
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (error) {
-    yield put(loadCommunityTagsError(error));
+    yield put(ACTIONS.loadCommunityTagsError(error));
   }
 }
 
@@ -198,15 +155,15 @@ export function* loadCommunityPopularTags(action) {
       );
 
       if (!communityPopularTags) {
-        yield put(loadCommunityDetailTagsSuccess(false));
+        yield put(ACTIONS.loadCommunityDetailTagsSuccess(false));
       } else {
-        yield put(loadCommunityDetailTagsSuccess(communityPopularTags));
+        yield put(ACTIONS.loadCommunityDetailTagsSuccess(communityPopularTags));
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (error) {
-    yield put(loadCommunityDetailTagsError(error));
+    yield put(ACTIONS.loadCommunityDetailTagsError(error));
   }
 }
 
@@ -228,15 +185,15 @@ export function* uploadMediaSaga(action) {
       );
 
       if (!uploadMedia) {
-        yield put(uploadCommunityMediaSuccess(false));
+        yield put(ACTIONS.uploadCommunityMediaSuccess(false));
       } else {
-        yield put(uploadCommunityMediaSuccess(uploadMedia));
+        yield put(ACTIONS.uploadCommunityMediaSuccess(uploadMedia));
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (err) {
-    yield put(uploadCommunityMediaError(err));
+    yield put(ACTIONS.uploadCommunityMediaError(err));
   }
 }
 
@@ -280,16 +237,16 @@ export function* loadCommunityFeedSaga(action) {
       const total = entity == 'post' ? feedsTotal : feedsTotalCases;
 
       if (!communityFeeds) {
-        yield put(loadCommunityFeedSuccess(false, page, total));
-        //  yield put(setNoMore('post'));
+        yield put(ACTIONS.loadCommunityFeedSuccess(false, page, total));
+        //  yield put(ACTIONS.setNoMore('post'));
       } else {
-        yield put(loadCommunityFeedSuccess(communityFeeds, page, total));
+        yield put(ACTIONS.loadCommunityFeedSuccess(communityFeeds, page, total));
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (error) {
-    yield put(loadCommunityFeedError(error));
+    yield put(ACTIONS.loadCommunityFeedError(error));
   }
 }
 
@@ -322,12 +279,12 @@ export function* postPublicationSaga(action) {
     }
 
     if (!updatedPublication) {
-      yield put(postPublicationSuccess(false));
+      yield put(ACTIONS.postPublicationSuccess(false));
     } else {
-      yield put(postPublicationSuccess(updatedPublication[0]));
+      yield put(ACTIONS.postPublicationSuccess(updatedPublication[0]));
     }
   } catch (error) {
-    yield put(postPublicationError(error));
+    yield put(ACTIONS.postPublicationError(error));
   }
 }
 
@@ -348,12 +305,12 @@ export function* updateLike(action) {
     );
 
     if (!updatedPublication) {
-      yield put(postPublicationSuccess(false));
+      yield put(ACTIONS.postPublicationSuccess(false));
     } else {
-      yield put(postPublicationSuccess(updatedPublication));
+      yield put(ACTIONS.postPublicationSuccess(updatedPublication));
     }
   } catch (err) {
-    yield put(postPublicationError(err));
+    yield put(ACTIONS.postPublicationError(err));
   }
 }
 
@@ -372,33 +329,33 @@ export function* reportPost(action) {
 
     if (!report) {
       notification.error({ message: i18n.t('common.somethingWentWrong') });
-      yield put(reportPostSuccess(false));
+      yield put(ACTIONS.reportPostSuccess(false));
     } else {
       notification.success({ message: report.data });
-      yield put(reportPostSuccess());
+      yield put(ACTIONS.reportPostSuccess());
     }
   } catch (error) {
     notification.error({ message: i18n.t('common.somethingWentWrong') });
-    yield put(reportPostError(error));
+    yield put(ACTIONS.reportPostError(error));
   }
 }
 
 export default function* communityDetailSaga() {
-  yield takeLatest(LOAD_COMMUNITYDETAIL, loadCommunityDetail);
-  yield takeLatest(CHANGE_COMMUNITYDETAIL, changeCommunityDetail);
-  yield takeLatest(DELETE_COMMUNITYDETAIL, deleteCommunityDetail);
+  yield takeLatest(CONSTANS.LOAD_COMMUNITYDETAIL, loadCommunityDetail);
+  yield takeLatest(CONSTANS.CHANGE_COMMUNITYDETAIL, changeCommunityDetail);
+  yield takeLatest(CONSTANS.DELETE_COMMUNITYDETAIL, deleteCommunityDetail);
   // all tags
-  yield takeLatest(LOAD_TAGS, loadCommunityTags);
+  yield takeLatest(CONSTANS.LOAD_TAGS, loadCommunityTags);
   // popular tags
-  yield takeLatest(LOAD_COMMUNITYDETAIL_TAGS, loadCommunityPopularTags);
+  yield takeLatest(CONSTANS.LOAD_COMMUNITYDETAIL_TAGS, loadCommunityPopularTags);
   // media
-  yield takeLatest(UPLOAD_MEDIA, uploadMediaSaga);
+  yield takeLatest(CONSTANS.UPLOAD_MEDIA, uploadMediaSaga);
   // feeds
-  yield takeLatest(LOAD_FEEDS, loadCommunityFeedSaga);
+  yield takeLatest(CONSTANS.LOAD_FEEDS, loadCommunityFeedSaga);
   // post publication
-  yield takeLatest(POST_PUBLICATION, postPublicationSaga);
+  yield takeLatest(CONSTANS.POST_PUBLICATION, postPublicationSaga);
 
-  yield takeLatest(UPDATE_LIKES, updateLike);
+  yield takeLatest(CONSTANS.UPDATE_LIKES, updateLike);
 
-  yield takeLatest(REPORT_POST, reportPost);
+  yield takeLatest(CONSTANS.REPORT_POST, reportPost);
 }

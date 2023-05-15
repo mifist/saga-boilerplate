@@ -4,44 +4,7 @@
  *
  */
 import produce from 'immer';
-import {
-  LOAD_COMMUNITYDETAIL,
-  LOAD_COMMUNITYDETAIL_SUCCESS,
-  LOAD_COMMUNITYDETAIL_ERROR,
-  CHANGE_COMMUNITYDETAIL,
-  CHANGE_COMMUNITYDETAIL_SUCCESS,
-  CHANGE_COMMUNITYDETAIL_ERROR,
-  DELETE_COMMUNITYDETAIL,
-  DELETE_COMMUNITYDETAIL_SUCCESS,
-  DELETE_COMMUNITYDETAIL_ERROR,
-  // all tags for community
-  LOAD_TAGS,
-  LOAD_TAGS_SUCCESS,
-  LOAD_TAGS_ERROR,
-  // popular tags
-  LOAD_COMMUNITYDETAIL_TAGS,
-  LOAD_COMMUNITYDETAIL_TAGS_SUCCESS,
-  LOAD_COMMUNITYDETAIL_TAGS_ERROR,
-  // media
-  UPLOAD_MEDIA,
-  UPLOAD_MEDIA_SUCCESS,
-  UPLOAD_MEDIA_ERROR,
-  // feeds,
-  LOAD_FEEDS,
-  LOAD_FEEDS_SUCCESS,
-  LOAD_FEEDS_ERROR,
-  // post new ublication
-  POST_PUBLICATION,
-  POST_PUBLICATION_SUCCESS,
-  POST_PUBLICATION_ERROR,
-  // other
-  FLUSH_STATE_COMMUNITYDETAIL,
-  UPDATE_LIKES,
-  REPORT_POST,
-  REPORT_POST_ERROR,
-  REPORT_POST_SUCCESS,
-  SET_REPORT_POPOP,
-} from './constants';
+import * as CONSTANS from './constants';
 
 export const initialState = {
   loading: false,
@@ -90,28 +53,28 @@ export const initialState = {
 const communityDetailReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case FLUSH_STATE_COMMUNITYDETAIL:
+      case CONSTANS.FLUSH_STATE_COMMUNITYDETAIL:
         return initialState;
 
       // LOAD
-      case LOAD_COMMUNITYDETAIL:
+      case CONSTANS.LOAD_COMMUNITYDETAIL:
         draft.id = action.id;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case LOAD_COMMUNITYDETAIL_SUCCESS:
+      case CONSTANS.LOAD_COMMUNITYDETAIL_SUCCESS:
         draft.communityDetailData = action.communityDetailData;
         draft.loading = false;
         break;
 
-      case LOAD_COMMUNITYDETAIL_ERROR:
+      case CONSTANS.LOAD_COMMUNITYDETAIL_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
       // CHANGE/UPDATE
-      case CHANGE_COMMUNITYDETAIL:
+      case CONSTANS.CHANGE_COMMUNITYDETAIL:
         draft.communityDetailData = {
           ...state.communityDetailData,
           ...action.communityDetailData,
@@ -120,7 +83,7 @@ const communityDetailReducer = (state = initialState, action) =>
         draft.error = false;
         break;
 
-      case CHANGE_COMMUNITYDETAIL_SUCCESS:
+      case CONSTANS.CHANGE_COMMUNITYDETAIL_SUCCESS:
         draft.loadingChange = false;
         draft.communityDetailData = {
           ...state.communityDetailData,
@@ -128,82 +91,82 @@ const communityDetailReducer = (state = initialState, action) =>
         };
         break;
 
-      case CHANGE_COMMUNITYDETAIL_ERROR:
+      case CONSTANS.CHANGE_COMMUNITYDETAIL_ERROR:
         draft.error = action.error;
         draft.loadingChange = false;
         break;
 
       // DELETE
-      case DELETE_COMMUNITYDETAIL:
+      case CONSTANS.DELETE_COMMUNITYDETAIL:
         draft.loading = true;
         draft.id = action.id;
         break;
 
-      case DELETE_COMMUNITYDETAIL_SUCCESS:
+      case CONSTANS.DELETE_COMMUNITYDETAIL_SUCCESS:
         draft.loading = false;
         draft.deleteSuccessful = true;
         break;
 
       // LOAD ALL TAGS
-      case LOAD_TAGS:
+      case CONSTANS.LOAD_TAGS:
         draft.id = action.id;
         draft.loadingTags = true;
         draft.errorTags = false;
         break;
 
-      case LOAD_TAGS_SUCCESS:
+      case CONSTANS.LOAD_TAGS_SUCCESS:
         draft.communityTags = action.communityTags;
         draft.loadingTags = false;
         break;
 
-      case LOAD_TAGS_ERROR:
+      case CONSTANS.LOAD_TAGS_ERROR:
         draft.errorTags = action.errorTags;
         draft.loadingTags = false;
         break;
 
       // LOAD POPULAR TAGS
-      case LOAD_COMMUNITYDETAIL_TAGS:
+      case CONSTANS.LOAD_COMMUNITYDETAIL_TAGS:
         draft.id = action.id;
         draft.loadingPopularTags = true;
         draft.errorPopularTags = false;
         break;
 
-      case LOAD_COMMUNITYDETAIL_TAGS_SUCCESS:
+      case CONSTANS.LOAD_COMMUNITYDETAIL_TAGS_SUCCESS:
         draft.communityPopularTags = action.communityPopularTags;
         draft.loadingPopularTags = false;
         break;
 
-      case LOAD_COMMUNITYDETAIL_TAGS_ERROR:
+      case CONSTANS.LOAD_COMMUNITYDETAIL_TAGS_ERROR:
         draft.errorPopularTags = action.errorPopularTags;
         draft.loadingPopularTags = false;
         break;
 
       // UPLOAD MEDIA
-      case UPLOAD_MEDIA:
+      case CONSTANS.UPLOAD_MEDIA:
         draft.media = action.media;
         draft.loadingMedia = true;
         draft.errorMedia = false;
         break;
 
-      case UPLOAD_MEDIA_SUCCESS:
+      case CONSTANS.UPLOAD_MEDIA_SUCCESS:
         draft.uploadMedia = action.uploadMedia;
         draft.loadingMedia = false;
         draft.errorMedia = false;
         break;
 
-      case UPLOAD_MEDIA_ERROR:
+      case CONSTANS.UPLOAD_MEDIA_ERROR:
         draft.errorMedia = action.errorMedia;
         draft.loadingMedia = false;
         break;
 
       // POST NEW PUBLICATION
-      case POST_PUBLICATION:
+      case CONSTANS.POST_PUBLICATION:
         draft.publication = action.publication;
         draft.loadingPublication = true;
         draft.errorPublication = false;
         break;
 
-      case POST_PUBLICATION_SUCCESS:
+      case CONSTANS.POST_PUBLICATION_SUCCESS:
         draft.loadingPublication = false;
         draft.errorPublication = false;
         const { publication } = action;
@@ -225,13 +188,13 @@ const communityDetailReducer = (state = initialState, action) =>
 
         break;
 
-      case POST_PUBLICATION_ERROR:
+      case CONSTANS.POST_PUBLICATION_ERROR:
         draft.errorPublication = action.errorPublication;
         draft.loadingPublication = false;
         break;
 
       // LOAD FEEDS
-      case LOAD_FEEDS:
+      case CONSTANS.LOAD_FEEDS:
         draft.id = action.id;
         draft.page = action.page;
         draft.entity = action.entity;
@@ -250,7 +213,7 @@ const communityDetailReducer = (state = initialState, action) =>
 
         break;
 
-      case LOAD_FEEDS_SUCCESS:
+      case CONSTANS.LOAD_FEEDS_SUCCESS:
         draft.total = action.total;
         draft.page = action.page;
         draft.loadingFeeds = false;
@@ -266,7 +229,7 @@ const communityDetailReducer = (state = initialState, action) =>
 
         break;
 
-      case LOAD_FEEDS_ERROR:
+      case CONSTANS.LOAD_FEEDS_ERROR:
         draft.errorFeeds = action.errorFeeds;
         draft.entity = 'post';
         draft.loadingFeeds = false;
@@ -276,7 +239,7 @@ const communityDetailReducer = (state = initialState, action) =>
         draft.filter = false;
         break;
 
-      case UPDATE_LIKES:
+      case CONSTANS.UPDATE_LIKES:
         const updatedPubl = action.publication;
         draft.loadingPublication = false;
         draft.errorLikes = false;
@@ -292,20 +255,20 @@ const communityDetailReducer = (state = initialState, action) =>
 
         break;
 
-      case REPORT_POST:
+      case CONSTANS.REPORT_POST:
         draft.loadingReport = true;
         break;
-      case REPORT_POST_SUCCESS:
+      case CONSTANS.REPORT_POST_SUCCESS:
         draft.loadingReport = false;
         draft.reportPopup.opened = false;
         draft.reportPopup._id = null;
         break;
-      case REPORT_POST_ERROR:
+      case CONSTANS.REPORT_POST_ERROR:
         draft.error = action.error;
         draft.loadingReport = false;
         break;
 
-      case SET_REPORT_POPOP:
+      case CONSTANS.SET_REPORT_POPOP:
         draft.reportPopup.opened = action.opened;
         draft.reportPopup._id = action._id;
         break;

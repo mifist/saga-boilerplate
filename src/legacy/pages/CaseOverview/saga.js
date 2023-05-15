@@ -1,14 +1,8 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import { LOAD_CASES, CREATE_CASE, UPDATE_LIKES } from './constants';
-
-import {
-  loadCasesError,
-  loadCasesSuccess,
-  createCaseError,
-  createCaseSuccess,
-} from './actions';
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
 
 // Load and Filter cases
 export function* loadCases(action) {
@@ -26,12 +20,12 @@ export function* loadCases(action) {
     );
 
     if (!response && response.length === 0) {
-      yield put(loadCasesSuccess(false));
+      yield put(ACTIONS.loadCasesSuccess(false));
     } else {
-      yield put(loadCasesSuccess(response));
+      yield put(ACTIONS.loadCasesSuccess(response));
     }
   } catch (err) {
-    yield put(loadCasesError(true));
+    yield put(ACTIONS.loadCasesError(true));
   }
 }
 
@@ -49,12 +43,12 @@ export function* createCase(action) {
     );
 
     if (!response) {
-      yield put(createCaseSuccess(false));
+      yield put(ACTIONS.createCaseSuccess(false));
     } else {
-      yield put(createCaseSuccess(response[0]));
+      yield put(ACTIONS.createCaseSuccess(response[0]));
     }
   } catch (err) {
-    yield put(createCaseError(true));
+    yield put(ACTIONS.createCaseError(true));
   }
 }
 
@@ -75,17 +69,17 @@ export function* updateLike(action) {
     );
 
     if (!updatedCase) {
-      yield put(createCaseSuccess(false));
+      yield put(ACTIONS.createCaseSuccess(false));
     } else {
-      yield put(createCaseSuccess(updatedCase));
+      yield put(ACTIONS.createCaseSuccess(updatedCase));
     }
   } catch (err) {
-    yield put(createCaseError(true));
+    yield put(ACTIONS.createCaseError(true));
   }
 }
 
 export default function* caseOverviewSaga() {
-  yield takeLatest(LOAD_CASES, loadCases);
-  yield takeLatest(CREATE_CASE, createCase);
-  yield takeLatest(UPDATE_LIKES, updateLike);
+  yield takeLatest(CONSTANS.LOAD_CASES, loadCases);
+  yield takeLatest(CONSTANS.CREATE_CASE, createCase);
+  yield takeLatest(CONSTANS.UPDATE_LIKES, updateLike);
 }

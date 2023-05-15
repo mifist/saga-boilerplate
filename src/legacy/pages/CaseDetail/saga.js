@@ -1,26 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
-import {
-  UPDATE_CASE,
-  LOAD_CASE,
-  ON_DELETE,
-  PIN_UNPIN_POST,
-  HIDE_UNHIDE_POST,
-  LOAD_COMMUNITY_TAGS,
-} from './constants';
-import {
-  updateCaseError,
-  updateCaseSuccess,
-  loadCaseError,
-  loadCaseSuccess,
-  onDeleteSuccess,
-  pinUnpinPostSuccess,
-  pinUnpinPostError,
-  hideUnhidePostSuccess,
-  hideUnhidePostError,
-  loadCommunityTagsSuccess,
-  loadCommunityTagsError,
-} from './actions';
+
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
+
 import { notification } from 'antd';
 
 export function* loadCase(action) {
@@ -41,13 +24,13 @@ export function* loadCase(action) {
     );
 
     if (caseData.length === 0) {
-      yield put(loadCaseSuccess(false));
+      yield put(ACTIONS.loadCaseSuccess(false));
     } else {
-      yield put(loadCaseSuccess(caseData));
+      yield put(ACTIONS.loadCaseSuccess(caseData));
     }
   } catch (error) {
     console.log(error);
-    yield put(loadCaseError(error));
+    yield put(ACTIONS.loadCaseError(error));
   }
 }
 export function* onDelete(action) {
@@ -63,10 +46,10 @@ export function* onDelete(action) {
     );
 
     if (response) {
-      yield put(onDeleteSuccess());
+      yield put(ACTIONS.onDeleteSuccess());
     }
   } catch (error) {
-    yield put(loadCaseError(error));
+    yield put(ACTIONS.loadCaseError(error));
   }
 }
 
@@ -83,12 +66,12 @@ export function* updateCase(action) {
     );
 
     if (!response) {
-      yield put(updateCaseSuccess(false));
+      yield put(ACTIONS.updateCaseSuccess(false));
     } else {
-      yield put(updateCaseSuccess(response));
+      yield put(ACTIONS.updateCaseSuccess(response));
     }
   } catch (error) {
-    yield put(updateCaseError(error));
+    yield put(ACTIONS.updateCaseError(error));
   }
 }
 
@@ -108,14 +91,14 @@ export function* pinUnpinPost(action) {
 
     if (result) {
       notification.success({ message: result.message });
-      yield put(pinUnpinPostSuccess(pinned));
+      yield put(ACTIONS.pinUnpinPostSuccess(pinned));
     } else {
       notification.error({ message: 'Something went wrong' });
-      yield put(pinUnpinPostError(result));
+      yield put(ACTIONS.pinUnpinPostError(result));
     }
   } catch (error) {
     notification.error({ message: 'Something went wrong' });
-    yield put(pinUnpinPostError(error));
+    yield put(ACTIONS.pinUnpinPostError(error));
   }
 }
 
@@ -135,14 +118,14 @@ export function* hideUnhidePost(action) {
 
     if (result) {
       notification.success({ message: result.message });
-      yield put(hideUnhidePostSuccess(hidden));
+      yield put(ACTIONS.hideUnhidePostSuccess(hidden));
     } else {
       notification.error({ message: 'Something went wrong' });
-      yield put(hideUnhidePostError(false));
+      yield put(ACTIONS.hideUnhidePostError(false));
     }
   } catch (error) {
     notification.error({ message: 'Something went wrong' });
-    yield put(hideUnhidePostError(error));
+    yield put(ACTIONS.hideUnhidePostError(error));
   }
 }
 
@@ -160,24 +143,24 @@ export function* loadCommunityTags(action) {
       );
 
       if (!result) {
-        yield put(loadCommunityTagsSuccess(false));
+        yield put(ACTIONS.loadCommunityTagsSuccess(false));
       } else {
-        yield put(loadCommunityTagsSuccess(result));
+        yield put(ACTIONS.loadCommunityTagsSuccess(result));
       }
     } else {
       console.error('Unauthorized Error');
     }
   } catch (error) {
-    yield put(loadCommunityTagsError(error));
+    yield put(ACTIONS.loadCommunityTagsError(error));
   }
 }
 
 // Individual exports for testing
 export default function* caseDetailSaga() {
-  yield takeLatest(LOAD_CASE, loadCase);
-  yield takeLatest(UPDATE_CASE, updateCase);
-  yield takeLatest(ON_DELETE, onDelete);
-  yield takeLatest(PIN_UNPIN_POST, pinUnpinPost);
-  yield takeLatest(HIDE_UNHIDE_POST, hideUnhidePost);
-  yield takeLatest(LOAD_COMMUNITY_TAGS, loadCommunityTags);
+  yield takeLatest(CONSTANS.LOAD_CASE, loadCase);
+  yield takeLatest(CONSTANS.UPDATE_CASE, updateCase);
+  yield takeLatest(CONSTANS.ON_DELETE, onDelete);
+  yield takeLatest(CONSTANS.PIN_UNPIN_POST, pinUnpinPost);
+  yield takeLatest(CONSTANS.HIDE_UNHIDE_POST, hideUnhidePost);
+  yield takeLatest(CONSTANS.LOAD_COMMUNITY_TAGS, loadCommunityTags);
 }

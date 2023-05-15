@@ -3,7 +3,6 @@ import requestWrapper from 'utils/requestWrapper';
 
 import * as CONSTANS from './constants';
 import * as ACTIONS from './actions';
-console.log({ CONSTANS });
 
 import { notification } from 'antd';
 import i18n from 'i18next';
