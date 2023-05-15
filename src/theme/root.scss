@@ -1,20 +1,20 @@
 /* Global Variables */
-@import "./scss/global/variables";
+@import "scss/global/variables";
 
 /* Global */
-@import "./scss/global/global";
-@import "./scss/global/ant";
-@import "./scss/global/layout";
+@import "scss/global/global";
+@import "scss/global/ant";
+@import "scss/global/layout";
 
 /* Module */
-@import "./scss/module/buttons";
-@import "./scss/module/header";
-@import "./scss/module/form";
-@import "./scss/module/navbar";
-@import "./scss/module/tags";
-@import "./scss/module/chat";
-@import "./scss/module/notifications";
+@import "scss/module/buttons";
+@import "scss/module/header";
+@import "scss/module/form";
+@import "scss/module/navbar";
+@import "scss/module/tags";
+@import "scss/module/chat";
+@import "scss/module/notifications";
 
 /* Layouts */
-@import "./scss/layouts/single";
-@import "./scss/layouts/main-layout";
+@import "scss/layouts/single";
+@import "scss/layouts/main-layout";
