@@ -10,12 +10,16 @@ import CommentsOverview from 'legacy/containers/CommentsOverview/saga';
 import PersonalSideBar from 'legacy/containers/PersonalSideBar/saga';
 
 import CaseDetail from 'legacy/pages/CaseDetail/saga';
+import ArticlesOverview from 'legacy/pages/ArticlesOverview/saga';
+import ArticleDetail from 'legacy/pages/ArticleDetail/saga';
 export default {
   SagaContainer,
   CaseDetail,
+  ArticlesOverview,
+  ArticleDetail,
   CaseOverview,
   // containers
   TestContainer,
   CommentsOverview,
-  PersonalSideBar
+  PersonalSideBar,
 };

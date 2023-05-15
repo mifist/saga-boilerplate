@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from '@reduxjs/toolkit';
 import { useParams, withRouter } from 'react-router-dom';
@@ -8,61 +8,38 @@ import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import reducer from './reducer';
-import saga from './saga';
-
 import './style.scss';
 
 import {
-  updateArticle as updateArticleAction,
-  flushState as flushStateAction,
-  loadArticle as loadArticleAction,
-  onDelete as onDeleteAction,
-  pinUnpinPost as pinUnpinPostAction,
-  hideUnhidePost as hideUnhidePostAction,
+  updateArticle,
+  flushState,
+  loadArticle,
+  onDelete,
+  pinUnpinPost,
+  hideUnhidePost,
 } from './actions';
-
-import {
-  makeSelectArticle,
-  makeSelectError,
-  makeSelectLoading,
-  selectDeleteSuccessful,
-} from './selectors';
-
-import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 import { Button, Col, Empty, Layout, Row, Spin } from 'antd';
 
 // components
 import CommentsOverview from 'legacy/containers/CommentsOverview';
-import GoBackButton from 'components/GoBackButton';
-import BookmarkAction from 'components/BookmarkAction';
-import ShareAction from 'components/ShareAction';
-import SidebarAuthorsList from 'components/Sidebar/SidebarAuthorsList';
-import CreatePublicationv2 from 'components/CreatePublicationv2';
+import GoBackButton from 'legacy/components/GoBackButton';
+import BookmarkAction from 'legacy/components/BookmarkAction';
+import ShareAction from 'legacy/components/ShareAction';
+import SidebarAuthorsList from 'legacy/components/Sidebar/SidebarAuthorsList';
+import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 
 // contexts
 import { withUser } from 'engine/context/User.context';
+import { useDeviceDetect } from '../../../engine/hooks';
 
-export function ArticleDetail({
-  article,
-  loadArticle,
-  updateArticle,
-  loading,
-  onDelete,
-  onPinUnpinPost,
-  onHideUnhidePost,
-  user,
-  deleteSuccessful,
-  error,
-  history,
-  flushState,
-}) {
-  useInjectReducer({ key: 'articleDetail', reducer });
-  useInjectSaga({ key: 'articleDetail', saga });
+export function ArticleDetail({ user, history }) {
+  const { article, loading, deleteSuccessful, error } = useSelector((state) => {
+    return state.ArticleDetail;
+  });
+
+  const dispatch = useDispatch();
 
   const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
@@ -74,14 +51,14 @@ export function ArticleDetail({
     }
 
     return () => {
-      flushState();
+      dispatch(flushState());
     };
   }, [initialId]);
 
   // Redirect on successful post deletion
   useEffect(() => {
     if (deleteSuccessful) {
-      flushState();
+      dispatch(flushState());
       history.goBack();
     }
   }, [deleteSuccessful]);
@@ -99,11 +76,11 @@ export function ArticleDetail({
                   goTo="/article"
                   label={!isMobile && t('articles.backToArticles')}
                 />
-                {article.author.some(e => e._id === user._id) && (
+                {article.author.some((e) => e._id === user._id) && (
                   <CreatePublicationv2
                     type="article"
                     initialData={article}
-                    onSubmit={data => updateArticle(data, 'update')}
+                    onSubmit={(data) => dispatch(updateArticle(data, 'update'))}
                   />
                 )}
               </div>
@@ -148,7 +125,7 @@ export function ArticleDetail({
                               {t('articles.category')}
                             </span>
                             <span className="detail-item__content">
-                              {article.anatomy.map(anatomy => (
+                              {article.anatomy.map((anatomy) => (
                                 <span
                                   key={anatomy}
                                   className="item"
@@ -160,35 +137,36 @@ export function ArticleDetail({
                             </span>
                           </div>
                         )}
-                        {article?.speciality && article.speciality.length > 0 && (
-                          <div className="detail-item speciality">
-                            <span className="detail-item__label">
-                              {t('common.domains')}
-                            </span>
-                            <span className="detail-item__content">
-                              {article.speciality.map(speciality => (
-                                <span
-                                  key={speciality}
-                                  className="item"
-                                  style={{ marginRight: 5 }}
-                                >
-                                  {t(
-                                    `common.specialities-${camelCase(
-                                      speciality,
-                                    )}`,
-                                  )}
-                                </span>
-                              ))}
-                            </span>
-                          </div>
-                        )}
+                        {article?.speciality &&
+                          article.speciality.length > 0 && (
+                            <div className="detail-item speciality">
+                              <span className="detail-item__label">
+                                {t('common.domains')}
+                              </span>
+                              <span className="detail-item__content">
+                                {article.speciality.map((speciality) => (
+                                  <span
+                                    key={speciality}
+                                    className="item"
+                                    style={{ marginRight: 5 }}
+                                  >
+                                    {t(
+                                      `common.specialities-${camelCase(
+                                        speciality,
+                                      )}`,
+                                    )}
+                                  </span>
+                                ))}
+                              </span>
+                            </div>
+                          )}
                       </div>
                       <div className="detail-item publication-date">
                         <span className="detail-item__label">
                           {t('articles.publicationDate')}
                         </span>
                         <span className="detail-item__content">
-                          {article.speciality.map(item => (
+                          {article.speciality.map((item) => (
                             <span
                               key={item}
                               className="item"
@@ -252,28 +230,36 @@ export function ArticleDetail({
               {article && (
                 <div id="comments">
                   <CommentsOverview
-                    onDelete={() => onDelete(article._id)}
+                    onDelete={() => dispatch(onDelete(article._id))}
                     onPinUnpinPost={() =>
-                      onPinUnpinPost({
-                        postId: article._id,
-                        pinned: article.pinned ? false : true,
-                      })
+                      dispatch(
+                        pinUnpinPost({
+                          postId: article._id,
+                          pinned: article.pinned ? false : true,
+                        }),
+                      )
                     }
                     onHideUnhidePost={() =>
-                      onHideUnhidePost({
-                        postId: article._id,
-                        hidden: article.hidden ? false : true,
-                      })
+                      dispatch(
+                        hideUnhidePost({
+                          postId: article._id,
+                          hidden: article.hidden ? false : true,
+                        }),
+                      )
                     }
                     commentType="article"
                     itemData={article}
-                    changeItem={data =>
-                      updateArticle(
-                        {
-                          _id: data._id,
-                          likes: data.likes.map(like => ({ _id: like._id })),
-                        },
-                        'like',
+                    changeItem={(data) =>
+                      dispatch(
+                        updateArticle(
+                          {
+                            _id: data._id,
+                            likes: data.likes.map((like) => ({
+                              _id: like._id,
+                            })),
+                          },
+                          'like',
+                        ),
                       )
                     }
                     className="articles"
@@ -320,10 +306,10 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     flushState: () => dispatch(flushStateAction()),
-    loadArticle: id => dispatch(loadArticleAction(id)),
+    loadArticle: (id) => dispatch(loadArticleAction(id)),
     updateArticle: (data, actionType) =>
       dispatch(updateArticleAction(data, actionType)),
-    onDelete: id => dispatch(onDeleteAction(id)),
+    onDelete: (id) => dispatch(onDeleteAction(id)),
     onPinUnpinPost: ({ postId, pinned }) =>
       dispatch(pinUnpinPostAction(postId, pinned)),
     onHideUnhidePost: ({ postId, hidden }) =>
@@ -331,14 +317,6 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-export default compose(
-  withConnect,
-  memo,
-  withRouter,
-  withUser,
-)(ArticleDetail);
+export default compose(withConnect, memo, withRouter, withUser)(ArticleDetail);
