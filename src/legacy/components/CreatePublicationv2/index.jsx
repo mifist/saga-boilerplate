@@ -45,8 +45,8 @@ import {
 } from 'utils/uploadHelper2';
 import { PRODUCTION_VIDEOS_API_URL } from 'utils/constants';
 
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 import { anatomies, specialities, references } from 'utils/categoryHelper';
 

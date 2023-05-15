@@ -1,11 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { LOAD_EVENTS } from './constants';
-import i18n from 'i18next';
-import { loadEventsError, loadEventsSuccess } from './actions';
-
 import moment from 'moment';
-
 import requestWrapper from 'utils/requestWrapper';
+
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
 
 export function* loadEvents(action) {
   const currentUser = yield JSON.parse(localStorage.getItem('beemed_user'));
@@ -92,14 +90,14 @@ export function* loadEvents(action) {
     // replayEvents.data = sortedArray;
     // console.log(events, replayEvents);
 
-    yield put(loadEventsSuccess(events, replayEvents));
+    yield put(ACTIONS.loadEventsSuccess(events, replayEvents));
   } catch (err) {
-    yield put(loadEventsError(true));
+    yield put(ACTIONS.loadEventsError(true));
   }
 }
 
 // Individual exports for testing
 export default function* profileSuggestionsSaga() {
   // See example in legacy/containers/HomePage/saga.js
-  yield takeLatest(LOAD_EVENTS, loadEvents);
+  yield takeLatest(CONSTANS.LOAD_EVENTS, loadEvents);
 }

@@ -31,7 +31,7 @@ import {
   useUserPatchData,
   useGetInintNotReadComm,
   useCheckPushNotificationParameters,
-} from 'engine/context/User.context';
+} from 'appContext/User.context';
 
 // utils
 import { isDateBeforeToday } from 'utils/moment/moment.utils';

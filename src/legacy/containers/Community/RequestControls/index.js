@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import './style.scss';
 
 // assets
-// import CustomIcons from 'legacy/legacy/components/CustomIcons';
+// import CustomIcons from 'legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined, UserOutlined } from '@ant-design/icons';
 
 // antd component

@@ -4,30 +4,24 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
-  FLUSH_STATE,
-  LOAD_EVENTS,
-  LOAD_EVENTS_ERROR,
-  LOAD_EVENTS_SUCCESS
-} from './constants';
+import * as CONSTANS from './constants';
 
 export function defaultAction() {
   return {
-    type: DEFAULT_ACTION,
+    type: CONSTANS.DEFAULT_ACTION,
   };
 }
 
 export function flushState() {
   return {
-    type: FLUSH_STATE,
+    type: CONSTANS.FLUSH_STATE,
   };
 }
 
 /**
 export function changeData(filteredProperties) {
   return {
-    type: CHANGE_DATA,
+    type: CONSTANS.CHANGE_DATA,
     filteredProperties,
   };
 } */
@@ -39,7 +33,7 @@ export function changeData(filteredProperties) {
  */
 export function loadEvents(typeLayout) {
   return {
-    type: LOAD_EVENTS,
+    type: CONSTANS.LOAD_EVENTS,
     typeLayout,
   };
 }
@@ -53,7 +47,7 @@ export function loadEvents(typeLayout) {
  */
 export function loadEventsSuccess(events, replayEvents) {
   return {
-    type: LOAD_EVENTS_SUCCESS,
+    type: CONSTANS.LOAD_EVENTS_SUCCESS,
     events,
     replayEvents,
   };
@@ -68,7 +62,7 @@ export function loadEventsSuccess(events, replayEvents) {
  */
 export function loadEventsError(error) {
   return {
-    type: LOAD_EVENTS_ERROR,
+    type: CONSTANS.LOAD_EVENTS_ERROR,
     error,
   };
 }

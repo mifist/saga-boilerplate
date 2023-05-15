@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 // icons
 import { CheckOutlined } from '@ant-design/icons';
 
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
-import { withUser } from 'engine/context/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
 
 import CommentFilePreview from 'legacy/components/Comments/CommentFilePreview';
 

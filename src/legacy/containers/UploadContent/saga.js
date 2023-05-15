@@ -1,7 +1,8 @@
 import { call, put, select, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
-import { UPLOAD_CONTENT_FILE } from './constants';
-import { uploadContentFileSuccess, uploadContentFileError } from './actions';
+
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
 
 export function* uploadContentFileSaga(action) {
   try {
@@ -27,15 +28,15 @@ export function* uploadContentFileSaga(action) {
     }
     
     if (result) {
-      yield put(uploadContentFileSuccess(result, action.fileType));
+      yield put(ACTIONS.uploadContentFileSuccess(result, action.fileType));
     }
   } catch (err) {
-    yield put(uploadContentFileError(true));
+    yield put(ACTIONS.uploadContentFileError(true));
   }
 }
 
 // Individual exports for testing
 export default function* uploadContentSaga() {
   // See example in legacy/containers/HomePage/saga.js
-  yield takeLatest(UPLOAD_CONTENT_FILE, uploadContentFileSaga);
+  yield takeLatest(CONSTANS.UPLOAD_CONTENT_FILE, uploadContentFileSaga);
 }

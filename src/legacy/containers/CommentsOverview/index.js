@@ -47,12 +47,13 @@ import { getCommentsCount } from 'utils/generalHelper';
 function CommentsOverview({
   // props
   itemData,
-  className,
   user,
   onDelete,
   onPinUnpinPost,
   onHideUnhidePost,
   setAuthPopup,
+  // default props
+  className,
   // core
   state,
   dispatch

@@ -8,6 +8,8 @@ import CaseOverview from 'legacy/pages/CaseOverview/reducer';
 import TestContainer from 'legacy/containers/TestContainer/reducer';
 import CommentsOverview from 'legacy/containers/CommentsOverview/reducer';
 import PersonalSideBar from 'legacy/containers/PersonalSideBar/reducer';
+import ProfileSuggestions from 'legacy/containers/ProfileSuggestions/reducer';
+import UploadContent from 'legacy/containers/UploadContent/reducer';
 
 export default {
   SagaContainer,
@@ -16,4 +18,6 @@ export default {
   TestContainer,
   CommentsOverview,
   PersonalSideBar,
+  ProfileSuggestions,
+  UploadContent,
 };

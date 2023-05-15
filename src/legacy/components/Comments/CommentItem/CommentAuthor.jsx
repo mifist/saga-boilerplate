@@ -19,7 +19,7 @@ import CommentDateTime from './CommentDateTime';
 // utils
 import { getObjId, getEmployment } from 'utils/generalHelper';
 
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 const CommentAuthor = ({ user, setAuthPopup, view, comment, className }) => {
   const { t } = useTranslation();

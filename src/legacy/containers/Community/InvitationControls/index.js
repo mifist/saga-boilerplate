@@ -16,7 +16,7 @@ import './style.scss';
 import { notification, Spin, Button } from 'antd';
 
 // assets
-// import CustomIcons from 'legacy/legacy/components/CustomIcons';
+// import CustomIcons from 'legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 // contexts

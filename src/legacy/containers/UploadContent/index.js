@@ -4,28 +4,32 @@
  *
  */
 import React, { memo, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { compose } from '@reduxjs/toolkit';
-
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
+import classNames from 'classnames';
 
 import './style.scss';
 
-import reducer from './reducer';
-import saga from './saga';
-import {
-  makeSelectUploadedFile,
-  makeSelectLoading,
-  makeSelectError,
-  makeSelectUploadedFileType,
-} from './selectors';
+// HOC
+import withRedux from 'HOC/withRedux';
+
 import { uploadContentFile, flushState } from './actions';
 
+// assets
 import LogoClient from 'images/logo.svg';
+import {
+  VideoCameraOutlined,
+  FileAddOutlined,
+  AudioOutlined,
+  PictureOutlined,
+  FilePdfOutlined,
+} from '@ant-design/icons';
 
+// antd component
+import { Modal, Upload } from 'antd';
+// components
+import VideoPlayer from 'legacy/components/VideoPlayer';
+
+// utils
 import {
   beforeUpload,
   beforeUploadAudio,
@@ -37,32 +41,25 @@ import {
   scrubFileName,
 } from 'utils/uploadHelper';
 
-import { Modal, Upload } from 'antd';
-
-import {
-  VideoCameraOutlined,
-  FileAddOutlined,
-  AudioOutlined,
-  PictureOutlined,
-  FilePdfOutlined,
-} from '@ant-design/icons';
-import VideoPlayer from 'legacy/components/VideoPlayer';
 
 export function UploadContent({
-  uploadContentFile,
+  // props
   type,
   content,
   handleUploadChange,
-  uploadedFile,
-  loading,
-  error,
-  uploadFileType,
-  flushState,
   size,
+  // actions
   processUploadFile,
+  // default props
+  className,
+  // core
+  state,
+  dispatch
 }) {
-  useInjectReducer({ key: 'uploadContent', reducer });
-  useInjectSaga({ key: 'uploadContent', saga });
+
+  const { 
+    uploadedFile, loading, error, uploadFileType
+  } = state.CommentsOverview;
 
   const [fileList, setFileList] = useState([]);
   // Preview
@@ -79,7 +76,7 @@ export function UploadContent({
   useEffect(() => {
     return () => {
       // Anything in here is fired on component unmount.
-      flushState();
+      dispatch(flushState());
     };
   }, []);
 
@@ -247,7 +244,7 @@ export function UploadContent({
           setFileList([...fileList, tempCompressFile]);
 
           formPayload.append('file', tempCompressFile);
-          uploadContentFile(formPayload, type);
+          dispatch(uploadContentFile(formPayload, type));
         })
         .catch(err => {
           onError({ err });
@@ -267,7 +264,7 @@ export function UploadContent({
 
       formPayload.append('file', tempCompressFile);
 
-      uploadContentFile(formPayload, type);
+      dispatch(uploadContentFile(formPayload, type));
     }
   };
 
@@ -349,33 +346,7 @@ UploadContent.defaultProps = {
   content: [],
 };
 
-UploadContent.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  handleUploadChange: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = createStructuredSelector({
-  uploadedFile: makeSelectUploadedFile(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-  uploadFileType: makeSelectUploadedFileType(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    uploadContentFile: (file, fileType) =>
-      dispatch(uploadContentFile(file, fileType)),
-    flushState: () => dispatch(flushState()),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
 export default compose(
-  withConnect,
+  withRedux,
   memo,
 )(UploadContent);
