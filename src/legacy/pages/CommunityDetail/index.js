@@ -80,7 +80,7 @@ import CommunityWelcome from 'legacy/components/Community/CommunityWelcome';
 import MembersTab from 'legacy/containers/Community/MembersTab';
 
 // contexts
-import { withUser } from 'engine/Contexts/User.context';
+import { withUser } from 'appContext/User.context';
 // helper
 import useDeviceDetect from 'appHooks/useDeviceDetect';
 import {

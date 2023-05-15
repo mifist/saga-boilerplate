@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { Capacitor } from '@capacitor/core';
 import { Browser } from '@capacitor/browser';
-import { UserContext } from 'engine/Contexts/User.context';
+import { UserContext } from 'appContext/User.context';
 import { getObjId } from 'utils/generalHelper';
 import { getRedirectUrl } from '../../utils/getRedirectUrl';
 

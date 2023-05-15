@@ -62,7 +62,7 @@ import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 
 
 // contexts
-import { withUser } from 'engine/Contexts/User.context';
+import { withUser } from 'appContext/User.context';
 import QrcodePopup from 'legacy/components/QrcodePopup';
 
 export function NewsFeedPage({
