@@ -2,6 +2,7 @@
  * SagaContainer
  */
 import React, { memo } from 'react';
+import classNames from 'classnames';
 import { useParams  } from 'react-router-dom';
 import { compose } from '@reduxjs/toolkit';
 
@@ -15,10 +16,13 @@ import { flushState, onLoadList } from './actions';
 import { Skeleton, List, Avatar, Button } from 'antd';
 
 function SagaContainer({
+  // props
+  className,
   // core
   state,
   dispatch
 }) {
+  const childClassNames = classNames('test', className);
   const { list, loading } = state.SagaContainer;
 
   const { eventID } = useParams();

@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 import {

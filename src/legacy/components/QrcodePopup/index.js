@@ -4,7 +4,7 @@ import { Modal, Typography, Button, Image, notification } from 'antd';
 import api from 'engine/api/axiosAPI';
 
 import './style.scss';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { withUser } from 'engine/context/User.context';
 import i18n from 'i18next';
 

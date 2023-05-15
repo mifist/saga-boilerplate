@@ -5,7 +5,7 @@
  */
 
 import React, { memo, useEffect, useState, useCallback } from 'react';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';

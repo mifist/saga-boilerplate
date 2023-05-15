@@ -1,7 +1,7 @@
 import React, { useState, memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 
 // styles

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { useParams, withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 

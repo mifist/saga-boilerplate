@@ -1,31 +1,36 @@
 import React, { useState, useMemo, memo } from 'react';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import classNames from 'classnames';
-import { Form, Button, Upload, message } from 'antd';
-import { PictureOutlined } from '@ant-design/icons';
-import { isEqual } from 'lodash';
 import { useTranslation } from 'react-i18next';
+import { isEqual } from 'lodash';
+import axios from 'axios';
 
+import './style.scss';
+
+//assets
+import { PictureOutlined } from '@ant-design/icons';
+
+// antd component
+import { Form, Button, Upload, message } from 'antd';
+// components
+import UserAvatar from 'legacy/components/UserAvatar';
+import LexicalEditor from 'legacy/components/LexicalEditor';
+// Comments componanets
+import CommentFilePreview from 'legacy/components/Comments/CommentFilePreview';
+
+// contexts
 import { withUser } from 'engine/context/User.context';
 import { withAuthPopup } from 'engine/context/AuthPopup.context';
 
-import UserAvatar from 'legacy/components/UserAvatar';
-import CommentFilePreview from 'legacy/components/Comments/CommentFilePreview';
+// hooks
+import { useRefState } from 'appHooks'
 
+// utils
 import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
 import { getBaseApiUrl } from 'utils/capacitorHelper';
 import { PRODUCTION_VIDEOS_API_URL } from 'utils/constants';
-import {
-  normFile,
-  beforeUploadCommentFiles,
-  videoFileTypes,
-} from 'utils/uploadHelper2';
+import { normFile, beforeUploadCommentFiles, videoFileTypes } from 'utils/uploadHelper2';
 
-import { useRefState } from 'appHooks';
-
-import './style.scss';
-import axios from 'axios';
-import LexicalEditor from 'legacy/components/LexicalEditor';
 
 const CommentFormNew = ({
   className,
@@ -41,14 +46,15 @@ const CommentFormNew = ({
   actionType,
   parent,
 }) => {
-  const [isVideo, setIsVideo] = useState(false);
-  const [form] = Form.useForm();
-  const [loading, setLoading] = useState(false);
-  const [commentValue, setCommentValue] = useState('');
+  const containerClassNames = classNames('comment-form-container', className);
 
   const { t } = useTranslation();
 
   const currentUser = JSON.parse(localStorage.getItem('beemed_user'));
+
+  const [isVideo, setIsVideo] = useState(false);
+  const [form] = Form.useForm();
+  const [loading, setLoading] = useState(false);
 
   const [currentContent, currentContentRef, setCurrentContent] = useRefState(
     initialData?.content || '',
@@ -73,7 +79,7 @@ const CommentFormNew = ({
         };
   }, [initialData]);
 
-  const containerClassNames = classNames('comment-form-container', className);
+
 
   const handleFormCancel = () => {
     form.resetFields();

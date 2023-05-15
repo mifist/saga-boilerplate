@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 
 // styles

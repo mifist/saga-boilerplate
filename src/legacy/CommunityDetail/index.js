@@ -4,11 +4,13 @@
  *
  */
 import React, { memo, useState, useEffect, useCallback } from 'react';
+import { compose } from '@reduxjs/toolkit';
+
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+
 import { useParams, withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 

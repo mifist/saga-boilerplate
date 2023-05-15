@@ -6,7 +6,7 @@
 import React, { memo, useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import InfiniteScroll from 'react-infinite-scroller';
