@@ -11,7 +11,7 @@ import { Modal, Input, Form, Button } from 'antd';
 
 //components
 import RichEditorDescription from 'legacy/components/RichEditorDescription';
-import LexicalEditor from '../../../LexicalEditor';
+import LexicalEditor from 'legacy/components/LexicalEditor';
 
 function CreateRules({
   update,

@@ -724,7 +724,6 @@ function AccountPreferences({ user, history }) {
                     {renderCredentials()}
                     {/*<h4 className={'account-subtitle'}>Content Preferences</h4>*/}
                     {renderNotifications()}
-                    {/*<FormattedMessage {...messages.header} />*/}
                   </section>
                 </article>
               </Col>

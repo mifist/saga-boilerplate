@@ -21,11 +21,11 @@ import {
   videoFileTypes,
 } from 'utils/uploadHelper2';
 
-import { useRefState } from 'utils/hooks';
+import { useRefState } from 'appHooks';
 
 import './style.scss';
 import axios from 'axios';
-import LexicalEditor from '../../LexicalEditor';
+import LexicalEditor from 'legacy/components/LexicalEditor';
 
 const CommentFormNew = ({
   className,

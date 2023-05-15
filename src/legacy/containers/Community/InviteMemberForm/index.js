@@ -15,7 +15,7 @@ import { Button, Form, Select } from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 // components
-import UserAvatar from 'components/UserAvatar';
+import UserAvatar from 'legacy/components/UserAvatar';
 
 // context
 import { withUser } from 'engine/context/User.context';

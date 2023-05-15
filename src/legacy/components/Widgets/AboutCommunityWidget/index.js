@@ -21,7 +21,7 @@ import { communityTypes } from 'utils/categoryHelper';
 
 // contexts
 import { withUser } from 'engine/context/User.context';
-import LexicalEditor from '../../LexicalEditor';
+import LexicalEditor from 'legacy/components/LexicalEditor';
 
 function AboutCommunityWidget({
   communityInfo,

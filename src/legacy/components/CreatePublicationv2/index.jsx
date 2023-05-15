@@ -31,7 +31,7 @@ import moment from 'moment';
 import classNames from 'classnames';
 import { ContentState, convertFromHTML } from 'draft-js';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 import { getBaseApiUrl } from 'utils/capacitorHelper';
 import {
   audioFileTypes,

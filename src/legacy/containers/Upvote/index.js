@@ -15,19 +15,10 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import reducer from './reducer';
 import saga from './saga';
-// import messages from './messages';
 import './style.scss';
 
 
 import useDeviceDetect from 'appHooks/useDeviceDetect';
-
-// antd component
-import { Tabs } from 'antd';
-// icons
-const { TabPane } = Tabs;
-
-// components
-
 
 export function Upvote({
   className,

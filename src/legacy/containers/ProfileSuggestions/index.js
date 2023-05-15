@@ -18,8 +18,8 @@ import {
 } from './selectors';
 
 // components
-import SidebarCardList from 'components/Sidebar/SidebarCardList';
-import SidebarAccordion from 'components/Sidebar/SidebarAccordion';
+import SidebarCardList from 'legacy/components/Sidebar/SidebarCardList';
+import SidebarAccordion from 'legacy/components/Sidebar/SidebarAccordion';
 
 function ProfileSuggestions({
   // actions here

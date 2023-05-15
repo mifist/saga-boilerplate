@@ -1,17 +1,14 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useDispatch, useSelector } from 'react-redux';
 import { compose } from 'redux';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
 import './style.scss';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 import { Col, Empty, Form, Pagination, Row, Select, Spin } from 'antd';

@@ -45,7 +45,7 @@ import {
 } from './actions';
 
 import { Helmet } from 'react-helmet';
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 import { Col, Row, Skeleton } from 'antd';
@@ -62,7 +62,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 // contexts
 import { withUser } from 'engine/Contexts/User.context';
-import QrcodePopup from '../../components/QrcodePopup';
+import QrcodePopup from 'legacy/components/QrcodePopup';
 
 export function NewsFeedPage({
   loadPostsAction,

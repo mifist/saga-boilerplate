@@ -41,16 +41,16 @@ import useDeviceDetect from 'appHooks/useDeviceDetect';
 // antd component
 
 // icons
-import CustomIcons from 'legacy/components/CustomIcons';
+import CustomIcons from 'legacy/legacy/components/CustomIcons';
 
 // components
-import CommentItem from 'components/Comments/CommentItem';
-import BookmarkAction from 'components/BookmarkAction';
-import ShareAction from 'components/ShareAction';
-import ModalWithLikes from 'components/ModalWithLikes';
-import { ReportPopup } from 'components/ReportPopup';
-import { ModifyPostTypePopup } from 'components/ModifyPostTypePopup';
-import CommentFormNew from '../../components/Comments/CommentFormNew';
+import CommentItem from 'legacy/components/Comments/CommentItem';
+import BookmarkAction from 'legacy/components/BookmarkAction';
+import ShareAction from 'legacy/components/ShareAction';
+import ModalWithLikes from 'legacy/components/ModalWithLikes';
+import { ReportPopup } from 'legacy/components/ReportPopup';
+import { ModifyPostTypePopup } from 'legacy/components/ModifyPostTypePopup';
+import CommentFormNew from 'legacy/components/Comments/CommentFormNew';
 
 // global user
 import { withUser } from 'engine/context/User.context';

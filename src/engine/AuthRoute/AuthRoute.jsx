@@ -14,7 +14,7 @@ import AccessDenied from 'layouts/AccessDenied';
 
 // utils
 import { isWeb } from 'appCapacitor/helpers';
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // context
 import { withUser } from 'appContext/User.context';

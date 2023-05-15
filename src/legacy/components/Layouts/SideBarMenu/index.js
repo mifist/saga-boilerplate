@@ -8,11 +8,11 @@ import './style.scss';
 
 // components
 import { List } from 'antd-mobile';
-import UserAvatar from '../../UserAvatar';
+import UserAvatar from 'legacy/components/UserAvatar';
 import { DeploymentUnitOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import ConditionalLink from 'legacy/components/ConditionalLink';
-import CustomIcons from '../../CustomIcons';
+import CustomIcons from 'legacy/components/CustomIcons';
 import api from 'engine/api/axiosAPI';
 
 import { withAuthPopup } from 'engine/context/AuthPopup.context';

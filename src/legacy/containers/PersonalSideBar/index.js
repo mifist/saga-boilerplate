@@ -20,8 +20,8 @@ import {
 import { flushState, loadEvents, loadCommunities } from './actions';
 
 // components
-import SidebarCardList from 'components/Sidebar/SidebarCardList';
-import SidebarAccordion from 'components/Sidebar/SidebarAccordion';
+import SidebarCardList from 'legacy/components/Sidebar/SidebarCardList';
+import SidebarAccordion from 'legacy/components/Sidebar/SidebarAccordion';
 
 function PersonalSideBar({
   // actions here

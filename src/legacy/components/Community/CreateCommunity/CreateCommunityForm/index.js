@@ -24,7 +24,7 @@ import RichEditorDescription from 'legacy/components/RichEditorDescription';
 // helpers function
 import { anatomies, specialities } from 'utils/categoryHelper';
 import history from 'utils/history';
-import LexicalEditor from '../../../LexicalEditor';
+import LexicalEditor from 'legacy/components/LexicalEditor';
 
 const CreateCommunityForm = ({ onFinish }) => {
   const { t } = useTranslation();

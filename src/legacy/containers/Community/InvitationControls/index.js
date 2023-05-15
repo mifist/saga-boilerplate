@@ -16,7 +16,7 @@ import './style.scss';
 import { notification, Spin, Button } from 'antd';
 
 // assets
-// import CustomIcons from 'legacy/components/CustomIcons';
+// import CustomIcons from 'legacy/legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 // global user
@@ -24,7 +24,7 @@ import { withUser } from 'engine/context/User.context';
 
 // Async call for managing of users
 import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
-import useAsync from 'utils/hooks/useAsync';
+import useAsync from 'appHooks/useAsync';
 
 // helpers function
 import { getObjId } from 'utils/generalHelper';
