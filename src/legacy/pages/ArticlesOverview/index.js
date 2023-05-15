@@ -1,7 +1,7 @@
 import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import moment from 'moment';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';

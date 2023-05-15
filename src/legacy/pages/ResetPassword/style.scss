@@ -1,0 +1,137 @@
+@import 'scss/global/variables';
+
+.resetPassword {
+  background-color: #014a5f;
+  background-image: url('../../images/walkthrough.png');
+  background-size: contain;
+  background-repeat: repeat;
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+  padding-bottom: 100px;
+  min-height: 100%;
+  height: 100vh;
+
+  &--header {
+    margin-bottom: 20px;
+
+    h1 {
+      font-size: 25px;
+      font-weight: bold;
+      color: $white;
+    }
+  }
+
+  .resetPassword--form {
+    .ant-form-item-label {
+      padding: 0;
+      display: none;
+
+      & > label {
+        line-height: 1;
+        margin-bottom: 10px;
+        color: $white;
+        font-weight: normal;
+        font-size: 14px;
+        align-items: unset;
+
+        &::before {
+          content: none !important;
+        }
+      }
+    }
+
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
+    .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
+      background: #484c56;
+    }
+
+    .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper,
+    .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+      background: #484c56;
+    }
+
+    .ant-input-affix-wrapper,
+    .ant-input-affix-wrapper:hover {
+      background: #484c56;
+      border: 1px solid #484c56;
+      // padding: 0;
+
+      input {
+        border: 0;
+        // padding: 0;
+      }
+    }
+
+    .ant-input-password-icon {
+      color: $white;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      transition: background-color 5000s ease-in-out 0s;
+      -webkit-text-fill-color: $white !important;
+    }
+
+    .ant-input {
+      background: #484c56;
+      border: 1px solid #484c56;
+      font-size: 16px;
+      border-radius: 5px;
+      color: $white;
+      padding: 9px 11px;
+      padding: 10.5px 13px;
+      min-height: inherit;
+      &:hover,
+      &:focus {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+      }
+      &::placeholder {
+        font-weight: normal;
+        font-size: 14px;
+        background: #484c56;
+        border: 1px solid #484c56;
+      }
+    }
+
+    &__submit {
+      padding: 18px 0;
+      background-color: $beemedocre1;
+      color: $white;
+      font-size: 15px;
+      font-weight: bold;
+      width: 100%;
+      line-height: 1;
+      height: unset;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 26px;
+
+      &:hover {
+        background-color: $beemedocre1;
+        color: $white;
+      }
+    }
+
+    &__error {
+      margin-bottom: 20px;
+    }
+  }
+
+  &--extra {
+    &__login {
+      font-size: 15px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      color: $beemedocre1;
+      text-decoration: underline;
+      margin-bottom: 45px;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
