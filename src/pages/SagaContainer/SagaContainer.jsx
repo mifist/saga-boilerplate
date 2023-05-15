@@ -1,29 +1,25 @@
 /**
- *
- * App
- *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
+ * SagaContainer
  */
-import React, { memo, useEffect, useState } from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { compose } from '@reduxjs/toolkit';
-import { Helmet } from 'react-helmet';
+import React, { memo } from 'react';
 import { useParams  } from 'react-router-dom';
+import { compose } from '@reduxjs/toolkit';
+
+// HOC
+import withRedux from 'HOC/withRedux';
 
 // actions
 import { flushState, onLoadList } from './actions';
-//selectors
 
 // antd component
 import { Skeleton, List, Avatar, Button } from 'antd';
 
-function SagaContainer({}) {
-  const { list, loading } = useSelector((state) => {
-    console.log(state);
-    return state.SagaContainer;
-  });
-  const dispatch = useDispatch();
+function SagaContainer({
+  // core
+  state,
+  dispatch
+}) {
+  const { list, loading } = state.SagaContainer;
 
   const { eventID } = useParams();
 
@@ -81,4 +77,4 @@ function SagaContainer({}) {
   );
 }
 
-export default compose(memo)(SagaContainer);
+export default compose(memo, withRedux)(SagaContainer);

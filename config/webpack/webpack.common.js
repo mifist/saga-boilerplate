@@ -76,6 +76,7 @@ module.exports = {
       'appCapacitor': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'appCapacitor'),
       'appContext': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'context'),
       'appHooks': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'hooks'),
+      'HOC': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'HOC'),
       'appAPI': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'api'),
       'utils': path.join(envKeys.root, envKeys.rootFolder, 'utils'),
       // other

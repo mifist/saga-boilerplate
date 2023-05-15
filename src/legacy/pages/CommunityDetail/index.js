@@ -82,7 +82,7 @@ import MembersTab from 'containers/Community/MembersTab';
 // contexts
 import { withUser } from 'engine/Contexts/User.context';
 // helper
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 import {
   getUrlVars,
   makeSearchQueryParams,

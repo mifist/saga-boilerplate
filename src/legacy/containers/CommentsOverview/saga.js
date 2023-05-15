@@ -1,14 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
-import { LOAD_COMMENTS, REPORT_POST, MODIFY_POST_TYPE } from './constants';
-import {
-  loadCommentsError,
-  loadCommentsSuccess,
-  reportPostError,
-  reportPostSuccess,
-  modifyPostTypeError,
-  modifyPostTypeSuccess,
-} from './actions';
+
+import * as CONSTANS from './constants';
+import * as ACTIONS from './actions';
+
 import { notification } from 'antd';
 import i18n from 'i18next';
 
@@ -27,12 +22,12 @@ export function* loadComments(action) {
     );
 
     if (!id && comments.length === 0) {
-      yield put(loadCommentsSuccess(false));
+      yield put(ACTIONS.loadCommentsSuccess(false));
     } else {
-      yield put(loadCommentsSuccess(comments));
+      yield put(ACTIONS.loadCommentsSuccess(comments));
     }
   } catch (error) {
-    yield put(loadCommentsError(error));
+    yield put(ACTIONS.loadCommentsError(error));
   }
 }
 
@@ -51,14 +46,14 @@ export function* reportPost(action) {
 
     if (!report) {
       notification.error({ message: i18n.t('common.somethingWentWrong') });
-      yield put(reportPostSuccess(false));
+      yield put(ACTIONS.reportPostSuccess(false));
     } else {
       notification.success({ message: report.data });
-      yield put(reportPostSuccess());
+      yield put(ACTIONS.reportPostSuccess());
     }
   } catch (error) {
     notification.error({ message: i18n.t('common.somethingWentWrong') });
-    yield put(reportPostError(error));
+    yield put(ACTIONS.reportPostError(error));
   }
 }
 
@@ -75,21 +70,21 @@ export function* modifyPostType(action) {
 
     if (!response) {
       notification.error({ message: i18n.t('common.somethingWentWrong') });
-      yield put(modifyPostTypeSuccess(false));
+      yield put(ACTIONS.modifyPostTypeSuccess(false));
     } else {
       notification.success({ message: 'Successfullt modified post type' });
-      yield put(modifyPostTypeSuccess());
+      yield put(ACTIONS.modifyPostTypeSuccess());
       yield put(updateCaseSuccess(response));
     }
   } catch (error) {
     notification.error({ message: i18n.t('common.somethingWentWrong') });
-    yield put(modifyPostTypeError(error));
+    yield put(ACTIONS.modifyPostTypeError(error));
   }
 }
 
 // Individual exports for testing
 export default function* commentsOverviewSaga() {
-  yield takeLatest(LOAD_COMMENTS, loadComments);
-  yield takeLatest(REPORT_POST, reportPost);
-  yield takeLatest(MODIFY_POST_TYPE, modifyPostType);
+  yield takeLatest(CONSTANS.LOAD_COMMENTS, loadComments);
+  yield takeLatest(CONSTANS.REPORT_POST, reportPost);
+  yield takeLatest(CONSTANS.MODIFY_POST_TYPE, modifyPostType);
 }
