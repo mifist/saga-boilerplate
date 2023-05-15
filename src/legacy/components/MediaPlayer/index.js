@@ -17,7 +17,7 @@ import WaveSurfer from 'wavesurfer.js';
 import peaksJson from './demo-peaks.json';
 import { PlayButton, Wave, WaveformContainer } from './Waveform';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 import {
   ArrowDownOutlined,

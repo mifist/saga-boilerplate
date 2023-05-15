@@ -15,7 +15,7 @@ import MCQsComponents from 'legacy/components/MCQs/MCQsComponents';
 import GalleryVideo from '../GalleryVideo';
 import GalleryImage from '../GalleryImage';
 import GalleryPDF from '../GalleryPDF';
-import useDeviceDetect from '../../utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 import ErrorBoundary from '../ErrorBoundary';
 
 import {

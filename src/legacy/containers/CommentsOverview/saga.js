@@ -12,7 +12,7 @@ import {
 import { notification } from 'antd';
 import i18n from 'i18next';
 
-import { updateCaseSuccess } from 'pages/CaseDetail/actions';
+import { updateCaseSuccess } from 'legacy/pages/CaseDetail/actions';
 
 export function* loadComments(action) {
   try {

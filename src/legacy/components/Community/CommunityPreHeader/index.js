@@ -10,7 +10,7 @@ import {
   FilesystemDirectory,
 } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // styles
 import './style.scss';

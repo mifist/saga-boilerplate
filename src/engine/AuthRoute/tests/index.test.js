@@ -1,6 +1,6 @@
 /**
  *
- * Tests for CreateRules
+ * Tests for AuthRoute
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -8,20 +8,13 @@
 
 import React from 'react';
 import { render } from 'react-testing-library';
-import { IntlProvider } from 'react-intl';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
+import AuthRoute from '../index';
 
-import CreateRules from '../index';
-import { DEFAULT_LOCALE } from '../../../i18n';
-
-describe('<CreateRules />', () => {
+describe('<AuthRoute />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
-    render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <CreateRules />
-      </IntlProvider>,
-    );
+    render(<AuthRoute />);
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -37,11 +30,7 @@ describe('<CreateRules />', () => {
   it.skip('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <CreateRules />
-      </IntlProvider>,
-    );
+    } = render(<AuthRoute />);
     expect(firstChild).toMatchSnapshot();
   });
 });
