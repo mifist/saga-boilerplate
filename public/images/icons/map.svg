@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="50px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SL/icons/icon/list Copy</title>
+    <g id="SL/icons/icon/list-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pin_view" transform="translate(4.000000, 0.000000)" stroke="#005D72" stroke-width="2">
+            <path d="M11.5,30 C19.1666667,22.513517 23,16.544194 23,12.0920311 C23,5.41378672 17.8512746,0 11.5,0 C5.14872538,0 0,5.41378672 0,12.0920311 C0,16.544194 3.83333333,22.513517 11.5,30 Z" id="Oval-2-Copy" stroke-linecap="round" stroke-linejoin="round"></path>
+            <circle id="Oval" cx="11" cy="12" r="5"></circle>
+        </g>
+    </g>
+</svg>

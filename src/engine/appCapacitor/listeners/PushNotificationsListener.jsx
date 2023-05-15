@@ -23,7 +23,7 @@ import {
   useUserPatchData,
   useCheckPushNotificationParameters,
   useGetInintNotReadComm,
-} from 'engine/Contexts/User.context';
+} from 'engine/context/User.context';
 
 const apiURL = getBaseApiUrl();
 axios.defaults.baseURL = apiURL;

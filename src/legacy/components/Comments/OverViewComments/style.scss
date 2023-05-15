@@ -1,0 +1,113 @@
+.overview_comments {
+  border-top: 1px solid #97979726;
+  padding: 10px;
+  padding-left: 20px;
+  .like-button {
+    cursor: pointer;
+    pointer-events: auto;
+  }
+}
+
+.overview_comments.single {
+  padding-left: 2px;
+  margin-top: 10px;
+  padding-bottom: 7px;
+  .custom-feed {
+    padding-left: 10px;
+  }
+}
+
+.overViewNumber {
+  padding: 5px;
+  display: block;
+}
+
+.icon_likeclicked {
+  height: 18px;
+  top: -3px;
+  position: relative;
+}
+
+.icon_like {
+  height: 18px;
+  top: -3px;
+  position: relative;
+}
+
+.overViewNumberActive {
+  .modal-form-likes__btn-open {
+    color: #cba348;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #cba348;
+    }
+  }
+}
+
+.overview_comments_right {
+  text-align: right;
+  padding-top: 5px;
+}
+
+.overview_comments_item {
+  margin-left: 16px;
+  .anticon svg {
+    width: 16px !important;
+  }
+}
+
+.overview_comments {
+  .anticon {
+    font-size: 16px;
+    color: #101010;
+    margin-top: -2px;
+    margin-right: 8px;
+    transition: color 0.3s;
+    width: 17px;
+    height: 17px;
+    svg {
+      width: 100%;
+      height: auto;
+      fill: #000000;
+    }
+  }
+}
+
+.bookmark-action {
+  .anticon {
+    margin-right: 8px;
+    svg {
+      width: 100%;
+      height: auto;
+      fill: none !important;
+      stroke: #000000 !important;
+    }
+  }
+  &.bookmarked {
+    .anticon {
+      svg {
+        width: 100%;
+        height: auto;
+        fill: #cba348 !important;
+        stroke: #cba348 !important;
+      }
+    }
+  }
+}
+
+.comments-feed {
+  color: black;
+}
+
+.overview_comments--rtl {
+  .overview_comments_right {
+    text-align: left;
+  }
+
+  .custom-feed .anticon {
+    margin-right: unset;
+    margin-left: 8px;
+  }
+}

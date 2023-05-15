@@ -1,0 +1,153 @@
+$beemedocre1: #cba348;
+$beemedblue1: #005d72;
+
+.account-pref {
+  max-width: calc(960px - 40px);
+  margin: 0 auto;
+  padding-top: 58px;
+  .main-single-content {
+    width: 100%;
+    max-width: 100%;
+  }
+  .main-single-content__header {
+    background: transparent;
+    color: #005d72;
+    .main-single__go-back .anticon svg {
+      fill: #005d72;
+    }
+  }
+}
+
+.account-card {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  margin: 10px 0px 20px 0px;
+}
+
+.account-title {
+  font-size: 30px !important;
+  font-weight: 700;
+  color: black;
+  @media screen and (max-width: 580px) {
+    font-size: 24px !important;
+    margin-bottom: 0;
+  }
+}
+
+.account-subtitle {
+  font-size: 16px !important;
+  font-weight: 700;
+  color: black;
+}
+
+.account-information-edit {
+  float: right;
+  min-width: 90px;
+  background: $beemedocre1;
+  color: #fff;
+  font-weight: 700;
+  border: 1px solid $beemedocre1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: max-content;
+  img {
+    width: 15px;
+    margin: -5px 6px 0 0;
+  }
+  &:hover,
+  &:focus {
+    background: transparent;
+    color: $beemedocre1;
+    border-color: $beemedocre1;
+  }
+}
+
+.flex-justify-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-card span {
+  font-weight: 700;
+  font-size: 15px !important;
+}
+
+.account-card > span {
+  margin-bottom: 20px;
+}
+
+.account-input-row {
+  align-items: center;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}
+
+.account-input-row-img {
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.account-value {
+  font-size: 13px !important;
+  color: #aeb8c0;
+}
+
+.account-pref input,
+.account-pref textarea {
+  border: 0;
+  background: #f2f7f8;
+  padding: 5px;
+  width: 100%;
+}
+
+.flex-avatar {
+  display: flex;
+  align-items: center;
+}
+
+.flex-avatar .ant-avatar {
+  margin-bottom: 0;
+}
+
+.account-min-width {
+  min-width: 150px;
+}
+
+.account-input-row .ant-select-multiple .ant-select-selection-item-content {
+  color: black;
+  overflow: visible;
+  font-weight: 400;
+}
+
+.event_detail_back {
+  margin-top: 30px;
+}
+
+.avatar-upload-message {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  flex-direction: column;
+}
+.avatar-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .ant-avatar {
+    min-width: 50px;
+    margin-right: 15px;
+  }
+
+  @media screen and (max-width: 580px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .ant-avatar {
+      min-width: 50px;
+      margin-right: 15px;
+    }
+  }
+}

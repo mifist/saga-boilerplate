@@ -1,0 +1,344 @@
+@import 'scss/global/variables';
+
+.action-button {
+  line-height: 1;
+  background: $beemedocre1;
+  color: #fff;
+  height: auto;
+  border-color: $beemedocre1;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 8px 30px;
+
+  &:hover,
+  &:focus,
+  &:active {
+    span {
+      color: $beemedblue1 !important;
+    }
+  }
+
+  &.community-case {
+    max-width: 160px;
+  }
+}
+
+.action-button-post {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: auto;
+  padding: 15px;
+  width: 100%;
+  border-color: #fff;
+  margin-bottom: 16px;
+  border-radius: 5px;
+
+  p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    background: #f2f7f8;
+    border-radius: 14.5px;
+    padding: 8px 12px;
+    width: 100%;
+    text-align: left;
+
+    @media screen and (max-width: 800px) {
+      background: transparent;
+      padding: 0;
+    }
+  }
+
+  &--rtl {
+    p {
+      text-align: right;
+    }
+  }
+}
+
+.publication-modal {
+  max-width: 860px;
+  width: 100% !important;
+
+  .ant-modal-close {
+    right: 42px;
+
+    .ant-modal-close-x {
+      width: auto;
+    }
+
+    span.close {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 400;
+
+      .anticon {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .ant-modal-header {
+    background-color: $beemedblue1;
+    border-radius: 0;
+    padding: 18px 42px;
+
+    .ant-modal-title {
+      color: #fff;
+      font-weight: 500;
+      font-size: 18px;
+    }
+  }
+
+  .ant-modal-body {
+    padding: 26px 42px 0;
+
+    .publication-form {
+      .ant-upload-drag-icon {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+
+        .anticon {
+          font-size: 30px;
+        }
+      }
+
+      &--title {
+        margin-bottom: 20px;
+
+        input {
+          font-size: 20px;
+          font-weight: 500;
+        }
+      }
+
+      &--specialities {
+        margin-bottom: 10px;
+
+        .ant-form-item-label {
+          i {
+            margin-left: 5px;
+          }
+        }
+
+        .ant-select {
+          font-size: 15px;
+          line-height: 2;
+
+          .ant-select-selection-item {
+            background: $beemedblue1;
+            border: 0;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 10px;
+            padding-left: 14px;
+            margin-right: 8px;
+
+            .ant-select-selection-item-remove {
+              color: #fff;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      &--anatomies {
+        margin-bottom: 10px;
+
+        .ant-select {
+          font-size: 15px;
+          line-height: 2;
+
+          .ant-select-selection-item {
+            background: #b2ced4;
+            border-color: #b2ced4;
+            color: #005d72;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 10px;
+            padding-left: 14px;
+            margin-right: 8px;
+
+            .ant-select-selection-item-remove {
+              color: #005d72;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+
+      &--tags {
+        margin: 10px 0;
+      }
+
+      &--persons {
+        margin-bottom: 10px;
+
+        textarea {
+          font-size: 16px;
+        }
+      }
+
+      &--reference {
+        margin-bottom: 10px;
+
+        .ant-select {
+          font-size: 16px;
+        }
+      }
+
+      &--fullArticle {
+        margin-bottom: 10px;
+
+        textarea {
+          font-size: 16px;
+        }
+      }
+
+      &--dateCreation {
+        margin-bottom: 20px;
+
+        .ant-picker-input > input {
+          font-size: 16px;
+        }
+      }
+
+      &--files {
+        margin-bottom: 20px;
+
+        .ant-upload {
+          background-color: #fffaee !important;
+          border-color: #939393 !important;
+          border-radius: 16px !important;
+
+          &-text {
+            font-size: 18px;
+            color: #000;
+            font-weight: 500;
+          }
+          &-list-item-card-actions-btn {
+            opacity: 1;
+
+            .anticon {
+              color: red;
+            }
+          }
+        }
+      }
+
+      .create-mcqs {
+        max-width: unset;
+        margin-bottom: 20px;
+
+        .btn-mcqs {
+          width: 100%;
+          display: flex;
+          height: 60px;
+          justify-content: flex-start;
+          gap: 20px;
+        }
+      }
+
+      &--agreement {
+        .ant-checkbox-wrapper {
+          font-size: 16px;
+          color: rgba(0, 0, 0, 0.5);
+          gap: 10px;
+        }
+
+        .ant-form-item-explain {
+          padding-left: 34px;
+          font-size: 12px;
+        }
+      }
+
+      &--submit {
+        border: 0;
+        padding: 12px 0 25px;
+        display: flex;
+        justify-content: flex-end;
+
+        .ant-btn {
+          background: #005d72;
+          border-color: #005d72;
+          color: #fff;
+          font-size: 16px;
+          font-weight: 700;
+          padding: 10px;
+          height: auto;
+          border-radius: 5px;
+          width: 180px;
+
+          &:hover,
+          &:focus {
+            background: rgba(0, 0, 0, 0);
+            border-color: #005d72;
+            color: #005d72;
+          }
+
+          &:disabled {
+            background-color: rgba(0, 0, 0, 0.04);
+            color: rgba(0, 0, 0, 0.25);
+            border-color: #d9d9d9;
+          }
+
+          @media screen and (max-width: 800px) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    margin: 0;
+    padding: 0;
+    top: 0;
+
+    .ant-modal-close {
+      right: unset;
+      left: 15px;
+
+      .ant-modal-close-x {
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        height: 52px;
+      }
+    }
+
+    .ant-modal-header {
+      padding: 15px 45px;
+    }
+
+    .ant-modal-body {
+      padding: 20px 15px 0;
+
+      .rdw-editor-wrapper {
+        width: unset !important;
+      }
+
+      .ant-checkbox-wrapper {
+        align-items: center;
+      }
+    }
+
+    .ant-modal-footer {
+      padding: 30px 15px;
+    }
+  }
+}
+
+.publication-modal--rtl {
+  .ant-modal-close {
+    right: unset;
+    left: 42px;
+  }
+}

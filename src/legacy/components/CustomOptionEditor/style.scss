@@ -1,0 +1,30 @@
+.custom-option-wrapper {
+  background-color: #fff;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 110px;
+  padding: 10px;
+  border: 1px solid rgba(187, 187, 187, 0.62);
+  z-index: 2;
+  box-shadow: 1px 1px 1px rgba(187, 187, 187, 0.76);
+  input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .ant-select {
+    width: 180px !important;
+    margin-bottom: 10px;
+    .ant-select-item-option-content {
+      text-transform: capitalize !important;
+    }
+  }
+  .current-img {
+    position: absolute;
+    top: -45px;
+    left: 195px;
+    border: 1px solid rgba(187, 187, 187, 0.62);
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+}

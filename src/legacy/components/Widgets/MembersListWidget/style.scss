@@ -1,0 +1,253 @@
+// Style for MembersListWidget component
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.members-list-widget {
+  .list-members {
+    .ant-list-item-meta-title {
+      font-weight: 500 !important;
+      font-size: 14px;
+      color: $black;
+      margin-bottom: 1px;
+      line-height: 1.2;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      .badge {
+        margin-right: 5px;
+      }
+    }
+
+    .members-name {
+      font-size: 14px;
+      line-height: 1.2;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin-right: 5px;
+    }
+
+    .ant-list-item-meta-description {
+      line-height: 16px;
+      font-weight: 400;
+      font-size: 14px;
+      color: rgb(0 0 0 / 60%);
+    }
+
+    .ant-list-item-meta-avatar {
+      margin-right: 9px;
+    }
+
+    .ant-list-item {
+      padding: 12px 9px;
+      border: none;
+
+      > a,
+      .list-item-link {
+        flex: 1;
+      }
+    }
+
+    .members-badge {
+      line-height: 11px;
+      font-size: 10px;
+      font-weight: 400;
+      border-radius: 2px;
+      padding: 2px 4px;
+      margin-right: 5px;
+      text-transform: capitalize;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      margin-bottom: 2px;
+
+      + .members-badge {
+        margin-left: 0;
+      }
+
+      &.admin {
+        background-color: #f6dbae;
+        color: $beemedocre1;
+      }
+
+      &.employee,
+      &.industry {
+        background: $purple;
+        border-color: $purple;
+        color: #fff;
+        margin-left: 0;
+
+        .anticon {
+          color: #fff;
+
+          svg {
+            fill: #fff;
+          }
+        }
+      }
+      &.moderator {
+        background-color: #b2ced4;
+        color: $beemedblue1;
+      }
+    }
+
+    .moderator {
+      background-color: green;
+    }
+  }
+
+  .list-members-tab {
+    .invitation-state {
+      background-color: $beemedblue3;
+      color: $white;
+      padding: 2px 5px;
+      margin-right: 15px;
+      font-size: 13px;
+      border-radius: 3px;
+    }
+
+    .members-name {
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin-right: 5px;
+    }
+    .ant-list-item {
+      background-color: transparent;
+
+      .ant-list-item-meta {
+        align-items: center;
+      }
+
+      > a,
+      .list-item-link {
+        flex: 1;
+      }
+
+      @media screen and (max-width: 800px) {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .list-item-link {
+          display: block;
+          width: 100%;
+        }
+
+        .invitation-state {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    .ant-list-item-meta-title {
+      line-height: 1.2;
+      font-weight: 700;
+      font-size: 14px;
+      color: $black;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      .badge {
+        margin-right: 5px;
+      }
+    }
+
+    .ant-list-item-meta-description {
+      line-height: 16px;
+      font-weight: 400;
+      font-size: 14px;
+      color: rgb(0 0 0 / 60%);
+    }
+
+    .ant-list-item {
+      padding: 11px 9px 12px 9px;
+    }
+
+    .members-badge {
+      display: inline-block;
+      line-height: 11px;
+      font-size: 10px;
+      font-weight: 400;
+      border-radius: 2px;
+      padding: 2px 4px;
+      margin-right: 5px;
+      text-transform: capitalize;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+      margin-bottom: 2px;
+      + .members-badge {
+        margin-left: 0;
+      }
+
+      &.admin {
+        background-color: #f6dbae;
+        color: $beemedocre1;
+      }
+
+      &.employee,
+      &.industry {
+        background: $purple;
+        border-color: $purple;
+        margin-left: 0;
+        color: #fff;
+
+        .anticon {
+          color: #fff;
+
+          svg {
+            fill: #fff;
+          }
+        }
+      }
+
+      &.moderator {
+        background-color: #b2ced4;
+        color: $beemedblue1;
+      }
+    }
+
+    .moderator {
+      background-color: green;
+    }
+  }
+}
+
+.widget-wrapper.members {
+  .widget-wrapper__context {
+    padding: 0;
+  }
+}
+
+.members-list-wrapper.members-list-widget {
+  @media screen and (max-width: 800px) {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 400px) {
+    .industry-partner-switch label {
+      margin-left: 0;
+      margin-top: 5px;
+    }
+  }
+}
+
+.collapse-member {
+  background: white;
+  border: none;
+}

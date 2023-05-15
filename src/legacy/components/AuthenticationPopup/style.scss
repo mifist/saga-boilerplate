@@ -1,0 +1,132 @@
+@import 'scss/global/variables';
+
+.auth-popup-container {
+  width: 800px !important;
+
+  .ant-modal-content {
+    border-radius: 8px;
+  }
+
+  .ant-modal-close {
+    color: $white;
+  }
+
+  .ant-modal-body {
+    display: flex;
+    padding: 0;
+
+    .welcome-container {
+      background-color: $beemedblue1;
+      padding: 0 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+
+      @media screen and (max-width: 800px) {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+
+      h4.ant-typography {
+        color: $white;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      span.ant-typography {
+        font-size: 16px;
+        font-weight: 500;
+        color: $white;
+      }
+
+      .action-buttons {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        a {
+          padding: 12px 24px;
+          text-align: center;
+          height: auto;
+          border-radius: 5px;
+          line-height: 1;
+          display: block;
+          font-weight: bold;
+        }
+
+        .signup {
+          background-color: $beemedocre1;
+          color: $white;
+          border: 1px solid transparent;
+
+          &:hover {
+            border: 1px solid transparent;
+          }
+        }
+
+        .login {
+          border: 1px solid $white;
+          color: $white;
+          background-color: $beemedblue1;
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        padding: 60px 30px;
+      }
+    }
+
+    .info-container {
+      background-color: #136e81;
+      min-width: 350px;
+      flex: 1;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+
+      &--list {
+        list-style: none;
+        padding: 50px 40px;
+        border-radius: 11px;
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+
+        &-item {
+          display: flex;
+          flex-direction: column;
+
+          &__icon {
+            background-color: #3c8392;
+            border-radius: 7px;
+            width: 37px;
+            height: 37px;
+            margin-bottom: 11px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          &__title {
+            color: $beemedocre1;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 7px;
+          }
+
+          &__desc {
+            color: $white;
+            font-size: 14px;
+          }
+        }
+      }
+
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
+    }
+  }
+}

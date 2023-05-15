@@ -1,0 +1,38 @@
+$beemedblue1 : #005D72;
+$beemedocre1 : #CBA348;
+
+.sidebar-actual-list {
+  background: #fff;
+  padding: 26px 30px 24px 30px;
+  .sidebar-title {
+    font-size: 18px;
+    font-weight: 700 !important;
+    line-height: 1.20;
+    color: #000;
+    margin-bottom: 24px;
+  }
+  .ant-list {
+    .ant-list-item {
+      border: none;
+      padding: 0;
+      &:not(:last-of-type) {
+        margin-bottom: 12px;
+      }
+    }
+    .ant-list-item-meta {
+      align-items: flex-start;
+    }
+    .ant-list-item-meta-avatar {}
+    .ant-list-item-meta-content {}
+    .ant-list-item-meta-title {
+      margin-bottom: 0;
+      font-size: 14px;
+      color: #000;
+      font-weight: 400 !important;
+      line-height: 1.4;
+      + .ant-list-item-meta-description {
+        margin-top: 10px;
+      }
+    }
+  }
+}

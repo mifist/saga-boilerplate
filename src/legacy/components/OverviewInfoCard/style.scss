@@ -1,0 +1,40 @@
+// Style for OverviewInfoCard component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.overview-info-card-wrapper {
+  flex: 1 1 calc(50% - 30px);
+  padding: 15px 17px 25px;
+  height: 100%;
+  background-color: $white;
+  border-radius: 6px;
+  &:last-child {
+    margin-right: 0;
+  }
+  @media screen and (max-width: 550px) {
+      flex-basis: 100%;
+  }
+
+  .anticon {
+      padding: 8px;
+      margin-bottom: 21px;
+      border-radius: 4px;
+      background-color: $beemedocre3;
+  }
+
+  .card-title {
+      line-height: 19px;
+      font-weight: 700;
+      font-size: 16px;
+      color: $black;
+      margin-bottom: 15px;
+  }
+
+  .card-content {
+      font-size: 16px;
+      font-weight: 400;
+      color: $black;
+      margin: 0;
+  }
+}

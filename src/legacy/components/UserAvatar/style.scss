@@ -1,0 +1,24 @@
+// colors
+$darkgrey : #252A36;
+$lightgreen : #20D5D6;
+$beemedblue1 : #005D72;
+$beemedocre1 : #CBA348;
+
+.user-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2px;
+  .emptyImage {
+    border-radius: 50%;
+    background: #5995A3;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+}

@@ -1,0 +1,30 @@
+// Style for VideoPopupVimeo component
+
+/* Global Variables */
+// @import "scss/global/variables";
+
+.video-modal {
+  width : 600px !important;
+
+  .ant-modal-close-x {
+    display: none;
+  }
+  .ant-modal-body {
+    padding: 0;
+  }
+}
+.video-wrapper-modal {
+  width : 100%;
+  .player-wrapper{
+    margin-right:0px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .video-modal {
+    width : 100% !important;
+  }
+  .video-wrapper-modal {
+    width : 100%;
+  }
+}

@@ -1,0 +1,43 @@
+/* Global Variables */
+@import 'scss/global/variables';
+
+.banner-ios {
+  background-color: $beemedblue1;
+  color: $white;
+  height: 50px;
+  z-index: 99999;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: env(safe-area-inset-top);
+  z-index: 1051;
+  left: 0;
+  right: 0;
+  padding: 8px 20px;
+
+
+  &--left {
+    display: flex;
+    gap: 15px;
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+
+      &-appname {
+        font-weight: bold;
+        color: $white;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      &-desc {
+        color: $white;
+        line-height: 1;
+      }
+    }
+
+    svg {
+      height: 28px;
+    }
+  }
+}

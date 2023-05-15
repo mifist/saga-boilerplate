@@ -1,0 +1,21 @@
+// Add Images
+
+.ant-upload.ant-upload-select-picture-card > .ant-upload {
+  //background: #ffdead !important;
+}
+
+.ant-upload-list-picture-card-container {
+  .ant-image-img {
+    object-fit: cover !important;
+  }
+}
+
+.gallery-document-upload {
+  border: 1px solid #adadad;
+  padding: 5px;
+  text-align: center;
+  padding-top: 35px;
+  width: 100px;
+  height: 100px;
+}
+

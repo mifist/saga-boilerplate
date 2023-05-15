@@ -1,0 +1,50 @@
+$beemedblue1: #005d72;
+$beemedocre1: #cba348;
+
+.main-single__go-back {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  height: auto;
+  min-height: initial;
+  color: $beemedblue1;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  .anticon {
+    transition: all 0.3s ease-in-out;
+    margin-right: 9px;
+    display: block;
+    height: 18px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: $beemedblue1;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  &:hover,
+  &:focus {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    min-height: initial;
+    color: $beemedocre1;
+    .anticon {
+      svg {
+        fill: $beemedocre1;
+      }
+    }
+  }
+}
+
+.main-single__go-back--rtl {
+  .anticon {
+    margin-right: unset;
+    margin-left: 9px;
+  }
+}

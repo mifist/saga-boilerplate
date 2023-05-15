@@ -1,0 +1,363 @@
+// Style for CommunityPreHeader component
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+$bg-size: 150px;
+$logo-size: 94px;
+
+.community-pre-header-wrapper {
+  margin-bottom: 21px;
+  background: linear-gradient(0.25turn, #005E72, #005E7299); //linear-gradient(90deg, #2d77f7, #14c5eb);
+
+  padding: 19px 0 21px 22px;
+  position: relative;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+  .edit-header-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: $beemedocre1;
+    //border: 1px solid $white;
+    padding: 3px ​9px;
+    height: auto;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    &:hover {
+      background-color: $beemedocre1;
+      border: 1px solid $beemedocre1;
+    }
+  }
+
+  .save-edit-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: $beemedblue1;
+    border: 1px solid $beemedblue1;
+    padding: 7px 14px 7px 14px;
+    height: auto;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid $beemedblue1;
+      color: $beemedblue1;
+    }
+  }
+
+  .cancel-edit-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: #b7b7b7;
+    border: 1px solid #b7b7b7;
+    padding: 7px 14px 7px 14px;
+    height: auto;
+    margin-bottom: 15px;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid #b7b7b7;
+      color: #b7b7b7;
+    }
+  }
+}
+
+.community-logo-wrrapper {
+  position: relative;
+}
+
+.avatar-row {
+  max-width: $logo-size;
+  min-width: $logo-size;
+  min-height: $logo-size;
+  max-height: $logo-size;
+  position: relative;
+  .avatar-upload-message {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 100%;
+    min-height: inherit;
+    max-height: $logo-size;
+    overflow: hidden;
+    transition: all 0.3s;
+    .logotype-filed {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .upload-action {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      transition: all 0.3s;
+      padding: 5px;
+      .anticon {
+        font-size: 16px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 50%;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: all 0.3s;
+      }
+    }
+    input[type='file'] {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      font-size: 0;
+      opacity: 0;
+      z-index: 15;
+      min-height: $logo-size;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      transition: all 0.3s;
+    }
+    &:hover,
+    &:focus {
+      .upload-action::before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.color-picker-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1 0 50% !important;
+  cursor: pointer;
+  @media screen and (max-width: 520px) {
+    flex: 1 0 100% !important;
+  }
+  .ant-form-item-control {
+    flex: 1 0 auto;
+  }
+  .color-preview {
+    width: 100px;
+    height: 30px;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 0 #d6d6d6, -3px -3px 0 #d6d6d6, 3px -3px 0 #d6d6d6,
+      -3px 3px 0 #d6d6d6;
+  }
+}
+
+.background-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex: 1 0 50% !important;
+  @media screen and (max-width: 520px) {
+    flex: 1 0 100% !important;
+  }
+  .ant-form-item-control {
+    flex: 1 0 auto;
+  }
+  .ant-form-item-control-input-content {
+    max-width: $bg-size;
+    min-width: $bg-size;
+    min-height: $bg-size;
+    max-height: $bg-size;
+    position: relative;
+    .background-upload-message {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      width: 100%;
+      min-height: inherit;
+      max-height: $bg-size;
+      overflow: hidden;
+      transition: all 0.3s;
+      .logotype-filed {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .delete-action {
+        font-size: 16px;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        border-radius: 50%;
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        z-index: 16;
+        transition: all 0.3s;
+        &:hover,
+        &:focus {
+          color: rgb(235, 44, 75);
+        }
+      }
+      .upload-action {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        transition: all 0.3s;
+        padding: 5px;
+        .anticon {
+          font-size: 16px;
+          color: #fff;
+          background: rgba(0, 0, 0, 0.5);
+          padding: 5px;
+          border-radius: 50%;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+          z-index: 10;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.3);
+          opacity: 0;
+          transition: all 0.3s;
+        }
+      }
+      input[type='file'] {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        font-size: 0;
+        opacity: 0;
+        z-index: 15;
+        min-height: $bg-size;
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s;
+      }
+      &:hover,
+      &:focus {
+        .upload-action::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.pre-header-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .ant-form-item {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .header-update-btn {
+    margin-top: 24px;
+    margin-left: auto;
+    border-color: $beemedocre1;
+    color: $beemedocre1;
+    display: block;
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 7px 14px;
+    height: auto;
+    max-height: initial;
+    max-width: max-content;
+    &:hover,
+    &:focus {
+      background: $beemedocre1;
+      color: #fff;
+    }
+  }
+}
+
+.community-logo-img-wrapper {
+  min-height: 94px;
+  display: block;
+}
+
+.pre-header-modal {
+  .ant-modal-content {
+    height: auto;
+  }
+  .ant-modal-header {
+    background-color: $beemedblue1;
+    padding: 17px 0 17px 33px;
+
+    .ant-modal-title {
+      line-height: 21px;
+      font-weight: 500;
+      font-size: 18px;
+      color: $white;
+    }
+  }
+
+  .ant-modal-body {
+    padding: 33px 33px;
+  }
+
+  .ant-modal-footer {
+    display: none;
+  }
+
+  .anticon.anticon-close.ant-modal-close-icon {
+    padding: 0 33px 0 0;
+    svg {
+      fill: $white;
+      width: 19px;
+      height: 19px;
+    }
+  }
+}

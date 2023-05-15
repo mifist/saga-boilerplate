@@ -1,0 +1,12 @@
+// Style for SideBarMenu component
+
+/* Global Variables */
+// @import "scss/global/variables";
+
+.tcf-mobile-drawer .am-drawer-sidebar .am-list {
+  // height: calc(
+  //   100% - env(safe-area-inset-bottom) - env(safe-area-inset-top)
+  // ) !important;
+  overflow-y: auto;
+  margin-bottom: 70px;
+}

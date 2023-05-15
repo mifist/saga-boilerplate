@@ -1,0 +1,82 @@
+$beemedblue1 : #005D72;
+$beemedocre1 : #CBA348;
+
+.sidebar-podcast-info {
+  background: #fff;
+  padding: 26px 30px 24px 30px;
+  > .ant-image {
+    margin: 0 auto;
+    display: block;
+  }
+  .podcast-descriptions {
+    .ant-descriptions-row {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      .ant-descriptions-item {
+        padding-bottom: 10px;
+        font-size: 18px;
+        font-weight: 400;
+        color: #000;
+        line-height: 1.2;
+        @media screen and (max-width: 980) {
+          font-size: 16px; 
+        }
+        * {
+          font-size: inherit;
+          color: inherit;
+          font-weight: inherit;
+          line-height: inherit;
+        }
+      }
+    }
+  }
+  .emptyImage {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #5995A3;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar-title {
+    text-transform: uppercase;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700 !important;
+    line-height: 1.20;
+    color: #000;
+    margin-bottom: 24px;
+  }
+  .ant-list {
+    .ant-list-item {
+      border: none;
+      padding: 0;
+      &:not(:last-of-type) {
+        margin-bottom: 12px;
+      }
+    }
+    .ant-list-item-meta {
+      align-items: flex-start;
+    }
+    .ant-list-item-meta-avatar {}
+    .ant-list-item-meta-content {}
+    .ant-list-item-meta-title {
+      margin-bottom: 0;
+      font-size: 14px;
+      color: #000;
+      font-weight: 400 !important;
+      line-height: 1.4;
+      + .ant-list-item-meta-description {
+        margin-top: 10px;
+      }
+    }
+  }
+}

@@ -1,0 +1,201 @@
+@import 'scss/global/variables';
+
+h3.main-single-content-heading {
+  margin-top: 96px;
+  margin-bottom: 25px;
+  font-size: 30px;
+}
+
+.invitation-form {
+  .member-list {
+    &-item {
+      display: flex;
+      align-items: center;
+      background-color: $white;
+      margin-bottom: 2px;
+      padding-right: 10px;
+      gap: 0 !important;
+      position: relative;
+
+      .ant-select-dropdown {
+        min-width: 100% !important;
+      }
+
+      .ant-space-item {
+        &:first-child {
+          width: 100%;
+        }
+
+        .ant-form-item {
+          margin-bottom: 0;
+        }
+      }
+      .user-field {
+        max-width: 450px;
+
+        @media screen and (max-width: 660px) {
+          max-width: 195px;
+        }
+
+        .ant-select-selector {
+          height: auto;
+          border: 0;
+        }
+        .ant-select-focused {
+          .ant-select-selector {
+            border: none;
+            box-shadow: none;
+          }
+        }
+        .ant-select-selection-item {
+          display: flex;
+          align-items: center;
+          padding: 10px 11px;
+
+          .ant-avatar {
+            width: 35px !important;
+            height: 35px !important;
+          }
+
+          .emptyImage {
+            width: 35px !important;
+            height: 35px !important;
+            min-width: auto !important;
+          }
+
+          .description {
+            margin-left: 8px;
+
+            .fullname {
+              font-size: 14px;
+              font-weight: 500 !important;
+              line-height: 1;
+              color: $black;
+              margin-bottom: 2px;
+            }
+
+            .company {
+              margin: 0;
+              font-size: 14px;
+              color: rgba(0, 0, 0, 0.6);
+              line-height: 1;
+            }
+          }
+        }
+        .ant-select-selection-search-input {
+          height: 50px;
+          padding: 10px;
+        }
+        .ant-select {
+          height: 50px;
+        }
+        .ant-select-selector {
+          height: 100%;
+        }
+        .ant-select-selection-placeholder {
+          display: flex;
+          align-items: center;
+          padding-left: 10px;
+        }
+        .ant-form-item-explain-error {
+          padding-left: 15px;
+        }
+      }
+      .user-role {
+        border: 1px solid #a4a2a2;
+        border-radius: 5px;
+        width: 100px;
+        .ant-select {
+          &:hover {
+            .ant-select-selector {
+              border: 0;
+            }
+          }
+        }
+        &.ant-form-item-has-error {
+          border: 0;
+          .ant-select {
+            &:hover {
+              .ant-select-selector {
+                border: 1px solid #ff4d4f !important;
+              }
+            }
+          }
+        }
+      }
+
+      .remove-member-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid $red;
+        color: $red;
+        font-size: 19px;
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease-in-out;
+        &:hover,
+        &:focus {
+          background: $red;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .add-member-btn {
+    width: 100%;
+    color: $beemedocre1;
+    border: 1px solid $beemedocre1;
+    background-color: #f7f1e4;
+    font-size: 16px;
+    padding: 10px 0;
+    height: auto;
+    margin-bottom: 40px;
+    margin-top: 8px;
+  }
+
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .invite-leter-btn {
+      text-decoration: underline;
+      font-size: 16px;
+      padding: 0;
+    }
+
+    .invite-btn {
+      padding: 14px 60px;
+      height: auto;
+      font-size: 15px;
+    }
+  }
+}
+
+.user-field-option {
+  .ant-select-item-option-content {
+    padding: 10px 22px;
+    display: flex;
+
+    .description {
+      margin-left: 16px;
+
+      .fullname {
+        font-size: 18px;
+        font-weight: 500;
+        color: $black;
+        margin-bottom: 6px;
+      }
+
+      .company {
+        margin: 0;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+  }
+}

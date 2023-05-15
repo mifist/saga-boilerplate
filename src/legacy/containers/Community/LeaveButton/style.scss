@@ -1,0 +1,49 @@
+// Style for LeaveButton component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.leave-button-wrapper {
+
+  .leave-button__dropdown {}
+
+  .leave-button:not(.ant-btn-group),
+  .ant-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: $beemedocre1;
+    border: 1px solid $beemedocre1;
+    padding: 7px 14px 7px 14px;
+    height: auto;
+
+    &:hover {
+      color: $white;
+      background-color: $beemedocre1;
+      border: 1px solid $beemedocre1;
+    }
+
+    &[disabled] {
+      &:hover {
+        color: $white;
+        background-color: $beemedocre1;
+        border: 1px solid $beemedocre1;
+      }
+    }
+
+    &.ant-dropdown-trigger {
+      color: #fff;
+      padding: 0;
+
+      .anticon {
+        color: #fff;
+
+        svg {
+          fill: #fff;
+        }
+      }
+    }
+
+  }
+}

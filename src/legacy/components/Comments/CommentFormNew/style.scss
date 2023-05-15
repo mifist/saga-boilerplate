@@ -1,0 +1,108 @@
+@import 'scss/global/variables';
+
+.comment-form-container {
+  width: 100%;
+
+  &--initial {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 23px;
+    background: #fff;
+    width: 100%;
+
+    .ant-avatar {
+      min-width: 38px;
+    }
+
+    &__message {
+      border-radius: 14px;
+      margin: 0;
+      padding: 8px 12px;
+      width: 100%;
+      line-height: 1.2;
+      font-size: 14px;
+      background: #f2f7f8;
+      cursor: pointer;
+    }
+
+    .comment-form {
+      width: 100%;
+
+      &--fields {
+        border: 1px solid rgba(187, 187, 187, 0.5);
+        border-radius: 10px;
+        padding: 10px;
+        background: #f2f7f8;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .container {
+          display: flex;
+          gap: 15px;
+        }
+
+        &__content {
+          padding: 0;
+          position: relative;
+        }
+
+        &__file-upload {
+          width: auto;
+          margin-right: 5px;
+
+          .ant-upload {
+            width: auto;
+            height: auto;
+            margin: 0;
+            border: 0;
+            background-color: transparent;
+          }
+        }
+      }
+
+      &--action-buttons {
+        display: flex;
+        gap: 15px;
+
+        .ant-btn {
+          border-radius: 14px;
+          border: 0;
+          font-size: 16px;
+          padding: 6px 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          min-width: 90px;
+        }
+
+        &__submit {
+          background: $beemedblue1;
+
+          span::first-letter {
+            text-transform: capitalize;
+          }
+
+          .ant-btn-loading-icon {
+            position: absolute;
+            left: 8px;
+          }
+        }
+
+        &__cancel {
+          border-color: $lightgrey;
+          background: $lightgrey;
+
+          &:hover,
+          &:focus {
+            border-color: $beemedblue4;
+            background: $beemedblue4;
+          }
+        }
+      }
+    }
+  }
+}

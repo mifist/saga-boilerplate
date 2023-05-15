@@ -1,0 +1,240 @@
+// // Style for RulesWidget component
+
+// /* Global Variables */
+@import 'scss/global/variables';
+
+.rules-widget {
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+
+  .ant-collapse-icon-position-right
+    > .ant-collapse-item
+    > .ant-collapse-header
+    .ant-collapse-arrow {
+    top: 8px;
+  }
+
+  .ant-collapse.ant-collapse-borderless.ant-collapse-icon-position-right.ant-collapse-ghost.rules-list-tabs {
+    width: 100%;
+  }
+
+  .edit-rules-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: $beemedocre1;
+    border: 1px solid $beemedocre1;
+    padding: 7px 14px;
+    height: auto;
+    margin-bottom: 15px;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid $beemedocre1;
+      color: $beemedocre1;
+    }
+  }
+
+  .save-edit-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: $beemedblue1;
+    border: 1px solid $beemedblue1;
+    padding: 7px 14px;
+    height: auto;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid $beemedblue1;
+      color: $beemedblue1;
+    }
+  }
+
+  .cancel-edit-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: #b7b7b7;
+    border: 1px solid #b7b7b7;
+    padding: 7px 14px 7px 14px;
+    height: auto;
+    margin-bottom: 15px;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid #b7b7b7;
+      color: #b7b7b7;
+    }
+  }
+
+  .create-rules-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    cursor: pointer;
+    background-color: $beemedblue1;
+    border: 1px solid $beemedblue1;
+    padding: 7px 14px 7px 14px;
+    height: auto;
+    width: 100%;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid $beemedblue1;
+      color: $beemedblue1;
+    }
+  }
+
+  .rules-list {
+    counter-reset: rule;
+    width: 100%;
+
+    .rules-list-description {
+      overflow: hidden;
+      font-size: 14px;
+      line-height: 1.2;
+      padding-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .ant-collapse-item {
+      border-bottom: 1px solid rgb(151 151 151 / 30%);
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+      }
+    }
+
+    .ant-collapse-header {
+      line-height: 16px;
+      font-weight: 700;
+      font-size: 14px;
+      color: $black;
+      padding: 0;
+      padding-right: 31px;
+      padding-bottom: 15px;
+    }
+
+    .ant-collapse-header > div:before {
+      counter-increment: rule;
+      content: counters(rule, '. ') '. ';
+      display: inline-block;
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+
+    .ant-btn.ant-btn-link {
+      padding: 0;
+      border: none;
+      margin: 0;
+      line-height: 16px;
+      margin-left: 0;
+    }
+
+    .ant-collapse-content-box p {
+      line-height: 16px;
+      font-weight: 400;
+      font-size: 14px;
+      color: $black;
+      margin-left: 16px;
+      margin-bottom: 0;
+    }
+
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 0;
+    }
+  }
+
+  .rules-list-tabs {
+    counter-reset: rule;
+    .rules-list-description {
+      font-size: 16px;
+    }
+    .ant-collapse-item {
+      border-bottom: 1px solid rgb(151 151 151 / 30%);
+      margin-bottom: 15px;
+      padding: 0 0 15px 0;
+    }
+
+    .ant-collapse-content-box > div > div {
+      flex-direction: column;
+      display: flex;
+      align-items: end;
+    }
+    .box-btn-edit {
+      display: flex;
+      position: absolute;
+      top: -2px;
+      right: 28px;
+
+      .ant-btn-icon-only {
+        height: 16px;
+        vertical-align: top;
+        padding: 0;
+        font-size: 0;
+      }
+      .anticon-delete {
+        color: rgb(235, 44, 75);
+      }
+    }
+
+    .ant-collapse-header > div:first-of-type::before {
+      counter-increment: rule;
+      content: counters(rule, '. ') '. ';
+      display: inline-block;
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+
+    .ant-collapse-item:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+
+    .ant-collapse-header {
+      color: $black;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      margin: 0;
+      padding: 0 90px 0 0;
+    }
+
+    .ant-collapse-content-box {
+      margin: 0;
+      padding: 0;
+    }
+
+    .ant-collapse-content-box p {
+      color: $black;
+      font-size: 16px;
+      font-weight: 400;
+      padding-top: 15px;
+      line-height: 21px;
+      margin-left: 16px;
+      margin-bottom: 0;
+    }
+
+    .ant-collapse-content.ant-collapse-content-active
+      > .ant-collapse-content-box {
+      padding: 0;
+      padding-top: 12px;
+    }
+  }
+}
+
+.rules-wrapper.rules-widget {
+  @media screen and (max-width: 800px) {
+    margin: 0 15px 15px 15px;
+    padding: 10px !important;
+  }
+  .ant-empty {
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,315 @@
+// colors
+$darkgrey: #252a36;
+$lightgreen: #20d5d6;
+
+$beemedblue1: #005d72;
+$beemedblue2: #5995a3;
+$beemedblue3: #8cb6bf;
+$beemedblue4: #b0cad1;
+
+$beemedocre1: #cba348;
+$beemedocre2: #ddc388;
+$beemedocre3: #eee2c7;
+$beemedocre4: #e9ddc2;
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.podcast-card {
+  border-radius: 15px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.2);
+  @media screen and (max-width: 800px) {
+    width: calc(100% - 40px) !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ant-card-cover img {
+    max-height: 230px;
+    min-height: 230px;
+    min-width: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .ant-card-body {
+    padding: 5px 15px;
+  }
+  .ant-card-meta {
+    margin: 0;
+  }
+  .ant-card-meta-title {
+    white-space: pre-line;
+    margin-bottom: 8px !important;
+    line-height: 1.2;
+    color: #000;
+    font-weight: 700;
+    min-height: 38px;
+    * {
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0;
+      font-weight: inherit;
+    }
+    a {
+      &:hover,
+      &:focus {
+        color: $beemedblue1;
+      }
+    }
+  }
+  .ant-card-actions {
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    border-color: rgba(151, 151, 151, 0.15);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &::before,
+    &::after {
+      display: none;
+    }
+    > li {
+      border: none !important;
+      padding: 5px 0;
+      float: none;
+    }
+    li {
+      &:first-of-type {
+        width: auto !important;
+      }
+      &:last-of-type {
+        width: auto !important;
+      }
+    }
+  }
+  &__tags {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 15px;
+    z-index: 5;
+    flex-wrap: wrap;
+  }
+  .tag {
+    border-radius: 7px;
+    min-height: 21px;
+    padding: 4px 15px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 5px;
+    &:not(:last-of-type) {
+      margin-right: 5px;
+    }
+    &--anatomy {
+      background: $beemedblue1;
+      border-color: $beemedblue1;
+      color: #ffffff;
+    }
+    &--speciality {
+      background: #b2ced4;
+      border-color: #b2ced4;
+      color: $beemedblue1;
+    }
+    &--resolved {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 5;
+      max-width: max-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $beemedocre1;
+      border-color: $beemedocre1;
+      color: #fff;
+      border-radius: 0 10px 0 0;
+      font-size: 12px;
+      .anticon {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+        svg {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+  &__hide-image {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .ant-btn {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      height: 50px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .anticon {
+      width: 24px;
+      height: 16px;
+      margin-right: 8px;
+      svg {
+        width: 100%;
+        height: auto;
+        fill: #fff;
+      }
+    }
+  }
+  &__description {
+    color: #000;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 400;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &__author {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 11px;
+    margin-bottom: 15px;
+    .photo {
+      display: block;
+      margin-right: 14px;
+    }
+    .name {
+      color: #000;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 400;
+      display: block;
+    }
+    .anticon {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  &__likes,
+  &__comments {
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    flex-wrap: nowrap;
+    * {
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      line-height: 0.9;
+      display: block;
+    }
+    .anticon {
+      font-size: 15px;
+      color: #101010;
+      margin-top: -2px;
+      margin-right: 8px;
+      transition: color 0.3s;
+      width: 16px;
+      height: 16px;
+      svg {
+        width: 100%;
+        height: auto;
+        fill: #000000;
+      }
+    }
+    &--number {
+      display: flex;
+      align-items: center;
+      color: #000000;
+      .text {
+        margin-left: 4px;
+        color: inherit;
+      }
+    }
+  }
+  &__likes {
+    justify-content: flex-start;
+    transition: color 0.3s;
+    &.active {
+      color: $beemedocre1;
+      .anticon {
+        color: $beemedocre1;
+        svg {
+          fill: $beemedocre1;
+        }
+      }
+      .case-card__likes--number {
+        color: inherit;
+      }
+    }
+  }
+  &__comments {
+    justify-content: flex-end;
+    > a {
+      display: inherit !important;
+      align-items: inherit;
+      justify-content: inherit;
+    }
+  }
+
+  .members-badge {
+    line-height: 11px;
+    font-size: 10px;
+    font-weight: 400;
+    border-radius: 2px;
+    padding: 2px 4px;
+    margin-left: 5px;
+    text-transform: capitalize;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &.admin {
+      background-color: #f6dbae;
+      color: $beemedocre1;
+    }
+
+    &.employee,
+    &.industry {
+      background: $purple;
+      border-color: $purple;
+      color: #fff;
+
+      .anticon {
+        color: #fff;
+
+        svg {
+          fill: #fff;
+        }
+      }
+    }
+
+    &.moderator {
+      background-color: #b2ced4;
+      color: $beemedblue1;
+    }
+  }
+}

@@ -1,0 +1,217 @@
+@import 'scss/global/variables';
+
+.invite-member-form-wrapper {
+  @media screen and (max-width: 800px) {
+    padding: 0 9px;
+  }
+
+  .invite-member-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 0;
+    height: auto;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    &:not(:disabled) {
+      color: $beemedocre1;
+      border: 1px solid $beemedocre1;
+      background-color: #f7f1e4;
+    }
+  }
+
+  .invite-member-form {
+    display: flex;
+    align-items: center;
+    background-color: $white;
+    margin-bottom: 2px;
+    padding-right: 10px;
+    gap: 0 !important;
+    position: relative;
+
+    .ant-select-dropdown {
+      min-width: 100% !important;
+    }
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column;
+      padding-right: 0;
+    }
+
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+
+    .user-field {
+      width: 100%;
+
+      .ant-select-selector {
+        height: auto;
+        border: 0;
+      }
+
+      .ant-select-focused {
+        .ant-select-selector {
+          border: none;
+          box-shadow: none;
+        }
+      }
+
+      .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+        padding: 10px 11px;
+        white-space: unset;
+
+        .ant-avatar {
+          width: 35px !important;
+          height: 35px !important;
+        }
+
+        .emptyImage {
+          width: 35px !important;
+          height: 35px !important;
+          min-width: auto !important;
+        }
+
+        .description {
+          margin-left: 8px;
+
+          .fullname {
+            font-size: 14px;
+            font-weight: 500 !important;
+            line-height: 1;
+            color: $black;
+            margin-bottom: 2px;
+          }
+
+          .company {
+            margin: 0;
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.6);
+            line-height: 1;
+          }
+        }
+      }
+
+      .ant-select-selection-search-input {
+        height: 50px;
+        padding: 10px;
+      }
+
+      .ant-select {
+        // height: 50px;
+      }
+
+      .ant-select-selector {
+        height: 100%;
+      }
+
+      .ant-select-selection-placeholder {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+      }
+
+      .ant-form-item-explain-error {
+        padding-left: 15px;
+      }
+    }
+
+    .user-role {
+      border-radius: 5px;
+      width: 100px;
+
+      .ant-select {
+        min-width: 100px;
+        min-height: 30px;
+        font-size: 12px;
+        color: #000;
+        font-weight: 400;
+        line-height: 14px;
+        border-radius: 5px;
+        border: 1px solid #a4a2a2;
+        .ant-select-selector {
+          padding: 0 10px;
+          height: 30px;
+          .ant-select-selection-item,
+          .ant-select-selection-placeholder {
+            line-height: 30px;
+          }
+          .ant-select-selection-search-input {
+            height: 30px;
+          }
+          .ant-select-selection-search {
+            left: 10px;
+            right: 20px;
+          }
+        }
+      }
+
+      &.ant-form-item-has-error {
+        border: 0;
+
+        .ant-select {
+          &:hover {
+            .ant-select-selector {
+              border: 1px solid #ff4d4f !important;
+            }
+          }
+        }
+      }
+    }
+
+    .accept-member-btn,
+    .remove-member-btn {
+      min-width: 30px;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid $red;
+      color: $red;
+      font-size: 19px;
+      margin-left: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+
+      &:hover,
+      &:focus {
+        background: $red;
+        color: $white;
+      }
+    }
+
+    .accept-member-btn {
+      border: 1px solid $beemedblue1;
+      background: $beemedblue1;
+      color: #fff;
+      &:hover,
+      &:focus {
+        background: transparent;
+        color: $beemedblue1;
+      }
+    }
+    &__actions {
+      width: 100%;
+      max-width: max-content;
+      display: flex;
+      padding: 0 20px;
+
+      @media screen and (max-width: 800px) {
+        width: 100%;
+        max-width: unset;
+        margin-bottom: 10px;
+        margin-top: 8px;
+        padding: 0;
+      }
+
+      .user-role {
+        @media screen and (max-width: 800px) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

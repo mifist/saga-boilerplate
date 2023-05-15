@@ -1,0 +1,106 @@
+$blue: #005d72;
+$green: #28a745;
+$red: #dc3545;
+
+.answer-items {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+    min-height: 26px;
+    &:not(:last-of-type) {
+        margin-bottom: 15px;
+    }
+    &:hover,
+    &:focus {
+        cursor: pointer;
+    }
+    &.no-chacked {
+        pointer-events: none !important;
+    }
+    &.highlighted-answer {
+        color: $blue !important;
+        label {
+            color: inherit !important;
+            &:before  {
+                color: #ffffff !important;
+                background-color: $blue;
+                border-color: $blue;
+            }
+        }
+    }
+    &.right-answer {
+        color: $green !important;
+        label {
+            color: inherit !important;
+            &:before  {
+                color: #ffffff !important;
+                background-color: $green;
+                border-color: $green;
+            }
+        }
+    }
+    &.wrong-answer {
+        color: $red !important;
+        label {
+            color: inherit !important;
+            &:before  {
+                color: #ffffff !important;
+                background-color: $red;
+                border-color: $red;
+            }
+        }
+    }
+
+    input {
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;bottom: 0;
+        z-index: 5;
+        cursor: pointer;
+    }
+    label {
+        display: flex;
+        font-size: 14px;
+        line-height: 15px;
+        align-items: center;
+        counter-increment: count;
+        position: relative;
+        margin-top: 5px;
+        flex-basis: calc(100% - 41px);
+        &:before {
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgb(206, 206, 206);
+            border-radius: 100%;
+            font-size: 10px;
+            line-height: 1;
+            margin-right: 15px;
+            content: counter(count, upper-alpha);
+            position: absolute;
+            left: -41px;
+            pointer-events: none;
+        }
+    }
+
+    .answer-item {
+        font-weight: 400;
+        font-size: 14px;
+        color: #000;
+    }
+
+    .answer {
+        font-weight: 400;
+        font-size: 14px;
+        color: #000;
+    }
+
+}

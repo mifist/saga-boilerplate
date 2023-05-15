@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SL/icons/icon/3-dots</title>
+    <g id="SL/icons/icon/3-dots" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(11.500000, 0.000000)" fill="#101010">
+            <circle id="Oval" cx="3.46153846" cy="3.46153846" r="3.46153846"></circle>
+            <circle id="Oval" cx="3.46153846" cy="15.4615385" r="3.46153846"></circle>
+            <circle id="Oval" cx="3.46153846" cy="26.4615385" r="3.46153846"></circle>
+        </g>
+    </g>
+</svg>

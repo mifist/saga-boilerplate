@@ -1,0 +1,28 @@
+// Style for PopularTagsWidget component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.popular-tags-widget {
+  &__item {
+    min-height: 30px;
+    border-radius: 30px;
+    border: 1px solid $beemedblue1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: $beemedblue1;
+    padding: 5px 11px 4px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,276 @@
+// Style for AboutCommunityWidget component
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.about-community-widget {
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+
+  .ant-form.ant-form-horizontal {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+  }
+
+  .ant-row.ant-form-item {
+    margin-bottom: 0;
+  }
+  .about-editor-widget {
+    width: 100%;
+  }
+
+  .about-community {
+    .about-community-description {
+      line-height: 20px;
+      font-size: 14px;
+      font-weight: 400;
+      color: $black;
+      margin-bottom: 0;
+      + .ant-btn-link {
+        padding: 0;
+        height: auto;
+        line-height: 1;
+        margin-bottom: 15px;
+      }
+      * {
+        line-height: 20px;
+        font-size: 16px !important;
+        font-family: $global-font !important;
+
+        font-weight: 400;
+        color: $black;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+      p,
+      ul,
+      ol {
+        + p,
+        + ul,
+        + ol {
+          margin-top: 15px;
+        }
+      }
+      li + li {
+        margin-top: 5px;
+      }
+    }
+
+    .about-community-private {
+      margin-bottom: 15px;
+
+      .private-title {
+        line-height: 19px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $black;
+        margin-bottom: 3px;
+        text-transform: capitalize;
+      }
+
+      .private-description {
+        line-height: 15px;
+        font-weight: 700;
+        font-size: 14px;
+        color: rgb(0 0 0 / 50%);
+        margin: 0;
+      }
+    }
+
+    .about-community-members {
+      margin-bottom: 15px;
+
+      .members-amount {
+        line-height: 19px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $black;
+        margin: 0;
+      }
+
+      .members-description {
+        color: rgb(0 0 0 / 50%);
+        line-height: 16px;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+
+    .about-community-date {
+      .date-create-community {
+        line-height: 19px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $black;
+        margin-bottom: 3px;
+      }
+
+      .date-create-description {
+        color: rgb(0 0 0 / 50%);
+        line-height: 16px;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+  }
+
+  .about-community-tab {
+    display: block;
+    width: 100%;
+    .rdw-editor-wrapper {
+      box-sizing: border-box;
+      margin-top: 15px;
+    }
+    .about-community-description {
+      margin-bottom: 15px;
+      line-height: 20px;
+      font-size: 16px;
+      font-weight: 400;
+      color: $black;
+      margin: 0;
+      * {
+        // line-height: 20px;
+        font-size: 16px !important;
+        font-family: $global-font;
+        font-weight: 400;
+        color: $black;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+      p,
+      ul,
+      ol {
+        + p,
+        + ul,
+        + ol {
+          margin-top: 15px;
+        }
+      }
+      li + li {
+        margin-top: 5px;
+      }
+    }
+
+    .about-community-private {
+      margin-bottom: 15px;
+
+      .private-title {
+        line-height: 19px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $black;
+        margin-bottom: 5px;
+      }
+
+      .private-description {
+        line-height: 15px;
+        font-weight: 700;
+        font-size: 16px;
+        color: rgb(0 0 0 / 50%);
+      }
+    }
+
+    .about-community-members {
+      margin-bottom: 15px;
+
+      .members-amount {
+        line-height: 19px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $black;
+        margin-bottom: 5px;
+      }
+
+      .members-description {
+        color: rgb(0 0 0 / 50%);
+        line-height: 16px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+    }
+
+    .about-community-date {
+      .date-create-community {
+        line-height: 19px;
+        font-weight: 700;
+        font-size: 16px;
+        color: $black;
+        margin-bottom: 5px;
+      }
+
+      .date-create-description {
+        color: rgb(0 0 0 / 50%);
+        line-height: 16px;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+      }
+    }
+  }
+
+  .edit-about-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: $beemedocre1;
+    border: 1px solid $beemedocre1;
+    padding: 7px 14px;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  .edit-about-btn:hover {
+    background-color: transparent;
+    border: 1px solid $beemedocre1;
+    color: $beemedocre1;
+  }
+
+  .save-edit-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: $beemedblue1;
+    border: 1px solid $beemedblue1;
+    padding: 7px 14px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .save-edit-btn:hover {
+    background-color: transparent;
+    border: 1px solid $beemedblue1;
+    color: $beemedblue1;
+  }
+
+  .cancel-edit-btn {
+    line-height: 18px;
+    font-weight: 500;
+    font-size: 15px;
+    color: $white;
+    background-color: #b7b7b7;
+    border: 1px solid #b7b7b7;
+    padding: 7px 14px 7px 14px;
+    height: auto;
+  }
+
+  .cancel-edit-btn:hover {
+    background-color: transparent;
+    border: 1px solid #b7b7b7;
+    color: #b7b7b7;
+  }
+}
+
+.about-community-wrapper.about-community-widget {
+  @media screen and (max-width: 800px) {
+    margin: 0 15px 15px 15px;
+    padding: 10px !important;
+  }
+}

@@ -1,0 +1,73 @@
+$beemedblue1: #005d72;
+$beemedocre1: #cba348;
+
+.bookmark-action {
+  &:hover {
+    cursor: pointer;
+  }
+  .anticon {
+    width: 16px;
+    height: 16px;
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.bookmarked {
+}
+
+.bookmark-button {
+  padding: 10px 20px;
+  //max-width: 200px;
+  min-width: 182px;
+  border: 1px solid $beemedblue1;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 3px;
+  background: transparent;
+  color: #000;
+  transition: all 0.3s;
+  @media screen and (max-width: 640px) {
+    min-width: 145px;
+  }
+  &:hover {
+    cursor: pointer;
+    background: $beemedblue1;
+    color: #fff;
+    .anticon:not(.bookmarked) svg {
+      stroke: #fff;
+      fill: #fff;
+    }
+  }
+  &.events {
+    padding: 20px;
+  }
+  .anticon {
+    width: 16px;
+    height: 16px;
+    // margin-right: 8px;
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+a.bookmark-button.bookmarked {
+  color: #cba348;
+}
+
+a.bookmark-button.bookmarked:hover {
+  color: white;
+}
+
+.bookmark-icon {
+  width: 19px;
+}

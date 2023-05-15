@@ -1,0 +1,58 @@
+// Style for ScrollToTopButton component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+:root {
+  --sat: env(safe-area-inset-top);
+  --sar: env(safe-area-inset-right);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+}
+
+.scroll-top-button {
+  /* height: 40PX;
+  width: 40PX;
+  line-height: 40px;
+  border-radius: 4px;
+  background-color: #1088e9;
+  color: #fff;
+  text-align: center;
+  font-size: 14PX;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+   */
+  position: fixed;
+  bottom : calc(32px + env(safe-area-inset-bottom));
+  right : 32px;
+  width: 32px;
+  height: 32px;
+  z-index: 1000;
+  @media screen and (max-width: 800px) {
+    bottom : calc(75px + env(safe-area-inset-bottom));
+    right : calc(20px + env(safe-area-inset-right));
+  }
+  button {
+    border : 0px solid transparent;
+    background: rgba(71, 82, 93, 0.4);
+    svg {
+      color: white;
+    }
+  }
+  button:hover, button:focus {
+    background: rgba(71, 82, 93, 0.8) !important;
+    border : 0px solid transparent !important;
+    svg {
+      color: white  !important;
+    }
+  }
+}
+
+//.scroll-to-top-button {
+//  position: fixed;
+//  bottom : 70px;
+//  right : 20px;
+//  width: 32px;
+//  height: 32px;
+//}

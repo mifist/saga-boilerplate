@@ -37,7 +37,7 @@ import useDeviceDetect from 'utils/useDeviceDetect';
 import { Button, Col, Empty, Layout, Row, Spin } from 'antd';
 
 // components
-import CommentsOverview from 'containers/CommentsOverview';
+import CommentsOverview from 'legacy/containers/CommentsOverview';
 import GoBackButton from 'components/GoBackButton';
 import BookmarkAction from 'components/BookmarkAction';
 import ShareAction from 'components/ShareAction';
@@ -45,7 +45,7 @@ import SidebarAuthorsList from 'components/Sidebar/SidebarAuthorsList';
 import CreatePublicationv2 from 'components/CreatePublicationv2';
 
 // contexts
-import { withUser } from 'engine/Contexts/User.context';
+import { withUser } from 'engine/context/User.context';
 
 export function ArticleDetail({
   article,

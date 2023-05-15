@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>SL/icons/icon/Search</title>
+    <g  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="iconfinder_search">
+            <g transform="translate(3.000000, 3.000000)">
+                <circle id="Oval" stroke="#005d72" stroke-width="2" cx="10.4166667" cy="10.4166667" r="10.4166667" ></circle>
+                <line x1="25" y1="25" x2="17.7777778" y2="17.7777778" id="Path" stroke="#005d72" stroke-width="2"></line>
+            </g>
+        </g>
+    </g>
+</svg>

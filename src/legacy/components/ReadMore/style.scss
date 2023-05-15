@@ -1,0 +1,34 @@
+$beemedblue1: #005d72;
+$beemedocre1: #cba348;
+
+.read-more-content {
+  .line-clamp-4 {
+    overflow: hidden;
+    line-height: 1.5em;
+  }
+
+  &__text {
+    p {
+      line-height: 1.5em;
+      margin-bottom: 0;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    ul {
+      margin: 0;
+    }
+  }
+  br {
+    display: none;
+  }
+}
+
+.toggle-more-content {
+  color: $beemedblue1 !important;
+}
+
+.readmore-link {
+  float: right !important;
+}

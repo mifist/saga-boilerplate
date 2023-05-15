@@ -1,0 +1,98 @@
+// Style for HeaderLayout component
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.layout-header-menu {
+  .ant-menu-title-content * {
+    font-weight: 400;
+  }
+
+  .ant-menu-submenu-title {
+    span {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400 !important;
+    }
+
+    svg {
+      height: 12px;
+    }
+  }
+
+  &.ant-menu-dark.ant-menu-horizontal > .ant-menu-item {
+    padding: 0 16px !important;
+  }
+}
+.layout-header {
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__right-side {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+
+      a {
+        padding: 11px 24px;
+        height: auto;
+        border-radius: 5px;
+        line-height: 1;
+        display: block;
+        font-weight: bold;
+      }
+
+      .signup {
+        background-color: $beemedocre1;
+        color: $white;
+        border: 1px solid transparent;
+
+        &:hover {
+          border: 1px solid transparent;
+        }
+      }
+
+      .login {
+        border: 1px solid $white;
+        color: $white;
+        background-color: transparent;
+      }
+    }
+
+    .search svg {
+      height: 26px;
+      width: 26px;
+    }
+  }
+}
+.new-label {
+  position: absolute;
+  background: $beemedocre1;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 5px;
+  max-width: max-content;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  top: 5px;
+  right: 5px;
+  max-height: initial;
+  min-height: initial;
+  line-height: 1;
+}
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+  background-color: #004251 !important;
+}

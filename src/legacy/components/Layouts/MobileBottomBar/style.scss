@@ -1,0 +1,55 @@
+// Style for MobileBottomBar component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.fixed_nav_mobile {
+  position: fixed;
+  left: 0;
+  bottom: env(safe-area-inset-bottom);
+  width: 100%;
+  color: white;
+  text-align: center;
+  height: auto;
+  width: 100%;
+  z-index: 98;
+  padding-left : env(safe-area-inset-left);
+  padding-right : env(safe-area-inset-right);
+
+  .am-tabs.am-tabs-horizontal.am-tabs-bottom {
+    .am-tab-bar-tab {
+      padding: 5px;
+      padding-bottom: 0;
+      .am-tab-bar-tab-title {
+        color: #000;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.375;
+        margin-bottom: 5px;
+        white-space: nowrap;
+      }
+      .am-tab-bar-tab-icon {
+       // margin-top: 5px;
+        margin-top: 0;
+        .anticon {
+          font-size: 20px !important;
+          width: 20px;
+          height: 20px;
+          svg {
+            fill: #000;
+            width: 100%;
+            &.active-svg-icon {
+              fill: $beemedblue1;
+            }
+            &.home-icon {
+              fill: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+

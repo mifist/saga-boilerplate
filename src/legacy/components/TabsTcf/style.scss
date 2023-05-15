@@ -1,0 +1,103 @@
+// Style for TabsTcf component
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.tabs-tcf-wrapper {
+  .tabs-tcf {
+    // Tab Content
+    &__tab-content {
+      padding-top: 15px;
+      padding-bottom: 50vh;
+
+      .community-widget {
+        padding: 15px;
+        background-color: $white;
+
+        @media screen and (max-width: 800px) {
+          padding: 0;
+        }
+      }
+    }
+    // Tabs Navigation
+    &__nav {
+      display: flex;
+      align-items: flex-end;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-bottom: 4px solid $beemedblue1;
+    }
+    &__nav-item {
+      &:not(:last-child) {
+        //margin-right: 15px;
+      }
+    }
+    &__nav-button {
+      background: rgba(0, 0, 0, 0);
+      padding: 4px;
+      color: #767676;
+      box-shadow: none;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      font-family: inherit;
+      padding: 6px 20px;
+      min-height: 29px;
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background: $beemedblue1;
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 0s, opacity 0.4s ease-in-out;
+      }
+      &.active {
+        background: $beemedblue1;
+        color: #fff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        pointer-events: none;
+        &:after {
+          opacity: 1;
+          visibility: visible;
+          transition: visibility 0s, opacity 0.4s ease-in-out;
+        }
+      }
+    }
+    // Tabs Navigation Select
+    &__nav-select {
+      width: calc(100% - 30px);
+      margin: 15px auto;
+      display: block;
+      color: #fff;
+      .ant-select-selector {
+        background-color: $beemedblue1;
+        border: 1px solid $beemedblue1;
+        color: inherit;
+        height: 34px;
+        font-size: 15px;
+        font-weight: 500;
+        .ant-select-selection-item {
+          font-weight: inherit;
+        }
+      }
+      .ant-select-arrow {
+        color: inherit;
+        font-size: 14px;
+      }
+    }
+  }
+}

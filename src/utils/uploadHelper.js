@@ -79,16 +79,29 @@ const beforeUploadDocument = file => {
     file.type ===
       'application/vnd.openxmlformats-officedocument.presentationml.presentation' ||
     file.type === 'application/rtf';
+
   if (!isDocument) {
     message.error(
       'You can only upload Amazon eBook/Microsoft Documents/EPUB/OpenDocument/PDF/RTF file!',
     );
   }
-  const isLt4M = file.size / 1024 / 1024 < 4;
-  if (!isLt4M) {
-    message.error('Document must smaller than 4MB!');
+  const isLt100M = file.size / 1024 / 1024 < 100;
+  if (!isLt100M) {
+    message.error(
+      'Document must smaller than 100MB to be displayed in the gallery! Please use the files sections to upload bigger files.',
+    );
   }
-  return isDocument && isLt4M && tempFile;
+  return isDocument && isLt100M && tempFile;
+};
+
+const beforeUploadFile = file => {
+  const tempFile = new File([file], scrubFileName(file.name));
+
+  // const isLt4M = file.size / 1024 / 1024 < 100;
+  // if (!isLt4M) {
+  //   message.error('Document must smaller than 100MB!');
+  // }
+  return tempFile;
 };
 
 const beforeUploadVideo = file => {
@@ -154,6 +167,7 @@ export {
   beforeUploadAudio,
   beforeUploadDocument,
   beforeUploadVideo,
+  beforeUploadFile,
   resizeFile,
   scrubFileName,
 };

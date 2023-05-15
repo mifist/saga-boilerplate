@@ -5,52 +5,130 @@
  */
 
 import React, { memo, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
+import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+import messages from './messages';
 
 // styles
 import './style.scss';
 
+import { useInjectSaga } from 'utils/injectSaga';
+import { useInjectReducer } from 'utils/injectReducer';
+import reducer from './reducer';
+import saga from './saga';
+
 import { useParams } from 'react-router-dom';
 
-import { flushState, onLoadList } from 'pages/SagaContainer/actions';
+import {
+  flushStateTesttest,
+  loadTesttest,
+  changeTesttest,
+  deleteTesttest,
+} from './actions';
 
-function Testtest() {
-  // const { id: initId } = Params();
+import {
+  selectTesttestData,
+  selectTesttestLoading,
+  selectTesttestError,
+  selectTesttestDeleteSuccessful,
+} from './selectors';
 
-  const { list, loading } = useSelector((state) => state.Testtest);
+// antd component
+import { Col, Row } from 'antd';
 
-  const dispatch = useDispatch();
+// assets
+//import CustomIcons from 'legacy/components/CustomIcons';
 
-  console.log(list);
+// global user
+//import { withUser } from 'engine/context/User.context';
+
+export function Testtest({
+  // main data
+  testtestData,
+  // states
+  deleteSuccessful,
+  error,
+  loading,
+  // actions
+  loadTesttest,
+  changeTesttest,
+  deleteTesttest,
+  flushState,
+}) {
+  useInjectReducer({ key: 'testtest', reducer });
+  useInjectSaga({ key: 'testtest', saga });
+
+  const { id: initId } = useParams();
+  const [currentID, setCurrentID] = useState(initId);
 
   // Because history not trigger update component
   useEffect(() => {
-    // if (!initId) {
-    dispatch(onLoadList(1));
-    // }
+    if (!initId) {
+      setCurrentID(initId);
+      loadTesttest(initId);
+    }
+  }, [initId]);
+
+  /**
+   * Loading data for rendering in a component
+   * - work like ComponentDidUpdate
+   */
+  useEffect(() => {
+    // --> main code here
   }, []);
 
   // Clearing the state after unmounting a component
   useEffect(() => {
     return () => {
       // Anything in here is fired on component unmount.
-      dispatch(flushState());
+      flushState();
     };
   }, []);
 
   // render function
   return (
     <div>
-      <h1>test</h1>
+      <FormattedMessage {...messages.header} />
     </div>
   );
 }
 
-// const mapStateToProps = createStructuredSelector({
-//   loading: selectTesttestLoading(),
-//   error: selectTesttestError(),
-//   deleteSuccessful: selectTesttestDeleteSuccessful(),
-//   testtestData: selectTesttestData(),
-// });
+Testtest.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  flushState: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  deleteSuccessful: PropTypes.bool,
+  loadTesttest: PropTypes.func.isRequired,
+  changeTesttest: PropTypes.func,
+  deleteTesttest: PropTypes.func,
+};
 
-export default memo(Testtest);
+const mapStateToProps = createStructuredSelector({
+  loading: selectTesttestLoading(),
+  error: selectTesttestError(),
+  deleteSuccessful: selectTesttestDeleteSuccessful(),
+  testtestData: selectTesttestData(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch,
+    flushState: () => dispatch(flushStateTesttest()),
+    loadTesttest: id => dispatch(loadTesttest(id)),
+    changeTesttest: data => dispatch(changeTesttest(data)),
+    deleteTesttest: id => dispatch(deleteTesttest(id)),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+export default compose(
+  withConnect,
+  memo,
+)(Testtest);

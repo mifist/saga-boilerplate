@@ -1,0 +1,37 @@
+// Style for JoinButton component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.join-button {
+  border-radius: 0 !important;
+  border: 0;
+  background-color: $beemedblue1;
+  color: $white;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 700;
+
+  &:disabled {
+    background-color: $grey !important;
+  }
+
+  button {
+    border-radius: inherit;
+    border: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+
+    &:disabled {
+      background-color: $grey !important;
+    }
+  }
+
+  &.in-row {
+    width: 100%;
+    max-width: inherit;
+  }
+
+}

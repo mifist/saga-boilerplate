@@ -1,0 +1,15 @@
+.modal__creategroup-tcf,
+.modal__groupmembers {
+  @media screen and (max-width: 800px) {
+    position: absolute !important;
+  }
+}
+
+.chat__list {
+  .message__txt {
+    height: auto !important;
+    margin: 0 !important;
+  }
+}
+
+

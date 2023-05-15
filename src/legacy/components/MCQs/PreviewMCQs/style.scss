@@ -1,0 +1,15 @@
+// Styles for PreviewMCQs component
+.preview-mcqs {
+  margin-bottom:20px;
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+    margin-bottom: 14px;
+  }
+  &__list {
+    .create-mcqs {
+      margin: 0;
+    }
+  }
+}

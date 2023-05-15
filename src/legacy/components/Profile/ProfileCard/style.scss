@@ -1,0 +1,145 @@
+// colors
+$darkgrey: #252a36;
+$lightgreen: #20d5d6;
+
+$beemedblue1: #005d72;
+$beemedblue2: #5995a3;
+$beemedblue3: #8cb6bf;
+$beemedblue4: #b0cad1;
+
+$beemedocre1: #cba348;
+$beemedocre2: #ddc388;
+$beemedocre3: #eee2c7;
+$beemedocre4: #e9ddc2;
+
+.profile-card {
+  overflow: hidden;
+  border: none !important;
+  margin-bottom: 34px;
+
+  .ant-card-body {
+    padding: 13px 20px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: initial;
+      height: 100%;
+      width: 66px;
+      background: $beemedocre2;
+      display: block;
+    }
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .anticon {
+      width: 16px;
+      height: 16px;
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+    .name {
+      margin-right: 10px;
+    }
+
+    .badge {
+      margin-top: -3px;
+    }
+  }
+  .ant-card-meta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    &-detail {
+      flex: 1 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      * {
+        color: #000;
+        line-height: 1;
+        font-size: 16px;
+        white-space: pre-wrap;
+      }
+    }
+    &-title {
+      line-height: 15px;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+    &-description {
+      font-weight: 400;
+    }
+  }
+  .ant-card-actions {
+    border: none;
+    padding: 14px;
+    * {
+      margin: 0;
+    }
+  }
+
+  &__photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__badge {
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background: $beemedblue1;
+    margin: -10px 0 0;
+    border-radius: 8.5px;
+    line-height: 21px;
+    height: 21px;
+    position: relative;
+    z-index: 5;
+    border: none;
+  }
+  &__more {
+    color: $beemedblue1 !important;
+    font-size: 14px !important;
+    font-weight: 400;
+    display: block;
+    margin-top: 14px;
+    &:hover,
+    &:focus {
+      color: $beemedocre2 !important;
+    }
+  }
+
+  &--rtl {
+    .ant-card-body::before {
+      left: unset;
+      right: 0;
+    }
+
+    .profile-card {
+      &__author {
+        justify-content: flex-end;
+
+        .name {
+          margin-right: unset;
+        }
+      }
+    }
+  }
+}

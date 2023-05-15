@@ -1,0 +1,97 @@
+// Style for RequestControls component
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.request-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: max-content;
+  margin-left: auto;
+  &__loading {
+    margin-right: 15px;
+    max-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__role-select {
+    min-width: 100px;
+    min-height: 30px;
+    font-size: 12px;
+    color: #000;
+    font-weight: 400;
+    line-height: 14px;
+    border-radius: 5px;
+    border: 1px solid #a4a2a2;
+    .ant-select-selector {
+      padding: 0 10px;
+      height: 30px;
+      .ant-select-selection-item,
+      .ant-select-selection-placeholder {
+        line-height: 30px;
+      }
+      .ant-select-selection-search-input {
+        height: 30px;
+      }
+      .ant-select-selection-search {
+        left: 10px;
+        right: 20px;
+      }
+    }
+  }
+  &__accept-btn,
+  &__reject-btn,
+  &__employee-btn {
+    min-width: 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid $beemedblue1;
+    background: $beemedblue1;
+    color: #fff;
+    font-size: 19px;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+  }
+  &__employee-btn.not-employee {
+    background: $white;
+    color: $beemedblue1;
+  }
+  &__accept-btn {
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: $beemedblue1;
+    }
+  }
+  &__reject-btn {
+    border-color: $red;
+    background: transparent;
+    color: $red;
+    &:hover,
+    &:focus {
+      background: $red;
+      color: #fff;
+    }
+  }
+
+  &__employee-btn {
+    margin-right: 10px;
+    margin-left: 0;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    max-width: unset;
+    margin-top: 10px;
+
+    &__role-select {
+      width: 100%;
+    }
+  }
+}

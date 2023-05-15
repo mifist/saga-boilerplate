@@ -1,0 +1,62 @@
+.tab-wrapper {
+  margin-top: 20px;
+  display: flex;
+}
+
+.post-tabs-wrapper {
+  .ant-tabs-card {
+    &.ant-tabs-top {
+      & > .ant-tabs-nav .ant-tabs-tab {
+        border-radius: 0;
+      }
+    }
+  
+    & > .ant-tabs-nav {
+      .ant-tabs-tab {
+        background-color: #E7E7E7;
+        padding: 12px 22px 12px 27px;
+        // border-radius: 0;
+        color: #000000;
+        font-size: 14px;
+        line-height: 16px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+        // position: relative;
+        @media screen and (max-width: 560px) {
+          padding: 12px 20px;
+        }
+        @media screen and (max-width: 380px) {
+          padding: 12px 15px;
+        }
+        &.ant-tabs-tab-active {
+          background-color: #EEE2C7;
+  
+          .ant-tabs-tab-btn {
+            color: #000000;
+            font-weight: 700;
+          }
+  
+        }
+  
+  
+        // &::after {
+        //     position: absolute;
+        //     content: '3';
+        //     background-color: #B7B7B7;
+        //     font-size: 12px;
+        //     font-weight: 400;
+        //     line-height: 14px;
+        //     color: #FFFFFF;
+        //     padding: 4px 7px 3px;
+        //     border-radius: 22px;
+        //     margin-left: 7px;
+        //     right: 0;
+        // }
+      }
+    }
+  
+  }
+  
+}
+

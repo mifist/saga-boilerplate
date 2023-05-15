@@ -1,0 +1,45 @@
+// Style for ProfileSectionWrapper component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.profile-section-wrapper {
+  display: block;
+
+  +.profile-section-wrapper {
+    margin-top: 25px;
+  }
+
+  &__title {
+    display: block;
+    background: $beemedblue1;
+    min-height: 35px;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+
+    * {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      margin: 0;
+    }
+  }
+
+  &__context {
+    display: block;
+    background: #fff;
+    padding: 15px;
+    border-radius: 0px 0px 5px 5px;
+  }
+
+  &.simple {
+    .profile-section-wrapper__context {
+      border-radius: 5px;
+    }
+  }
+}

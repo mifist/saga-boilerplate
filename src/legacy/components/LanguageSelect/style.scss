@@ -1,0 +1,30 @@
+@import 'scss/global/variables';
+
+.languages-select {
+  .ant-select-dropdown * {
+    color: $beemedblue1 !important;
+  }
+
+  .ant-select-selector {
+    background: transparent !important;
+    color: $white !important;
+    border: 0 !important;
+    * {
+      font-weight: 400 !important;
+    }
+  }
+
+  .ant-select-arrow {
+    transition: all 0.3s ease-in-out;
+
+    * {
+      font-size: 12px !important;
+      font-weight: 400 !important;
+      color: $white !important;
+    }
+  }
+
+  &.ant-select-open .ant-select-arrow {
+    transform: rotate(180deg);
+  }
+}

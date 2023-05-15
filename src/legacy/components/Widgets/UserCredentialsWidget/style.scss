@@ -1,0 +1,55 @@
+// Style for UserCredentialsWidget component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.profile-custom-card {
+  background-color: white;
+  border-radius: 7px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 580px) {
+  .profile-credential {
+    margin-bottom: 100px !important;
+  }
+}
+
+.profile-cre-icons {
+  background: #e4eaed;
+  border-radius: 50%;
+  padding: 7px;
+  height: 40px;
+  width: 40px;
+  margin-right: 8px;
+}
+
+.profile-score {
+}
+
+.profile-score-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+.profile-score-tags {
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #005d72;
+  color: white;
+  border-radius: 10px;
+  padding: 5px 15px 5px 15px;
+}
+
+.profile-score .rewards {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.profile-credentials-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}

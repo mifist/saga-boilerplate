@@ -31,10 +31,8 @@ import {
   useUserPatchData,
   useGetInintNotReadComm,
   useCheckPushNotificationParameters,
-} from 'engine/Contexts/User.context';
+} from 'engine/context/User.context';
 
-// hooks
-import api from 'utils/apis/axiosAPI';
 // utils
 import { isDateBeforeToday } from 'utils/moment/moment.utils';
 

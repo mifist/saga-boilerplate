@@ -1,0 +1,46 @@
+// Style for ChatButton component
+
+/* Global Variables */
+@import "scss/global/variables";
+
+.chat-button {
+  background-color: $beemedblue1;
+  max-width: max-content;
+  width: 100%;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  flex: unset !important;
+  margin-right: 15px;
+  padding: 5px 8px;
+  white-space: nowrap;
+  color: $white;
+  margin-top: 20px;
+
+  .anticon {
+    margin-right: 5px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: $white;
+  }
+
+  &.small {
+    width: 30px;
+    height: 30px;
+    margin-top: 0;
+
+    .anticon {
+      margin-right: 0;
+    }
+  }
+
+}

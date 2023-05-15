@@ -1,0 +1,585 @@
+// styles for CreateMCQs component
+// colors
+$darkgrey: #252a36;
+$lightgreen: #20d5d6;
+
+$beemedblue1: #005d72;
+$beemedblue2: #5995a3;
+$beemedblue3: #8cb6bf;
+$beemedblue4: #b0cad1;
+
+$beemedocre1: #cba348;
+$beemedocre2: #ddc388;
+$beemedocre3: #eee2c7;
+$beemedocre4: #e9ddc2;
+
+.create-mcqs {
+  display: block;
+  max-width: max-content;
+}
+
+.btn-mcqs {
+  background-color: rgba(203, 163, 72, 0.15);
+  //width: 40px;
+  //height: 40px;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  border: solid 1px #cba348;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  outline: none;
+  background-color: rgb(250 250 250);
+  width: 104px;
+  height: 100px;
+  border: dashed 1px #d9d9d9;
+  border-radius: 5px;
+  //display: flex;
+  color: #0e101a;
+  > span {
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .anticon {
+    margin-bottom: 5px;
+  }
+}
+
+.mcqs-modal {
+  max-width: 660px;
+  width: 100% !important;
+  padding: 0;
+  @media screen and (max-width: 800px) {
+    width: 100% !important;
+    max-width: 100vw;
+    margin: 0;
+    top: 0;
+  }
+  .warning-message {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(219, 100, 100);
+  }
+  .ant-modal-body {
+    padding: 45px 40px 0 40px;
+    @media screen and (max-width: 800px) {
+      padding: 20px 15px 0 15px;
+    }
+  }
+  .ant-modal-content {
+    // border-radius: 0;
+    // box-shadow: none;
+    @media screen and (max-width: 800px) {
+      min-height: 100vh;
+    }
+  }
+  // Modal Header
+  .ant-modal-header {
+    background: $beemedblue1;
+    border-radius: 0;
+    color: #ffffff;
+    padding: 19px 42px 16px 42px;
+    @media screen and (max-width: 800px) {
+      padding: 15px;
+      padding-left: 45px;
+    }
+  }
+
+  .ant-modal-title {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    @media screen and (max-width: 800px) {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
+  }
+
+  .ant-modal-close {
+    right: 42px;
+    @media screen and (max-width: 800px) {
+      right: initial;
+      left: 15px;
+    }
+    .ant-modal-close-x {
+      width: auto;
+      @media screen and (max-width: 800px) {
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        height: 52px;
+      }
+    }
+  }
+
+  // Modal Footer
+  .ant-modal-footer {
+    border: none;
+    padding: 27px 42px 25px 42px;
+    @media screen and (max-width: 800px) {
+      padding: 15px;
+      padding-top: 30px;
+    }
+    .ant-btn {
+      background: $beemedblue1;
+      border-color: $beemedblue1;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px;
+      min-height: 46px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 180px;
+      width: 100%;
+      @media screen and (max-width: 800px) {
+        max-width: 100%;
+      }
+      &:hover,
+      &:focus {
+        background: transparent;
+        border-color: $beemedblue1;
+        color: $beemedblue1;
+      }
+    }
+  }
+
+  // Close
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    &.mobile {
+      margin-right: 8px;
+    }
+    .anticon {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    background: #fff;
+    height: auto;
+    line-height: 1;
+    border-color: #fff;
+    box-shadow: none;
+    border-radius: 0;
+    width: 100%;
+    margin-bottom: 15px;
+    .ant-avatar {
+      min-width: 36px;
+    }
+    .message {
+      margin-left: 15px;
+      display: block;
+      background: #f2f7f8;
+      border-radius: 14.5px;
+      min-height: 30px;
+      padding: 12px 13px;
+      width: 100%;
+      text-align: left;
+      line-height: 1;
+      font-size: 14px;
+      font-weight: 400;
+      @media screen and (max-width: 800px) {
+        background: transparent;
+        border-radius: 0;
+        min-height: initial;
+        padding: 0;
+      }
+    }
+  }
+  // Full content
+  &__content {
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 27px;
+    @media screen and (max-width: 800px) {
+      margin-bottom: 30px;
+    }
+    .ant-form-item {
+      margin-bottom: 0;
+      .ant-form-item-explain {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+      }
+      &.ant-form-item-has-error {
+        input,
+        textarea {
+          &::placeholder {
+            color: #db6464;
+          }
+          &:focus {
+            box-shadow: none;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  &__title,
+  &__description {
+    min-height: 40px !important;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+    line-height: 1.35 !important;
+    font-weight: 400;
+    padding: 8px 20px;
+    color: #111;
+    input,
+    textarea {
+      font-size: inherit;
+      font-weight: inherit;
+      padding-left: 0;
+      color: #111;
+      &:placeholder {
+        color: rgba(0, 0, 0, 0.45) !important;
+        font-size: inherit;
+        font-weight: inherit;
+      }
+    }
+  }
+  &__attach {
+    width: 100%;
+    margin-top: 10px;
+    .ant-select-selector {
+      margin-bottom: 0;
+      min-height: 40px !important;
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid #e0e0e0;
+      padding: 5px 20px;
+      font-size: 16px;
+      line-height: 1.35 !important;
+      font-weight: 400;
+      height: auto !important;
+      color: #111;
+      margin: 0;
+    }
+    .ant-select-selection-placeholder {
+      color: rgba(0, 0, 0, 0.45) !important;
+      font-size: 16px;
+      line-height: 1.35 !important;
+      font-weight: 400;
+      right: 20px;
+      left: 20px;
+    }
+  }
+  // Text
+  &__text {
+    .ant-form-item {
+      margin-bottom: 0;
+      .ant-form-item-explain {
+        display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+      }
+      &.ant-form-item-has-error {
+        input,
+        textarea {
+          &::placeholder {
+            color: #db6464;
+          }
+          &:focus {
+            box-shadow: none;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input)
+    .ant-select-selector {
+    border: solid 1px #005d72;
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: rgb(224, 224, 224);
+  }
+
+  .ant-tag.ant-tag-has-color {
+    color: rgb(0, 0, 0);
+    background-color: rgb(238, 226, 199);
+    margin-right: 10px;
+    height: 28px;
+    line-height: 28px;
+    font-weight: 400;
+    font-size: 14px;
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  .anticon-close.ant-tag-close-icon {
+    svg {
+      color: rgb(16, 16, 16);
+      margin-left: 5px;
+    }
+  }
+
+  .ant-select-open {
+    .ant-select-selector {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      border-color: #005d72;
+    }
+  }
+
+  .ant-select-dropdown {
+    border: 1px solid rgb(0, 93, 114);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .ant-select-item.ant-select-item-option {
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    height: 40px;
+    line-height: 30px;
+    &.ant-select-item-option-selected {
+      background-color: #f1f3f9;
+      color: #005d72;
+      font-size: 16px;
+      font-weight: 500;
+      font-family: 'Roboto';
+      height: 40px;
+      line-height: 30px;
+    }
+  }
+
+  .ant-select-item-option-state {
+    svg {
+      width: 11px;
+      height: 11px;
+    }
+  }
+}
+
+.answer-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  + .answer-row {
+    margin-top: 15px;
+  }
+  .ant-space-item {
+    &:nth-child(1) {
+      // with menu icon: 2
+      flex: 1;
+    }
+    &:not(:last-of-type) {
+      margin-right: 15px !important;
+    }
+    .answer-input {
+      margin: 0;
+      padding: 0;
+      color: #111;
+      font-size: 16px;
+      line-height: 1.35 !important;
+      font-weight: 400;
+      &.ant-form-item-has-error {
+        input,
+        textarea {
+          border-color: #db6464 !important;
+          &::placeholder {
+            color: #db6464;
+          }
+          &:focus {
+            box-shadow: none;
+            outline: none;
+          }
+        }
+      }
+      .ant-form-item-explain-error {
+        letter-spacing: 0.5px;
+        font-size: 12px;
+        position: absolute;
+        top: calc(100% + 2px);
+        line-height: 1;
+        min-height: 1px;
+        height: auto;
+        display: none;
+      }
+      .ant-form-item-control-input {
+        input {
+          border: 1px solid #e0e0e0;
+          border-radius: 5px;
+          min-height: 40px;
+          height: auto;
+          padding: 5px 20px;
+          color: #111;
+          font-size: 16px;
+          line-height: 1.35 !important;
+          font-weight: 400;
+          &:placeholder {
+            color: rgba(0, 0, 0, 0.45) !important;
+            font-size: inherit;
+            font-weight: inherit;
+          }
+        }
+      }
+    }
+    .answer-switch {
+      margin: 0;
+    }
+    .anticon.anticon-minus-circle {
+      font-size: 20px;
+      color: #db6464;
+      margin-left: 5px;
+    }
+  }
+}
+.qustions-item {
+  display: flex;
+  flex-direction: column;
+  padding-left: 3px;
+
+  .true-answer {
+    position: absolute;
+    right: 56px;
+  }
+
+  .ant-row.ant-form-item {
+    margin-bottom: 0;
+  }
+}
+
+.qustions-item-btn {
+  width: 100%;
+  min-height: 40px;
+  height: auto;
+  background-color: #f7f1e4;
+  color: #cba348;
+  border: solid 1px #cba348;
+  border-radius: 5px;
+  margin-bottom: 0;
+  box-shadow: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 15px;
+}
+
+.qustions-input {
+  width: 100%;
+  height: 40px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  border: solid 1px rgb(224, 224, 224);
+  padding-left: 20px;
+  line-height: 40px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.45);
+    font-weight: 400;
+    font-size: 16px;
+    opacity: 1;
+  }
+}
+
+.qustions-input-image {
+  width: 100%;
+  height: 40px;
+  color: rgba(0, 0, 0, 0.45);
+  border-radius: 5px;
+  border: solid 1px rgb(224, 224, 224);
+  padding-left: 20px;
+  line-height: 40px;
+  margin-bottom: 27px;
+  display: none;
+}
+
+.qustions-item-input {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  border: solid 1px rgb(224, 224, 224);
+  padding-left: 20px;
+  line-height: 40px;
+  // margin-bottom: 10px;
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.45);
+    opacity: 1;
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+
+.qustions-input-image-label {
+  display: block;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 5px;
+  padding: 11px 20px 10px;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 27px;
+}
+
+.validate-btn {
+  width: 179px;
+  height: 46px;
+  background-color: rgb(0, 93, 114);
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  display: block;
+  margin: 0 0 0 auto;
+}
+
+.answer-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.answer-menu-icon svg {
+  width: 11px;
+  height: 10px;
+  color: rgb(224, 224, 224);
+}
+
+.answer-menu-icon {
+  margin-right: 6px;
+}

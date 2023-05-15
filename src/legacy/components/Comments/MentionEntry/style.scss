@@ -1,0 +1,70 @@
+// Styles for AthorListView component
+
+.author-list-view {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 32px;
+  transition: all .3s;
+  @media screen and (max-width: 580px) {
+    padding: 10px 18px;
+  }
+  @media screen and (max-width: 321px) {
+    padding: 10px;
+  }
+  &:hover,
+  &:focus,
+  &::selection,
+  &:active {
+    background: rgba(172, 200, 220, .3);
+  }
+  &.focused {
+    background: rgba(172, 200, 220, .3);
+  }
+  &__avatar {
+    margin-right: 16px;
+    .ant-avatar-image,
+    .emptyImage {
+      @media screen and (max-width: 580px) {
+        width: 38px !important;
+        min-width: 38px !important;
+        height: 38px !important;
+      }
+    }
+    @media screen and (max-width: 321px) {
+      margin-right: 8px;
+    }
+  }
+  &__content {
+    flex: 1;
+  }
+  &__title {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    margin-bottom: 5px;
+    @media screen and (max-width: 580px) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+    @media screen and (max-width: 321px) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+  &__description {
+    color: rgba(0, 0, 0, .6);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    @media screen and (max-width: 580px) {
+      font-size: 14px;
+      line-height: 17px;
+    }
+    @media screen and (max-width: 321px) {
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+}

@@ -1,0 +1,215 @@
+/* Global Variables */
+@import 'scss/global/variables';
+
+.modal-form-likes {
+  &__wrapper {
+    .wrapper-close {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 18px;
+      font-weight: 400;
+      color: #ffffff;
+    }
+
+    .ant-modal-close-x {
+      margin-right: 45px;
+      width: 74px;
+
+      @media screen and (max-width: 500px) {
+        margin-right: 18px;
+      }
+    }
+
+    .anticon.anticon-close svg {
+      margin-right: 7px;
+    }
+
+    .ant-modal-body {
+      overflow: auto;
+      height: 430px;
+      padding: 18px 45px 30px;
+
+      @media screen and (max-width: 500px) {
+        padding: 18px 18px 30px;
+      }
+    }
+
+    .ant-modal-header {
+      background-color: #005d72;
+      padding: 18px 130px 15px 45px;
+
+      @media screen and (max-width: 500px) {
+        padding: 18px 92px 15px 18px;
+      }
+
+      .ant-modal-title {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        color: #ffffff;
+      }
+    }
+
+    .ant-list-item-meta-title {
+      color: #000000;
+      font-size: 18px;
+      font-weight: 500 !important;
+      line-height: 22px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .user-name {
+      color: #000000;
+      font-size: 18px;
+      font-weight: 500 !important;
+      line-height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      margin-right: 5px;
+    }
+
+    .user-badge {
+      line-height: 11px;
+      font-size: 10px;
+      font-weight: 400;
+      border-radius: 2px;
+      padding: 2px 4px;
+      margin-right: 5px;
+      text-transform: capitalize;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+      margin-bottom: 2px;
+
+      + .user-badge {
+        margin-left: 0;
+      }
+
+      &.admin {
+        background-color: #f6dbae;
+        color: $beemedocre1;
+      }
+
+      &.employee,
+      &.industry {
+        background: $purple;
+        border-color: $purple;
+        color: #fff;
+        margin-left: 0;
+
+        .anticon {
+          color: #fff;
+
+          svg {
+            fill: #fff;
+          }
+        }
+      }
+      &.moderator {
+        background-color: #b2ced4;
+        color: $beemedblue1;
+      }
+    }
+
+    .ant-list-item {
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      &-meta {
+        align-items: center;
+
+        &-content {
+          width: auto;
+        }
+
+        &-avatar {
+          height: 56px;
+          width: 56px;
+          flex: 0 0 56px;
+        }
+
+        &-description {
+          color: #000000;
+          opacity: 0.6;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 19px;
+        }
+      }
+
+      .badge {
+        margin-left: 4px;
+        margin-top: 5px;
+      }
+    }
+
+    .ant-avatar.ant-avatar-circle.ant-avatar-image {
+      width: 50px;
+      height: 50px;
+    }
+
+    .anticon.anticon-close.ant-modal-close-icon svg {
+      fill: #ffffff;
+      width: 20px;
+      height: 20px;
+    }
+
+    .ant-list-split .ant-list-item {
+      border-color: transparent;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: calc(100% - 72px);
+        height: 1px;
+        bottom: 0;
+        right: 0;
+        background-color: #979797;
+        opacity: 0.3;
+      }
+    }
+  }
+
+  &__btn-open {
+    background-color: transparent;
+    color: #000;
+    border: none;
+    padding: 0;
+    height: auto;
+    text-shadow: none;
+    box-shadow: none;
+    transition: none;
+    animation: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: #000;
+      background-color: transparent;
+      border: none;
+      animation: none;
+    }
+  }
+}
+
+.tooltip {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    color: #ffffff;
+  }
+}

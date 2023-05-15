@@ -1,0 +1,26 @@
+@import 'scss/global/variables';
+
+.invitation-controls {
+  display: flex;
+  gap: 8px;
+
+  .ant-btn {
+    min-width: auto !important;
+
+    .anticon {
+      font-size: 18px;
+    }
+  }
+
+  &__accept {
+    background-color: $beemedblue1 !important;
+    color: $white !important;
+  }
+
+  &__decline {
+    background-color: $white !important;
+    color: $red !important;
+    border-color: $red !important;
+    margin-left: 0 !important;
+  }
+}

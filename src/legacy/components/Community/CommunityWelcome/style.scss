@@ -1,0 +1,21 @@
+@import 'scss/global/variables';
+
+.communities--welcome {
+  margin-bottom: 60px;
+
+  &__header {
+    margin-bottom: 30px;
+    font-size: 30px !important;
+  }
+
+  &__content {
+    .ant-typography {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .email-link {
+      color: $beemedocre1;
+    }
+  }
+}

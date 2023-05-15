@@ -1,0 +1,110 @@
+// Style for CommunityCard component
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.overview-card-wrapper {
+  background-color: $white;
+  border-radius: 15px 15px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 2px 4px 3px rgba(192, 192, 192, 0.5);
+  padding: 0;
+  flex: 1 1 286px;
+  display: block;
+  //  background-color: transparent;
+  border-bottom: none;
+
+  @media screen and (max-width: 550px) {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin-bottom: 0;
+    + .overview-card-wrapper {
+      margin-top: 20px;
+    }
+  }
+  &__upper-box {
+    cursor: pointer;
+    background: linear-gradient(0.25turn, #005E72, #005E7299);
+    padding: 10px 0 10px 15px;
+    border: none;
+    height: 84px;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    background-position: 50% 50% !important;
+  }
+
+  &__lower-box {
+    padding: 20px 15px 33px 15px;
+    border: none;
+    cursor: pointer;
+    height: 100px;
+
+    .description-title {
+      &.label-industry {
+        background: $purple;
+        border-radius: 2px;
+        min-height: 19px;
+        padding: 4px 8px;
+        line-height: 1.2;
+        margin-right: 10px;
+        color: #fff;
+        font-weight: 500;
+        font-size: 8px;
+        max-width: max-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .lower-box-communities-title {
+      line-height: 19px;
+      font-weight: 700;
+      font-size: 16px;
+      color: $black;
+      margin-bottom: 8px;
+    }
+
+    .lower-box-communities-description {
+      line-height: 11px;
+      font-weight: 400;
+      font-size: 10px;
+      color: $black;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__action-buttons {
+    display: flex;
+
+    button {
+      width: 100%;
+      max-width: inherit;
+      border-radius: 0 !important;
+      border: 0;
+
+      &:first-child {
+        background-color: $beemedblue3;
+        color: $black;
+      }
+
+      &:last-child {
+        background-color: $beemedblue1;
+        color: $white;
+        font-weight: bold;
+      }
+
+      &:disabled {
+        background-color: $grey;
+      }
+    }
+
+    span {
+      width: 100%;
+    }
+  }
+}

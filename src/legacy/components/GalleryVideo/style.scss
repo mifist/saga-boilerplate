@@ -1,0 +1,30 @@
+.gallery-image {
+  padding-bottom: 10px;
+  display: flex;
+  overflow: auto;
+  overflow-y: hidden !important;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  .gallery-item.selected {
+    img {
+      border: 5px #005d72 solid !important;
+    }
+  }
+  .gallery-item {
+    width: 100px !important;
+    height : 70px;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    flex-direction: column;
+    //border: 1px solid #005d72;
+    img {
+      background: #005d72;
+      width: 100px;
+      object-fit: cover;
+    }
+  }
+}
