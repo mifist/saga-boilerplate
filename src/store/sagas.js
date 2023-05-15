@@ -4,7 +4,16 @@
 
 import SagaContainer from 'pages/SagaContainer/saga';
 import CaseOverview from 'legacy/pages/CaseOverview/saga';
+// containers
+import TestContainer from 'legacy/containers/TestContainer/saga';
+import CommentsOverview from 'legacy/containers/CommentsOverview/saga';
+import PersonalSideBar from 'legacy/containers/PersonalSideBar/saga';
+
 export default {
   SagaContainer,
-  CaseOverview
+  CaseOverview,
+  // containers
+  TestContainer,
+  CommentsOverview,
+  PersonalSideBar
 };

@@ -1,6 +1,6 @@
 /**
  *
- * Tests for CommunityDetail
+ * Tests for CaseOverview
  *
  * @see https://github.com/react-boilerplate/react-boilerplate/tree/master/docs/testing
  *
@@ -8,15 +8,20 @@
 
 import React from 'react';
 import { render } from 'react-testing-library';
+import { IntlProvider } from 'react-intl';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
+import { CaseOverview } from '../index';
+import { DEFAULT_LOCALE } from '../../../i18n';
 
-import { CommunityDetail } from '../index';
-
-describe('<CommunityDetail />', () => {
+describe('<CaseOverview />', () => {
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
-    render(<CommunityDetail dispatch={dispatch} />);
+    render(
+      <IntlProvider locale={DEFAULT_LOCALE}>
+        <CaseOverview dispatch={dispatch} />
+      </IntlProvider>,
+    );
     expect(spy).not.toHaveBeenCalled();
   });
 
@@ -32,7 +37,11 @@ describe('<CommunityDetail />', () => {
   it.skip('Should render and match the snapshot', () => {
     const {
       container: { firstChild },
-    } = render(<CommunityDetail />);
+    } = render(
+      <IntlProvider locale={DEFAULT_LOCALE}>
+        <CaseOverview />
+      </IntlProvider>,
+    );
     expect(firstChild).toMatchSnapshot();
   });
 });
