@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Tooltip } from 'antd';
-import CustomIcons from '../CustomIcons';
 
-//styles
 import './style.scss';
+
+// antd component
+import { Tooltip } from 'antd';
+// components
+import CustomIcons from 'legacy/components/CustomIcons';
+
 
 const Badge = ({ className, title, tooltipProps }) => {
   const mainClassName = classNames('badge', className);
