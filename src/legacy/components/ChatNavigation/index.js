@@ -1,16 +1,20 @@
 import React, { memo } from 'react';
-
+import { compose } from '@reduxjs/toolkit';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
+import './style.scss';
+
+// assets
 import chatsIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChatUI/CometChatNavBar/resources/chats.svg';
 import usersIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChatUI/CometChatNavBar/resources/users.svg';
 import groupsIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChatUI/CometChatNavBar/resources/groups.svg';
 
-import './style.scss';
-import { compose } from 'redux';
-import { useTranslation } from 'react-i18next';
+// contexts
 import { withUser } from 'engine/context/User.context';
+// Comet Chat
 import Translator from 'engine/CometChatWorkspace/src/resources/localization/translator';
+
 
 function ChatNavigation({ event, user, ...rest }) {
   const { i18n } = useTranslation();

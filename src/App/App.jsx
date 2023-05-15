@@ -17,14 +17,14 @@ import AppRouter from 'engine/AppRouter';
 
 function App({  }) {
 
-  
+
   return (
     <>
 
       <Helmet titleTemplate="%s - SagaBoilerplate" defaultTitle="SagaBoilerplate">
         <meta name="description" content="SagaBoilerplate" />
         <meta property="og:type" content="website" />
-        <meta
+        <metap
           property="og:title"
           content="SagaBoilerplate"
         />

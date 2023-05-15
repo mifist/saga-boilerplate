@@ -4,7 +4,7 @@
  *
  */
 import React, { memo, useEffect, useState } from 'react';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -19,21 +19,20 @@ import { notification, Spin, Button } from 'antd';
 // import CustomIcons from 'legacy/legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
-// global user
+// contexts
 import { withUser } from 'engine/context/User.context';
 
-// Async call for managing of users
+// utils
 import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
-import useAsync from 'appHooks/useAsync';
-
-// helpers function
 import { getObjId } from 'utils/generalHelper';
+// hooks
+import useAsync from 'appHooks/useAsync';
 
 function InvitationControls({
   invitationId,
   community,
   user,
-  // action
+  // props
   respond,
   // default props
   className,

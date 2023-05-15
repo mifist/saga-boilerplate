@@ -5,7 +5,7 @@
  */
 
 import React, { memo, useEffect, useState, useCallback } from 'react';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -13,24 +13,23 @@ import { useTranslation } from 'react-i18next';
 // styles
 import './style.scss';
 
-// antd component
-import { Select, notification, Spin } from 'antd';
-
 // assets
 // import CustomIcons from 'legacy/legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined, UserOutlined } from '@ant-design/icons';
 
+// antd component
+import { Select, notification, Spin } from 'antd';
 // components
 import ChatButton from 'legacy/components/ChatButton';
 
-// global user
+// contexts
 import { withUser } from 'engine/context/User.context';
 
-// Async call for managing of users
+// utils
 import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
-import useAsync from 'appHooks/useAsync';
-// helpers function
 import { getObjId } from 'utils/generalHelper';
+// hooks
+import useAsync from 'appHooks/useAsync';
 
 function RequestControls({
   mode,

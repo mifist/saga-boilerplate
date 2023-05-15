@@ -40,7 +40,7 @@ import MentionsPlugin from './plugins/MentionsPlugin';
 import { MentionNode } from './nodes/MentionNode';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { withUser } from 'engine/context/User.context';
 import ListMaxIndentLevelPlugin from './plugins/ListMaxIndentLevelPlugin';
 

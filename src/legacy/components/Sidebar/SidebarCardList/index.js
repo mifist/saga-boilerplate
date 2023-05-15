@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';

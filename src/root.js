@@ -23,6 +23,8 @@ import 'antd/dist/antd.css';
 // Import Other Providers
 import App from './App';
 
+import 'theme/scss/app.scss';
+
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!public/favicon.ico';
 import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line import/extensions

@@ -1,15 +1,8 @@
 import React, { memo, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-
-import reducer from './reducer';
-import saga from './saga';
+// HOC
+import withRedux from 'HOC/withRedux';
 
 import { flushState } from './actions';
 import { makeSelectTestContainer } from './selectors';
@@ -29,7 +22,11 @@ import log from 'eslint-plugin-react/lib/util/log';
 
 // components
 
-export function TestContainer({ flushState }) {
+export function TestContainer({ 
+  // core
+  state,
+  dispatch
+}) {
   useInjectReducer({ key: 'testContainer', reducer });
   useInjectSaga({ key: 'testContainer', saga });
 
@@ -70,28 +67,7 @@ export function TestContainer({ flushState }) {
   );
 }
 
-TestContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  flushState: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = createStructuredSelector({
-  testContainer: makeSelectTestContainer(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushState()),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
 export default compose(
-  withConnect,
+  withRedux,
   memo,
 )(TestContainer);

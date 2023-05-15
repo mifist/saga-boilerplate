@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';

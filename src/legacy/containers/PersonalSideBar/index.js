@@ -1,22 +1,11 @@
 import React, { memo, useEffect } from 'react';
-
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
+import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import reducer from './reducer';
-import saga from './saga';
+// HOC
+import withRedux from 'HOC/withRedux';
 
-import {
-  makeSelectMyEvents,
-  makeSelectMyReplayEvents,
-  makeSelectMyCommunities,
-  makeSelectLoadingCommunities,
-} from './selectors';
 import { flushState, loadEvents, loadCommunities } from './actions';
 
 // components
@@ -26,16 +15,12 @@ import SidebarAccordion from 'legacy/components/Sidebar/SidebarAccordion';
 function PersonalSideBar({
   // actions here
   type,
-  myEvents,
-  myReplayEvents,
-  myCommunities,
-  loadingCommunities,
-  loadEvents,
-  loadCommunities,
-  flushState,
+  // core
+  state,
+  dispatch
 }) {
-  useInjectReducer({ key: 'personalSideBar', reducer });
-  useInjectSaga({ key: 'personalSideBar', saga });
+  const childClassNames = classNames('presonal-sidebar-wrapper', className);
+  const {  myEvents, myCommunities, myReplayEvents, loadingCommunities} = state.PersonalSideBar;
 
   const { t } = useTranslation();
   /**
@@ -43,14 +28,14 @@ function PersonalSideBar({
    * - work like ComponentDidUpdate
    */
   useEffect(() => {
-    loadEvents(type);
-    loadCommunities();
+    dispatch(loadEvents(type));
+    dispatch(loadCommunities());
 
     // Anything in here is fired on component unmount.
     return () => {
       // Clearing the state after unmounting a component
 
-      flushState();
+      dispatch(flushState());
     };
   }, []);
 
@@ -87,33 +72,7 @@ function PersonalSideBar({
   );
 }
 
-PersonalSideBar.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  flushState: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = createStructuredSelector({
-  myEvents: makeSelectMyEvents(),
-  myCommunities: makeSelectMyCommunities(),
-  myReplayEvents: makeSelectMyReplayEvents(),
-  loadingCommunities: makeSelectLoadingCommunities(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushState()),
-    loadEvents: () => dispatch(loadEvents()),
-    loadCommunities: () => dispatch(loadCommunities()),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
 export default compose(
-  withConnect,
+  withRedux,
   memo,
 )(PersonalSideBar);

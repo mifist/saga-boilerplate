@@ -1,6 +1,6 @@
 import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 // styles

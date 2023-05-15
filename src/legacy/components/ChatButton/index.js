@@ -5,8 +5,8 @@
  */
 
 import React, { memo } from 'react';
+import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
-import { compose } from 'redux';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
