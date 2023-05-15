@@ -16,14 +16,14 @@ import './style.scss';
 import { notification, Spin, Button } from 'antd';
 
 // assets
-// import CustomIcons from 'legacy/legacy/components/CustomIcons';
+// import CustomIcons from 'legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // utils
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import { getObjId } from 'utils/generalHelper';
 // hooks
 import useAsync from 'appHooks/useAsync';

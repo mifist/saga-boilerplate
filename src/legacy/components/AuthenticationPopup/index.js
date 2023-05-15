@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Modal, Typography } from 'antd';
 
-import { AuthPopupContext } from 'engine/context/AuthPopup.context';
+import { AuthPopupContext } from 'appContext/AuthPopup.context';
 import './style.scss';
 
 import CustomIcons from 'legacy/components/CustomIcons';

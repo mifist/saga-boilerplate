@@ -19,8 +19,8 @@ import Badge from 'legacy/components/Badge';
 import ConditionalLink from 'legacy/components/ConditionalLink';
 
 // global user
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 import OverViewComments from 'legacy/components/Comments/OverViewComments';
 
 import { getEmployment } from 'utils/generalHelper';

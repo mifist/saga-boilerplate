@@ -4,11 +4,11 @@
  *
  */
 
-export const FLUSH_STATE = 'app/legacy/containers/UploadContent/FLUSH_STATE';
+const key = `UploadContent`;
+const path = `src/${key}/`
 
-export const UPLOAD_CONTENT_FILE =
-  'app/legacy/containers/UploadContent/UPLOAD_CONTENT_FILE';
-export const UPLOAD_CONTENT_FILE_SUCCESS =
-  'app/legacy/containers/UploadContent/UPLOAD_CONTENT_FILE_SUCCESS';
-export const UPLOAD_CONTENT_FILE_ERROR =
-  'app/legacy/containers/UploadContent/UPLOAD_CONTENT_FILE_ERROR';
+export const FLUSH_STATE = `${path}FLUSH_STATE`;
+
+export const UPLOAD_CONTENT_FILE = `${path}UPLOAD_CONTENT_FILE`;
+export const UPLOAD_CONTENT_FILE_SUCCESS = `${path}UPLOAD_CONTENT_FILE_SUCCESS`;
+export const UPLOAD_CONTENT_FILE_ERROR = `${path}UPLOAD_CONTENT_FILE_ERROR`;

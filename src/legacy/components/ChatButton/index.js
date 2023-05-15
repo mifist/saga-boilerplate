@@ -17,7 +17,7 @@ import './style.scss';
 import CustomIcons from 'legacy/components/CustomIcons';
 
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // helpers function
 import { getObjId } from 'utils/generalHelper';

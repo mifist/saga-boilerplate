@@ -16,7 +16,7 @@ import './style.scss';
 // antd component
 import { Collapse, Typography } from 'antd';
 // context
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // components
 import MembersListWidget from 'legacy/components/Widgets/MembersListWidget';
@@ -35,7 +35,7 @@ import {
   getUrlVars,
   makeSearchQueryParams,
 } from 'utils/generalHelper';
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 
 const MembersTab = ({
   members,

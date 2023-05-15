@@ -17,7 +17,7 @@ import UserAvatar from 'legacy/components/UserAvatar';
 import Badge from 'legacy/components/Badge';
 
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 import { getEmployment } from 'utils/generalHelper';
 

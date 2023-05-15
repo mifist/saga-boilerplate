@@ -1,11 +1,11 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal, Typography, Button, Image, notification } from 'antd';
-import api from 'engine/api/axiosAPI';
+import api from 'appAPI/axiosAPI';
 
 import './style.scss';
 import { compose } from '@reduxjs/toolkit';
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 import i18n from 'i18next';
 
 const QrcodePopup = ({ qrcode, newsfeed, user }) => {

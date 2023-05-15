@@ -32,7 +32,7 @@ import createMentionPlugin from '@draft-js-plugins/mention';
 import { stateToHTML } from 'draft-js-export-html';
 
 // Async call mantions
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import useAsync from 'appHooks/useAsync';
 
 // components

@@ -1,14 +1,9 @@
 import React, { memo, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import reducer from './reducer';
-import saga from './saga';
+// HOC
+import withRedux from 'HOC/withRedux';
 
 import { flushState, loadEvents } from './actions';
 import {
@@ -22,15 +17,17 @@ import SidebarCardList from 'legacy/components/Sidebar/SidebarCardList';
 import SidebarAccordion from 'legacy/components/Sidebar/SidebarAccordion';
 
 function ProfileSuggestions({
-  // actions here
+  // props
   type,
-  events,
-  replayEvents,
-  loadEvents,
-  flushState,
+  // core
+  state,
+  dispatch
 }) {
-  useInjectReducer({ key: 'profileSuggestions', reducer });
-  useInjectSaga({ key: 'profileSuggestions', saga });
+  const { 
+    profileSuggestions,
+    events,
+    replayEvents,
+  } = state.ProfileSuggestions;
 
   const { t } = useTranslation();
 
@@ -39,10 +36,10 @@ function ProfileSuggestions({
    * - work like ComponentDidUpdate
    */
   useEffect(() => {
-    loadEvents();
+    dispatch(loadEvents());
     return () => {
       // Clearing the state after unmounting a component
-      flushState();
+      dispatch(flushState());
     };
   }, []);
 
@@ -62,32 +59,7 @@ function ProfileSuggestions({
   );
 }
 
-ProfileSuggestions.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  flushState: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = createStructuredSelector({
-  profileSuggestions: makeSelectProfileSuggestions(),
-  events: makeSelectEvents(),
-  replayEvents: makeSelectReplayEvents(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushState()),
-    loadEvents: () => dispatch(loadEvents()),
-    // loadProfileEvents: params => dispatch(loadProfileEvents()),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
 export default compose(
-  withConnect,
+  withRedux,
   memo,
 )(ProfileSuggestions);

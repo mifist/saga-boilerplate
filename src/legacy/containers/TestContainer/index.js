@@ -5,7 +5,6 @@ import { compose } from '@reduxjs/toolkit';
 import withRedux from 'HOC/withRedux';
 
 import { flushState } from './actions';
-import { makeSelectTestContainer } from './selectors';
 
 // styles
 import './style.scss';
@@ -15,7 +14,7 @@ import { Col, Row, Typography, Space } from 'antd';
 const { Text } = Typography;
 
 // assets
-import CustomIcons from 'legacy/legacy/components/CustomIcons';
+import CustomIcons from 'legacy/components/CustomIcons';
 import VideoPopupVimeo from 'legacy/components/VideoPopupVimeo';
 import LexicalEditor from 'legacy/components/LexicalEditor';
 import log from 'eslint-plugin-react/lib/util/log';

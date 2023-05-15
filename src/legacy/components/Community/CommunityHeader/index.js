@@ -18,7 +18,7 @@ import { EditOutlined } from '@ant-design/icons';
 import LeaveButton from 'legacy/containers/Community/LeaveButton';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // helpers function
 import { anatomies, specialities, communityTypes } from 'utils/categoryHelper';

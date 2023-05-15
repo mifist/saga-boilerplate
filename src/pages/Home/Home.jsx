@@ -30,7 +30,7 @@ function Home({ ...rest }) {
             </ul>
           </nav>
           
-          <Button onClick={onClickStore}>Test store</Button>
+          <Button type="primary" onClick={onClickStore}>Test store</Button>
           <TestList />
         </Content>
       </Layout>

@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import './style.scss';
 
 // assets
-// import CustomIcons from 'legacy/legacy/components/CustomIcons';
+// import CustomIcons from 'legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined, UserOutlined } from '@ant-design/icons';
 
 // antd component
@@ -23,10 +23,10 @@ import { Select, notification, Spin } from 'antd';
 import ChatButton from 'legacy/components/ChatButton';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // utils
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import { getObjId } from 'utils/generalHelper';
 // hooks
 import useAsync from 'appHooks/useAsync';

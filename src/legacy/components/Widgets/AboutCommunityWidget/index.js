@@ -20,7 +20,7 @@ import { limit, getObjId } from 'utils/generalHelper';
 import { communityTypes } from 'utils/categoryHelper';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 import LexicalEditor from 'legacy/components/LexicalEditor';
 
 function AboutCommunityWidget({

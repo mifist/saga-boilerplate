@@ -19,10 +19,10 @@ import { Button, notification, Popconfirm } from 'antd';
 import JoinButton from 'legacy/containers/Community/JoinButton';
 
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // Async call for managing of users
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import useAsync from 'appHooks/useAsync';
 
 // helpers function

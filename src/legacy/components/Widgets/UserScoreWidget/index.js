@@ -26,7 +26,7 @@ import './style.scss';
 import LinkWrapper from 'legacy/components/LinkWrapper';
 
 // global user
-// import { withUser } from 'engine/context/User.context';
+// import { withUser } from 'appContext/User.context';
 
 function UserScoreWidget({
   // default props

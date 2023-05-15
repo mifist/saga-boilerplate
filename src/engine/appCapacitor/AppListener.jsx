@@ -26,7 +26,7 @@ import KeyboardListener from 'appCapacitor/listeners/KeyboardListener';
 import AppCoreListener from 'appCapacitor/listeners/AppCoreListener';
 
 // global user
-import { useGetLocalUser } from 'engine/context/User.context';
+import { useGetLocalUser } from 'appContext/User.context';
 
 function AppListener() {
   const history = useHistory();

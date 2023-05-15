@@ -4,17 +4,11 @@
  *
  */
 
-import {
-  CHANGE_DATA,
-  FLUSH_STATE,
-  UPLOAD_CONTENT_FILE,
-  UPLOAD_CONTENT_FILE_SUCCESS,
-  UPLOAD_CONTENT_FILE_ERROR,
-} from './constants';
+import * as CONSTANS from './constants';
 
 export function flushState() {
   return {
-    type: FLUSH_STATE,
+    type: CONSTANS.FLUSH_STATE,
   };
 }
 
@@ -25,7 +19,7 @@ export function flushState() {
  */
 export function uploadContentFile(file, fileType) {
   return {
-    type: UPLOAD_CONTENT_FILE,
+    type: CONSTANS.UPLOAD_CONTENT_FILE,
     file,
     fileType,
   };
@@ -40,7 +34,7 @@ export function uploadContentFile(file, fileType) {
  */
 export function uploadContentFileSuccess(uploadedFile, uploadedFileType) {
   return {
-    type: UPLOAD_CONTENT_FILE_SUCCESS,
+    type: CONSTANS.UPLOAD_CONTENT_FILE_SUCCESS,
     uploadedFile,
     uploadedFileType,
   };
@@ -55,7 +49,7 @@ export function uploadContentFileSuccess(uploadedFile, uploadedFileType) {
  */
 export function uploadContentFileError(error) {
   return {
-    type: UPLOAD_CONTENT_FILE_ERROR,
+    type: CONSTANS.UPLOAD_CONTENT_FILE_ERROR,
     error,
   };
 }

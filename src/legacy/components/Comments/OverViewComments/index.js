@@ -35,8 +35,8 @@ import ShareAction from 'legacy/components/ShareAction';
 import ModalWithLikes from 'legacy/components/ModalWithLikes';
 
 // global user
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 function OverViewComments({
   post,

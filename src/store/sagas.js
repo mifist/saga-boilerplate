@@ -8,6 +8,8 @@ import CaseOverview from 'legacy/pages/CaseOverview/saga';
 import TestContainer from 'legacy/containers/TestContainer/saga';
 import CommentsOverview from 'legacy/containers/CommentsOverview/saga';
 import PersonalSideBar from 'legacy/containers/PersonalSideBar/saga';
+import ProfileSuggestions from 'legacy/containers/ProfileSuggestions/saga';
+import UploadContent from 'legacy/containers/UploadContent/saga';
 
 import CaseDetail from 'legacy/pages/CaseDetail/saga';
 import ArticlesOverview from 'legacy/pages/ArticlesOverview/saga';
@@ -22,4 +24,6 @@ export default {
   TestContainer,
   CommentsOverview,
   PersonalSideBar,
+  ProfileSuggestions,
+  UploadContent,
 };

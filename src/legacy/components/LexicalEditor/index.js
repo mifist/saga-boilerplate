@@ -41,7 +41,7 @@ import { MentionNode } from './nodes/MentionNode';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { compose } from '@reduxjs/toolkit';
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 import ListMaxIndentLevelPlugin from './plugins/ListMaxIndentLevelPlugin';
 
 const defaultValue = '';
