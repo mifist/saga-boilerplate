@@ -38,7 +38,7 @@ module.exports = {
     publicPath: '/',
     path: path.resolve(process.cwd(), 'build'),
     clean: false,
-    libraryTarget: 'umd', 
+    libraryTarget: 'umd',
   },
   plugins: [
     new webpack.ProvidePlugin({
