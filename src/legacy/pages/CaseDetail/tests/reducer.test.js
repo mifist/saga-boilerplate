@@ -1,9 +1,9 @@
 // import produce from 'immer';
-import communityDetailReducer from '../reducer';
+import caseOverviewReducer from '../reducer';
 // import { someAction } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
-describe('communityDetailReducer', () => {
+describe('caseOverviewReducer', () => {
   let state;
   beforeEach(() => {
     state = {
@@ -13,7 +13,7 @@ describe('communityDetailReducer', () => {
 
   it('returns the initial state', () => {
     const expectedResult = state;
-    expect(communityDetailReducer(undefined, {})).toEqual(expectedResult);
+    expect(caseOverviewReducer(undefined, {})).toEqual(expectedResult);
   });
 
   /**

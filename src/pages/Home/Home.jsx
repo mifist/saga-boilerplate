@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
 import { Helmet } from 'react-helmet';
-
 import { Link } from 'react-router-dom';
+
+// styles
+import './Home.scss';
 
 // antd component
 import { Layout, Button } from 'antd';
