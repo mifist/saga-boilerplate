@@ -5,7 +5,6 @@ import * as CONSTANS from './constants';
 import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
-import moment from 'moment';
 
 // Update files for Single Case
 export function* uploadImages(action) {

@@ -1,0 +1,180 @@
+// login style
+
+$darkgrey: #252a36;
+$lightgreen: #20d5d6;
+$beemedblue1: #005d72;
+$beemedocre1: #cba348;
+
+.event_list_result {
+  text-align: right;
+}
+
+.events_tabs {
+  overflow: visible;
+  .ant-tabs-nav-list {
+    position: relative;
+    z-index: 2;
+    @media screen and (max-width: 800px) {
+      &::after {
+        content: '';
+        border-bottom: 2px solid rgba(44, 44, 44, 0.15);
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+  .ant-tabs-tab {
+    color: #00000075;
+    @media screen and (max-width: 800px) {
+      padding-top: 0;
+      padding-bottom: 14px;
+      margin-right: 0;
+    }
+    + .ant-tabs-tab {
+      @media screen and (max-width: 800px) {
+        margin-left: 25px;
+      }
+      @media screen and (max-width: 440px) {
+        margin-left: 20px;
+      }
+    }
+  }
+  .ant-tabs-tab:nth-child(3) {
+    @media screen and (max-width: 800px) {
+      margin-left: 25px;
+      position: relative;
+      z-index: 2;
+      padding-left: 25px;
+      border-left: 1px solid #979797;
+      &::after {
+        content: '';
+        position: absolute;
+        width: calc(100% + 25px);
+        left: -25px;
+        right: 0;
+        bottom: -1px;
+        border-bottom: 4px solid #f2f7f8;
+        z-index: 3;
+      }
+      &.ant-tabs-tab-active {
+        border-bottom-color: transparent !important;
+      }
+    }
+    @media screen and (max-width: 440px) {
+      margin-left: 20px;
+      padding-left: 20px;
+      &::after {
+        width: calc(100% + 20px);
+        left: -20px;
+      }
+    }
+  }
+
+  .ant-tabs-tab-btn {
+    font-size: 30px;
+    font-weight: 700 !important;
+    @media screen and (max-width: 800px) {
+      font-size: 18px;
+      font-weight: 500 !important;
+      line-height: 1;
+      margin-right: 0;
+    }
+    @media screen and (max-width: 440px) {
+      font-size: 16px;
+    }
+  }
+  .ant-tabs-nav-wrap {
+    margin-bottom: 40px;
+    margin-top: -20px;
+    @media screen and (max-width: 800px) {
+      margin-top: 0;
+      padding: 15px 20px;
+      padding-top: 30px;
+      margin-bottom: 10px;
+    }
+  }
+  .ant-tabs-nav {
+    margin-bottom: 0;
+    &::before {
+      border: none !important;
+    }
+  }
+}
+
+/* Main Side Content */
+.main-side-content {
+  // header
+  &__header {
+  }
+  // Filter
+  &__filter {
+    &.events-filter {
+      @media screen and (max-width: 800px) {
+        margin-bottom: 30px;
+        label {
+          min-width: 100px;
+        }
+      }
+      .events-filter-form {
+        @media screen and (max-width: 1366px) {
+          flex-wrap: wrap;
+          align-items: flex-start;
+          .ant-form-item.sortBy {
+            margin-left: 0;
+          }
+        }
+        @media screen and (max-width: 800px) {
+          // flex-wrap: nowrap;
+          align-items: flex-start;
+          .ant-form-item.sortBy {
+            // margin-left: auto;
+          }
+        }
+      }
+      .ant-form {
+      }
+
+      .ant-form-item {
+        &.sortBy {
+          // max-width: 220px;
+
+          @media screen and (max-width: 800px) {
+            max-width: unset;
+          }
+
+          .ant-form-item-control-input-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            // icon
+            .sortBy-icon {
+              position: absolute;
+              left: 0;
+              top: 0;
+              z-index: 1;
+              border-right: none;
+              border-bottom-left-radius: 2px;
+              border-top-left-radius: 2px !important;
+              padding: 0 0 0 9px;
+              height: 28px;
+              border-radius: 14px 0 0 14px !important;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              pointer-events: none;
+              svg {
+                width: 13px;
+                height: 12px;
+                fill: #101010;
+              }
+            }
+          }
+        }
+      }
+    } //  &.article-filter
+  }
+}

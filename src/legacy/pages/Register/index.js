@@ -19,8 +19,8 @@ import {
 // antd component
 import { Form, Input, Typography, Select, Checkbox, Button, Alert } from 'antd';
 // components
-import CustomIcons from 'components/CustomIcons';
-import QrcodePopup from 'components/QrcodePopup';
+import CustomIcons from 'legacy/components/CustomIcons';
+import QrcodePopup from 'legacy/components/QrcodePopup';
 // utils
 import { professions } from 'utils/categoryHelper';
 

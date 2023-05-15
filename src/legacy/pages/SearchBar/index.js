@@ -21,12 +21,12 @@ import algoliasearch from 'algoliasearch';
 import { connectHighlight, InstantSearch } from 'react-instantsearch-dom';
 
 // assets
-import CustomIcons from 'components/CustomIcons';
+import CustomIcons from 'legacy/components/CustomIcons';
 
 // antd component
 import { Col, Row } from 'antd';
 // components
-import LinkWrapper from 'components/LinkWrapper';
+import LinkWrapper from 'legacy/components/LinkWrapper';
 
 // utils
 import {

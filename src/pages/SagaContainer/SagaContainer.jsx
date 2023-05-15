@@ -8,7 +8,6 @@ import { compose } from '@reduxjs/toolkit';
 
 // HOC
 import withRedux from 'HOC/withRedux';
-
 // actions
 import { flushState, onLoadList } from './actions';
 
@@ -16,7 +15,7 @@ import { flushState, onLoadList } from './actions';
 import { Skeleton, List, Avatar, Button } from 'antd';
 
 function SagaContainer({
-  // props
+  // default props
   className,
   // core
   state,

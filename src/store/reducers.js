@@ -7,6 +7,14 @@ import CaseOverview from 'legacy/pages/CaseOverview/reducer';
 import CaseDetail from 'legacy/pages/CaseDetail/reducer';
 import ArticlesOverview from 'legacy/pages/ArticlesOverview/reducer';
 import ArticleDetail from 'legacy/pages/ArticleDetail/reducer';
+import CommunitiesOverview from 'legacy/pages/CommunitiesOverview/reducer';
+import CommunityDetail from 'legacy/pages/CommunityDetail/reducer';
+import CreateCommunity from 'legacy/pages/CreateCommunity/reducer';
+import EventDetail from 'legacy/pages/EventDetail/reducer';
+import EventOverview from 'legacy/pages/EventOverview/reducer';
+import PodcastDetail from 'legacy/pages/PodcastDetail/reducer';
+import PodcastsOverview from 'legacy/pages/PodcastsOverview/reducer';
+import NewsFeed from 'legacy/pages/NewsFeed/reducer';
 import Register from 'legacy/pages/Register/reducer';
 import ResetPassword from 'legacy/pages/ResetPassword/reducer';
 import SearchBar from 'legacy/pages/SearchBar/reducer';
@@ -23,6 +31,14 @@ export default {
   ArticleDetail,
   CaseDetail,
   ArticlesOverview,
+  CommunitiesOverview,
+  CommunityDetail,
+  CreateCommunity,
+  EventDetail,
+  EventOverview,
+  PodcastDetail,
+  PodcastsOverview,
+  NewsFeed,
   Register,
   ResetPassword,
   SearchBar,

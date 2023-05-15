@@ -1,0 +1,284 @@
+@import 'scss/global/variables';
+@import 'scss/module/next-button';
+
+.main-single-content {
+  &.podcasts {
+    max-width: 761px;
+    @media screen and (max-width: 800px) {
+      max-width: 100%;
+    }
+  }
+  .details-bottom-section.podcasts {
+    @media screen and (max-width: 800px) {
+      margin-top: 50px;
+    }
+  }
+  &__header {
+    &--top {
+      margin-bottom: 30px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1;
+    }
+
+    &.white {
+      *:not(.anticon) {
+        color: #fff;
+      }
+      .main-single__go-back:hover {
+        color: #cba348;
+        svg {
+          fill: #cba348 !important;
+          color: #cba348 !important;
+        }
+      }
+      .anticon:not(.bookmarked) {
+        color: #fff;
+        svg {
+          fill: #fff;
+        }
+      }
+      .anticon.anticon-pause-circle,
+      .anticon.anticon-play-circle {
+        color: #cba348 !important;
+        svg {
+          fill: #cba348 !important;
+        }
+      }
+    }
+    .podcast-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      .ant-image {
+        max-width: 465px;
+      }
+      .article-title {
+        font-size: 24px !important;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 5px;
+        margin-top: 20px;
+        max-width: 465px;
+        text-align: center;
+        @media screen and (max-width: 640px) {
+          font-size: 21px;
+        }
+      }
+    }
+    &.podcasts {
+      padding: 24px 20px;
+      background: linear-gradient(90deg, #005d72 0%, #d8d8d8 100%);
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      margin-bottom: 23px;
+      position: relative;
+      @media screen and (max-width: 800px) {
+        margin-bottom: 0;
+        background: linear-gradient(90deg, #005d72 0%, #6aa5b3 100%);
+      }
+      @media screen and (max-width: 640px) {
+        margin-bottom: 30px;
+      }
+      .podcasts-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        filter: blur(14px);
+        &::before {
+          content: '';
+          background: rgba(0, 0, 0, 0.2);
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          filter: blur(14px);
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  // Main Content
+  &__main {
+    &.podcasts {
+      background: transparent;
+      .share-action-list {
+        @media screen and (max-width: 640px) {
+          margin-left: 0;
+        }
+      }
+      .article-header {
+        background: #fff;
+        border: none;
+        padding: 30px 20px;
+        @media screen and (max-width: 640px) {
+          padding: 20px;
+        }
+        .article-title {
+          font-size: 24px;
+          font-weight: 700;
+          color: #000;
+          margin-bottom: 5px;
+          margin-top: 20px;
+          @media screen and (max-width: 640px) {
+            font-size: 21px;
+          }
+        }
+      }
+      .article-detail {
+        min-height: 255px;
+        justify-content: space-between;
+        padding-left: 45px;
+        padding-right: 45px;
+        @media screen and (max-width: 640px) {
+          padding-left: 20px;
+          padding-right: 20px;
+          min-height: initial;
+          padding: 30px 20px;
+          .detail-item:not(:last-of-type) {
+            margin-bottom: 20px;
+          }
+        }
+
+        .article-content-html {
+          p,
+          span,
+          label,
+          strong,
+          text,
+          b,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            display: flex;
+            margin-bottom: 0;
+          }
+          strong,
+          b {
+            // display: flex;
+            margin-bottom: 0;
+          }
+        }
+      }
+      .article-main {
+        margin-top: 20px;
+        margin-bottom: 75px;
+        background: #fff;
+        padding: 24px 45px;
+        @media screen and (max-width: 640px) {
+          margin-bottom: 20px;
+          padding: 24px 20px;
+        }
+      }
+      .article-content {
+        max-width: 100%;
+        font-size: 18px;
+        color: #000;
+        margin-bottom: 30px;
+        @media screen and (max-width: 640px) {
+          font-size: 14px;
+        }
+      }
+      .description {
+        @media screen and (max-width: 640px) {
+          margin-bottom: 35px;
+        }
+        .description-title {
+          @media screen and (max-width: 640px) {
+            font-size: 16px;
+          }
+        }
+        .description-content {
+          @media screen and (max-width: 640px) {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  // Main Article
+  &__article {
+    background: transparent;
+  }
+}
+
+// Speakers
+.podcast-speakers {
+  .ant-list-item {
+    border: none;
+    padding: 0;
+    font-size: 18px;
+    color: #000;
+    font-weight: 400 !important;
+    line-height: 1.4;
+    &:not(:last-of-type) {
+      margin-bottom: 30px;
+    }
+  }
+  .ant-list-item-meta {
+    align-items: center;
+    margin-bottom: 12px;
+    .position {
+      margin-bottom: 0;
+      font-size: 18px;
+      color: #000;
+      font-weight: 400 !important;
+      line-height: 1.2;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .ant-list-item-meta-title {
+    margin-bottom: 0;
+    font-size: 18px;
+    color: #000;
+    font-weight: 400 !important;
+    line-height: 1.2;
+    + .ant-list-item-meta-description {
+      margin-top: 10px;
+    }
+  }
+  .emptyImage {
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #5995a3;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.main-single-layout--rtl {
+  .ant-layout-sider {
+    padding-left: 0 !important;
+    padding-right: 45px;
+  }
+
+  .media-player-wrapper.big .waveform {
+    margin-right: 0;
+    margin-left: 60px;
+  }
+}

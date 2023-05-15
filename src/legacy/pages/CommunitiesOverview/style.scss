@@ -1,0 +1,77 @@
+// Style for CommunitiesOverview page
+
+/* Global Variables */
+@import 'scss/global/variables';
+
+.communities-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  @media screen and (max-width: 800px) {
+    padding-top: 30px;
+    padding: 15px;
+    padding-bottom: 100px;
+    .main-content {
+      display: block !important;
+    }
+  }
+  .main-content-title {
+    line-height: 35px;
+    font-weight: 700;
+    font-size: 30px !important;
+    color: $black;
+    margin-bottom: 10px;
+  }
+  h4.main-content-subtitle {
+    line-height: 35px;
+    font-weight: bold !important;
+    font-size: 20px !important;
+    color: $beemedocre1;
+    margin-bottom: 31px;
+  }
+
+  .main-content-content {
+    //line-height: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: $black;
+    margin: 0;
+    p {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+      color: inherit;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .main-content-email {
+    color: $beemedocre1;
+    text-decoration: underline;
+    margin-left: 7px;
+    margin-bottom: 0;
+  }
+
+  .main-overview-content__main {
+    margin-top: 30px !important;
+  }
+}
+
+
+
+.my-communities {
+  margin-bottom: 60px;
+}
+.community-pagination {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pagination-community {
+  float: right !important;
+  margin-top: 24px;
+
+}
