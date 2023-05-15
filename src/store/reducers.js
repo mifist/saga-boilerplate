@@ -3,7 +3,9 @@
  */
 
 import SagaContainer from 'pages/SagaContainer/reducer';
+import CaseOverview from 'legacy/pages/CaseOverview/reducer';
 
 export default {
   SagaContainer,
+  CaseOverview,
 };

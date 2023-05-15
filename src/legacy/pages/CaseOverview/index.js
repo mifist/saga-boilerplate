@@ -27,7 +27,7 @@ import reducer from './reducer';
 
 export function CaseOverview({ createCase, history }) {
   const { cases, loading, error } = useSelector((state) => {
-    return state.caseOverview;
+    return state.CaseOverview;
   });
 
   //  loadCases: (filter) => dispatch(loadCasesAction(filter)),
