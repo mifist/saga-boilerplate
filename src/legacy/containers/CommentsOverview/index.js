@@ -36,25 +36,25 @@ import {
   makeSelectModifyPostTypePopupOpened,
 } from './selectors';
 
-import useDeviceDetect from 'appHooks/useDeviceDetect';
+import useDeviceDetect from 'utils/useDeviceDetect';
 
 // antd component
 
 // icons
-import CustomIcons from 'legacy/legacy/components/CustomIcons';
+import CustomIcons from 'components/CustomIcons';
 
 // components
-import CommentItem from 'legacy/components/Comments/CommentItem';
-import BookmarkAction from 'legacy/components/BookmarkAction';
-import ShareAction from 'legacy/components/ShareAction';
-import ModalWithLikes from 'legacy/components/ModalWithLikes';
-import { ReportPopup } from 'legacy/components/ReportPopup';
-import { ModifyPostTypePopup } from 'legacy/components/ModifyPostTypePopup';
+import CommentItem from 'components/Comments/CommentItem';
+import BookmarkAction from 'components/BookmarkAction';
+import ShareAction from 'components/ShareAction';
+import ModalWithLikes from 'components/ModalWithLikes';
+import { ReportPopup } from 'components/ReportPopup';
+import { ModifyPostTypePopup } from 'components/ModifyPostTypePopup';
 import CommentFormNew from 'legacy/components/Comments/CommentFormNew';
 
 // global user
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'engine/Contexts/User.context';
+import { withAuthPopup } from 'engine/Contexts/AuthPopup.context';
 
 import { getCommentsCount } from 'utils/generalHelper';
 
