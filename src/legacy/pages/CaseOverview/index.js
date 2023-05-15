@@ -26,14 +26,16 @@ import saga from './saga';
 import reducer from './reducer';
 
 export function CaseOverview({ createCase, history }) {
+  console.log('caseOverview');
+
   const { cases, loading, error } = useSelector((state) => {
     return state.CaseOverview;
   });
 
+  const dispatch = useDispatch();
+
   //  loadCases: (filter) => dispatch(loadCasesAction(filter)),
   //     createCase: (data) => dispatch(createCaseAction(data)),
-
-  const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation();
   const { isMobile } = useDeviceDetect();

@@ -3,30 +3,29 @@
  */
 import React, { memo } from 'react';
 import classNames from 'classnames';
-import { useParams  } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { compose } from '@reduxjs/toolkit';
 
 // HOC
-import withRedux from 'HOC/withRedux';
 
 // actions
 import { flushState, onLoadList } from './actions';
 
 // antd component
 import { Skeleton, List, Avatar, Button } from 'antd';
+import withRedux from '../../engine/HOC/withRedux';
 
 function SagaContainer({
   // props
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
   const childClassNames = classNames('test', className);
   const { list, loading } = state.SagaContainer;
 
   const { eventID } = useParams();
-
 
   const count = 5;
 
@@ -50,7 +49,7 @@ function SagaContainer({
   return (
     <>
       <h2>SagaContainer</h2>
-      
+
       <h2>Event ID: {eventID}</h2>
 
       <List

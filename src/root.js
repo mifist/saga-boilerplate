@@ -21,7 +21,6 @@ import 'theme/root.scss';
 import 'antd/dist/antd.css';
 
 // Import Other Providers
-import AppProviders from 'appContext/AppProviders';
 import App from './App';
 
 // Load the favicon and the .htaccess file
@@ -30,7 +29,7 @@ import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line imp
 
 // root
 import { storeNew, history } from 'store/store.new';
-
+import AppProviders from './engine/context/AppProviders';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -46,19 +45,19 @@ const root = ReactDOM.createRoot(document.getElementById('app'));
 root.render(
   <StrictMode>
     <Provider store={storeNew}>
-      <AppProviders> 
+      <AppProviders>
         <App />
       </AppProviders>
     </Provider>
   </StrictMode>,
 );
 
-/* 
+/*
 const render = (Component) =>
   root.render(
     <StrictMode>
       <Provider store={storeNew}>
-        <AppProviders> 
+        <AppProviders>
           <BrowserRouter>
             <Component history={history} />
           </BrowserRouter>

@@ -14,8 +14,7 @@ export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} exact />
-        <Route path="/caseOverview" element={<CaseOverview />} exact />
+        <Route path="/" element={<CaseOverview />} exact />
         <Route path="/events" element={<SagaContainer />} exact />
         <Route path="/events/:eventID" element={<SagaContainer />} exact />
       </Routes>

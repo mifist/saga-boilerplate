@@ -87,7 +87,7 @@ const initialState = {
   chatReady: false,
 };
 
-class UserProvider extends React.Component {
+export class UserProvider extends React.Component {
   async componentDidMount() {
     const local = localStorage.getItem('beemed_user');
     if (local !== null) {
