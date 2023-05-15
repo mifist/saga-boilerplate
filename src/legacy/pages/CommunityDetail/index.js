@@ -4,128 +4,74 @@
  *
  */
 import React, { memo, useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
 import { compose } from '@reduxjs/toolkit';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { useParams, withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-// styles
 import './style.scss';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import saga from './saga';
-import reducer from './reducer';
+// HOC
+import withRedux from 'HOC/withRedux';
 
 import {
-  selectCommunityDetailData,
-  selectCommunityDetailLoading,
-  selectCommunityDetailError,
-  selectCommunityDetailDeleteSuccessful,
-  selectCommunityDetailLoadingChange,
-  // tags
-  selectCommunityTags,
-  selectCommunityDetailTags,
   // media
-  selectCommunityMedia,
-  selectCommunityMediaLoading,
-  // feeds
-  selectCommunityFeeds,
-  selectCommunityFeedsLoading,
-  selectCommunityFeedsNoMore,
-  // other
-  selectCommunityPage,
-  makeSelectReportPopup,
-  makeSelectReportLoading,
-} from './selectors';
-import {
-  flushStateCommunityDetail,
-  loadCommunityDetail,
-  changeCommunityDetail,
-  deleteCommunityDetail,
-  // tags
-  loadCommunityTags,
-  loadCommunityDetailTags,
-  // media
-  uploadCommunityMedia,
+  onUploadMedia as uploadCommunityMedia,
   // publication
-  postPublication,
+  onPostPublication as postPublication,
   // feeds
-  loadCommunityFeed,
+  onLoadFeeds as loadCommunityFeed,
   setReportPopup as setReportPopupAction,
   reportPost as reportPostAction,
 } from './actions';
 
 // antd component
 import { Col, Layout, Row, Spin } from 'antd';
-
 // components
 import TabsTcf from 'legacy/components/TabsTcf';
 // widgets components
-import WidgetWrapper from 'legacy/components/Widgets/WidgetWrapper';
-import AboutCommunityWidget from 'legacy/components/Widgets/AboutCommunityWidget';
-import PopularTagsWidget from 'legacy/components/Widgets/PopularTagsWidget';
-import RulesWidget from 'legacy/components/Widgets/RulesWidget';
-import MembersListWidget from 'legacy/components/Widgets/MembersListWidget';
-
+import {
+  WidgetWrapper,
+  AboutCommunityWidget,
+  PopularTagsWidget,
+  RulesWidget,
+  MembersListWidget,
+} from 'legacy/components/Widgets';
 // community components
-import CommunityPreHeader from 'legacy/components/Community/CommunityPreHeader';
-import CommunityHeader from 'legacy/components/Community/CommunityHeader';
-import CommunityFeeds from 'legacy/components/Community/CommunityFeeds';
-import CommunityWelcome from 'legacy/components/Community/CommunityWelcome';
+import {
+  CommunityPreHeader,
+  CommunityHeader,
+  CommunityFeeds,
+  CommunityWelcome
+} from 'legacy/components/Community';
 // community containers
 import MembersTab from 'legacy/containers/Community/MembersTab';
 
 // contexts
 import { withUser } from 'appContext/User.context';
-// helper
+// hooks
 import useDeviceDetect from 'appHooks/useDeviceDetect';
-import {
-  getUrlVars,
-  makeSearchQueryParams,
-  getObjId,
-} from 'utils/generalHelper';
+// utils
+import { getUrlVars, makeSearchQueryParams, getObjId } from 'utils/generalHelper';
+
 
 export function CommunityDetail({
-  // main data
-  communityDetailData,
-  uploadMedia,
-  loadingMedia,
-  // feed
-  communityFeeds,
-  loadingFeeds,
-  noMore,
-  page,
-  onLoadFeeds,
-  // tags data
-  communityTags,
-  communityPopularTags,
-  onLoadTags,
-  onLoadPopularTags,
-  // states
+  // props
   user,
   history,
-  deleteSuccessful,
-  error,
-  loading,
-  loadingChange,
-  // actions
-  onLoadDetail,
-  onChangeAction,
-  onDeleteAction,
-  onUploadMedia,
-  onPostPublication,
-  flushState,
-  reportPost,
-  reportPopup,
-  reportLoading,
-  setReportPopup,
+  // default props
+  className,
+  // core
+  state,
+  dispatch
 }) {
-  useInjectReducer({ key: 'communityDetail', reducer });
-  useInjectSaga({ key: 'communityDetail', saga });
+  const {
+    loading, error, deleteSuccessful, communityDetailData,
+    communityPopularTags, loadingChange, communityTags,
+    communityFeeds, loadingFeeds, noMore, page,
+    uploadMedia, loadingMedia, reportPopup, reportLoading,
+  } = state.CommunityDetail;
 
   const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
@@ -174,10 +120,10 @@ export function CommunityDetail({
         initialId !== 'new' &&
         initialId == getObjId(user?.employment?.industryCommunity))
     ) {
-      onLoadDetail(initialId);
-      onLoadTags(initialId);
-      onLoadPopularTags(initialId);
-      onLoadFeeds(initialId, page, filter);
+      dispatch(onLoadDetail(initialId));
+      dispatch(onLoadTags(initialId));
+      dispatch(onLoadPopularTags(initialId));
+      dispatch(onLoadFeeds(initialId, page, filter));
     }
 
     if (
@@ -194,7 +140,7 @@ export function CommunityDetail({
     // Anything in here is fired on component unmount.
     return () => {
       // Clearing the state after unmounting a component
-      flushState();
+      dispatch(flushState());
     };
   }, []);
 
@@ -240,7 +186,7 @@ export function CommunityDetail({
   // Redirect on successful post deletion
   useEffect(() => {
     if (deleteSuccessful) {
-      flushState();
+      dispatch(flushState());
       history.goBack();
     }
   }, [deleteSuccessful]); // Redirect on successful post deletion
@@ -266,9 +212,9 @@ export function CommunityDetail({
 
   const tabChangedHandle = (key, prevKey) => {
     if (key == 'cases') {
-      onLoadFeeds(initialId, 1, filter, 'case');
+      dispatch(onLoadFeeds(initialId, 1, filter, 'case'));
     } else if (key == 'feed') {
-      onLoadFeeds(initialId, 1, filter);
+      dispatch(onLoadFeeds(initialId, 1, filter));
     }
     const page = urlVars?.page || 1;
     const panel = urlVars?.panel || '3';
@@ -289,7 +235,7 @@ export function CommunityDetail({
       ...communityDetailData,
       rules: newRulesList,
     };
-    newRulesList && onChangeAction(newCommunityDeteilData);
+    newRulesList && dispatch(onChangeAction(newCommunityDeteilData));
   };
 
   const onChangeCommunity = (communityData) => {
@@ -297,7 +243,7 @@ export function CommunityDetail({
       ...communityDetailData,
       ...communityData,
     };
-    onChangeAction(newCommunityDeteilData);
+    dispatch(onChangeAction(newCommunityDeteilData));
   };
 
   const changeFeedsFilter = (filter) => {
@@ -314,10 +260,10 @@ export function CommunityDetail({
     tags: communityTags,
 
     changeFilter: changeFeedsFilter,
-    onPost: onPostPublication,
-    onLoad: onLoadFeeds,
+    onPost: (publication) => dispatch(onPostPublication(publication)),
+    onLoad: (id, page, filter, entity = 'post') => dispatch(onLoadFeeds(id, page, filter, entity)),
     media: uploadMedia,
-    onUploadMedia,
+    onUploadMedia: (media) => dispatch(onUploadMedia(media)),
   };
 
   const communityTabs = [
@@ -327,9 +273,9 @@ export function CommunityDetail({
       content: (
         <CommunityFeeds
           reportPopup={reportPopup}
-          setReportPopup={setReportPopup}
+          setReportPopup={(data) => dispatch(setReportPopup(data))}
           reportLoading={reportLoading}
-          reportPost={reportPost}
+          reportPost={(data) => dispatch(reportPost(data))}
           {...feedsOption}
         />
       ),
@@ -340,9 +286,9 @@ export function CommunityDetail({
       content: (
         <CommunityFeeds
           reportPopup={reportPopup}
-          setReportPopup={setReportPopup}
+          setReportPopup={(data) => dispatch(setReportPopup(data))}
           reportLoading={reportLoading}
-          reportPost={reportPost}
+          reportPost={(data) => dispatch(reportPost(data))}
           {...feedsOption}
           type="case"
         />
@@ -423,7 +369,7 @@ export function CommunityDetail({
                         media={uploadMedia}
                         loading={loadingMedia}
                         onChangeHeader={onChangeCommunity}
-                        onMedia={onUploadMedia}
+                        onMedia={(media) => dispatch(onUploadMedia(media))}
                       />
                       <CommunityHeader
                         communityInfo={communityDetailData}
@@ -515,58 +461,12 @@ export function CommunityDetail({
 }
 
 CommunityDetail.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  flushState: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   deleteSuccessful: PropTypes.bool,
-  onLoadDetail: PropTypes.func.isRequired,
-  onChangeAction: PropTypes.func,
-  onDeleteAction: PropTypes.func,
 };
 
-const mapStateToProps = createStructuredSelector({
-  loading: selectCommunityDetailLoading(),
-  error: selectCommunityDetailError(),
-  deleteSuccessful: selectCommunityDetailDeleteSuccessful(),
-  communityDetailData: selectCommunityDetailData(),
-  communityPopularTags: selectCommunityDetailTags(),
-  loadingChange: selectCommunityDetailLoadingChange(),
-  // other
-  communityTags: selectCommunityTags(),
-  // feeds
-  communityFeeds: selectCommunityFeeds(),
-  loadingFeeds: selectCommunityFeedsLoading(),
-  noMore: selectCommunityFeedsNoMore(),
-  page: selectCommunityPage(),
-  // media
-  uploadMedia: selectCommunityMedia(),
-  loadingMedia: selectCommunityMediaLoading(),
-  reportPopup: makeSelectReportPopup(),
-  reportLoading: makeSelectReportLoading(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushStateCommunityDetail()),
-    onLoadDetail: (id) => dispatch(loadCommunityDetail(id)),
-    onChangeAction: (data) => dispatch(changeCommunityDetail(data)),
-    onDeleteAction: (id) => dispatch(deleteCommunityDetail(id)),
-    onLoadTags: (id) => dispatch(loadCommunityTags(id)),
-    onLoadPopularTags: (id) => dispatch(loadCommunityDetailTags(id)),
-    onUploadMedia: (media) => dispatch(uploadCommunityMedia(media)),
-    onLoadFeeds: (id, page, filter, entity = 'post') =>
-      dispatch(loadCommunityFeed(id, page, filter, entity)),
-    onPostPublication: (publication) => dispatch(postPublication(publication)),
-    setReportPopup: (data) => dispatch(setReportPopupAction(data)),
-    reportPost: (data) => dispatch(reportPostAction(data)),
-  };
-}
-
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
 export default compose(
-  withConnect,
+  withRedux,
   memo,
   withRouter,
   withUser,

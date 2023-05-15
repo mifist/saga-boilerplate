@@ -5,39 +5,23 @@
  */
 
 import React, { useEffect, useRef, useMemo } from 'react';
+import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import { useHistory, useLocation } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
-
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import reducer from './reducer';
-import saga from './saga';
-
 import { convert } from 'html-to-text';
+import moment from 'moment';
+import InfiniteScroll from 'react-infinite-scroller';
+import { Helmet } from 'react-helmet';
 
 import './style.scss';
 
-import moment from 'moment';
+// HOC
+import withRedux from 'HOC/withRedux';
 
-import InfiniteScroll from 'react-infinite-scroller';
 import {
-  selectNewsFeedImages,
-  selectNewsFeedPosts,
-  selectNewsFeedPostsLoading,
-  selectNoMore,
-  selectNewsFeedPage,
-  selectLoadingNewPost,
-  makeSelectDeletedPosts,
-  makeSelectReportPopup,
-  makeSelectReportLoading,
-} from './selectors';
-import {
-  flush,
-  loadPosts,
+  flushAction as flush,
+  loadPostsAction as loadPosts,
   postPublication,
   uploadImages,
   setDeletedPostAction,
@@ -45,13 +29,10 @@ import {
   reportPost as reportPostAction,
 } from './actions';
 
-import { Helmet } from 'react-helmet';
-import useDeviceDetect from 'appHooks/useDeviceDetect';
-
 // antd component
 import { Col, Row, Skeleton } from 'antd';
-
 // components
+import QrcodePopup from 'legacy/components/QrcodePopup';
 import NewsFeedPost from 'legacy/components/NewsFeedPost';
 import ProfileSuggestions from 'containers/ProfileSuggestions';
 import UserWalkthrough from 'legacy/components/UserWalkthrough';
@@ -59,47 +40,35 @@ import EmptyFeed from 'legacy/components/EmptyFeed';
 import { ReportPopup } from 'legacy/components/ReportPopup';
 import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 
-
-
 // contexts
 import { withUser } from 'appContext/User.context';
-import QrcodePopup from 'legacy/components/QrcodePopup';
+// utils
+import useDeviceDetect from 'appHooks/useDeviceDetect';
+
 
 export function NewsFeedPage({
-  loadPostsAction,
-  posts,
-  noMore,
-  loadingPosts,
-  uploadImagesAction,
-  imagesUploaded,
-  postPublicationAction,
-  flushAction,
-  page,
-  loadingNewPost,
-  addDeletedPost,
-  deletedPosts,
-  position,
+  // props
   user,
-  reportPost,
-  reportPopup,
-  loading,
-  setReportPopup,
+  // default props
+  className,
+  // core
+  state,
+  dispatch
 }) {
-  useInjectReducer({ key: 'newsFeedList', reducer });
-  useInjectSaga({ key: 'newsFeedList', saga });
+  const {
+    posts, loading, page, loadingPosts, imagesUploaded,
+    noMore, loadingNewPost, deletedPosts, reportPopup,
+  } = state.NewsFeedPage;
 
   const { i18n } = useTranslation();
-
   const history = useHistory();
-
   const { isMobile } = useDeviceDetect();
-
   const scrollParentRef = useRef(null);
   const { search } = useLocation();
   const searchParams = useMemo(() => new URLSearchParams(search), [search]);
 
   const handleLoadMore = () => {
-    loadPostsAction(page + 1);
+    dispatch(loadPostsAction(page + 1));
   };
 
   useEffect(() => {
@@ -112,7 +81,7 @@ export function NewsFeedPage({
         ...deletedPosts,
         history?.location?.state?.deletedId,
       ];
-      addDeletedPost(deletedPostsIDs);
+      dispatch(addDeletedPost(deletedPostsIDs));
       const infiniteScroll = Array.from(
         document.getElementsByClassName(`InfiniteScroll`),
       );
@@ -132,7 +101,7 @@ export function NewsFeedPage({
 
   useEffect(() => {
     if (page === 1) {
-      loadPostsAction(page);
+      dispatch(loadPostsAction(page));
     }
 
     const elementScroll = document.querySelector('#infinite-scroll-web');
@@ -157,7 +126,7 @@ export function NewsFeedPage({
     return () => {
       if (history?.location?.state?.from !== 'newsfeed_post') {
         localStorage.setItem('newsfeedScroll', 0);
-        flushAction();
+        dispatch(flushAction());
         // setDeletedPost([]);
       }
     };
@@ -183,7 +152,7 @@ export function NewsFeedPage({
   const handleReportNewsFeedPostSubmit = values => {
     const post = posts.find(post => post._id === reportPopup._id);
 
-    reportPost({
+    dispatch(reportPost({
       postText: post.type
         ? post.type === 'post'
           ? convert(post.content, {
@@ -202,7 +171,7 @@ export function NewsFeedPage({
       userId: user?._id,
       postId: post._id,
       url: `/${post.type === 'post' ? 'case' : post.type}/detail/${post._id}`,
-    });
+    }));
   };
 
   return (
@@ -226,7 +195,10 @@ export function NewsFeedPage({
           xl={16}
           ref={scrollParentRef}
         >
-          <CreatePublicationv2 type="post" onSubmit={postPublicationAction} />
+          <CreatePublicationv2
+            type="post"
+            onSubmit={publication => dispatch(postPublication(publication))}
+          />
           <InfiniteScroll
             className="InfiniteScroll"
             initialLoad={false}
@@ -256,7 +228,7 @@ export function NewsFeedPage({
           </InfiniteScroll>
           <ReportPopup
             visible={reportPopup.opened}
-            onClose={() => setReportPopup({ opened: false, _id: null })}
+            onClose={() => dispatch(setReportPopup({ opened: false, _id: null }))}
             onSubmit={handleReportNewsFeedPostSubmit}
             loading={loading}
           />
@@ -286,44 +258,10 @@ export function NewsFeedPage({
 }
 
 NewsFeedPage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  flushAction: PropTypes.func.isRequired,
-  loadPostsAction: PropTypes.func,
   posts: PropTypes.array,
 };
 
-const mapStateToProps = createStructuredSelector({
-  posts: selectNewsFeedPosts(),
-  page: selectNewsFeedPage(),
-  loadingPosts: selectNewsFeedPostsLoading(),
-  imagesUploaded: selectNewsFeedImages(),
-  noMore: selectNoMore(),
-  loadingNewPost: selectLoadingNewPost(),
-  deletedPosts: makeSelectDeletedPosts(),
-  reportPopup: makeSelectReportPopup(),
-  loading: makeSelectReportLoading(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    loadPostsAction: page => dispatch(loadPosts(page)),
-    flushAction: () => dispatch(flush()),
-    uploadImagesAction: images => dispatch(uploadImages(images)),
-    addDeletedPost: arrIds => dispatch(setDeletedPostAction(arrIds)),
-    postPublicationAction: publication =>
-      dispatch(postPublication(publication)),
-    setReportPopup: data => dispatch(setReportPopupAction(data)),
-    reportPost: data => dispatch(reportPostAction(data)),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
 export default compose(
-  withConnect,
+  withRedux,
   withUser,
 )(NewsFeedPage);

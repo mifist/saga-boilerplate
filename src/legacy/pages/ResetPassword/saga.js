@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
-import { push } from 'connected-react-router';
+import { push } from 'redux-first-history';
 
 import { notification } from 'antd';
 import i18next from 'i18next';
@@ -21,7 +21,7 @@ export function* resetPassword(action) {
     if (result) {
       yield put(ACTIONS.resetPasswordSuccess());
       notification.success({ message: i18next.t('auth.resetetPassword') });
-      yield put(ACTIONS.push('/login'));
+      yield put(push('/login'));
     } else {
       yield put(ACTIONS.resetPasswordError('Error'));
     }

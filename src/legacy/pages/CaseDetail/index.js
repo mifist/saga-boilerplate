@@ -19,14 +19,14 @@ import {
   hideUnhidePost,
 } from './actions';
 
-// antd component
-import { Col, Empty, Layout, Row, Space, Spin, Tag } from 'antd';
 // assets
 import CustomIcons from 'legacy/components/CustomIcons';
 import iconImage from 'public/images/icons/image.svg';
 import iconVideo from 'public/images/icons/video.svg';
 import iconDocument from 'public/images/icons/document.svg';
 
+// antd component
+import { Col, Empty, Layout, Row, Space, Spin, Tag } from 'antd';
 // components
 import CommentsOverview from 'legacy/containers/CommentsOverview';
 import GoBackButton from 'legacy/components/GoBackButton';
@@ -37,8 +37,7 @@ import ConditionalLink from 'legacy/components/ConditionalLink';
 import LinkWrapper from 'legacy/components/LinkWrapper';
 import Badge from 'legacy/components/Badge';
 
-// context
-
+// utils
 import { getEmployment, getObjId } from 'utils/generalHelper';
 
 export function CaseDetail({ history, user, setAuthPopup,  }) {

@@ -7,6 +7,9 @@ import CaseOverview from 'legacy/pages/CaseOverview/reducer';
 import CaseDetail from 'legacy/pages/CaseDetail/reducer';
 import ArticlesOverview from 'legacy/pages/ArticlesOverview/reducer';
 import ArticleDetail from 'legacy/pages/ArticleDetail/reducer';
+import Register from 'legacy/pages/Register/reducer';
+import ResetPassword from 'legacy/pages/ResetPassword/reducer';
+import SearchBar from 'legacy/pages/SearchBar/reducer';
 // containers
 import TestContainer from 'legacy/containers/TestContainer/reducer';
 import CommentsOverview from 'legacy/containers/CommentsOverview/reducer';
@@ -20,6 +23,9 @@ export default {
   ArticleDetail,
   CaseDetail,
   ArticlesOverview,
+  Register,
+  ResetPassword,
+  SearchBar,
   // containers
   TestContainer,
   CommentsOverview,

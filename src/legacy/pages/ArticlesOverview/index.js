@@ -7,25 +7,27 @@ import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
+
 import './style.scss';
 
 import { createArticle, flushState, loadArticles } from './actions';
 
-import { withUser } from 'appContext/User.context';
-
-import useDeviceDetect from 'appHooks/useDeviceDetect';
-
 // antd component
 import { Col, DatePicker, Empty, Form, Row, Select, Spin } from 'antd';
-
 // components
 import ArticlesList from 'legacy/components/ArticlesList';
 import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 
+// contexts
+import { withUser } from 'appContext/User.context';
+// hooks
+import useDeviceDetect from 'appHooks/useDeviceDetect';
+// utils
 import { anatomies, references, specialities } from 'utils/categoryHelper';
 import { useQuery } from 'utils/history';
 
-export function ArticlesOverview({ history }) {
+
+function ArticlesOverview({ history }) {
   const { articles, loading } = useSelector((state) => {
     return state.ArticlesOverview;
   });
@@ -278,4 +280,4 @@ ArticlesOverview.propTypes = {
   createArticle: PropTypes.func,
 };
 
-export default compose(memo)(withUser(ArticlesOverview));
+export default compose(memo, withUser)(ArticlesOverview);

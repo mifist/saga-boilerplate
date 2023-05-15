@@ -7,6 +7,9 @@ import CaseOverview from 'legacy/pages/CaseOverview/saga';
 import CaseDetail from 'legacy/pages/CaseDetail/saga';
 import ArticlesOverview from 'legacy/pages/ArticlesOverview/saga';
 import ArticleDetail from 'legacy/pages/ArticleDetail/saga';
+import Register from 'legacy/pages/Register/saga';
+import ResetPassword from 'legacy/pages/ResetPassword/saga';
+import SearchBar from 'legacy/pages/SearchBar/saga';
 // containers
 import TestContainer from 'legacy/containers/TestContainer/saga';
 import CommentsOverview from 'legacy/containers/CommentsOverview/saga';
@@ -21,6 +24,9 @@ export default {
   ArticlesOverview,
   ArticleDetail,
   CaseOverview,
+  Register,
+  ResetPassword,
+  SearchBar,
   // containers
   TestContainer,
   CommentsOverview,

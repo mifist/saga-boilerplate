@@ -21,7 +21,6 @@ import {
 
 // antd component
 import { Button, Col, Empty, Layout, Row, Spin } from 'antd';
-
 // components
 import CommentsOverview from 'legacy/containers/CommentsOverview';
 import GoBackButton from 'legacy/components/GoBackButton';
@@ -32,6 +31,7 @@ import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 
 // contexts
 import { withUser } from 'appContext/User.context';
+// hooks
 import { useDeviceDetect } from 'appHooks';
 
 export function ArticleDetail({ user, history }) {
@@ -287,36 +287,9 @@ export function ArticleDetail({ user, history }) {
 }
 
 ArticleDetail.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  flushState: PropTypes.func.isRequired,
   loading: PropTypes.bool,
   article: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
-  loadArticle: PropTypes.func,
-  updateArticle: PropTypes.func,
 };
 
-const mapStateToProps = createStructuredSelector({
-  article: makeSelectArticle(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-  deleteSuccessful: selectDeleteSuccessful(),
-});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushStateAction()),
-    loadArticle: (id) => dispatch(loadArticleAction(id)),
-    updateArticle: (data, actionType) =>
-      dispatch(updateArticleAction(data, actionType)),
-    onDelete: (id) => dispatch(onDeleteAction(id)),
-    onPinUnpinPost: ({ postId, pinned }) =>
-      dispatch(pinUnpinPostAction(postId, pinned)),
-    onHideUnhidePost: ({ postId, hidden }) =>
-      dispatch(hideUnhidePostAction(postId, hidden)),
-  };
-}
-
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-
-export default compose(withConnect, memo, withRouter, withUser)(ArticleDetail);
+export default compose(memo, withRouter, withUser)(ArticleDetail);
