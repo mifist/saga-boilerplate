@@ -22,9 +22,9 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 
-import UploadArticlesIcon from 'images/icon/upload-articles.svg';
-import UploadPodcastsIcon from 'images/icon/upload-podcasts.svg';
-import UploadMediasIcon from 'images/icon/upload-medias.svg';
+import UploadArticlesIcon from 'public/images/icon/upload-articles.svg';
+import UploadPodcastsIcon from 'public/images/icon/upload-podcasts.svg';
+import UploadMediasIcon from 'public/images/icon/upload-medias.svg';
 
 import { isEqual, camelCase } from 'lodash';
 import moment from 'moment';

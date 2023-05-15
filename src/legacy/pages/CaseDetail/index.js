@@ -44,7 +44,7 @@ import { getEmployment, getObjId } from 'utils/generalHelper';
 export function CaseDetail({ history, user, setAuthPopup,  }) {
   const { caseData, loading, deleteSuccessful, error, tags } = useSelector(
     (state) => {
-      return state.caseDetail;
+      return state.CaseDetail;
     },
   );
 
