@@ -7,8 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
 import './style.scss';
 
 import useDeviceDetect from 'utils/useDeviceDetect';
@@ -29,6 +27,7 @@ import saga from './saga';
 import reducer from './reducer';
 
 export function CaseOverview({ createCase, history }) {
+  console.log('caseOverview');
   const { cases, loading, error } = useSelector((state) => {
     return state.caseOverview;
   });

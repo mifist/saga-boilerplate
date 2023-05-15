@@ -3,11 +3,10 @@ import CookieProvider from './CookieProvider';
 import { UserProvider } from './User.context';
 
 function AppProviders({ children }) {
+  console.log(children);
   return (
     <CookieProvider>
-      <UserProvider>
-        {children}
-      </UserProvider>
+      <UserProvider>{children}</UserProvider>
     </CookieProvider>
   );
 }

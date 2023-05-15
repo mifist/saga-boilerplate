@@ -1,0 +1,45 @@
+
+
+.layout-header-menu {
+  background: $beemedblue1 !important;
+
+}
+
+.ant-menu-dark .ant-menu-sub,
+.ant-menu.ant-menu-dark .ant-menu-sub {
+  background: $beemedblue1 !important;
+  border-color: $beemedblue1;
+  color: #fff;
+  .ant-menu-item {
+    .ant-menu-title-content {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      .new-label {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-left: 15px;
+      }
+    }
+    .anticon {
+      svg {
+        fill: #fff;
+      }
+    }
+      a {
+      color: #fff;
+    }
+  }
+}
+
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item, .ant-menu-dark.ant-menu-horizontal > .ant-menu-submenu {
+  padding: 0 24px  !important;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+  background: #004251;
+}
