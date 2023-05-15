@@ -11,7 +11,7 @@ import usersIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChat
 import groupsIcon from 'engine/CometChatWorkspace/src/legacy/components/CometChatUI/CometChatNavBar/resources/groups.svg';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 // Comet Chat
 import Translator from 'engine/CometChatWorkspace/src/resources/localization/translator';
 

@@ -17,8 +17,8 @@ import './style.scss';
 import { Button, Tooltip, notification } from 'antd';
 
 // global user
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 // Async call for managing of users
 import api, {

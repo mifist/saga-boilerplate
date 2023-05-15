@@ -28,8 +28,8 @@ import '!file-loader?name=[name].[ext]!public/favicon.ico';
 import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line import/extensions
 
 // root
-import { storeNew, history } from 'store/store.new';
-import AppProviders from './engine/context/AppProviders';
+import { storeNew } from 'store/store.new';
+import AppProviders from 'appContext/AppProviders';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -51,30 +51,3 @@ root.render(
     </Provider>
   </StrictMode>,
 );
-
-/*
-const render = (Component) =>
-  root.render(
-    <StrictMode>
-      <Provider store={storeNew}>
-        <AppProviders>
-          <BrowserRouter>
-            <Component history={history} />
-          </BrowserRouter>
-        </AppProviders>
-      </Provider>
-    </StrictMode>,
-  );
-
-render(App);
-
-if (process.env.NODE_ENV !== 'production' && module.hot) {
-  // Hot reloadable React components and translation json files
-  // modules.hot.accept does not accept dynamic dependencies,
-  // have to be constants at compile-time
-  module.hot.accept(['./App'], () => {
-    const NextRootContainer = require('./App').default;
-//root.unmountComponentAtNode(document.getElementById('app'));
-    render(NextRootContainer);
-  });
-} */

@@ -42,14 +42,14 @@ import {
 } from 'utils/categoryHelper';
 // components
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 //import { LOAD_EVENTS } from 'legacy/containers/PersonalSideBar/constants';
 //import { isArray } from 'lodash';
 import GoBackButton from 'legacy/components/GoBackButton';
 import { Keyboard } from '@capacitor/keyboard';
 import { Capacitor } from '@capacitor/core';
 
-import api from 'engine/api/axiosAPI';
+import api from 'appAPI/axiosAPI';
 
 function RenderInput({
   label,

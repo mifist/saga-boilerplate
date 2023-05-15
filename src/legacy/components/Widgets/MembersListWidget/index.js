@@ -19,7 +19,7 @@ import Badge from 'legacy/components/Badge';
 // containers
 import RequestControls from 'legacy/containers/Community/RequestControls';
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // helpers function
 import {

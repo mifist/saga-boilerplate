@@ -37,8 +37,8 @@ import { ModifyPostTypePopup } from 'legacy/components/ModifyPostTypePopup';
 import CommentFormNew from 'legacy/components/Comments/CommentFormNew';
 
 // global user
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 // hooks
 import useDeviceDetect from 'appHooks/useDeviceDetect';
 // utils

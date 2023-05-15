@@ -22,7 +22,7 @@ import Badge from 'legacy/components/Badge';
 import ConditionalLink from 'legacy/components/ConditionalLink';
 
 import { getEmployment } from 'utils/generalHelper';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 function PodcastCard({ item, user, className, setAuthPopup, ...rest }) {
   const childClassNames = classNames('podcast-card', className);

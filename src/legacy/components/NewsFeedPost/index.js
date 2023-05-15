@@ -39,8 +39,8 @@ import VideoPlayer from 'legacy/components/VideoPlayer';
 import Badge from 'legacy/components/Badge';
 
 // context
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 // helper
 import { PROXY_API_URL } from 'utils/constants';

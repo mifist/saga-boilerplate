@@ -28,7 +28,7 @@ import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
 import { ReportPopup } from 'legacy/components/ReportPopup';
 
 // context
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 function toArray(obj_obj) {
   return Object.keys(obj_obj).map(i => obj_obj[i]);

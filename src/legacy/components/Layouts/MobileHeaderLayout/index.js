@@ -25,11 +25,11 @@ import { BeeMedLogo } from 'legacy/components/CustomIcons/logo';
 import UserAvatar from 'legacy/components/UserAvatar';
 
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 import SideBarMenu from '../SideBarMenu';
 
 import LanguageSelect from 'legacy/components/LanguageSelect';
-import { setLanguageHeader } from 'engine/api/axiosAPI';
+import { setLanguageHeader } from 'appAPI/axiosAPI';
 
 function MobileHeaderLayout({
   header,

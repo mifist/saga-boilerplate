@@ -15,7 +15,7 @@ import CustomIcons from 'legacy/components/CustomIcons';
 import { MenuOutlined } from '@ant-design/icons';
 
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 import SideBarMenu from '../SideBarMenu';
 
 function MobileBottomBar({

@@ -20,7 +20,7 @@ import {
 const { Step } = Steps;
 
 import moment from 'moment';
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 import './style.scss';
 import { Link } from 'react-router-dom';

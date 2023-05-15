@@ -45,7 +45,7 @@ import SidebarAuthorsList from 'components/Sidebar/SidebarAuthorsList';
 import CreatePublicationv2 from 'components/CreatePublicationv2';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 export function ArticleDetail({
   article,

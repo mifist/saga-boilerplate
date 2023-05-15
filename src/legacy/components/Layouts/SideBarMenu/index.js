@@ -13,9 +13,9 @@ import { DeploymentUnitOutlined, SearchOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import ConditionalLink from 'legacy/components/ConditionalLink';
 import CustomIcons from 'legacy/components/CustomIcons';
-import api from 'engine/api/axiosAPI';
+import api from 'appAPI/axiosAPI';
 
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 function SideBarMenu({
   // default props

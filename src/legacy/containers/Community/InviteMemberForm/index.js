@@ -18,10 +18,10 @@ import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 import UserAvatar from 'legacy/components/UserAvatar';
 
 // context
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // helper
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import { getObjId, getArrayIds, getUniqueMembers } from 'utils/generalHelper';
 
 const InviteMemberForm = ({

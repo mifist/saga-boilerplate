@@ -18,7 +18,7 @@ import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import CreateRules from './CreateRules';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 function RulesWidget({
   rules,

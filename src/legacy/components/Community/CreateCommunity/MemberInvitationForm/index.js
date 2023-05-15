@@ -14,10 +14,10 @@ import { Layout, Typography, Form, Select, Space, Button } from 'antd';
 import { CloseOutlined } from '@ant-design/icons';
 
 // context
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 // helpers function
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import UserAvatar from 'legacy/components/UserAvatar';
 
 const MemberInvitationForm = ({ onFinish, loading, user }) => {

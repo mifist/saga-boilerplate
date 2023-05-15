@@ -15,7 +15,7 @@ import useDeviceDetect from 'appHooks/useDeviceDetect';
 import { UserOutlined } from '@ant-design/icons';
 
 // global user
-import { withUser } from 'engine/context/User.context';
+import { withUser } from 'appContext/User.context';
 
 function UserAvatar({ user, width, height, fontSize, className, ...rest }) {
   const { isMobile } = useDeviceDetect();

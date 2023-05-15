@@ -19,11 +19,11 @@ import { BeeMedLogo } from 'legacy/components/CustomIcons/logo';
 // components
 import ConditionalLink from 'legacy/components/ConditionalLink';
 // global user
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 import LanguageSelect from 'legacy/components/LanguageSelect';
 
-import api, { setLanguageHeader } from 'engine/api/axiosAPI';
+import api, { setLanguageHeader } from 'appAPI/axiosAPI';
 
 function HeaderLayout({
   notifications,

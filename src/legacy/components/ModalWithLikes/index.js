@@ -20,8 +20,8 @@ import ConditionalLink from 'legacy/components/ConditionalLink';
 import UserAvatar from 'legacy/components/UserAvatar';
 import Badge from 'legacy/components/Badge';
 // global user
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 // helpers function
 import { getObjId, getEmployment } from 'utils/generalHelper';

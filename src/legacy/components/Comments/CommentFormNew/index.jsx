@@ -19,14 +19,14 @@ import LexicalEditor from 'legacy/components/LexicalEditor';
 import CommentFilePreview from 'legacy/components/Comments/CommentFilePreview';
 
 // contexts
-import { withUser } from 'engine/context/User.context';
-import { withAuthPopup } from 'engine/context/AuthPopup.context';
+import { withUser } from 'appContext/User.context';
+import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 // hooks
 import { useRefState } from 'appHooks'
 
 // utils
-import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
+import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import { getBaseApiUrl } from 'utils/capacitorHelper';
 import { PRODUCTION_VIDEOS_API_URL } from 'utils/constants';
 import { normFile, beforeUploadCommentFiles, videoFileTypes } from 'utils/uploadHelper2';
