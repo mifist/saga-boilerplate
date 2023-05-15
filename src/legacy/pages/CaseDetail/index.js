@@ -1,81 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import saga from './saga';
-
 import './style.scss';
 
 import {
-  updateCase as updateCaseAction,
-  flushState as flushStateAction,
-  loadCase as loadCaseAction,
-  onDelete as onDeleteAction,
-  pinUnpinPost as pinUnpinPostAction,
-  hideUnhidePost as hideUnhidePostAction,
-  loadCommunityTags as loadCommunityTagsAction,
+  flushState,
+  loadCase,
+  onDelete,
+  updateCase,
+  pinUnpinPost,
+  loadCommunityTags,
+  hideUnhidePost,
 } from './actions';
-import {
-  makeSelectCaseData,
-  makeSelectError,
-  makeSelectLoading,
-  selectDeleteSuccessful,
-  makeSelectCommunityTags,
-} from './selectors';
 
 // antd component
 import { Col, Empty, Layout, Row, Space, Spin, Tag } from 'antd';
 // assets
-import CustomIcons from 'components/CustomIcons';
-import iconImage from 'images/icons/image.svg';
-import iconVideo from 'images/icons/video.svg';
-import iconDocument from 'images/icons/document.svg';
+import CustomIcons from 'legacy/components/CustomIcons';
+import iconImage from 'public/images/icons/image.svg';
+import iconVideo from 'public/images/icons/video.svg';
+import iconDocument from 'public/images/icons/document.svg';
 
 // components
-import CommentsOverview from 'containers/CommentsOverview';
-import GoBackButton from 'components/GoBackButton';
-import CreatePublicationv2 from 'components/CreatePublicationv2';
-import UserAvatar from 'components/UserAvatar';
-import PostTabs from 'components/PostTabs';
-import ConditionalLink from 'components/ConditionalLink';
-import LinkWrapper from 'components/LinkWrapper';
-import Badge from 'components/Badge';
+import CommentsOverview from 'legacy/containers/CommentsOverview';
+import GoBackButton from 'legacy/components/GoBackButton';
+import CreatePublicationv2 from 'legacy/components/CreatePublicationv2';
+import UserAvatar from 'legacy/components/UserAvatar';
+import PostTabs from 'legacy/components/PostTabs';
+import ConditionalLink from 'legacy/components/ConditionalLink';
+import LinkWrapper from 'legacy/components/LinkWrapper';
+import Badge from 'legacy/components/Badge';
 
 // context
-import reducer from './reducer';
-import { withUser } from 'engine/Contexts/User.context';
-import { withAuthPopup } from 'engine/Contexts/AuthPopup.context';
 
-import { getObjId, getEmployment } from 'utils/generalHelper';
+import { getEmployment, getObjId } from 'utils/generalHelper';
 
-export function CaseDetail({
-  caseData,
-  loadCase,
-  updateCase,
-  loading,
-  flushState,
-  onDelete,
-  onPinUnpinPost,
-  onHideUnhidePost,
-  error,
-  history,
-  user,
-  deleteSuccessful,
-  setAuthPopup,
-  onLoadTags,
-  tags,
-}) {
-  useInjectReducer({ key: 'caseDetail', reducer });
-  useInjectSaga({ key: 'caseDetail', saga });
+export function CaseDetail({ history, user, setAuthPopup,  }) {
+  const { caseData, loading, deleteSuccessful, error, tags } = useSelector(
+    (state) => {
+      return state.CaseDetail;
+    },
+  );
+
+  const dispatch = useDispatch();
 
   const { t } = useTranslation();
   const { id: initialId } = useParams();
@@ -95,12 +68,11 @@ export function CaseDetail({
   // Redirect on successful post deletion
   useEffect(() => {
     if (htmlReady) {
-      const customLinksHtmlCollection = document.getElementsByClassName(
-        'custom-link',
-      );
+      const customLinksHtmlCollection =
+        document.getElementsByClassName('custom-link');
       const customLinks = Array.from(customLinksHtmlCollection);
       for (let i = 0; i < customLinks.length; i++) {
-        customLinks[i].addEventListener('click', event => {
+        customLinks[i].addEventListener('click', (event) => {
           const p = customLinks[i].getAttribute('data-preview');
           const pArray = p.split('?preview=');
           const tArray = pArray[1].split('&type=');
@@ -123,7 +95,7 @@ export function CaseDetail({
 
   useEffect(() => {
     if (initialId !== 'new' && initialId) {
-      loadCase(initialId);
+      dispatch(loadCase(initialId));
     }
 
     // TODO: not working
@@ -135,20 +107,20 @@ export function CaseDetail({
 
     return () => {
       // Clearing the state after unmounting a component
-      flushState();
+      dispatch(flushState());
     };
   }, [initialId]);
 
   useEffect(() => {
     if (caseData && caseData.community) {
-      onLoadTags(caseData.community._id);
+      dispatch(loadCommunityTags(caseData.community._id));
     }
   }, [caseData]);
 
   // Redirect on successful post deletion
   useEffect(() => {
     if (deleteSuccessful) {
-      flushState();
+      dispatch(flushState());
       if (history.location?.state?.from == 'newsfeed_post') {
         history.push({
           pathname: '/newsfeed',
@@ -164,8 +136,8 @@ export function CaseDetail({
   }, [deleteSuccessful]);
 
   // Author Output
-  const author = author =>
-    author.map(auth => {
+  const author = (author) =>
+    author.map((auth) => {
       const isIndustryUser = auth?.role == 'industry';
       const { isEmployee, industryName } = getEmployment(auth);
 
@@ -211,14 +183,14 @@ export function CaseDetail({
       );
     });
 
-  const timeCreation = timeString =>
+  const timeCreation = (timeString) =>
     timeString && (
       <span className="article-time-creation">
         <span>{moment(timeString).fromNow()}</span>
       </span>
     );
 
-  const imagelify = text => {
+  const imagelify = (text) => {
     // search for http , https , ftp , and file URLs.
     const test1 = text.replace(
       new RegExp('<a href="https://image.beemed.com/', 'g'),
@@ -244,7 +216,7 @@ export function CaseDetail({
     return test3;
   };
 
-  const renderType = data => {
+  const renderType = (data) => {
     const { type } = data;
     const isCommunity = data.community?._id
       ? data.community?._id
@@ -286,7 +258,7 @@ export function CaseDetail({
     );
   };
 
-  const renderSpecialty = speciality => (
+  const renderSpecialty = (speciality) => (
     <>
       {speciality.map((tag, index) => (
         <Tag className="tag tag--speciality" key={index}>
@@ -296,7 +268,7 @@ export function CaseDetail({
     </>
   );
 
-  const renderAnatomy = anatomy => (
+  const renderAnatomy = (anatomy) => (
     <>
       {anatomy.map((tag, index) => (
         <Tag className="tag tag--anatomy" key={index}>
@@ -306,7 +278,7 @@ export function CaseDetail({
     </>
   );
 
-  const renderPostTags = tags =>
+  const renderPostTags = (tags) =>
     tags && (
       <>
         {tags.map((tag, index) => (
@@ -354,10 +326,12 @@ export function CaseDetail({
                 </Col>
                 <Col xs={12} md={9} lg={6} className="header-actions">
                   {caseData?.author &&
-                    caseData?.author.some(e => e._id == user._id) && (
+                    caseData?.author.some((e) => e._id == user._id) && (
                       <CreatePublicationv2
                         type={caseData.type}
-                        onSubmit={data => updateCase(data, 'update')}
+                        onSubmit={(data) =>
+                          dispatch(updateCase(data, 'update'))
+                        }
                         initialData={caseData}
                         communityId={caseData.community?._id}
                         tags={tags}
@@ -406,28 +380,36 @@ export function CaseDetail({
               {caseData && (
                 <div id="comments">
                   <CommentsOverview
-                    onDelete={() => onDelete(caseData._id)}
+                    onDelete={() => dispatch(onDelete(caseData._id))}
                     onPinUnpinPost={() =>
-                      onPinUnpinPost({
-                        postId: caseData._id,
-                        pinned: caseData.pinned ? false : true,
-                      })
+                      dispatch(
+                        pinUnpinPost({
+                          postId: caseData._id,
+                          pinned: caseData.pinned ? false : true,
+                        }),
+                      )
                     }
                     onHideUnhidePost={() =>
-                      onHideUnhidePost({
-                        postId: caseData._id,
-                        hidden: caseData.hidden ? false : true,
-                      })
+                      dispatch(
+                        hideUnhidePost({
+                          postId: caseData._id,
+                          hidden: caseData.hidden ? false : true,
+                        }),
+                      )
                     }
                     commentType="post"
                     itemData={caseData}
-                    changeItem={data =>
-                      updateCase(
-                        {
-                          _id: data._id,
-                          likes: data.likes.map(like => ({ _id: like._id })),
-                        },
-                        'like',
+                    changeItem={(data) =>
+                      dispatch(
+                        updateCase(
+                          {
+                            _id: data._id,
+                            likes: data.likes.map((like) => ({
+                              _id: like._id,
+                            })),
+                          },
+                          'like',
+                        ),
                       )
                     }
                   />
@@ -451,38 +433,4 @@ CaseDetail.propTypes = {
   loading: PropTypes.bool,
 };
 
-const mapStateToProps = createStructuredSelector({
-  caseData: makeSelectCaseData(),
-  loading: makeSelectLoading(),
-  deleteSuccessful: selectDeleteSuccessful(),
-  error: makeSelectError(),
-  tags: makeSelectCommunityTags(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushStateAction()),
-    loadCase: id => dispatch(loadCaseAction(id)),
-    updateCase: (data, actionType) =>
-      dispatch(updateCaseAction(data, actionType)),
-    onDelete: id => dispatch(onDeleteAction(id)),
-    onPinUnpinPost: ({ postId, pinned }) =>
-      dispatch(pinUnpinPostAction(postId, pinned)),
-    onHideUnhidePost: ({ postId, hidden }) =>
-      dispatch(hideUnhidePostAction(postId, hidden)),
-    onLoadTags: id => dispatch(loadCommunityTagsAction(id)),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
-export default compose(
-  withConnect,
-  withRouter,
-  withUser,
-  withAuthPopup,
-)(CaseDetail);
+export default CaseDetail;

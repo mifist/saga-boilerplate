@@ -11,8 +11,10 @@ import PersonalSideBar from 'legacy/containers/PersonalSideBar/saga';
 import ProfileSuggestions from 'legacy/containers/ProfileSuggestions/saga';
 import UploadContent from 'legacy/containers/UploadContent/saga';
 
+import CaseDetail from 'legacy/pages/CaseDetail/saga';
 export default {
   SagaContainer,
+  CaseDetail,
   CaseOverview,
   // containers
   TestContainer,
