@@ -1,6 +1,6 @@
 import React from 'react';
 import CookieProvider from './CookieProvider';
-import { UserProvider } from './User.context';
+import UserProvider from './User.context';
 
 function AppProviders({ children }) {
   console.log(children);

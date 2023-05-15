@@ -33,7 +33,7 @@ import { stateToHTML } from 'draft-js-export-html';
 
 // Async call mantions
 import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
-import useAsync from 'utils/hooks/useAsync';
+import useAsync from 'appHooks/useAsync';
 
 // components
 import MentionEntry from 'legacy/components/Comments/MentionEntry';

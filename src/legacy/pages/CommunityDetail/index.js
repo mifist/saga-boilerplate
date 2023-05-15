@@ -63,26 +63,26 @@ import {
 import { Col, Layout, Row, Spin } from 'antd';
 
 // components
-import TabsTcf from 'components/TabsTcf';
+import TabsTcf from 'legacy/components/TabsTcf';
 // widgets components
-import WidgetWrapper from 'components/Widgets/WidgetWrapper';
-import AboutCommunityWidget from 'components/Widgets/AboutCommunityWidget';
-import PopularTagsWidget from 'components/Widgets/PopularTagsWidget';
-import RulesWidget from 'components/Widgets/RulesWidget';
-import MembersListWidget from 'components/Widgets/MembersListWidget';
+import WidgetWrapper from 'legacy/components/Widgets/WidgetWrapper';
+import AboutCommunityWidget from 'legacy/components/Widgets/AboutCommunityWidget';
+import PopularTagsWidget from 'legacy/components/Widgets/PopularTagsWidget';
+import RulesWidget from 'legacy/components/Widgets/RulesWidget';
+import MembersListWidget from 'legacy/components/Widgets/MembersListWidget';
 
 // community components
-import CommunityPreHeader from 'components/Community/CommunityPreHeader';
-import CommunityHeader from 'components/Community/CommunityHeader';
-import CommunityFeeds from 'components/Community/CommunityFeeds';
-import CommunityWelcome from 'components/Community/CommunityWelcome';
+import CommunityPreHeader from 'legacy/components/Community/CommunityPreHeader';
+import CommunityHeader from 'legacy/components/Community/CommunityHeader';
+import CommunityFeeds from 'legacy/components/Community/CommunityFeeds';
+import CommunityWelcome from 'legacy/components/Community/CommunityWelcome';
 // community containers
-import MembersTab from 'containers/Community/MembersTab';
+import MembersTab from 'legacy/containers/Community/MembersTab';
 
 // contexts
 import { withUser } from 'engine/Contexts/User.context';
 // helper
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 import {
   getUrlVars,
   makeSearchQueryParams,
@@ -150,7 +150,7 @@ export function CommunityDetail({
     const userId = getObjId(user);
     const isAdmin =
       communityDetailData?.admins &&
-      communityDetailData?.admins.find(el => getObjId(el) == userId);
+      communityDetailData?.admins.find((el) => getObjId(el) == userId);
     return isAdmin;
   }, [communityDetailData, user]);
 
@@ -158,7 +158,7 @@ export function CommunityDetail({
     const userId = getObjId(user);
     const isModerator =
       communityDetailData?.moderators &&
-      communityDetailData?.moderators.find(el => getObjId(el) == userId);
+      communityDetailData?.moderators.find((el) => getObjId(el) == userId);
     return isModerator;
   }, [communityDetailData, user]);
 
@@ -283,7 +283,7 @@ export function CommunityDetail({
     });
   };
 
-  const onChangeRules = newRulesList => {
+  const onChangeRules = (newRulesList) => {
     // const isEquals = arraysObjEqual(communityDetailData?.rules, newRulesList);
     const newCommunityDeteilData = {
       ...communityDetailData,
@@ -292,7 +292,7 @@ export function CommunityDetail({
     newRulesList && onChangeAction(newCommunityDeteilData);
   };
 
-  const onChangeCommunity = communityData => {
+  const onChangeCommunity = (communityData) => {
     const newCommunityDeteilData = {
       ...communityDetailData,
       ...communityData,
@@ -300,7 +300,7 @@ export function CommunityDetail({
     onChangeAction(newCommunityDeteilData);
   };
 
-  const changeFeedsFilter = filter => {
+  const changeFeedsFilter = (filter) => {
     setFilter(filter);
   };
 
@@ -549,24 +549,21 @@ function mapDispatchToProps(dispatch) {
   return {
     dispatch,
     flushState: () => dispatch(flushStateCommunityDetail()),
-    onLoadDetail: id => dispatch(loadCommunityDetail(id)),
-    onChangeAction: data => dispatch(changeCommunityDetail(data)),
-    onDeleteAction: id => dispatch(deleteCommunityDetail(id)),
-    onLoadTags: id => dispatch(loadCommunityTags(id)),
-    onLoadPopularTags: id => dispatch(loadCommunityDetailTags(id)),
-    onUploadMedia: media => dispatch(uploadCommunityMedia(media)),
+    onLoadDetail: (id) => dispatch(loadCommunityDetail(id)),
+    onChangeAction: (data) => dispatch(changeCommunityDetail(data)),
+    onDeleteAction: (id) => dispatch(deleteCommunityDetail(id)),
+    onLoadTags: (id) => dispatch(loadCommunityTags(id)),
+    onLoadPopularTags: (id) => dispatch(loadCommunityDetailTags(id)),
+    onUploadMedia: (media) => dispatch(uploadCommunityMedia(media)),
     onLoadFeeds: (id, page, filter, entity = 'post') =>
       dispatch(loadCommunityFeed(id, page, filter, entity)),
-    onPostPublication: publication => dispatch(postPublication(publication)),
-    setReportPopup: data => dispatch(setReportPopupAction(data)),
-    reportPost: data => dispatch(reportPostAction(data)),
+    onPostPublication: (publication) => dispatch(postPublication(publication)),
+    setReportPopup: (data) => dispatch(setReportPopupAction(data)),
+    reportPost: (data) => dispatch(reportPostAction(data)),
   };
 }
 
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(
   withConnect,

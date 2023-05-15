@@ -3,9 +3,8 @@
  */
 
 import SagaContainer from 'pages/SagaContainer/saga';
-import Testtest from 'legacy/containers/Testtest/saga';
-
+import CaseOverview from 'legacy/pages/CaseOverview/saga';
 export default {
   SagaContainer,
-  Testtest
+  CaseOverview
 };

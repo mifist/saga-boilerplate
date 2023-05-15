@@ -1,7 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useDispatch, useSelector } from 'react-redux';
 import { compose } from 'redux';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
@@ -9,7 +8,7 @@ import classNames from 'classnames';
 
 import './style.scss';
 
-import useDeviceDetect from 'utils/useDeviceDetect';
+import useDeviceDetect from 'appHooks/useDeviceDetect';
 
 // antd component
 import { Col, Empty, Form, Pagination, Row, Select, Spin } from 'antd';
@@ -28,14 +27,15 @@ import reducer from './reducer';
 
 export function CaseOverview({ createCase, history }) {
   console.log('caseOverview');
+
   const { cases, loading, error } = useSelector((state) => {
-    return state.caseOverview;
+    return state.CaseOverview;
   });
+
+  const dispatch = useDispatch();
 
   //  loadCases: (filter) => dispatch(loadCasesAction(filter)),
   //     createCase: (data) => dispatch(createCaseAction(data)),
-
-  const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation();
   const { isMobile } = useDeviceDetect();

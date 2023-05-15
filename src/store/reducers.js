@@ -3,11 +3,9 @@
  */
 
 import SagaContainer from 'pages/SagaContainer/reducer';
-import caseOverview from 'legacy/pages/CaseOverview/reducer';
-import Testtest from 'legacy/containers/Testtest/reducer';
+import CaseOverview from 'legacy/pages/CaseOverview/reducer';
 
 export default {
   SagaContainer,
-  caseOverview,
-  Testtest,
+  CaseOverview,
 };

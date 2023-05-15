@@ -1,19 +1,5 @@
 import produce from 'immer';
-import {
-  FLUSH_STATE,
-  LOAD_COMMENTS,
-  LOAD_COMMENTS_ERROR,
-  LOAD_COMMENTS_SUCCESS,
-  REPORT_POST,
-  REPORT_POST_ERROR,
-  REPORT_POST_SUCCESS,
-  SET_REPORT_POPOP_OPENED,
-  MODIFY_POST_TYPE,
-  MODIFY_POST_TYPE_ERROR,
-  MODIFY_POST_TYPE_SUCCESS,
-  SET_MODIFY_POST_TYPE_POPOP_OPENED,
-  UPDATE_COMMENT_LIST,
-} from './constants';
+import * as CONSTANS from './constants';
 
 export const initialState = {
   error: false,
@@ -28,60 +14,60 @@ export const initialState = {
 const commentsOverviewReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case FLUSH_STATE:
+      case CONSTANS.FLUSH_STATE:
         return initialState;
 
       // Load all Comments for Single Case
-      case LOAD_COMMENTS:
+      case CONSTANS.LOAD_COMMENTS:
         draft.loading = true;
         draft.error = false;
         draft.id = action.id;
         draft.firstRender = false;
         break;
 
-      case LOAD_COMMENTS_SUCCESS:
+      case CONSTANS.LOAD_COMMENTS_SUCCESS:
         draft.comments = action.comments;
         draft.loading = false;
         draft.firstRender = false;
         break;
 
-      case LOAD_COMMENTS_ERROR:
+      case CONSTANS.LOAD_COMMENTS_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case REPORT_POST:
+      case CONSTANS.REPORT_POST:
         draft.loading = true;
         break;
-      case REPORT_POST_SUCCESS:
+      case CONSTANS.REPORT_POST_SUCCESS:
         draft.loading = false;
         draft.reportPopupOpened = false;
         break;
-      case REPORT_POST_ERROR:
+      case CONSTANS.REPORT_POST_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case SET_REPORT_POPOP_OPENED:
+      case CONSTANS.SET_REPORT_POPOP_OPENED:
         draft.reportPopupOpened = action.opened;
         break;
 
-      case MODIFY_POST_TYPE:
+      case CONSTANS.MODIFY_POST_TYPE:
         draft.loading = true;
         break;
-      case MODIFY_POST_TYPE_SUCCESS:
+      case CONSTANS.MODIFY_POST_TYPE_SUCCESS:
         draft.loading = false;
         draft.modifyPostTypePopupOpened = false;
         break;
-      case MODIFY_POST_TYPE_ERROR:
+      case CONSTANS.MODIFY_POST_TYPE_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
-      case SET_MODIFY_POST_TYPE_POPOP_OPENED:
+      case CONSTANS.SET_MODIFY_POST_TYPE_POPOP_OPENED:
         draft.modifyPostTypePopupOpened = action.opened;
         break;
 
-      case UPDATE_COMMENT_LIST:
+      case CONSTANS.UPDATE_COMMENT_LIST:
         if (action.actionType === 'delete' || action.actionType === 'like') {
           if (action.data.type === 'child') {
             const parentIndex = state.comments.findIndex(

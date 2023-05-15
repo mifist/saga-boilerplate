@@ -6,7 +6,7 @@ import { withUser } from 'engine/context/User.context';
 
 // Async call for managing of users
 import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
-import useAsync from 'utils/hooks/useAsync';
+import useAsync from 'appHooks/useAsync';
 
 const HiddenCommentMsg = ({ user, commentId }) => {
   const { t } = useTranslation();

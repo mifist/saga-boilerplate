@@ -17,21 +17,20 @@ import './style.scss';
 import { Select, notification, Spin } from 'antd';
 
 // assets
-// import CustomIcons from 'legacy/components/CustomIcons';
+// import CustomIcons from 'legacy/legacy/components/CustomIcons';
 import { CloseOutlined, CheckOutlined, UserOutlined } from '@ant-design/icons';
 
 // components
-import ChatButton from 'components/ChatButton';
+import ChatButton from 'legacy/components/ChatButton';
 
 // global user
 import { withUser } from 'engine/context/User.context';
 
 // Async call for managing of users
 import api, { setAuthorizationHeader } from 'engine/api/axiosAPI';
-import useAsync from 'utils/hooks/useAsync';
+import useAsync from 'appHooks/useAsync';
 // helpers function
 import { getObjId } from 'utils/generalHelper';
-const { Option } = Select;
 
 function RequestControls({
   mode,

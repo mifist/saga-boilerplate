@@ -2,7 +2,6 @@ import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -11,7 +10,6 @@ import { useInjectReducer } from 'utils/injectReducer';
 
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 
 import { flushState } from './actions';
 import { makeSelectTestContainer } from './selectors';
@@ -24,9 +22,9 @@ import { Col, Row, Typography, Space } from 'antd';
 const { Text } = Typography;
 
 // assets
-import CustomIcons from 'legacy/components/CustomIcons';
-import VideoPopupVimeo from '../../components/VideoPopupVimeo';
-import LexicalEditor from '../../components/LexicalEditor';
+import CustomIcons from 'legacy/legacy/components/CustomIcons';
+import VideoPopupVimeo from 'legacy/components/VideoPopupVimeo';
+import LexicalEditor from 'legacy/components/LexicalEditor';
 import log from 'eslint-plugin-react/lib/util/log';
 
 // components

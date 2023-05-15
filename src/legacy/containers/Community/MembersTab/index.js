@@ -19,7 +19,7 @@ import { Collapse, Typography } from 'antd';
 import { withUser } from 'engine/context/User.context';
 
 // components
-import MembersListWidget from 'components/Widgets/MembersListWidget';
+import MembersListWidget from 'legacy/components/Widgets/MembersListWidget';
 
 // containers
 import InviteMemberForm from 'legacy/containers/Community/InviteMemberForm';

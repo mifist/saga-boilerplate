@@ -1,20 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import { compose } from '@reduxjs/toolkit';
 import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
 import moment from 'moment';
 import { convert } from 'html-to-text';
 import { useTranslation } from 'react-i18next';
 
-import { Col, Dropdown, Empty, Menu, Popconfirm, Row, Tabs } from 'antd';
+// HOC
+import withRedux from 'HOC/withRedux';
 
-import { useInjectSaga } from 'utils/injectSaga';
-import { useInjectReducer } from 'utils/injectReducer';
-import reducer from './reducer';
-import saga from './saga';
 import './style.scss';
 
 import {
@@ -27,64 +21,49 @@ import {
   updateCommentList as updateCommentListAction,
 } from './actions';
 
-import {
-  makeSelectComments,
-  makeSelectCommentsOverview,
-  makeSelectError,
-  makeSelectLoading,
-  makeSelectReportPopupOpened,
-  makeSelectModifyPostTypePopupOpened,
-} from './selectors';
-
-import useDeviceDetect from 'appHooks/useDeviceDetect';
-
 // antd component
+import { Col, Dropdown, Empty, Menu, Popconfirm, Row, Tabs } from 'antd';
 
-// icons
+// assets
 import CustomIcons from 'legacy/components/CustomIcons';
 
 // components
-import CommentItem from 'components/Comments/CommentItem';
-import BookmarkAction from 'components/BookmarkAction';
-import ShareAction from 'components/ShareAction';
-import ModalWithLikes from 'components/ModalWithLikes';
-import { ReportPopup } from 'components/ReportPopup';
-import { ModifyPostTypePopup } from 'components/ModifyPostTypePopup';
-import CommentFormNew from '../../components/Comments/CommentFormNew';
+import CommentItem from 'legacy/components/Comments/CommentItem';
+import BookmarkAction from 'legacy/components/BookmarkAction';
+import ShareAction from 'legacy/components/ShareAction';
+import ModalWithLikes from 'legacy/components/ModalWithLikes';
+import { ReportPopup } from 'legacy/components/ReportPopup';
+import { ModifyPostTypePopup } from 'legacy/components/ModifyPostTypePopup';
+import CommentFormNew from 'legacy/components/Comments/CommentFormNew';
 
 // global user
 import { withUser } from 'engine/context/User.context';
 import { withAuthPopup } from 'engine/context/AuthPopup.context';
-
+// hooks
+import useDeviceDetect from 'appHooks/useDeviceDetect';
+// utils
 import { getCommentsCount } from 'utils/generalHelper';
 
 function CommentsOverview({
-  commentType,
-  comments,
-  loading,
-  loadComments,
-  // footer
+  // props
   itemData,
-  changeItem,
   className,
   user,
   onDelete,
   onPinUnpinPost,
   onHideUnhidePost,
-  flushState,
   setAuthPopup,
-  reportPopupOpened,
-  setReportPopupOpened,
-  reportPost,
-  modifyPostTypePopupOpened,
-  setModifyPostTypePopupOpened,
-  modifyPostType,
-  updateCommentList,
+  // core
+  state,
+  dispatch
 }) {
-  useInjectReducer({ key: 'commentsOverview', reducer });
-  useInjectSaga({ key: 'commentsOverview', saga });
 
-  const isActiveLike = itemData.likes.some(like => like?._id === user._id);
+  const { 
+    commentType, comments, loading, error, changeItem,
+    reportPopupOpened, modifyPostTypePopupOpened
+  } = state.CommentsOverview;
+
+  const isActiveLike = itemData.likes.some((like) => like?._id === user._id);
   const { t, i18n } = useTranslation();
   const { isMobile } = useDeviceDetect();
   const { id: initialId } = useParams();
@@ -116,13 +95,13 @@ function CommentsOverview({
 
   useEffect(() => {
     if (initialId) {
-      loadComments(initialId, commentType);
+      dispatch(loadComments(initialId, commentType));
     }
   }, [initialId]);
 
   useEffect(() => {
     return () => {
-      flushState();
+      dispatch(flushState());
     };
   }, []);
 
@@ -132,7 +111,7 @@ function CommentsOverview({
     <Menu style={{ width: '160px' }}>
       {(itemData?.community?.admins?.includes(user._id) ||
         itemData?.community?.moderators?.includes(user._id) ||
-        itemData.author.some(i => i._id === user._id)) && (
+        itemData.author.some((i) => i._id === user._id)) && (
         <>
           <Menu.Item key="delete">
             <Popconfirm
@@ -168,14 +147,14 @@ function CommentsOverview({
           <>
             <Menu.Item
               key="modifyType"
-              onClick={() => setModifyPostTypePopupOpened(true)}
+              onClick={() => dispatch(setModifyPostTypePopupOpened(true))}
             >
               {t('common.modifyType')}
             </Menu.Item>
             <Menu.Divider />
           </>
         )}
-      <Menu.Item key="report" onClick={() => setReportPopupOpened(true)}>
+      <Menu.Item key="report" onClick={() => dispatch(setReportPopupOpened(true))}>
         {t('common.report')}
       </Menu.Item>
     </Menu>
@@ -187,7 +166,7 @@ function CommentsOverview({
         changeItem(
           {
             ...itemData,
-            likes: itemData.likes.filter(i => i?._id !== user._id),
+            likes: itemData.likes.filter((i) => i?._id !== user._id),
           },
           'like',
         );
@@ -199,8 +178,8 @@ function CommentsOverview({
     }
   };
 
-  const handleReportPostSubmit = values => {
-    reportPost({
+  const handleReportPostSubmit = (values) => {
+    dispatch(reportPost({
       postText: itemData.type
         ? itemData.type === 'post'
           ? convert(itemData.content, {
@@ -219,15 +198,15 @@ function CommentsOverview({
       userId: user?._id,
       postId: itemData._id,
       url: location.pathname,
-    });
+    }));
   };
 
-  const handleModifyPostTypeSubmit = values => {
-    modifyPostType({
+  const handleModifyPostTypeSubmit = (values) => {
+    dispatch(modifyPostType({
       _id: itemData._id,
       type: values.postType,
       title: values.caseTitle || null,
-    });
+    }));
   };
 
   // render function
@@ -300,24 +279,24 @@ function CommentsOverview({
                 <Dropdown
                   overlay={otherAction}
                   trigger={['click']}
-                  getPopupContainer={trigger => trigger.parentElement}
+                  getPopupContainer={(trigger) => trigger.parentElement}
                 >
                   <a
                     className="ant-dropdown-link"
-                    onClick={e => e.preventDefault()}
+                    onClick={(e) => e.preventDefault()}
                   >
                     <CustomIcons type="dots-vertical" />
                   </a>
                 </Dropdown>
                 <ReportPopup
                   visible={reportPopupOpened}
-                  onClose={() => setReportPopupOpened(false)}
+                  onClose={() => dispatch(setReportPopupOpened(false))}
                   onSubmit={handleReportPostSubmit}
                   loading={loading}
                 />
                 <ModifyPostTypePopup
                   visible={modifyPostTypePopupOpened}
-                  onClose={() => setModifyPostTypePopupOpened(false)}
+                  onClose={() => dispatch(setModifyPostTypePopupOpened(false))}
                   onSubmit={handleModifyPostTypeSubmit}
                   loading={loading}
                 />
@@ -337,7 +316,7 @@ function CommentsOverview({
             postType={commentType}
             actionType="post"
             postData={itemData}
-            onSubmitResponse={data => updateCommentList('add', data)}
+            onSubmitResponse={(data) => dispatch(updateCommentList('add', data))}
             showForm={showMainComment}
             setShowForm={setShowMainComment}
           />
@@ -348,7 +327,7 @@ function CommentsOverview({
               className="comments-tabs"
               defaultActiveKey="1"
               activeKey={commentTabNumber}
-              onChange={activeKey => setCommentTabNumber(activeKey)}
+              onChange={(activeKey) => setCommentTabNumber(activeKey)}
             >
               <Tabs.TabPane
                 tab={t(
@@ -358,25 +337,29 @@ function CommentsOverview({
                 key="1"
               >
                 <div className="comments-list-section">
-                  {comments.map(comment => (
+                  {comments.map((comment) => (
                     <CommentItem
                       key={comment._id}
                       comment={comment}
                       commentType={commentType}
                       postData={itemData}
                       nodeType="parent"
-                      updateCommentList={updateCommentList}
+                      updateCommentList={(type, data) => {
+                        dispatch(updateCommentList(type, data))
+                      }}
                     >
                       {comment.answers?.length > 0 &&
-                        comment.answers.map(answer => (
+                        comment.answers.map((answer) => (
                           <CommentItem
                             key={answer?._id}
                             comment={answer}
                             commentType={commentType}
                             postData={itemData}
-                            nodeType="child"
-                            updateCommentList={updateCommentList}
                             parent={comment}
+                            nodeType="child"
+                            updateCommentList={(type, data) => {
+                              dispatch(updateCommentList(type, data))
+                            }}
                           />
                         ))}
                     </CommentItem>
@@ -394,57 +377,8 @@ function CommentsOverview({
   );
 }
 
-CommentsOverview.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  flushState: PropTypes.func.isRequired,
-  commentType: PropTypes.oneOfType([
-    PropTypes.string.isRequired,
-    PropTypes.bool.isRequired,
-  ]),
-  comments: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
-  loading: PropTypes.bool,
-  loadComments: PropTypes.func,
-  error: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-    PropTypes.bool,
-  ]),
-  // footer
-  changeItem: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
-};
-
-const mapStateToProps = createStructuredSelector({
-  state: makeSelectCommentsOverview(),
-  comments: makeSelectComments(),
-  loading: makeSelectLoading(),
-  error: makeSelectError(),
-  reportPopupOpened: makeSelectReportPopupOpened(),
-  modifyPostTypePopupOpened: makeSelectModifyPostTypePopupOpened(),
-});
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-    flushState: () => dispatch(flushState()),
-    loadComments: (id, commentType) => dispatch(loadComments(id, commentType)),
-    setReportPopupOpened: opened =>
-      dispatch(setReportPopupOpenedAction(opened)),
-    reportPost: data => dispatch(reportPostAction(data)),
-    setModifyPostTypePopupOpened: opened =>
-      dispatch(setModifyPostTypePopupOpenedAction(opened)),
-    modifyPostType: data => dispatch(modifyPostTypeAction(data)),
-    updateCommentList: (actionType, data) =>
-      dispatch(updateCommentListAction(actionType, data)),
-  };
-}
-
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-);
-
 export default compose(
-  withConnect,
+  withRedux,
   withRouter,
   withUser,
   withAuthPopup,

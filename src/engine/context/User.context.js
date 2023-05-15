@@ -136,10 +136,11 @@ export class UserProvider extends React.Component {
     }
   };
 
-/*   generateChatKeyPair = async userID => {
+  generateChatKeyPair = async userID => {
     const localKeyPair = await localStorage.getItem('BeeMedChatKeyPair');
     if (!localKeyPair && userID) {
-      let newKeyPair = await generateKeyPair(userID);
+   //   let newKeyPair = await generateKeyPair(userID);
+      let newKeyPair = false;
       //console.log('generateChatKeyPair', { userID, newKeyPair });
       newKeyPair &&
         localStorage.setItem('BeeMedChatKeyPair', JSON.stringify(newKeyPair));
@@ -148,7 +149,7 @@ export class UserProvider extends React.Component {
       const localKeyPairObj = JSON.parse(localKeyPair);
       return localKeyPairObj;
     }
-  }; */
+  }; 
 
   patchUser = async () => {
     console.debug('patchUser');

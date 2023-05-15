@@ -25,7 +25,7 @@ import api, {
   setAuthorizationHeader,
   setLanguageHeader,
 } from 'engine/api/axiosAPI';
-import useAsync from 'utils/hooks/useAsync';
+import useAsync from 'appHooks/useAsync';
 
 // helpers function
 import { getObjId } from 'utils/generalHelper';

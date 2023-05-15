@@ -46,7 +46,7 @@ import {
   PictureOutlined,
   FilePdfOutlined,
 } from '@ant-design/icons';
-import VideoPlayer from '../../components/VideoPlayer';
+import VideoPlayer from 'legacy/components/VideoPlayer';
 
 export function UploadContent({
   uploadContentFile,

@@ -8,7 +8,7 @@ import { history } from 'store/store.new';
 // pages
 import Home from 'pages/Home';
 import SagaContainer from 'pages/SagaContainer';
-import { CaseOverview } from '../legacy/pages/CaseOverview';
+import { CaseOverview } from 'legacy/pages/CaseOverview';
 
 export default function AppRouter() {
   return (

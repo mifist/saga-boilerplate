@@ -20,7 +20,6 @@ function Home({ ...rest }) {
     <>
       <Layout className="app-main-layout">
         <Content className="layout-content" style={{ padding: '30px' }}>
-          
           <nav>
             <ul>
               <li><Link to="/">Home</Link></li>

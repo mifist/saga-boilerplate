@@ -28,7 +28,7 @@ import UserAvatar from 'legacy/components/UserAvatar';
 import { withUser } from 'engine/context/User.context';
 import SideBarMenu from '../SideBarMenu';
 
-import LanguageSelect from '../../LanguageSelect';
+import LanguageSelect from 'legacy/components/LanguageSelect';
 import { setLanguageHeader } from 'engine/api/axiosAPI';
 
 function MobileHeaderLayout({

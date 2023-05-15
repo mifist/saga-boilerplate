@@ -48,7 +48,7 @@ import { Capacitor } from '@capacitor/core';
 import ErrorBoundary from '../ErrorBoundary';
 import GalleryPDF from '../GalleryPDF';
 import { getObjId } from 'utils/generalHelper';
-import { getEmployment } from '../../utils/generalHelper';
+import { getEmployment } from 'utils/generalHelper';
 
 class NewsFeedPost extends React.Component {
   // Control render manually
