@@ -82,10 +82,11 @@ module.exports = {
       'mobile': path.join(envKeys.root, envKeys.rootFolder, 'mobile'),
       'pages': path.join(envKeys.root, envKeys.rootFolder, 'pages'),
 
+      'images': path.join(envKeys.root, 'public', 'images'),
+
       'containers': path.join(envKeys.root, envKeys.rootFolder, 'shared', 'containers'),
       'components': path.join(envKeys.root, envKeys.rootFolder, 'shared', 'components'),
       // capacitor
-      'images': path.join(envKeys.root, 'public', 'images'),
       'android': path.join(envKeys.root, envKeys.rootFolder, 'android'),
       'ios': path.join(envKeys.root, envKeys.rootFolder, 'ios'),
     },

@@ -5,21 +5,14 @@
  */
 
 import React, { memo, useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
-import { Helmet } from 'react-helmet';
 import './style.scss';
 import { Image, Button } from 'antd';
 
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
-import VideoPlayer from '../VideoPlayer';
-import messages from './messages';
 
 function GalleryImage({ content, selectionItem }) {
   const [currentImage, setCurrentImage] = useState(content[0]);
-  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (content.includes(selectionItem)) {

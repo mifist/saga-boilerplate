@@ -18,12 +18,12 @@ import Like from 'images/icons/like.svg';
 import {
   updateLikes,
   setReportPopup as setReportPopupAction,
-} from 'pages/NewsFeed/actions';
-import { updateLikesCase } from 'pages/CaseOverview/actions';
+} from 'legacy/pages/NewsFeed/actions';
+import { updateLikesCase } from 'legacy/pages/CaseOverview/actions';
 import {
   updateLikesCommunity,
   setReportPopup as setReportPopupCommunityAction,
-} from 'pages/CommunityDetail/actions';
+} from 'legacy/pages/CommunityDetail/actions';
 
 import { Col, Row, Space, Dropdown, Menu } from 'antd';
 
