@@ -29,7 +29,7 @@ export function* loadCase(action) {
       yield put(ACTIONS.loadCaseSuccess(caseData));
     }
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     yield put(ACTIONS.loadCaseError(error));
   }
 }

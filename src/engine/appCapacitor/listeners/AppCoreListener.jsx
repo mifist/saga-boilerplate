@@ -84,7 +84,6 @@ function AppCoreListener() {
 
   const getAppUrlOpen = async (URLOpenListenerEvent) => {
     // Example url: https://beerswift.app/tabs/tab2
-    console.debug('GET NEW URL OPENED');
 
     const { url } = URLOpenListenerEvent;
     const code = url.split('oauth').pop();

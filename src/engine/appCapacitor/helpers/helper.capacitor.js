@@ -39,7 +39,7 @@ export const appGetLanguageCode = async () => {
 
 
 export const getBaseApiUrl = () => {
-  /* 
+  /*
   const nodeENV = process.env.NODE_ENV,
     baseENV = process.env.BASE_ENV; */
 
@@ -70,8 +70,8 @@ export const getBaseApiUrl = () => {
   } else if (!isWeb && process.env.BASE_ENV === 'local') {
     apiURL = DEVELOPMENT_LOCAL_APP_API_URL;
   }
-  
-  console.log('apiURL: ', apiURL, process.env.API_URL);
+
+  //console.log('apiURL: ', apiURL, process.env.API_URL);
 
   return process.env.API_URL;
 };
@@ -109,7 +109,7 @@ export const askRecordAudioPermission = async () => {
     hasAnswerPermission = await VoiceRecorder.requestAudioRecordingPermission()
     console.debug('hasAnswerPermission', JSON.stringify(hasAnswerPermission));
   }
-  
+
   return {
     canRecord: canRecord?.value,
     hasRecordPermission: hasRecordPermission?.value,
@@ -168,7 +168,7 @@ export const downloadAndInstallApk = async (apkUrl, appId) => {
     try {
       // Open the APK file in the device's browser
       await Browser.open({ url: apkUrl });
-  
+
       // Check if the app was installed successfully
       const isInstalled = await App.isInstalled({ id: appId });
       if (isInstalled) {
@@ -191,7 +191,6 @@ export const downloadAndInstallApk = async (apkUrl, appId) => {
     }
   } else {
     console.error(`Error in downloadAndInstallApk: apkUrl or appId is Empty!!`)
-    console.debug(`Error in downloadAndInstallApk: apkUrl or appId is Empty!!`)
   }
 
 }
