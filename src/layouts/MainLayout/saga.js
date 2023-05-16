@@ -4,7 +4,7 @@ import requestWrapper from 'utils/requestWrapper';
 import {
   LOAD_FRESH_NOTIFICATIONS,
   RESET_NOTIFICATIONS,
-} from '../../legacy/pages/Notifications/constants';
+} from 'legacy/pages/Notifications/constants';
 
 import {
   loadFreshNotificationsError,

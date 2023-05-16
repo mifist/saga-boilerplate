@@ -1,24 +1,8 @@
 import { put, select, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
-import {
-  UPDATE_ARTICLE,
-  LOAD_ARTICLE,
-  ON_DELETE,
-  PIN_UNPIN_POST,
-  HIDE_UNHIDE_POST,
-} from './constants';
 
-import {
-  updateArticleError,
-  updateArticleSuccess,
-  loadArticleError,
-  loadArticleSuccess,
-  onDeleteSuccess,
-  pinUnpinPostSuccess,
-  pinUnpinPostError,
-  hideUnhidePostSuccess,
-  hideUnhidePostError,
-} from './actions';
+import * as CONSTANTS from './constants';
+import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
 
@@ -35,12 +19,12 @@ export function* loadArticle(action) {
     );
 
     if (!article && Object.keys(article.data).length === 0) {
-      yield put(loadArticleSuccess(false));
+      yield put(ACTIONS.loadArticleSuccess(false));
     } else {
-      yield put(loadArticleSuccess(article));
+      yield put(ACTIONS.loadArticleSuccess(article));
     }
   } catch (error) {
-    yield put(loadArticleError(error));
+    yield put(ACTIONS.loadArticleError(error));
   }
 }
 
@@ -57,12 +41,12 @@ export function* updateArticle(action) {
     );
 
     if (!response) {
-      yield put(updateArticleSuccess(false));
+      yield put(ACTIONS.updateArticleSuccess(false));
     } else {
-      yield put(updateArticleSuccess(response));
+      yield put(ACTIONS.updateArticleSuccess(response));
     }
   } catch (error) {
-    yield put(updateArticleError(error));
+    yield put(ACTIONS.updateArticleError(error));
   }
 }
 
@@ -79,7 +63,7 @@ export function* onDelete(action) {
     );
 
     if (deleteCase) {
-      yield put(onDeleteSuccess());
+      yield put(ACTIONS.onDeleteSuccess());
     }
   } catch (error) {}
 }
@@ -100,14 +84,14 @@ export function* pinUnpinPost(action) {
 
     if (result) {
       notification.success({ message: result.message });
-      yield put(pinUnpinPostSuccess(pinned));
+      yield put(ACTIONS.pinUnpinPostSuccess(pinned));
     } else {
       notification.error({ message: 'Something went wrong' });
-      yield put(pinUnpinPostError(false));
+      yield put(ACTIONS.pinUnpinPostError(false));
     }
   } catch (error) {
     notification.error({ message: 'Something went wrong' });
-    yield put(pinUnpinPostError(error));
+    yield put(ACTIONS.pinUnpinPostError(error));
   }
 }
 
@@ -127,22 +111,22 @@ export function* hideUnhidePost(action) {
 
     if (result) {
       notification.success({ message: result.message });
-      yield put(hideUnhidePostSuccess(hidden));
+      yield put(ACTIONS.hideUnhidePostSuccess(hidden));
     } else {
       notification.error({ message: 'Something went wrong' });
-      yield put(hideUnhidePostError(result));
+      yield put(ACTIONS.hideUnhidePostError(result));
     }
   } catch (error) {
     notification.error({ message: 'Something went wrong' });
-    yield put(hideUnhidePostError(error));
+    yield put(ACTIONS.hideUnhidePostError(error));
   }
 }
 
 // Individual exports for testing
 export default function* articleDetailSaga() {
-  yield takeLatest(LOAD_ARTICLE, loadArticle);
-  yield takeLatest(UPDATE_ARTICLE, updateArticle);
-  yield takeLatest(ON_DELETE, onDelete);
-  yield takeLatest(PIN_UNPIN_POST, pinUnpinPost);
-  yield takeLatest(HIDE_UNHIDE_POST, hideUnhidePost);
+  yield takeLatest(CONSTANTS.LOAD_ARTICLE, loadArticle);
+  yield takeLatest(CONSTANTS.UPDATE_ARTICLE, updateArticle);
+  yield takeLatest(CONSTANTS.ON_DELETE, onDelete);
+  yield takeLatest(CONSTANTS.PIN_UNPIN_POST, pinUnpinPost);
+  yield takeLatest(CONSTANTS.HIDE_UNHIDE_POST, hideUnhidePost);
 }

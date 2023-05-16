@@ -2,19 +2,27 @@
  *
  * App
  *
- * This component is the skeleton around the actual pages, and should only
- * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 import React from 'react';
 import Helmet from 'react-helmet';
 
-import { Route, Routes, Link, BrowserRouter } from 'react-router-dom';
-import { routes } from 'engine/routes';
-import { history } from 'store/store.new';
-
 import AppRouter from 'engine/AppRouter';
 
-function App({}) {
+// capacitor
+import { appHelper } from 'appCapacitor/helpers';
+// utils
+import useDeviceDetect from 'appHooks/useDeviceDetect';
+
+function App({ }) {
+
+  const { isMobile, isMobileBrowser } = useDeviceDetect();
+  
+  let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+  let isApp = false;
+  if (!appHelper.isWeb || isMobile || width < 800) {
+    isApp = true;
+  }
+
   return (
     <>
       <Helmet
@@ -28,7 +36,7 @@ function App({}) {
         <meta property="og:image" content="" />
       </Helmet>
 
-      <AppRouter />
+      <AppRouter isApp={isApp} />
     </>
   );
 }

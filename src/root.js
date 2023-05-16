@@ -32,7 +32,7 @@ import { storeNew } from 'store/store.new';
 import AppProviders from 'appContext/AppProviders';
 
 import 'engine/i18n';
-import { AntdProvider } from './engine/HOC/AntdProvider';
+import { AntdProvider } from 'HOC/AntdProvider';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)

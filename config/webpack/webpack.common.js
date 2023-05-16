@@ -65,26 +65,26 @@ module.exports = {
     mainFields: ['browser', 'jsnext:main', 'main'],
     alias: {
       'public': path.join(envKeys.root, 'public'),
-      //   'config': path.join(envKeys.root, 'config'),
+      'images': path.join(envKeys.root, 'public', 'images'),
+      // app
       'src': path.join(envKeys.root, envKeys.rootFolder),
       'store': path.join(envKeys.root, envKeys.rootFolder, 'store'),
       'shared': path.join(envKeys.root, envKeys.rootFolder, 'shared'),
       'theme': path.join(envKeys.root, envKeys.rootFolder, 'theme'),
       'engine': path.join(envKeys.root, envKeys.rootFolder, 'engine'),
       'layouts': path.join(envKeys.root, envKeys.rootFolder, 'layouts'),
+      'utils': path.join(envKeys.root, envKeys.rootFolder, 'utils'),
+      // other
+      'mobile': path.join(envKeys.root, envKeys.rootFolder, 'mobile'),
+      'pages': path.join(envKeys.root, envKeys.rootFolder, 'pages'),
       'legacy': path.join(envKeys.root, envKeys.rootFolder, 'legacy'),
+      // engine
       'appCapacitor': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'appCapacitor'),
       'appContext': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'context'),
       'appHooks': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'hooks'),
       'HOC': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'HOC'),
       'appAPI': path.join(envKeys.root, envKeys.rootFolder, 'engine', 'api'),
-      'utils': path.join(envKeys.root, envKeys.rootFolder, 'utils'),
-      // other
-      'mobile': path.join(envKeys.root, envKeys.rootFolder, 'mobile'),
-      'pages': path.join(envKeys.root, envKeys.rootFolder, 'pages'),
-
-      'images': path.join(envKeys.root, 'public', 'images'),
-
+      // shared
       'containers': path.join(envKeys.root, envKeys.rootFolder, 'shared', 'containers'),
       'components': path.join(envKeys.root, envKeys.rootFolder, 'shared', 'components'),
       // capacitor

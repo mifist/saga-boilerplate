@@ -1,9 +1,11 @@
 import React from 'react';
-
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
+// routes
 import { routes } from 'engine/routes';
-import { history } from 'store/store.new';
+
+// root layouts
+import MainLayout from 'layouts/MainLayout';
 
 // pages
 import CaseOverview from 'legacy/pages/CaseOverview';
@@ -16,26 +18,26 @@ import ArticlesOverview from 'legacy/pages/ArticlesOverview';
 import ArticleDetail from 'legacy/pages/ArticleDetail';
 import CommunitiesOverview from 'legacy/pages/CommunitiesOverview';
 import CommunityDetail from 'legacy/pages/CommunityDetail';
-import MainLayout from 'layouts/MainLayout/MainLayout';
 
-export default function AppRouter() {
+
+export default function AppRouter(props) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={routes.main} element={<MainLayout />}>
-          <Route path={routes.case.baseUrl} element={<CaseOverview />} />
-          <Route path={routes.case.detail} element={<CaseDetail />} />
-          <Route path={routes.podcast.baseUrl} element={<PodcastsOverview />} />
-          <Route path={routes.podcast.detail} element={<PodcastDetail />} />
-          <Route path={routes.event.baseUrl} element={<EventOverview />} />
-          <Route path={routes.event.detail} element={<EventDetail />} />
-          <Route path={routes.article.baseUrl} element={<ArticlesOverview />} />
-          <Route path={routes.article.detail} element={<ArticleDetail />} />
+        <Route path={routes.main} element={<MainLayout {...props} />}>
+          <Route path={routes.case.baseUrl} element={<CaseOverview {...props} />} />
+          <Route path={routes.case.detail} element={<CaseDetail {...props} />} />
+          <Route path={routes.podcast.baseUrl} element={<PodcastsOverview {...props} />} />
+          <Route path={routes.podcast.detail} element={<PodcastDetail {...props} />} />
+          <Route path={routes.event.baseUrl} element={<EventOverview {...props} />} />
+          <Route path={routes.event.detail} element={<EventDetail {...props} />} />
+          <Route path={routes.article.baseUrl} element={<ArticlesOverview {...props} />} />
+          <Route path={routes.article.detail} element={<ArticleDetail {...props} />} />
           <Route
             path={routes.community.baseUrl}
-            element={<CommunitiesOverview />}
+            element={<CommunitiesOverview {...props} />}
           />
-          <Route path={routes.community.detail} element={<CommunityDetail />} />
+          <Route path={routes.community.detail} element={<CommunityDetail {...props} />} />
         </Route>
       </Routes>
     </BrowserRouter>

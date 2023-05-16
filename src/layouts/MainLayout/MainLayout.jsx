@@ -1,37 +1,56 @@
 import React, { memo, useState } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import useDeviceDetect from 'utils/useDeviceDetect';
+import { compose } from '@reduxjs/toolkit';
 import classNames from 'classnames';
-import { Layout } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-
-import HeaderLayout from 'legacy/components/Layouts/HeaderLayout';
-import MobileHeaderLayout from 'legacy/components/Layouts/MobileHeaderLayout';
-import ProfileCard from 'legacy/components/Profile/ProfileCard';
-import PersonalSideBar from 'legacy/containers/PersonalSideBar';
-import UnauthorizedSidebar from 'legacy/components/Layouts/UnauthorizedSidebar';
-import AuthenticationPopup from 'legacy/components/AuthenticationPopup';
-import MobileBottomBar from 'legacy/components/Layouts/MobileBottomBar';
-
-import { resetNotifications } from './actions';
-import { withUser } from 'appContext/User.context';
 import { CometChat } from '@cometchat-pro/chat';
-import { routes } from 'engine/routes';
-import './style.scss';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-function MainLayout({ user }) {
-  const dispatch = useDispatch();
+import './style.scss';
+// HOC
+import withRedux from 'HOC/withRedux';
+// actions
+import { resetNotifications } from './actions';
+
+// antd component
+import { Layout } from 'antd';
+// legacy layouts
+import {
+  HeaderLayout, MobileBottomBar,
+  UnauthorizedSidebar, MobileHeaderLayout,
+} from 'legacy/layouts';
+// components
+import ProfileCard from 'legacy/components/Profile/ProfileCard';
+import AuthenticationPopup from 'legacy/components/AuthenticationPopup';
+// containers
+import PersonalSideBar from 'legacy/containers/PersonalSideBar';
+
+// contexts
+import { withUser } from 'appContext/User.context';
+// routes
+import { routes } from 'engine/routes';
+// utils
+import { useDeviceDetect } from 'appHooks';
+
+
+function MainLayout({
+  // props
+  user,
+  // default props
+  className,
+  // core
+  state,
+  dispatch,
+}) {
+  const { freshNotifications } = state.MainLayout;
+
   const navigate = useNavigate();
   const location = useLocation();
-  const { freshNotifications } = useSelector((state) => state.MainLayout);
+  const { isMobile, isMobileBrowser } = useDeviceDetect();
 
   const isUserIndustryPartner = user?.role === 'industry';
-  const [chatMessageCount, setChatMessageCount] = useState(0);
 
+  const [chatMessageCount, setChatMessageCount] = useState(0);
   const [showBanner, setShowBanner] = useState(false);
   const [drawerOpened, setDrawerOpened] = useState(false);
-
-  const { isMobile, isMobileBrowser } = useDeviceDetect();
 
   const onBellClickHandler = () => {
     if (freshNotifications.length > 0) {
@@ -163,4 +182,4 @@ function MainLayout({ user }) {
   );
 }
 
-export default memo(withUser(MainLayout));
+export default compose(memo, withRedux, withUser)(MainLayout);

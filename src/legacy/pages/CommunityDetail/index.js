@@ -14,14 +14,11 @@ import './style.scss';
 
 // HOC
 import withRedux from 'HOC/withRedux';
-
+// actions
 import {
   // media
-  onUploadMedia,
-  // publication
-  onPostPublication,
+  uploadCommunityMedia,
   // feeds
-  onLoadFeeds,
   loadCommunityTags,
   loadCommunityDetailTags,
   loadCommunityDetail,
@@ -231,9 +228,9 @@ export function CommunityDetail({
 
   const tabChangedHandle = (key, prevKey) => {
     if (key == 'cases') {
-      dispatch(onLoadFeeds(initialId, 1, filter, 'case'));
+      dispatch(loadCommunityFeed(initialId, 1, filter, 'case'));
     } else if (key == 'feed') {
-      dispatch(onLoadFeeds(initialId, 1, filter));
+      dispatch(loadCommunityFeed(initialId, 1, filter));
     }
     const page = urlVars?.page || 1;
     const panel = urlVars?.panel || '3';
@@ -279,11 +276,11 @@ export function CommunityDetail({
     tags: communityTags,
 
     changeFilter: changeFeedsFilter,
-    onPost: (publication) => dispatch(onPostPublication(publication)),
+    onPost: (publication) => dispatch(postPublication(publication)),
     onLoad: (id, page, filter, entity = 'post') =>
-      dispatch(onLoadFeeds(id, page, filter, entity)),
+      dispatch(loadCommunityFeed(id, page, filter, entity)),
     media: uploadMedia,
-    onUploadMedia: (media) => dispatch(onUploadMedia(media)),
+    onUploadMedia: (media) => dispatch(uploadCommunityMedia(media)),
   };
 
   const communityTabs = [
@@ -389,7 +386,7 @@ export function CommunityDetail({
                         media={uploadMedia}
                         loading={loadingMedia}
                         onChangeHeader={onChangeCommunity}
-                        onMedia={(media) => dispatch(onUploadMedia(media))}
+                        onMedia={(media) => dispatch(uploadCommunityMedia(media))}
                       />
                       <CommunityHeader
                         communityInfo={communityDetailData}
