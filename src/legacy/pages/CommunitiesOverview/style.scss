@@ -1,7 +1,7 @@
 // Style for CommunitiesOverview page
 
 /* Global Variables */
-@import 'scss/global/variables';
+@import 'theme/scss/global/variables';
 
 .communities-list {
   display: flex;
@@ -60,8 +60,6 @@
   }
 }
 
-
-
 .my-communities {
   margin-bottom: 60px;
 }
@@ -73,5 +71,4 @@
 .pagination-community {
   float: right !important;
   margin-top: 24px;
-
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, memo } from 'react';
 import { compose } from '@reduxjs/toolkit';
-import { withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import './style.scss';
@@ -8,11 +7,7 @@ import './style.scss';
 // HOC
 import withRedux from 'HOC/withRedux';
 // actions
-import {
-  flushState as flushStateAction,
-  loadHiddenPosts as loadHiddenPostsAction,
-  unhidePost as unhidePostAction,
-} from './actions';
+import { flushState, loadHiddenPosts, unhidePost } from './actions';
 
 // antd component
 import { Table, Typography, Tooltip, Button } from 'antd';
@@ -22,7 +17,6 @@ import { withUser } from 'appContext/User.context';
 // utils
 import { getBaseDomainOrigin } from 'utils/capacitorHelper';
 
-
 const HiddenPosts = ({
   // props
   user,
@@ -31,7 +25,7 @@ const HiddenPosts = ({
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) => {
   const { hiddenPosts, loading } = state.HiddenPosts;
 
@@ -60,8 +54,18 @@ const HiddenPosts = ({
           pageSize: 20,
         }}
         columns={[
-          { title: t('hiddenPosts.id'), dataIndex: '_id', key: '_id', width: 230 },
-          { title: t('hiddenPosts.type'), dataIndex: 'type', key: 'type', width: 100 },
+          {
+            title: t('hiddenPosts.id'),
+            dataIndex: '_id',
+            key: '_id',
+            width: 230,
+          },
+          {
+            title: t('hiddenPosts.type'),
+            dataIndex: 'type',
+            key: 'type',
+            width: 100,
+          },
           {
             title: t('hiddenPosts.title'),
             dataIndex: 'title',
@@ -69,7 +73,7 @@ const HiddenPosts = ({
             ellipsis: {
               showTitle: false,
             },
-            render: text => (
+            render: (text) => (
               <Tooltip placement="topLeft" title={text}>
                 {text}
               </Tooltip>
@@ -82,7 +86,7 @@ const HiddenPosts = ({
             ellipsis: {
               showTitle: false,
             },
-            render: text => (
+            render: (text) => (
               <Tooltip placement="topLeft" title={text}>
                 {text}
               </Tooltip>
@@ -96,8 +100,9 @@ const HiddenPosts = ({
               showTitle: false,
             },
             render: (text, record) => {
-              const url = `${getBaseDomainOrigin()}/${record.type === 'post' ? 'case' : record.type
-                }/detail/${record._id}`;
+              const url = `${getBaseDomainOrigin()}/${
+                record.type === 'post' ? 'case' : record.type
+              }/detail/${record._id}`;
 
               return (
                 <Tooltip placement="topLeft" title={text}>
@@ -110,7 +115,9 @@ const HiddenPosts = ({
             title: t('hiddenPosts.action'),
             key: 'actions',
             render: (text, record) => (
-              <Button onClick={() => dispatch(unhidePost({ postId: record._id }))}>
+              <Button
+                onClick={() => dispatch(unhidePost({ postId: record._id }))}
+              >
                 {t('hiddenPosts.makeVisible')}
               </Button>
             ),
@@ -122,9 +129,4 @@ const HiddenPosts = ({
   );
 };
 
-export default compose(
-  withRedux,
-  withUser,
-  withRouter,
-  memo,
-)(HiddenPosts);
+export default compose(withRedux, withUser, memo)(HiddenPosts);

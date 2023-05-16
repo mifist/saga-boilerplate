@@ -1,29 +1,29 @@
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 // LOAD PODCAST
 export function loadPodcast(id) {
   return {
-    type: CONSTANS.LOAD_PODCAST,
+    type: CONSTANTS.LOAD_PODCAST,
     id,
   };
 }
 
 export function loadPodcastSuccess(podcast) {
   return {
-    type: CONSTANS.LOAD_PODCAST_SUCCESS,
+    type: CONSTANTS.LOAD_PODCAST_SUCCESS,
     podcast,
   };
 }
 
 export function loadPodcastError(error) {
   return {
-    type: CONSTANS.LOAD_PODCAST_ERROR,
+    type: CONSTANTS.LOAD_PODCAST_ERROR,
     error,
   };
 }
@@ -31,7 +31,7 @@ export function loadPodcastError(error) {
 // UPDATE PODCAST
 export function updatePodcast(data, actionType) {
   return {
-    type: CONSTANS.UPDATE_PODCAST,
+    type: CONSTANTS.UPDATE_PODCAST,
     data,
     actionType,
   };
@@ -39,34 +39,34 @@ export function updatePodcast(data, actionType) {
 
 export function updatePodcastSuccess(podcast) {
   return {
-    type: CONSTANS.UPDATE_PODCAST_SUCCESS,
+    type: CONSTANTS.UPDATE_PODCAST_SUCCESS,
     podcast,
   };
 }
 
 export function updatePodcastError(error) {
   return {
-    type: CONSTANS.UPDATE_PODCAST_ERROR,
+    type: CONSTANTS.UPDATE_PODCAST_ERROR,
     error,
   };
 }
 
 export function onDelete(id) {
   return {
-    type: CONSTANS.ON_DELETE,
+    type: CONSTANTS.ON_DELETE,
     id,
   };
 }
 export function onDeleteSuccess() {
   return {
-    type: CONSTANS.ON_DELETE_SUCCESS,
+    type: CONSTANTS.ON_DELETE_SUCCESS,
   };
 }
 
 // PIN UNPIN POST
 export function pinUnpinPost(postId, pinned) {
   return {
-    type: CONSTANS.PIN_UNPIN_POST,
+    type: CONSTANTS.PIN_UNPIN_POST,
     postId,
     pinned,
   };
@@ -74,14 +74,14 @@ export function pinUnpinPost(postId, pinned) {
 
 export function pinUnpinPostSuccess(pinned) {
   return {
-    type: CONSTANS.PIN_UNPIN_POST_SUCCESS,
+    type: CONSTANTS.PIN_UNPIN_POST_SUCCESS,
     pinned,
   };
 }
 
 export function pinUnpinPostError(error) {
   return {
-    type: CONSTANS.PIN_UNPIN_POST_ERROR,
+    type: CONSTANTS.PIN_UNPIN_POST_ERROR,
     error,
   };
 }
@@ -89,7 +89,7 @@ export function pinUnpinPostError(error) {
 // HIDE UNHIDE POST
 export function hideUnhidePost(postId, hidden) {
   return {
-    type: CONSTANS.HIDE_UNHIDE_POST,
+    type: CONSTANTS.HIDE_UNHIDE_POST,
     postId,
     hidden,
   };
@@ -97,14 +97,14 @@ export function hideUnhidePost(postId, hidden) {
 
 export function hideUnhidePostSuccess(hidden) {
   return {
-    type: CONSTANS.HIDE_UNHIDE_POST_SUCCESS,
+    type: CONSTANTS.HIDE_UNHIDE_POST_SUCCESS,
     hidden,
   };
 }
 
 export function hideUnhidePostError(error) {
   return {
-    type: CONSTANS.HIDE_UNHIDE_POST_ERROR,
+    type: CONSTANTS.HIDE_UNHIDE_POST_ERROR,
     error,
   };
 }

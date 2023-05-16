@@ -1,6 +1,5 @@
-
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -12,38 +11,38 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const articlesOverviewReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
       // Load Articles by Filter
-      case CONSTANS.LOAD_ARTICLES:
+      case CONSTANTS.LOAD_ARTICLES:
         draft.filter = action.filter;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.LOAD_ARTICLES_SUCCESS:
+      case CONSTANTS.LOAD_ARTICLES_SUCCESS:
         draft.articles = action.articles;
         draft.loading = false;
         break;
 
-      case CONSTANS.LOAD_ARTICLES_ERROR:
+      case CONSTANTS.LOAD_ARTICLES_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.CREATE_ARTICLE:
+      case CONSTANTS.CREATE_ARTICLE:
         draft.loading = false;
         draft.error = false;
         break;
 
-      case CONSTANS.CREATE_ARTICLE_SUCCESS:
+      case CONSTANTS.CREATE_ARTICLE_SUCCESS:
         draft.loading = false;
         const { data } = action;
         if (state.articles) {
-          let i = state.articles.data.findIndex(po => po._id === data._id);
+          let i = state.articles.data.findIndex((po) => po._id === data._id);
 
           if (i !== -1) {
             draft.articles.data[i] = data;
@@ -54,7 +53,7 @@ const articlesOverviewReducer = (state = initialState, action) =>
 
         break;
 
-      case CONSTANS.CREATE_ARTICLE_ERROR:
+      case CONSTANTS.CREATE_ARTICLE_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

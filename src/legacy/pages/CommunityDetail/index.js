@@ -7,7 +7,7 @@ import React, { memo, useState, useEffect, useCallback } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import './style.scss';
@@ -17,13 +17,18 @@ import withRedux from 'HOC/withRedux';
 
 import {
   // media
-  onUploadMedia as uploadCommunityMedia,
+  onUploadMedia,
   // publication
-  onPostPublication as postPublication,
+  onPostPublication,
   // feeds
-  onLoadFeeds as loadCommunityFeed,
-  setReportPopup as setReportPopupAction,
-  reportPost as reportPostAction,
+  onLoadFeeds,
+  loadCommunityTags,
+  loadCommunityDetailTags,
+  loadCommunityDetail,
+  setReportPopup,
+  reportPost,
+  flushState,
+  loadCommunityFeed,
 } from './actions';
 
 // antd component
@@ -43,7 +48,7 @@ import {
   CommunityPreHeader,
   CommunityHeader,
   CommunityFeeds,
-  CommunityWelcome
+  CommunityWelcome,
 } from 'legacy/components/Community';
 // community containers
 import MembersTab from 'legacy/containers/Community/MembersTab';
@@ -53,30 +58,44 @@ import { withUser } from 'appContext/User.context';
 // hooks
 import useDeviceDetect from 'appHooks/useDeviceDetect';
 // utils
-import { getUrlVars, makeSearchQueryParams, getObjId } from 'utils/generalHelper';
-
+import {
+  getUrlVars,
+  makeSearchQueryParams,
+  getObjId,
+} from 'utils/generalHelper';
 
 export function CommunityDetail({
   // props
   user,
-  history,
   // default props
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
   const {
-    loading, error, deleteSuccessful, communityDetailData,
-    communityPopularTags, loadingChange, communityTags,
-    communityFeeds, loadingFeeds, noMore, page,
-    uploadMedia, loadingMedia, reportPopup, reportLoading,
+    loading,
+    error,
+    deleteSuccessful,
+    communityDetailData,
+    communityPopularTags,
+    loadingChange,
+    communityTags,
+    communityFeeds,
+    loadingFeeds,
+    noMore,
+    page,
+    uploadMedia,
+    loadingMedia,
+    reportPopup,
+    reportLoading,
   } = state.CommunityDetail;
 
   const { t } = useTranslation();
   const { isMobile } = useDeviceDetect();
   const { id: initialId } = useParams();
   const urlVars = getUrlVars();
+  const navigate = useNavigate();
 
   const initFilter = {
     sort: 'newest',
@@ -120,10 +139,10 @@ export function CommunityDetail({
         initialId !== 'new' &&
         initialId == getObjId(user?.employment?.industryCommunity))
     ) {
-      dispatch(onLoadDetail(initialId));
-      dispatch(onLoadTags(initialId));
-      dispatch(onLoadPopularTags(initialId));
-      dispatch(onLoadFeeds(initialId, page, filter));
+      dispatch(loadCommunityDetail(initialId));
+      dispatch(loadCommunityTags(initialId));
+      dispatch(loadCommunityDetailTags(initialId));
+      dispatch(loadCommunityFeed(initialId, page, filter));
     }
 
     if (
@@ -151,7 +170,7 @@ export function CommunityDetail({
     const panel = urlVars?.panel || '3';
     if (search !== null && search !== activeTab) {
       setActiveTab(search);
-      history.replace({
+      navigate({
         pathname: window.location.pathname,
         search: makeSearchQueryParams({
           tab: search,
@@ -219,7 +238,7 @@ export function CommunityDetail({
     const page = urlVars?.page || 1;
     const panel = urlVars?.panel || '3';
     setActiveTab(key);
-    history.replace({
+    navigate({
       pathname: window.location.pathname,
       search: makeSearchQueryParams({
         tab: key,
@@ -261,7 +280,8 @@ export function CommunityDetail({
 
     changeFilter: changeFeedsFilter,
     onPost: (publication) => dispatch(onPostPublication(publication)),
-    onLoad: (id, page, filter, entity = 'post') => dispatch(onLoadFeeds(id, page, filter, entity)),
+    onLoad: (id, page, filter, entity = 'post') =>
+      dispatch(onLoadFeeds(id, page, filter, entity)),
     media: uploadMedia,
     onUploadMedia: (media) => dispatch(onUploadMedia(media)),
   };
@@ -465,9 +485,4 @@ CommunityDetail.propTypes = {
   deleteSuccessful: PropTypes.bool,
 };
 
-export default compose(
-  withRedux,
-  memo,
-  withRouter,
-  withUser,
-)(CommunityDetail);
+export default compose(withRedux, memo, withUser)(CommunityDetail);

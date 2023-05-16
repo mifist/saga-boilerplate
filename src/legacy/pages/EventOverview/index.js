@@ -11,16 +11,22 @@ import './style.scss';
 // HOC
 import withRedux from 'HOC/withRedux';
 // actions
-import {
-  flushState as flushStateAction,
-  loadReplay as loadReplayAction,
-  loadUpcoming as loadUpcomingAction,
-} from './actions';
+import { flushState, loadReplay, loadUpcoming } from './actions';
 
 // antd component
 import {
-  Card, Col, DatePicker, Empty, Form, Pagination,
-  Row, Select, Skeleton, Switch, Tabs, Spin,
+  Card,
+  Col,
+  DatePicker,
+  Empty,
+  Form,
+  Pagination,
+  Row,
+  Select,
+  Skeleton,
+  Switch,
+  Tabs,
+  Spin,
 } from 'antd';
 // components
 import EventCard from 'legacy/components/EventCard';
@@ -43,13 +49,10 @@ export function EventOverview({
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
-
-  const { 
-    eventsUpcoming, loadingUpcoming, eventsReplay,
-    loadingReplay
-  } = state.EventOverview;
+  const { eventsUpcoming, loadingUpcoming, eventsReplay, loadingReplay } =
+    state.EventOverview;
 
   const { isMobile } = useDeviceDetect();
   const { t, i18n } = useTranslation();
@@ -82,16 +85,18 @@ export function EventOverview({
 
   useEffect(() => {
     if (eventType === 'upcoming') {
-      dispatch(loadUpcoming({
-        currentPageUpcoming: initFilter.page,
-        dateRangeUpcoming:
-          initFilter.dateFrom || initFilter.dateTo
-            ? [initFilter.dateFrom, initFilter.dateTo]
-            : [todayDate, dateMore3Year],
-        accreditedUpcoming: initFilter.accredited,
-        specialityField: initFilter.speciality || false,
-        anatomyField: initFilter.anatomy || false,
-      }));
+      dispatch(
+        loadUpcoming({
+          currentPageUpcoming: initFilter.page,
+          dateRangeUpcoming:
+            initFilter.dateFrom || initFilter.dateTo
+              ? [initFilter.dateFrom, initFilter.dateTo]
+              : [todayDate, dateMore3Year],
+          accreditedUpcoming: initFilter.accredited,
+          specialityField: initFilter.speciality || false,
+          anatomyField: initFilter.anatomy || false,
+        }),
+      );
     }
   }, [
     initFilter.accredited,
@@ -105,16 +110,18 @@ export function EventOverview({
 
   useEffect(() => {
     if (eventType === 'replay') {
-      dispatch(loadReplay({
-        currentPageReplay: initFilter.page,
-        dateRangeReplay:
-          initFilter.dateFrom || initFilter.dateTo
-            ? [initFilter.dateFrom, initFilter.dateTo]
-            : [dateLess5Year, todayDate],
-        accreditedReplay: initFilter.accredited,
-        specialityField: initFilter.speciality || false,
-        anatomyField: initFilter.anatomy || false,
-      }));
+      dispatch(
+        loadReplay({
+          currentPageReplay: initFilter.page,
+          dateRangeReplay:
+            initFilter.dateFrom || initFilter.dateTo
+              ? [initFilter.dateFrom, initFilter.dateTo]
+              : [dateLess5Year, todayDate],
+          accreditedReplay: initFilter.accredited,
+          specialityField: initFilter.speciality || false,
+          anatomyField: initFilter.anatomy || false,
+        }),
+      );
     }
   }, [
     initFilter.accredited,

@@ -2,7 +2,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 import moment from 'moment';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* loadEvents(action) {
@@ -99,5 +99,5 @@ export function* loadEvents(action) {
 // Individual exports for testing
 export default function* profileSuggestionsSaga() {
   // See example in legacy/containers/HomePage/saga.js
-  yield takeLatest(CONSTANS.LOAD_EVENTS, loadEvents);
+  yield takeLatest(CONSTANTS.LOAD_EVENTS, loadEvents);
 }

@@ -2,7 +2,7 @@ import { put, select, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 import history from 'utils/history';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* loadMyCommunities(action) {
@@ -58,6 +58,6 @@ export function* loadActiveCommunities(action) {
 }
 
 export default function* communitiesOverviewSaga() {
-  yield takeLatest(CONSTANS.LOAD_MY_COMMUNITIES, loadMyCommunities);
-  yield takeLatest(CONSTANS.LOAD_ACTIVE_COMMUNITIES, loadActiveCommunities);
+  yield takeLatest(CONSTANTS.LOAD_MY_COMMUNITIES, loadMyCommunities);
+  yield takeLatest(CONSTANTS.LOAD_ACTIVE_COMMUNITIES, loadActiveCommunities);
 }

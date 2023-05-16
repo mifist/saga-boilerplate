@@ -1,28 +1,28 @@
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 export function loadArticles(filter) {
   return {
-    type: CONSTANS.LOAD_ARTICLES,
+    type: CONSTANTS.LOAD_ARTICLES,
     filter,
   };
 }
 
 export function loadArticlesSuccess(articles) {
   return {
-    type: CONSTANS.LOAD_ARTICLES_SUCCESS,
+    type: CONSTANTS.LOAD_ARTICLES_SUCCESS,
     articles,
   };
 }
 
 export function loadArticlesError(error) {
   return {
-    type: CONSTANS.LOAD_ARTICLES_ERROR,
+    type: CONSTANTS.LOAD_ARTICLES_ERROR,
     error,
   };
 }
@@ -30,20 +30,20 @@ export function loadArticlesError(error) {
 // createArticle
 export function createArticle(data) {
   return {
-    type: CONSTANS.CREATE_ARTICLE,
+    type: CONSTANTS.CREATE_ARTICLE,
     data,
   };
 }
 export function createArticleSuccess(data) {
   return {
-    type: CONSTANS.CREATE_ARTICLE_SUCCESS,
+    type: CONSTANTS.CREATE_ARTICLE_SUCCESS,
     data,
   };
 }
 
 export function createArticleError(error) {
   return {
-    type: CONSTANS.CREATE_ARTICLE_ERROR,
+    type: CONSTANTS.CREATE_ARTICLE_ERROR,
     error,
   };
 }

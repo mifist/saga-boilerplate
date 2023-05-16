@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
@@ -123,9 +123,9 @@ export function* hideUnhidePost(action) {
 
 // Individual exports for testing
 export default function* podcastDetailSaga() {
-  yield takeLatest(CONSTANS.LOAD_PODCAST, loadPodcast);
-  yield takeLatest(CONSTANS.UPDATE_PODCAST, updatePodcast);
-  yield takeLatest(CONSTANS.ON_DELETE, onDelete);
-  yield takeLatest(CONSTANS.PIN_UNPIN_POST, pinUnpinPost);
-  yield takeLatest(CONSTANS.HIDE_UNHIDE_POST, hideUnhidePost);
+  yield takeLatest(CONSTANTS.LOAD_PODCAST, loadPodcast);
+  yield takeLatest(CONSTANTS.UPDATE_PODCAST, updatePodcast);
+  yield takeLatest(CONSTANTS.ON_DELETE, onDelete);
+  yield takeLatest(CONSTANTS.PIN_UNPIN_POST, pinUnpinPost);
+  yield takeLatest(CONSTANTS.HIDE_UNHIDE_POST, hideUnhidePost);
 }

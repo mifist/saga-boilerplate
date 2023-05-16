@@ -27,12 +27,12 @@ import { EditorState } from 'lexical';
 
 // end of lexical import
 
-import iconImage from 'images/icons/image.svg';
-import iconQuestion from 'images/icons/qcm.svg';
-import iconVideo from 'images/icons/video.svg';
-import iconDocument from 'images/icons/document.svg';
-import iconOrderList from 'images/icons/ordered-list.svg';
-import iconLink from 'images/icons/link.svg';
+// import iconImage from 'images/icons/image.svg';
+// import iconQuestion from 'images/icons/qcm.svg';
+// import iconVideo from 'images/icons/video.svg';
+// import iconDocument from 'images/icons/document.svg';
+// import iconOrderList from 'images/icons/ordered-list.svg';
+// import iconLink from 'images/icons/link.svg';
 import linkifyHtml from 'linkify-html';
 import ToolbarPlugin from './plugins/ToolbarPlugin';
 import AutoLinkPlugin from './plugins/AutoLinkPlugin';
@@ -64,7 +64,7 @@ function LexicalEditor({
 }) {
   const { t } = useTranslation();
   const [isFirstRender, setIsFirstRender] = useState(true);
-  const Placeholder = content => {
+  const Placeholder = (content) => {
     return <div className="editor-placeholder">{content?.content}</div>;
   };
   const editorConfig = {
@@ -119,8 +119,8 @@ function LexicalEditor({
           const nodes = $generateNodesFromDOM(editor, dom);
           $getRoot().select();
           const selection = $getSelection();
-          // @ts-expect-error not sure...
-          selection.insertNodes(nodes);
+          // !TODO - COMMENTED THIS LINE TO RUN the project - @ts-expect-error not sure...
+          // selection.insertNodes(nodes);
         });
       }
       // console.log('editor', editor);
@@ -198,7 +198,4 @@ LexicalEditor.propTypes = {
   type: PropTypes.oneOf(['simple', 'full']),
 };
 
-export default compose(
-  memo,
-  withUser,
-)(LexicalEditor);
+export default compose(memo, withUser)(LexicalEditor);

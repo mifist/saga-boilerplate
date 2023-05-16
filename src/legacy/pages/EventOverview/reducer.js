@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loadingUpcoming: false,
@@ -21,18 +21,18 @@ export const initialState = {
   dateRangeReplay: null,
   accreditedReplay: false,
 
-  specialityField : false,
-  anatomyField : false,
+  specialityField: false,
+  anatomyField: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const eventOverviewReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.LOAD_UPCOMING:
+      case CONSTANTS.LOAD_UPCOMING:
         draft.loadingUpcoming = true;
         draft.errorUpcoming = initialState.errorUpcoming;
         draft.eventsUpcoming = initialState.eventsUpcoming;
@@ -43,17 +43,17 @@ const eventOverviewReducer = (state = initialState, action) =>
         draft.anatomyField = action.params.anatomyField;
         break;
 
-      case CONSTANS.LOAD_UPCOMING_SUCCESS:
+      case CONSTANTS.LOAD_UPCOMING_SUCCESS:
         draft.eventsUpcoming = action.eventsUpcoming;
         draft.loadingUpcoming = false;
         break;
 
-      case CONSTANS.LOAD_UPCOMING_ERROR:
+      case CONSTANTS.LOAD_UPCOMING_ERROR:
         draft.errorUpcoming = action.errorUpcoming;
         draft.loadingUpcoming = false;
         break;
-      
-      case CONSTANS.LOAD_REPLAY:
+
+      case CONSTANTS.LOAD_REPLAY:
         draft.loadingReplay = true;
         draft.errorReplay = initialState.errorReplay;
         draft.eventsReplay = initialState.eventsReplay;
@@ -64,12 +64,12 @@ const eventOverviewReducer = (state = initialState, action) =>
         draft.anatomyField = action.params.anatomyField;
         break;
 
-      case CONSTANS.LOAD_REPLAY_SUCCESS:
+      case CONSTANTS.LOAD_REPLAY_SUCCESS:
         draft.eventsReplay = action.eventsReplay;
         draft.loadingReplay = false;
         break;
 
-      case CONSTANS.LOAD_REPLAY_ERROR:
+      case CONSTANTS.LOAD_REPLAY_ERROR:
         draft.errorReplay = action.errorReplay;
         draft.loadingReplay = false;
         break;

@@ -56,13 +56,12 @@ function MembersListWidget({
     className,
   );
   const { t } = useTranslation();
-  const history = useHistory();
   const urlVars = getUrlVars();
 
   const [activePage, setActivePage] = useState(parseInt(urlVars?.page) || 1);
   const [membersList, setMembersList] = useState([]);
 
-  const sortMembers = array => {
+  const sortMembers = (array) => {
     const amount = mode == 'component' ? 20 : 5;
     return array && array.length > 0 && array.slice(0, amount);
   };
@@ -83,16 +82,16 @@ function MembersListWidget({
   }, [members]);
 
   const getUserRole = useCallback(
-    itemData => {
+    (itemData) => {
       const isAdmin =
         members?.admins &&
-        members?.admins.find(el => getObjId(el) == getObjId(itemData));
+        members?.admins.find((el) => getObjId(el) == getObjId(itemData));
       const isModerator =
         members?.moderators &&
-        members?.moderators.find(el => getObjId(el) == getObjId(itemData));
+        members?.moderators.find((el) => getObjId(el) == getObjId(itemData));
       const isMember =
         members?.members &&
-        members?.members.find(el => getObjId(el) == getObjId(itemData));
+        members?.members.find((el) => getObjId(el) == getObjId(itemData));
       return (
         (isAdmin && 'admin') ||
         (isModerator && 'moderator') ||
@@ -103,7 +102,7 @@ function MembersListWidget({
   );
 
   const createLable = useCallback(
-    itemData => {
+    (itemData) => {
       const userRole = getUserRole(itemData);
       const isIndustryUser = itemData?.role == 'industry';
 
@@ -132,7 +131,7 @@ function MembersListWidget({
   };
 
   const listItem = useCallback(
-    item => {
+    (item) => {
       const { isEmployee, industryName } = getEmployment(item);
 
       return (
@@ -207,7 +206,7 @@ function MembersListWidget({
                         item?.role == 'industry',
                     }
               }
-              respond={data => manageRespondHandler(data, item)}
+              respond={(data) => manageRespondHandler(data, item)}
               community={community}
               communityType={communityType}
             />
@@ -218,9 +217,10 @@ function MembersListWidget({
     [mode, members],
   );
 
-  const onPageChange = page => {
+  const onPageChange = (page) => {
     setActivePage(page);
-    history.replace({
+    //replace
+    navigate({
       pathname: window.location.pathname,
       search: makeSearchQueryParams({
         tab: 'members',
@@ -230,9 +230,9 @@ function MembersListWidget({
     });
   };
 
-  const showOnlyEmployeesHandle = value => {
+  const showOnlyEmployeesHandle = (value) => {
     if (value) {
-      const newmemberList = membersList.filter(el => {
+      const newmemberList = membersList.filter((el) => {
         const sameCommunity =
           getObjId(el?.employment?.industryCommunity) == getObjId(community);
         return el?.employment?.isEmployee && sameCommunity;
@@ -246,13 +246,13 @@ function MembersListWidget({
     }
   };
 
-  const getFilteredMembersList = useCallback(membersList => {
+  const getFilteredMembersList = useCallback((membersList) => {
     const industryPartners = membersList.filter(
-      member => member?.role === 'industry',
+      (member) => member?.role === 'industry',
     );
 
     const otherMembers = membersList.filter(
-      member => member?.role !== 'industry',
+      (member) => member?.role !== 'industry',
     );
 
     return industryPartners.concat(otherMembers);
@@ -280,7 +280,7 @@ function MembersListWidget({
               mode == 'component' && {
                 current: activePage,
                 pageSize: 10,
-                onChange: page => {
+                onChange: (page) => {
                   onPageChange(page);
                 },
               }
@@ -324,7 +324,4 @@ MembersListWidget.propTypes = {
   updateList: PropTypes.func,
 };
 
-export default compose(
-  memo,
-  withUser,
-)(MembersListWidget);
+export default compose(memo, withUser)(MembersListWidget);

@@ -5,8 +5,7 @@ import { push } from 'redux-first-history';
 import { notification } from 'antd';
 import i18next from 'i18next';
 
-
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* resetPassword(action) {
@@ -35,5 +34,5 @@ export function* resetPassword(action) {
 
 // Individual exports for testing
 export default function* resetPasswordSaga() {
-  yield takeLatest(RESET_PASSWORD, resetPassword);
+  yield takeLatest(CONSTANTS.RESET_PASSWORD, resetPassword);
 }

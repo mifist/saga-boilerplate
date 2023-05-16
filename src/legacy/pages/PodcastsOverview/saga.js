@@ -1,7 +1,7 @@
 import { put, select, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 // Load and Filter Podcasts
@@ -52,6 +52,6 @@ export function* handleCreatePodcast(action) {
 // Individual exports for testing
 export default function* podcastsOverviewSaga() {
   // See example in containers/HomePage/saga.js
-  yield takeLatest(CONSTANS.LOAD_PODCASTS, loadPodcasts);
-  yield takeLatest(CONSTANS.CREATE_PODCAST, handleCreatePodcast);
+  yield takeLatest(CONSTANTS.LOAD_PODCASTS, loadPodcasts);
+  yield takeLatest(CONSTANTS.CREATE_PODCAST, handleCreatePodcast);
 }

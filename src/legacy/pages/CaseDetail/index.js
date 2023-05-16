@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
-
+import { withUser } from 'engine/context/User.context';
 import './style.scss';
 
 import {
@@ -40,13 +40,17 @@ import Badge from 'legacy/components/Badge';
 // utils
 import { getEmployment, getObjId } from 'utils/generalHelper';
 
-export function CaseDetail({ history, user, setAuthPopup,  }) {
-  const { caseData, loading, deleteSuccessful, error, tags } = useSelector(
-    (state) => {
-      return state.CaseDetail;
-    },
-  );
-
+export function CaseDetail({ history, user, setAuthPopup }) {
+  const {
+    caseData: { data: caseData },
+    loading,
+    deleteSuccessful,
+    error,
+    tags,
+  } = useSelector((state) => {
+    return state.CaseDetail;
+  });
+  console.log(caseData);
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
@@ -259,7 +263,7 @@ export function CaseDetail({ history, user, setAuthPopup,  }) {
 
   const renderSpecialty = (speciality) => (
     <>
-      {speciality.map((tag, index) => (
+      {speciality?.map((tag, index) => (
         <Tag className="tag tag--speciality" key={index}>
           {t(`common.specialities-${camelCase(tag)}`)}
         </Tag>
@@ -269,7 +273,7 @@ export function CaseDetail({ history, user, setAuthPopup,  }) {
 
   const renderAnatomy = (anatomy) => (
     <>
-      {anatomy.map((tag, index) => (
+      {anatomy?.map((tag, index) => (
         <Tag className="tag tag--anatomy" key={index}>
           {t(`common.anatomies-${camelCase(tag)}`)}
         </Tag>
@@ -432,4 +436,4 @@ CaseDetail.propTypes = {
   loading: PropTypes.bool,
 };
 
-export default CaseDetail;
+export default withUser(CaseDetail);

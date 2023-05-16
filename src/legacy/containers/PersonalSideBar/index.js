@@ -17,10 +17,10 @@ function PersonalSideBar({
   type,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
-  const childClassNames = classNames('presonal-sidebar-wrapper', className);
-  const {  myEvents, myCommunities, myReplayEvents, loadingCommunities} = state.PersonalSideBar;
+  const { myEvents, myCommunities, myReplayEvents, loadingCommunities } =
+    state.PersonalSideBar;
 
   const { t } = useTranslation();
   /**
@@ -72,7 +72,4 @@ function PersonalSideBar({
   );
 }
 
-export default compose(
-  withRedux,
-  memo,
-)(PersonalSideBar);
+export default compose(withRedux, memo)(PersonalSideBar);

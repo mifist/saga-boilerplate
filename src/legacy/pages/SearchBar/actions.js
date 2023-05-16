@@ -4,10 +4,10 @@
  *
  */
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export function defaultAction() {
   return {
-    type: CONSTANS.DEFAULT_ACTION,
+    type: CONSTANTS.DEFAULT_ACTION,
   };
 }

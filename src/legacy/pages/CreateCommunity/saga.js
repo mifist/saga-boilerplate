@@ -2,7 +2,7 @@ import { put, select, takeLatest } from 'redux-saga/effects';
 import { push } from 'redux-first-history';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* createCommunity(action) {
@@ -28,5 +28,5 @@ export function* createCommunity(action) {
 }
 
 export default function* createCommunitySaga() {
-  yield takeLatest(CONSTANS.CREATE_COMMUNITY, createCommunity);
+  yield takeLatest(CONSTANTS.CREATE_COMMUNITY, createCommunity);
 }

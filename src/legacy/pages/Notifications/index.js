@@ -72,7 +72,6 @@ export function Notifications({
         hash: '',
         state: {
           goBackName: 'notifications.backToNotifications',
-          currentPage: history.location.currentPage,
           notifications: true,
         },
       });

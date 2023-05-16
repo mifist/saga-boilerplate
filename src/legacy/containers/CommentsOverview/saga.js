@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
@@ -84,7 +84,7 @@ export function* modifyPostType(action) {
 
 // Individual exports for testing
 export default function* commentsOverviewSaga() {
-  yield takeLatest(CONSTANS.LOAD_COMMENTS, loadComments);
-  yield takeLatest(CONSTANS.REPORT_POST, reportPost);
-  yield takeLatest(CONSTANS.MODIFY_POST_TYPE, modifyPostType);
+  yield takeLatest(CONSTANTS.LOAD_COMMENTS, loadComments);
+  yield takeLatest(CONSTANTS.REPORT_POST, reportPost);
+  yield takeLatest(CONSTANTS.MODIFY_POST_TYPE, modifyPostType);
 }

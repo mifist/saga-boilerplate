@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 export const initialState = {
   loading: false,
   error: false,
@@ -7,21 +7,21 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const resetPasswordReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.RESET_PASSWORD:
+      case CONSTANTS.RESET_PASSWORD:
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.RESET_PASSWORD_SUCCESS:
+      case CONSTANTS.RESET_PASSWORD_SUCCESS:
         draft.loading = false;
         break;
 
-      case CONSTANS.RESET_PASSWORD_ERROR:
+      case CONSTANTS.RESET_PASSWORD_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

@@ -157,10 +157,7 @@ function OverViewComments({
               type={type}
               _id={_id}
               goBackName="common.backToFeed"
-              extraParams={{
-                hash: '#comments',
-                from,
-              }}
+              extraParams={{ hash: '#comments', from }}
             >
               <CustomIcons type="comments" />
               <span className="comments-feed">

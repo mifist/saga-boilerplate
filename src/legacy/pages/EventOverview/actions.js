@@ -4,50 +4,50 @@
  *
  */
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 export function loadUpcoming(params) {
   return {
-    type: CONSTANS.LOAD_UPCOMING,
+    type: CONSTANTS.LOAD_UPCOMING,
     params,
   };
 }
 
 export function loadUpcomingSuccess(eventsUpcoming) {
   return {
-    type: CONSTANS.LOAD_UPCOMING_SUCCESS,
+    type: CONSTANTS.LOAD_UPCOMING_SUCCESS,
     eventsUpcoming,
   };
 }
 
 export function loadUpcomingError(error) {
   return {
-    type: CONSTANS.LOAD_UPCOMING_ERROR,
+    type: CONSTANTS.LOAD_UPCOMING_ERROR,
     error,
   };
 }
 export function loadReplay(params) {
   return {
-    type: CONSTANS.LOAD_REPLAY,
+    type: CONSTANTS.LOAD_REPLAY,
     params,
   };
 }
 
 export function loadReplaySuccess(eventsReplay) {
   return {
-    type: CONSTANS.LOAD_REPLAY_SUCCESS,
+    type: CONSTANTS.LOAD_REPLAY_SUCCESS,
     eventsReplay,
   };
 }
 
 export function loadReplayError(errorReplay) {
   return {
-    type: CONSTANS.LOAD_REPLAY_ERROR,
+    type: CONSTANTS.LOAD_REPLAY_ERROR,
     errorReplay,
   };
 }

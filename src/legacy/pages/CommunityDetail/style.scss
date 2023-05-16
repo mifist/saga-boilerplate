@@ -1,7 +1,7 @@
 // Style for CommunityDetail page
 
 /* Global Variables */
-@import "scss/global/variables";
+@import 'theme/scss/global/variables';
 
 .main-single-layout {
   padding: 58px 0 0 0;
@@ -33,8 +33,8 @@
         border-radius: 5px;
 
         @media screen and (max-width: 800px) {
-            padding: 20px 15px;
-            background-color: transparent;
+          padding: 20px 15px;
+          background-color: transparent;
         }
       }
       &__main {
@@ -49,4 +49,3 @@
   max-width: max-content;
   margin: 50px auto;
 }
-

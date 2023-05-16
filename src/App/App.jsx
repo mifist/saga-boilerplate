@@ -12,36 +12,25 @@ import { Route, Routes, Link, BrowserRouter } from 'react-router-dom';
 import { routes } from 'engine/routes';
 import { history } from 'store/store.new';
 
-
 import AppRouter from 'engine/AppRouter';
 
-function App({  }) {
-
-
+function App({}) {
   return (
     <>
-
-      <Helmet titleTemplate="%s - SagaBoilerplate" defaultTitle="SagaBoilerplate">
+      <Helmet
+        titleTemplate="%s - SagaBoilerplate"
+        defaultTitle="SagaBoilerplate"
+      >
         <meta name="description" content="SagaBoilerplate" />
         <meta property="og:type" content="website" />
-        <metap
-          property="og:title"
-          content="SagaBoilerplate"
-        />
-        <meta
-          property="og:description"
-          content="SagaBoilerplate"
-        />
+        <metap property="og:title" content="SagaBoilerplate" />
+        <meta property="og:description" content="SagaBoilerplate" />
         <meta property="og:image" content="" />
       </Helmet>
 
-
       <AppRouter />
-
-
     </>
   );
 }
 
 export default App;
-

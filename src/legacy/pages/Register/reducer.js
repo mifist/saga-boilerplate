@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -12,52 +12,52 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const registerReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.REGISTER:
+      case CONSTANTS.REGISTER:
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.REGISTER_SUCCESS:
+      case CONSTANTS.REGISTER_SUCCESS:
         draft.registerSuccess = true;
         draft.loading = false;
         break;
 
-      case CONSTANS.REGISTER_ERROR:
+      case CONSTANTS.REGISTER_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.RESEND_VERIFY_EMAIL:
+      case CONSTANTS.RESEND_VERIFY_EMAIL:
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.RESEND_VERIFY_EMAIL_SUCCESS:
+      case CONSTANTS.RESEND_VERIFY_EMAIL_SUCCESS:
         draft.loading = false;
         break;
 
-      case CONSTANS.RESEND_VERIFY_EMAIL_ERROR:
+      case CONSTANTS.RESEND_VERIFY_EMAIL_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
       // GET COUNTRIES
-      case CONSTANS.GET_DICTIONARIES:
+      case CONSTANTS.GET_DICTIONARIES:
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.GET_DICTIONARIES_SUCCESS:
+      case CONSTANTS.GET_DICTIONARIES_SUCCESS:
         draft.loading = false;
         draft[action.dictionaryType] = action.data;
         break;
 
-      case CONSTANS.GET_DICTIONARIES_ERROR:
+      case CONSTANTS.GET_DICTIONARIES_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

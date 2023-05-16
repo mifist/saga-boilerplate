@@ -8,7 +8,7 @@
  */
 
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 // The initial state of the App
 export const initialState = {
@@ -18,19 +18,19 @@ export const initialState = {
   list: [],
 };
 
-const reducerSagaContainer = (state = initialState, action = CONSTANS) =>
+const reducerSagaContainer = (state = initialState, action = CONSTANTS) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.LOAD_LIST:
+      case CONSTANTS.LOAD_LIST:
         console.log('LOAD_LIST', { draft, state, action });
         draft.count = action.count;
         draft.loading = true;
         break;
 
-      case CONSTANS.LOAD_LIST_SUCCESS:
+      case CONSTANTS.LOAD_LIST_SUCCESS:
         console.log('LOAD_LIST_SUCCESS', { draft, state, action });
         draft.list = action.list;
         draft.loading = false;

@@ -5,7 +5,7 @@ import moment from 'moment';
 import { push } from 'redux-first-history';
 import { Capacitor } from '@capacitor/core';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* login(action) {
@@ -48,5 +48,5 @@ export function* login(action) {
 }
 
 export default function* loginSaga() {
-  yield takeLatest(CONSTANS.LOGIN, login);
+  yield takeLatest(CONSTANTS.LOGIN, login);
 }

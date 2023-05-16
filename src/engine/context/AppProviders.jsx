@@ -1,12 +1,14 @@
 import React from 'react';
 import CookieProvider from './CookieProvider';
 import UserProvider from './User.context';
+import AuthPopupProvider from './AuthPopup.context';
 
 function AppProviders({ children }) {
-  console.log(children);
   return (
     <CookieProvider>
-      <UserProvider>{children}</UserProvider>
+      <UserProvider>
+        <AuthPopupProvider>{children}</AuthPopupProvider>
+      </UserProvider>
     </CookieProvider>
   );
 }

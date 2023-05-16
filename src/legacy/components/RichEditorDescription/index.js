@@ -23,7 +23,7 @@ import iconQuestion from 'images/icons/qcm.svg';
 import iconVideo from 'images/icons/video.svg';
 import iconDocument from 'images/icons/document.svg';
 import iconOrderList from 'images/icons/ordered-list.svg';
-import iconLink from 'images/icons/link.svg';
+// import iconLink from 'images/icons/link.svg';
 import linkifyHtml from 'linkify-html';
 
 function RichEditorDescription({
@@ -71,7 +71,7 @@ function RichEditorDescription({
     },
   };
 
-  const modifyLinkContent = content => {
+  const modifyLinkContent = (content) => {
     const options = {
       defaultProtocol: 'https',
       //target: '_blank'
@@ -79,7 +79,7 @@ function RichEditorDescription({
     return linkifyHtml(content, options);
   };
 
-  const onEditorStateChange = editorState => {
+  const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
     const currentEditorContent = editorState.getCurrentContent();
     let content = draftToHtml(convertToRaw(currentEditorContent));
@@ -90,7 +90,7 @@ function RichEditorDescription({
     handleChange(updatedContent);
   };
 
-  const imagelify = text => {
+  const imagelify = (text) => {
     // search for http , https , ftp , and file URLs.
 
     const test1 = text.replace(
@@ -113,7 +113,7 @@ function RichEditorDescription({
     return test4;
   };
 
-  const formatLink = obj => {
+  const formatLink = (obj) => {
     try {
       if (obj.target.includes('https://beta.beemed.com/')) {
         obj.targetOption = '_self';
@@ -163,9 +163,9 @@ function RichEditorDescription({
           showOpenOptionOnHover: false,
           defaultTargetOption: '_blank',
           options: ['link'], //'unlink'
-          link: { icon: iconLink, className: 'option-icon', title: 'test' },
+          // link: { icon: iconLink, className: 'option-icon', title: 'test' },
           // unlink: { icon: unlink, className: undefined },
-          linkCallback: obj => formatLink(obj),
+          linkCallback: (obj) => formatLink(obj),
         },
       }}
       customStyleMap={styleMap}
@@ -198,11 +198,11 @@ function RichEditorDescription({
           // <CustomOptionEditor type={'question'} content={questions} />,
         ]
       }
-      onFocus={e => {
+      onFocus={(e) => {
         setFocused(true);
         rest.onFocus && rest.onFocus(e);
       }}
-      onBlur={e => {
+      onBlur={(e) => {
         setFocused(false);
         rest.onBlur && rest.onBlur(e);
       }}

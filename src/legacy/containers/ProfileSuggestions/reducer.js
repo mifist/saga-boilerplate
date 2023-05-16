@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -16,12 +16,12 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const profileSuggestionsReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
-      
-      case CONSTANS.LOAD_EVENTS:
+
+      case CONSTANTS.LOAD_EVENTS:
         draft.loading = true;
         draft.error = false;
         draft.events = false;
@@ -29,13 +29,13 @@ const profileSuggestionsReducer = (state = initialState, action) =>
         draft.typeLayout = action.typeLayout;
         break;
 
-      case CONSTANS.LOAD_EVENTS_SUCCESS:
+      case CONSTANTS.LOAD_EVENTS_SUCCESS:
         draft.events = action.events;
         draft.replayEvents = action.replayEvents;
         draft.loading = false;
         break;
 
-      case CONSTANS.LOAD_EVENTS_ERROR:
+      case CONSTANTS.LOAD_EVENTS_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

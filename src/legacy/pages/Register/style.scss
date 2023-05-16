@@ -1,4 +1,4 @@
-@import 'scss/global/variables';
+@import 'theme/scss/global/variables';
 
 .custom-header {
   height: 100vh;
@@ -114,13 +114,23 @@
         color: $white;
       }
 
-      .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input,
-      .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input:hover {
+      .ant-input-status-error:not(.ant-input-disabled):not(
+          .ant-input-borderless
+        ).ant-input,
+      .ant-input-status-error:not(.ant-input-disabled):not(
+          .ant-input-borderless
+        ).ant-input:hover {
         background: #484c56;
       }
 
-      .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper,
-      .ant-input-affix-wrapper-status-error:not(.ant-input-affix-wrapper-disabled):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper:hover {
+      .ant-input-affix-wrapper-status-error:not(
+          .ant-input-affix-wrapper-disabled
+        ):not(.ant-input-affix-wrapper-borderless).ant-input-affix-wrapper,
+      .ant-input-affix-wrapper-status-error:not(
+          .ant-input-affix-wrapper-disabled
+        ):not(
+          .ant-input-affix-wrapper-borderless
+        ).ant-input-affix-wrapper:hover {
         background: #484c56;
       }
 

@@ -22,6 +22,10 @@ function LinkWrapper({
 }) {
   const childClassNames = classNames('link-wrapper', className);
   let search = '';
+
+  // extraParams={{
+  //   currentPage: history.location.currentPage,
+  // }}
   const routeName = () => {
     // If no id go to overview
     if (_id === null) {

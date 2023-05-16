@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 // Load and Filter Articles
@@ -52,6 +52,6 @@ export function* createArticle({ data }) {
 
 // Individual exports for testing
 export default function* articlesOverviewSaga() {
-  yield takeLatest(CONSTANS.LOAD_ARTICLES, loadArticles);
-  yield takeLatest(CONSTANS.CREATE_ARTICLE, createArticle);
+  yield takeLatest(CONSTANTS.LOAD_ARTICLES, loadArticles);
+  yield takeLatest(CONSTANTS.CREATE_ARTICLE, createArticle);
 }

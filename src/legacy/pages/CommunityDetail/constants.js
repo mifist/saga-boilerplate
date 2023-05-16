@@ -4,7 +4,7 @@
  *
  */
 const key = `CommunityDetail`;
-const path = `src/${key}/`
+const path = `src/${key}/`;
 
 export const FLUSH_STATE = `${path}FLUSH_STATE`;
 
@@ -22,8 +22,6 @@ export const CHANGE_COMMUNITYDETAIL_ERROR = `${path}CHANGE_COMMUNITYDETAIL_ERROR
 export const DELETE_COMMUNITYDETAIL = `${path}DELETE_COMMUNITYDETAIL`;
 export const DELETE_COMMUNITYDETAIL_SUCCESS = `${path}DELETE_COMMUNITYDETAIL_SUCCESS`;
 export const DELETE_COMMUNITYDETAIL_ERROR = `${path}DELETE_COMMUNITYDETAIL_ERROR`;
-
-export const FLUSH_STATE_COMMUNITYDETAIL = `${path}FLUSH_STATE_COMMUNITYDETAIL`;
 
 // CHANGE/UPDATE Media
 export const UPLOAD_MEDIA = `${path}UPLOAD_MEDIA`;
@@ -51,7 +49,6 @@ export const POST_PUBLICATION_SUCCESS = `${path}POST_PUBLICATION_SUCCESS`;
 export const POST_PUBLICATION_ERROR = `${path}POST_PUBLICATION_ERROR`;
 
 export const UPDATE_LIKES = `${path}UPDATE_LIKES`;
-
 
 export const REPORT_POST = `${path}REPORT_POST`;
 export const REPORT_POST_SUCCESS = `${path}REPORT_POST_SUCCESS`;

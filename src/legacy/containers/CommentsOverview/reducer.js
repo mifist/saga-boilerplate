@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   error: false,
@@ -12,74 +12,74 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const commentsOverviewReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
       // Load all Comments for Single Case
-      case CONSTANS.LOAD_COMMENTS:
+      case CONSTANTS.LOAD_COMMENTS:
         draft.loading = true;
         draft.error = false;
         draft.id = action.id;
         draft.firstRender = false;
         break;
 
-      case CONSTANS.LOAD_COMMENTS_SUCCESS:
+      case CONSTANTS.LOAD_COMMENTS_SUCCESS:
         draft.comments = action.comments;
         draft.loading = false;
         draft.firstRender = false;
         break;
 
-      case CONSTANS.LOAD_COMMENTS_ERROR:
+      case CONSTANTS.LOAD_COMMENTS_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.REPORT_POST:
+      case CONSTANTS.REPORT_POST:
         draft.loading = true;
         break;
-      case CONSTANS.REPORT_POST_SUCCESS:
+      case CONSTANTS.REPORT_POST_SUCCESS:
         draft.loading = false;
         draft.reportPopupOpened = false;
         break;
-      case CONSTANS.REPORT_POST_ERROR:
+      case CONSTANTS.REPORT_POST_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.SET_REPORT_POPOP_OPENED:
+      case CONSTANTS.SET_REPORT_POPOP_OPENED:
         draft.reportPopupOpened = action.opened;
         break;
 
-      case CONSTANS.MODIFY_POST_TYPE:
+      case CONSTANTS.MODIFY_POST_TYPE:
         draft.loading = true;
         break;
-      case CONSTANS.MODIFY_POST_TYPE_SUCCESS:
+      case CONSTANTS.MODIFY_POST_TYPE_SUCCESS:
         draft.loading = false;
         draft.modifyPostTypePopupOpened = false;
         break;
-      case CONSTANS.MODIFY_POST_TYPE_ERROR:
+      case CONSTANTS.MODIFY_POST_TYPE_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
-      case CONSTANS.SET_MODIFY_POST_TYPE_POPOP_OPENED:
+      case CONSTANTS.SET_MODIFY_POST_TYPE_POPOP_OPENED:
         draft.modifyPostTypePopupOpened = action.opened;
         break;
 
-      case CONSTANS.UPDATE_COMMENT_LIST:
+      case CONSTANTS.UPDATE_COMMENT_LIST:
         if (action.actionType === 'delete' || action.actionType === 'like') {
           if (action.data.type === 'child') {
             const parentIndex = state.comments.findIndex(
-              comment => comment._id === action.data.parentId,
+              (comment) => comment._id === action.data.parentId,
             );
             const childIndex = state.comments[parentIndex].answers.findIndex(
-              answer => answer._id === action.data._id,
+              (answer) => answer._id === action.data._id,
             );
             draft.comments[parentIndex].answers[childIndex] = action.data;
           } else {
             const parentIndex = state.comments.findIndex(
-              comment => comment._id === action.data._id,
+              (comment) => comment._id === action.data._id,
             );
             draft.comments[parentIndex] = {
               ...action.data,
@@ -88,7 +88,7 @@ const commentsOverviewReducer = (state = initialState, action) =>
           }
         } else if (action.actionType === 'reply') {
           const parentIndex = state.comments.findIndex(
-            comment => comment._id === action.data.parentComment._id,
+            (comment) => comment._id === action.data.parentComment._id,
           );
 
           draft.comments[parentIndex].answers.push(action.data.newAnswer);
@@ -97,17 +97,17 @@ const commentsOverviewReducer = (state = initialState, action) =>
           action.data.type === 'child'
         ) {
           const parentIndex = state.comments.findIndex(
-            comment => comment._id === action.data.parentId,
+            (comment) => comment._id === action.data.parentId,
           );
 
           const childIndex = state.comments[parentIndex].answers.findIndex(
-            answer => answer._id === action.data._id,
+            (answer) => answer._id === action.data._id,
           );
 
           draft.comments[parentIndex].answers[childIndex] = action.data;
         } else {
           let i = state.comments.findIndex(
-            comment => comment._id === action.data._id,
+            (comment) => comment._id === action.data._id,
           );
 
           if (i !== -1) {

@@ -1,8 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export const AuthPopupContext = React.createContext();
 
-export const AuthPopupProvider = ({ children }) => {
+export const withAuthPopup = (Component) => (props) =>
+  (
+    <AuthPopupContext.Consumer>
+      {({ setAuthPopup }) => {
+        return <Component setAuthPopup={setAuthPopup} {...props} />;
+      }}
+    </AuthPopupContext.Consumer>
+  );
+
+const AuthPopupProvider = ({ children }) => {
   const [authPopup, setAuthPopup] = React.useState({ open: false });
 
   return (
@@ -12,10 +21,4 @@ export const AuthPopupProvider = ({ children }) => {
   );
 };
 
-export const withAuthPopup = Component => props => (
-  <AuthPopupContext.Consumer>
-    {({ setAuthPopup }) => {
-      return <Component setAuthPopup={setAuthPopup} {...props} />;
-    }}
-  </AuthPopupContext.Consumer>
-);
+export default AuthPopupProvider;

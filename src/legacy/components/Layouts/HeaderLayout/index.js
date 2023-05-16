@@ -36,17 +36,16 @@ function HeaderLayout({
   setAuthPopup,
   // default props
   className,
-  nameMenuSplit,
   ...rest
 }) {
   const childClassNames = classNames('layout-header', className);
-
   const { t, i18n } = useTranslation();
 
   setLanguageHeader(i18n.language);
 
   const location = useLocation();
   const currentPath = location.pathname.replace(/\//g, '');
+  const nameMenuSplit = location.pathname.split('/');
 
   const showNew = localStorage.getItem('beemed_new_community');
 
@@ -281,8 +280,4 @@ HeaderLayout.propTypes = {
   logout: PropTypes.func.isRequired,
 };
 
-export default compose(
-  memo,
-  withUser,
-  withAuthPopup,
-)(HeaderLayout);
+export default compose(memo, withUser, withAuthPopup)(HeaderLayout);

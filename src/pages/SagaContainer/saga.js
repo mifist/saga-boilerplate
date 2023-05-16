@@ -3,7 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 import { push } from 'redux-first-history';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* loadList(action) {
@@ -20,7 +20,7 @@ export function* loadList(action) {
       null,
       null,
     );
-   //  yield put(push('/random'));
+    //  yield put(push('/random'));
 
     if (!result) {
       yield put(ACTIONS.onLoadListSuccess([]));
@@ -34,5 +34,5 @@ export function* loadList(action) {
 
 export default function* sagaSagaContainer() {
   // See example in src/SagaContainer/saga.js
-  yield takeLatest(CONSTANS.LOAD_LIST, loadList);
+  yield takeLatest(CONSTANTS.LOAD_LIST, loadList);
 }

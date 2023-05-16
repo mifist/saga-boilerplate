@@ -31,6 +31,8 @@ import 'file-loader?name=.htaccess!public/.htaccess'; // eslint-disable-line imp
 import { storeNew } from 'store/store.new';
 import AppProviders from 'appContext/AppProviders';
 
+import 'engine/i18n';
+
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});

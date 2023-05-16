@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { compose } from '@reduxjs/toolkit';
-import { Link, useParams, withRouter, useLocation } from 'react-router-dom';
+import { Link, useParams, useLocation } from 'react-router-dom';
 import moment from 'moment';
 import { convert } from 'html-to-text';
 import { useTranslation } from 'react-i18next';
@@ -14,11 +14,11 @@ import './style.scss';
 import {
   flushState,
   loadComments,
-  setReportPopupOpened as setReportPopupOpenedAction,
-  reportPost as reportPostAction,
-  setModifyPostTypePopupOpened as setModifyPostTypePopupOpenedAction,
-  modifyPostType as modifyPostTypeAction,
-  updateCommentList as updateCommentListAction,
+  setReportPopupOpened,
+  reportPost,
+  setModifyPostTypePopupOpened,
+  modifyPostType,
+  updateCommentList,
 } from './actions';
 
 // antd component
@@ -56,12 +56,16 @@ function CommentsOverview({
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
-
-  const { 
-    commentType, comments, loading, error, changeItem,
-    reportPopupOpened, modifyPostTypePopupOpened
+  const {
+    commentType,
+    comments,
+    loading,
+    error,
+    changeItem,
+    reportPopupOpened,
+    modifyPostTypePopupOpened,
   } = state.CommentsOverview;
 
   const isActiveLike = itemData.likes.some((like) => like?._id === user._id);
@@ -155,7 +159,10 @@ function CommentsOverview({
             <Menu.Divider />
           </>
         )}
-      <Menu.Item key="report" onClick={() => dispatch(setReportPopupOpened(true))}>
+      <Menu.Item
+        key="report"
+        onClick={() => dispatch(setReportPopupOpened(true))}
+      >
         {t('common.report')}
       </Menu.Item>
     </Menu>
@@ -180,34 +187,38 @@ function CommentsOverview({
   };
 
   const handleReportPostSubmit = (values) => {
-    dispatch(reportPost({
-      postText: itemData.type
-        ? itemData.type === 'post'
-          ? convert(itemData.content, {
-              wordwrap: false,
-              preserveNewlines: true,
-              selectors: [{ selector: 'a', options: { ignoreHref: true } }],
-            }).substring(0, 100)
-          : itemData.title.substring(0, 100)
-        : itemData.name.substring(0, 100),
-      userEmail: user?.email,
-      userFullName:
-        user?.description?.firstname + ' ' + user?.description?.lastname,
-      reportType: values.reportType,
-      reportContent: values.reportContent,
-      date: moment().format('YYYY-MM-DD'),
-      userId: user?._id,
-      postId: itemData._id,
-      url: location.pathname,
-    }));
+    dispatch(
+      reportPost({
+        postText: itemData.type
+          ? itemData.type === 'post'
+            ? convert(itemData.content, {
+                wordwrap: false,
+                preserveNewlines: true,
+                selectors: [{ selector: 'a', options: { ignoreHref: true } }],
+              }).substring(0, 100)
+            : itemData.title.substring(0, 100)
+          : itemData.name.substring(0, 100),
+        userEmail: user?.email,
+        userFullName:
+          user?.description?.firstname + ' ' + user?.description?.lastname,
+        reportType: values.reportType,
+        reportContent: values.reportContent,
+        date: moment().format('YYYY-MM-DD'),
+        userId: user?._id,
+        postId: itemData._id,
+        url: location.pathname,
+      }),
+    );
   };
 
   const handleModifyPostTypeSubmit = (values) => {
-    dispatch(modifyPostType({
-      _id: itemData._id,
-      type: values.postType,
-      title: values.caseTitle || null,
-    }));
+    dispatch(
+      modifyPostType({
+        _id: itemData._id,
+        type: values.postType,
+        title: values.caseTitle || null,
+      }),
+    );
   };
 
   // render function
@@ -317,7 +328,9 @@ function CommentsOverview({
             postType={commentType}
             actionType="post"
             postData={itemData}
-            onSubmitResponse={(data) => dispatch(updateCommentList('add', data))}
+            onSubmitResponse={(data) =>
+              dispatch(updateCommentList('add', data))
+            }
             showForm={showMainComment}
             setShowForm={setShowMainComment}
           />
@@ -346,7 +359,7 @@ function CommentsOverview({
                       postData={itemData}
                       nodeType="parent"
                       updateCommentList={(type, data) => {
-                        dispatch(updateCommentList(type, data))
+                        dispatch(updateCommentList(type, data));
                       }}
                     >
                       {comment.answers?.length > 0 &&
@@ -359,7 +372,7 @@ function CommentsOverview({
                             parent={comment}
                             nodeType="child"
                             updateCommentList={(type, data) => {
-                              dispatch(updateCommentList(type, data))
+                              dispatch(updateCommentList(type, data));
                             }}
                           />
                         ))}
@@ -378,9 +391,4 @@ function CommentsOverview({
   );
 }
 
-export default compose(
-  withRedux,
-  withRouter,
-  withUser,
-  withAuthPopup,
-)(CommentsOverview);
+export default compose(withRedux, withUser, withAuthPopup)(CommentsOverview);

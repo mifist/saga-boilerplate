@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -9,19 +9,19 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const loginReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
-      case CONSTANS.LOGIN:
+      case CONSTANTS.LOGIN:
         draft.loading = true;
         draft.error = false;
         break;
-      case CONSTANS.LOGIN_SUCCESS:
+      case CONSTANTS.LOGIN_SUCCESS:
         draft.userAuth = action.user;
         draft.loading = false;
         break;
-      case CONSTANS.LOGIN_ERROR:
+      case CONSTANTS.LOGIN_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
