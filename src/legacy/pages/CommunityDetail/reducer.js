@@ -53,7 +53,7 @@ export const initialState = {
 const communityDetailReducer = (state = initialState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANTS.FLUSH_STATE_COMMUNITYDETAIL:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
       // LOAD

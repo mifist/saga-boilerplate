@@ -4,7 +4,6 @@
  *
  */
 import React, { memo } from 'react';
-import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
@@ -18,14 +17,14 @@ import { Card, Tag, Avatar, Row, Col, Space } from 'antd';
 import CustomIcons from 'legacy/components/CustomIcons';
 import { UserOutlined } from '@ant-design/icons';
 
-import eventBanner from 'images/event.jpg';
+import eventBanner from 'public/images/event.jpg';
 
 // components
 import LinkWrapper from 'legacy/components/LinkWrapper';
+import { useNavigate } from 'react-router-dom';
 
 function EventCard({ event, registered, ...rest }) {
   const { t } = useTranslation();
-  const history = useHistory();
   //console.debug(registered);
   const {
     id,

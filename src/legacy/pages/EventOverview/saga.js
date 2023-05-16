@@ -8,22 +8,22 @@ export function* loadUpcomingEvents(action) {
   try {
     // we retrieve the token from the local storage
     const currentUser = yield JSON.parse(localStorage.getItem('beemed_user'));
-    const { state } = action;
+    const { params } = action;
 
-    let url = `events/?order=ASC&perPage=${15}&page=${
-      state.currentPageUpcoming
+    let url = `events?order=ASC&perPage=${15}&page=${
+      params.currentPageUpcoming
     }${
-      state.dateRangeUpcoming[0] !== ''
-        ? `&date_from=${state.dateRangeUpcoming[0]}&date_to=${state.dateRangeUpcoming[1]}`
+      params.dateRangeUpcoming[0] !== ''
+        ? `&date_from=${params.dateRangeUpcoming[0]}&date_to=${params.dateRangeUpcoming[1]}`
         : ''
-    }${state.accreditedUpcoming ? '&accredited=1' : ''}`;
+    }${params.accreditedUpcoming ? '&accredited=1' : ''}`;
 
-    if (state.specialityField) {
-      url = url + '&field_id=' + state.specialityField;
+    if (params.specialityField) {
+      url = url + '&field_id=' + params.specialityField;
     }
 
-    if (state.anatomyField) {
-      url = url + '&anatomy_id=' + state.anatomyField;
+    if (params.anatomyField) {
+      url = url + '&anatomy_id=' + params.anatomyField;
     }
 
     // &field_id=1&anatomy_id=36
@@ -39,6 +39,7 @@ export function* loadUpcomingEvents(action) {
 
     yield put(ACTIONS.loadUpcomingSuccess(events));
   } catch (err) {
+    console.log(err);
     yield put(ACTIONS.loadUpcomingError(err));
   }
 }

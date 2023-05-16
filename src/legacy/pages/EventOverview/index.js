@@ -40,6 +40,7 @@ import { setAuthorizationHeader } from 'appAPI/axiosAPI';
 import { anatomies, specialities } from 'utils/categoryHelper';
 import { useQuery } from 'utils/history';
 import { getBaseApiUrl } from 'utils/capacitorHelper';
+import { useSearchParams } from 'react-router-dom';
 
 export function EventOverview({
   // props
@@ -57,6 +58,8 @@ export function EventOverview({
   const { isMobile } = useDeviceDetect();
   const { t, i18n } = useTranslation();
   const query = useQuery();
+  let [searchParams, setSearchParams] = useSearchParams();
+
   const currentUser = JSON.parse(localStorage.getItem('beemed_user'));
 
   const [myEvents, setMyEvents] = useState([]);
@@ -162,6 +165,15 @@ export function EventOverview({
   const onPageChange = (page) => {
     initFilter.page = page;
 
+    console.log(initFilter);
+
+    console.log(
+      Object.keys(initFilter)
+        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
+        .filter(Boolean)
+        .join('&'),
+    );
+
     history.push({
       search: Object.keys(initFilter)
         .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
@@ -173,6 +185,8 @@ export function EventOverview({
   const onEventTabChange = (tab) => {
     initFilter.page = null;
     initFilter.eventType = tab;
+
+    console.log(initFilter);
 
     history.push({
       search: Object.keys(initFilter)
@@ -206,6 +220,13 @@ export function EventOverview({
     }
 
     initFilter.page = null;
+
+    console.log(
+      Object.keys(initFilter)
+        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
+        .filter(Boolean)
+        .join('&'),
+    );
 
     history.push({
       search: Object.keys(initFilter)

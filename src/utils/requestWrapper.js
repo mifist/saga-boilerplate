@@ -5,6 +5,7 @@ import { call } from 'redux-saga/effects'; // eslint-disable-line
 import request from 'utils/request';
 // utils
 import { getBaseApiUrl } from 'appCapacitor/helpers';
+import { BEEMED_LEGACY_API_URL } from './constants';
 
 export default function* requestWrapper(
   type,
@@ -12,10 +13,10 @@ export default function* requestWrapper(
   body,
   token,
   url = process.env.BASE_NAME,
-  bearer = false
+  bearer = false,
 ) {
   // Workaround for prevent UnauthorizedError from backend
- // token = null;
+  // token = null;
 
   let apiURL = getBaseApiUrl();
   let requestURL = route;
@@ -25,10 +26,15 @@ export default function* requestWrapper(
     requestURL = `${apiURL}${route}`;
   }
 
-    console.debug('REQUEST WRAPPER')
-  console.debug(apiURL);
-  console.debug(requestURL); 
+  // legacy api here only for events
+  if (url === 'events') {
+    // Proxy nodejs https://www.npmjs.com/package/local-cors-proxy
+    requestURL = `${BEEMED_LEGACY_API_URL}${route}`;
+  }
 
+  //   console.log('REQUEST WRAPPER')
+  // console.log(apiURL);
+  // console.log(requestURL);
 
   // modify headers
   let headers = {
@@ -44,7 +50,7 @@ export default function* requestWrapper(
       Authorization: 'Token ' + token,
     };
   }
-  if (bearer){
+  if (bearer) {
     headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json',
@@ -59,13 +65,13 @@ export default function* requestWrapper(
         headers: headers,
         body: JSON.stringify(body),
       });
-    
+
     case 'GET':
       return yield call(request, requestURL, {
         method: 'GET',
         headers: headers,
       });
-    
+
     case 'POST-FORM-DATA':
       return yield call(request, requestURL, {
         method: 'POST',
@@ -74,7 +80,7 @@ export default function* requestWrapper(
           Authorization: 'Token ' + token,
         },
       });
-    
+
     case 'PATCH-FORM-DATA':
       return yield call(request, requestURL, {
         method: 'PATCH',
@@ -83,20 +89,20 @@ export default function* requestWrapper(
         },
         body: body,
       });
-    
+
     case 'PATCH':
       return yield call(request, requestURL, {
         method: 'PATCH',
         headers: headers,
         body: JSON.stringify(body),
       });
-      
+
     case 'DELETE':
       return yield call(request, requestURL, {
         method: 'DELETE',
         headers: headers,
       });
-      
+
     // TODO: DELETE ?
   }
 }
