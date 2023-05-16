@@ -9,9 +9,9 @@ import * as CONSTANTS from './constants';
 /**
  * Clearing the state for CommunityDetail
  */
-export function flushStateCommunityDetail() {
+export function flushState() {
   return {
-    type: CONSTANTS.FLUSH_STATE_COMMUNITYDETAIL,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 

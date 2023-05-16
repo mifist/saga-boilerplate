@@ -7,7 +7,7 @@ import React, { memo, useState, useEffect, useCallback } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import './style.scss';
@@ -17,13 +17,18 @@ import withRedux from 'HOC/withRedux';
 
 import {
   // media
-  onUploadMedia as uploadCommunityMedia,
+  onUploadMedia,
   // publication
-  onPostPublication as postPublication,
+  onPostPublication,
   // feeds
-  onLoadFeeds as loadCommunityFeed,
-  setReportPopup as setReportPopupAction,
-  reportPost as reportPostAction,
+  onLoadFeeds,
+  loadCommunityTags,
+  loadCommunityDetailTags,
+  loadCommunityDetail,
+  setReportPopup,
+  reportPost,
+  flushState,
+  loadCommunityFeed,
 } from './actions';
 
 // antd component
@@ -62,7 +67,6 @@ import {
 export function CommunityDetail({
   // props
   user,
-  history,
   // default props
   className,
   // core
@@ -91,6 +95,7 @@ export function CommunityDetail({
   const { isMobile } = useDeviceDetect();
   const { id: initialId } = useParams();
   const urlVars = getUrlVars();
+  const navigate = useNavigate();
 
   const initFilter = {
     sort: 'newest',
@@ -134,10 +139,10 @@ export function CommunityDetail({
         initialId !== 'new' &&
         initialId == getObjId(user?.employment?.industryCommunity))
     ) {
-      dispatch(onLoadDetail(initialId));
-      dispatch(onLoadTags(initialId));
-      dispatch(onLoadPopularTags(initialId));
-      dispatch(onLoadFeeds(initialId, page, filter));
+      dispatch(loadCommunityDetail(initialId));
+      dispatch(loadCommunityTags(initialId));
+      dispatch(loadCommunityDetailTags(initialId));
+      dispatch(loadCommunityFeed(initialId, page, filter));
     }
 
     if (
@@ -165,7 +170,7 @@ export function CommunityDetail({
     const panel = urlVars?.panel || '3';
     if (search !== null && search !== activeTab) {
       setActiveTab(search);
-      history.replace({
+      navigate({
         pathname: window.location.pathname,
         search: makeSearchQueryParams({
           tab: search,
@@ -233,7 +238,7 @@ export function CommunityDetail({
     const page = urlVars?.page || 1;
     const panel = urlVars?.panel || '3';
     setActiveTab(key);
-    history.replace({
+    navigate({
       pathname: window.location.pathname,
       search: makeSearchQueryParams({
         tab: key,
