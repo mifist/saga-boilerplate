@@ -15,26 +15,24 @@
  *    }
  */
 
-import * as CONSTANS from './constants';
-
-
+import * as CONSTANTS from './constants';
 
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 export function onLoadList(count) {
   return {
-    type: CONSTANS.LOAD_LIST,
-    count
+    type: CONSTANTS.LOAD_LIST,
+    count,
   };
 }
 
 export function onLoadListSuccess(list) {
   return {
-    type: CONSTANS.LOAD_LIST_SUCCESS,
-    list
+    type: CONSTANTS.LOAD_LIST_SUCCESS,
+    list,
   };
 }

@@ -8,9 +8,7 @@ import reducers from './reducers';
 import sagas from './sagas';
 
 const { createReduxHistory, routerMiddleware, routerReducer } =
-  createReduxHistoryContext(
-    { history: createBrowserHistory() }
-  );
+  createReduxHistoryContext({ history: createBrowserHistory() });
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,7 +18,7 @@ const middleware = [sagaMiddleware, routerMiddleware];
 export const storeNew = configureStore({
   reducer: {
     router: routerReducer,
-    ...reducers
+    ...reducers,
     // ALL Reducers
     // units: unitsReducer,
     // unit: unitReducer,

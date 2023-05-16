@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 import { notification } from 'antd';
 
@@ -19,65 +19,65 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const eventDetailReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.LOAD_EVENT:
+      case CONSTANTS.LOAD_EVENT:
         draft.event = null;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.LOAD_EVENT_SUCCESS:
+      case CONSTANTS.LOAD_EVENT_SUCCESS:
         draft.event = action.event;
         draft.loading = false;
         break;
 
-      case CONSTANS.LOAD_EVENT_ERROR:
+      case CONSTANTS.LOAD_EVENT_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.REGISTER_EVENT:
+      case CONSTANTS.REGISTER_EVENT:
         draft.replayOpen = false;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.REGISTER_EVENT_SUCCESS:
+      case CONSTANTS.REGISTER_EVENT_SUCCESS:
         notification.success({ message: action.result });
         draft.replayOpen = true;
         draft.liveEventPopup = false;
         draft.loading = false;
         break;
 
-      case CONSTANS.REGISTER_EVENT_ERROR:
+      case CONSTANTS.REGISTER_EVENT_ERROR:
         notification.error({ message: action.error });
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.WATCH_EVENT:
+      case CONSTANTS.WATCH_EVENT:
         draft.eventUrl = null;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.WATCH_EVENT_SUCCESS:
+      case CONSTANTS.WATCH_EVENT_SUCCESS:
         draft.eventUrl = action.eventUrl;
         draft.liveEventPopup = true;
         draft.loading = false;
         break;
 
-      case CONSTANS.WATCH_EVENT_ERROR:
+      case CONSTANTS.WATCH_EVENT_ERROR:
         notification.error({ message: 'Error loading the event' });
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.CLOSE_LIVE_EVENT_POPUP:
+      case CONSTANTS.CLOSE_LIVE_EVENT_POPUP:
         draft.liveEventPopup = false;
         draft.eventUrl = null;
         break;

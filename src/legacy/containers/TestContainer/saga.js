@@ -1,5 +1,5 @@
 // import { call, put, select, takeLatest } from 'redux-saga/effects';
-// import * as CONSTANS from './constants';
+// import * as CONSTANTS from './constants';
 // import * as ACTIONS from './actions';
 
 // import requestUtil from 'utils/request';
@@ -24,5 +24,5 @@
 // Individual exports for testing
 export default function* testContainerSaga() {
   // See example in legacy/containers/HomePage/saga.js
-  // yield takeLatest(CONSTANS.LOAD_VARIABLES, loadVariables);
+  // yield takeLatest(CONSTANTS.LOAD_VARIABLES, loadVariables);
 }

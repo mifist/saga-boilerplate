@@ -2,7 +2,7 @@ import { put, call, takeLatest } from 'redux-saga/effects';
 
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 import { BEEMED_LEGACY_API_URL } from 'utils/constants';
@@ -48,10 +48,14 @@ export function* registerEvent(action) {
     if (response.result === 'OK') {
       yield put(ACTIONS.registerEventSuccess(response.message));
     } else {
-      yield put(ACTIONS.registerEventError('An error occured during registration'));
+      yield put(
+        ACTIONS.registerEventError('An error occured during registration'),
+      );
     }
   } catch (err) {
-    yield put(ACTIONS.registerEventError('An error occured during registration'));
+    yield put(
+      ACTIONS.registerEventError('An error occured during registration'),
+    );
   }
 }
 
@@ -88,7 +92,7 @@ export function* watchEvent(action) {
 // Individual exports for testing
 export default function* eventDetailSaga() {
   // See example in containers/HomePage/saga.js
-  yield takeLatest(CONSTANS.LOAD_EVENT, loadEvents);
-  yield takeLatest(CONSTANS.REGISTER_EVENT, registerEvent);
-  yield takeLatest(CONSTANS.WATCH_EVENT, watchEvent);
+  yield takeLatest(CONSTANTS.LOAD_EVENT, loadEvents);
+  yield takeLatest(CONSTANTS.REGISTER_EVENT, registerEvent);
+  yield takeLatest(CONSTANTS.WATCH_EVENT, watchEvent);
 }

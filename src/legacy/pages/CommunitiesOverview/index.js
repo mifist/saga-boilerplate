@@ -11,11 +11,11 @@ import './style.scss';
 import withRedux from 'HOC/withRedux';
 
 import {
-  flushState as flushStateCommunitiesOverviewAction,
-  loadMyCommunities as loadMyCommunitiesAction,
-  loadActiveCommunities as loadActiveCommunitiesAction,
-  updateCommunityRequestJoinsById as updateCommunityRequestJoinsByIdAction,
-  updateCommunityInvitationsById as updateCommunityInvitationsByIdAction,
+  flushState,
+  loadMyCommunities,
+  loadActiveCommunities,
+  updateCommunityRequestJoinsById,
+  updateCommunityInvitationsById,
 } from './actions';
 
 // antd component
@@ -38,14 +38,15 @@ const CommunitiesOverview = ({
   user,
   // core
   state,
-  dispatch
+  dispatch,
 }) => {
-  const { 
-    myCommunitiesLoading, myCommunities, activeCommunitiesLoading,
-    activeCommunities, error,
+  const {
+    myCommunitiesLoading,
+    myCommunities,
+    activeCommunitiesLoading,
+    activeCommunities,
+    error,
   } = state.CommunitiesOverview;
-  useInjectReducer({ key: 'communitiesOverview', reducer });
-  useInjectSaga({ key: 'communitiesOverview', saga });
 
   const { t, i18n } = useTranslation();
   const query = useQuery();
@@ -71,18 +72,20 @@ const CommunitiesOverview = ({
     if (user?._id) {
       dispatch(loadMyCommunities());
     }
-    dispatch(loadActiveCommunities({
-      limit: 9,
-      page: initFilter.page,
-      sort: initFilter.sort,
-      type: initFilter.type,
-      speciality: initFilter.speciality
-        ? specialities.find((s) => s.value === initFilter.speciality).label
-        : undefined,
-      anatomy: initFilter.anatomy
-        ? anatomies.find((a) => a.value === initFilter.anatomy).label
-        : undefined,
-    }));
+    dispatch(
+      loadActiveCommunities({
+        limit: 9,
+        page: initFilter.page,
+        sort: initFilter.sort,
+        type: initFilter.type,
+        speciality: initFilter.speciality
+          ? specialities.find((s) => s.value === initFilter.speciality).label
+          : undefined,
+        anatomy: initFilter.anatomy
+          ? anatomies.find((a) => a.value === initFilter.anatomy).label
+          : undefined,
+      }),
+    );
 
     return () => {
       dispatch(flushState());
@@ -91,18 +94,20 @@ const CommunitiesOverview = ({
 
   // filtered communities after changes inside filter
   useEffect(() => {
-    dispatch(loadActiveCommunities({
-      limit: 9,
-      page: initFilter.page,
-      sort: initFilter.sort,
-      type: initFilter.type,
-      speciality: initFilter.speciality
-        ? specialities.find((s) => s.value === initFilter.speciality).label
-        : undefined,
-      anatomy: initFilter.anatomy
-        ? anatomies.find((a) => a.value === initFilter.anatomy).label
-        : undefined,
-    }));
+    dispatch(
+      loadActiveCommunities({
+        limit: 9,
+        page: initFilter.page,
+        sort: initFilter.sort,
+        type: initFilter.type,
+        speciality: initFilter.speciality
+          ? specialities.find((s) => s.value === initFilter.speciality).label
+          : undefined,
+        anatomy: initFilter.anatomy
+          ? anatomies.find((a) => a.value === initFilter.anatomy).label
+          : undefined,
+      }),
+    );
   }, [
     initFilter.page,
     initFilter.sort,
@@ -223,8 +228,12 @@ const CommunitiesOverview = ({
           activeCommunities={activeCommunities}
           activeCommunitiesLoading={activeCommunitiesLoading}
           onPageChange={onPageChange}
-          updateCommunityRequestJoinsById={(id, newCommunityData) => dispatch(updateCommunityRequestJoinsById(id, newCommunityData))}
-          updateCommunityInvitationsById={(id, newCommunityData) => dispatch(updateCommunityInvitationsById(id, newCommunityData))}
+          updateCommunityRequestJoinsById={(id, newCommunityData) =>
+            dispatch(updateCommunityRequestJoinsById(id, newCommunityData))
+          }
+          updateCommunityInvitationsById={(id, newCommunityData) =>
+            dispatch(updateCommunityInvitationsById(id, newCommunityData))
+          }
           page={page}
         />
       )}

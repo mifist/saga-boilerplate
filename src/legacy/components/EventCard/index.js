@@ -46,10 +46,6 @@ function EventCard({ event, registered, ...rest }) {
       _id={id}
       type="event"
       goBackName="events.backToEvents"
-      extraParams={{
-        //hash: '#comments',
-        currentPage: history.location.currentPage,
-      }}
     >
       <Card
         className="event_card"

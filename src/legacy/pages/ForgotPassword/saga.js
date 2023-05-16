@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* forgotPassword(action) {
@@ -28,5 +28,5 @@ export function* forgotPassword(action) {
 
 // Individual exports for testing
 export default function* forgotPasswordSaga() {
-  yield takeLatest(CONSTANS.FORGOT_PASSWORD, forgotPassword);
+  yield takeLatest(CONSTANTS.FORGOT_PASSWORD, forgotPassword);
 }

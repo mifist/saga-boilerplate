@@ -29,7 +29,8 @@ import CommentsOverview from 'legacy/containers/CommentsOverview/saga';
 import PersonalSideBar from 'legacy/containers/PersonalSideBar/saga';
 import ProfileSuggestions from 'legacy/containers/ProfileSuggestions/saga';
 import UploadContent from 'legacy/containers/UploadContent/saga';
-
+//layouts
+import MainLayout from 'layouts/MainLayout/saga';
 
 export default {
   SagaContainer,
@@ -59,4 +60,6 @@ export default {
   PersonalSideBar,
   ProfileSuggestions,
   UploadContent,
+  // layouts
+  MainLayout,
 };

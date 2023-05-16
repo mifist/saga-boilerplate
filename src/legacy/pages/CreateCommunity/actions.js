@@ -1,13 +1,16 @@
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
-export const createCommunity = values => ({ type: CONSTANS.CREATE_COMMUNITY, values });
+export const createCommunity = (values) => ({
+  type: CONSTANTS.CREATE_COMMUNITY,
+  values,
+});
 
-export const createCommunitySuccess = communityDetails => ({
-  type: CONSTANS.CREATE_COMMUNITY_SUCCESS,
+export const createCommunitySuccess = (communityDetails) => ({
+  type: CONSTANTS.CREATE_COMMUNITY_SUCCESS,
   communityDetails,
 });
 
-export const createCommunityError = error => ({
-  type: CONSTANS.CREATE_COMMUNITY_ERROR,
+export const createCommunityError = (error) => ({
+  type: CONSTANTS.CREATE_COMMUNITY_ERROR,
   error,
 });

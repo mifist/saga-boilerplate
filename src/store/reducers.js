@@ -29,6 +29,8 @@ import CommentsOverview from 'legacy/containers/CommentsOverview/reducer';
 import PersonalSideBar from 'legacy/containers/PersonalSideBar/reducer';
 import ProfileSuggestions from 'legacy/containers/ProfileSuggestions/reducer';
 import UploadContent from 'legacy/containers/UploadContent/reducer';
+//layouts
+import MainLayout from 'layouts/MainLayout/reducer';
 
 export default {
   SagaContainer,
@@ -58,4 +60,6 @@ export default {
   PersonalSideBar,
   ProfileSuggestions,
   UploadContent,
+  //layouts
+  MainLayout,
 };

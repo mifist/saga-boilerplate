@@ -4,14 +4,14 @@
  *
  */
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 /**
  * Clearing the state for CommunityDetail
  */
 export function flushStateCommunityDetail() {
   return {
-    type: CONSTANS.FLUSH_STATE_COMMUNITYDETAIL,
+    type: CONSTANTS.FLUSH_STATE_COMMUNITYDETAIL,
   };
 }
 
@@ -26,7 +26,7 @@ export function flushStateCommunityDetail() {
  */
 export function loadCommunityDetail(id) {
   return {
-    type: CONSTANS.LOAD_COMMUNITYDETAIL,
+    type: CONSTANTS.LOAD_COMMUNITYDETAIL,
     id,
   };
 }
@@ -40,7 +40,7 @@ export function loadCommunityDetail(id) {
  */
 export function loadCommunityDetailSuccess(communityDetailData) {
   return {
-    type: CONSTANS.LOAD_COMMUNITYDETAIL_SUCCESS,
+    type: CONSTANTS.LOAD_COMMUNITYDETAIL_SUCCESS,
     communityDetailData,
   };
 }
@@ -54,7 +54,7 @@ export function loadCommunityDetailSuccess(communityDetailData) {
  */
 export function loadCommunityDetailError(error) {
   return {
-    type: CONSTANS.LOAD_COMMUNITYDETAIL_ERROR,
+    type: CONSTANTS.LOAD_COMMUNITYDETAIL_ERROR,
     error,
   };
 }
@@ -65,7 +65,7 @@ export function loadCommunityDetailError(error) {
 
 export function updateLikesCommunity(publication) {
   return {
-    type: CONSTANS.UPDATE_LIKES,
+    type: CONSTANTS.UPDATE_LIKES,
     publication,
   };
 }
@@ -77,7 +77,7 @@ export function updateLikesCommunity(publication) {
  */
 export function changeCommunityDetail(communityDetailData) {
   return {
-    type: CONSTANS.CHANGE_COMMUNITYDETAIL,
+    type: CONSTANTS.CHANGE_COMMUNITYDETAIL,
     communityDetailData,
   };
 }
@@ -91,7 +91,7 @@ export function changeCommunityDetail(communityDetailData) {
  */
 export function changeCommunityDetailSuccess(communityDetailData) {
   return {
-    type: CONSTANS.CHANGE_COMMUNITYDETAIL_SUCCESS,
+    type: CONSTANTS.CHANGE_COMMUNITYDETAIL_SUCCESS,
     communityDetailData,
   };
 }
@@ -105,7 +105,7 @@ export function changeCommunityDetailSuccess(communityDetailData) {
  */
 export function changeCommunityDetailError(error) {
   return {
-    type: CONSTANS.CHANGE_COMMUNITYDETAIL_ERROR,
+    type: CONSTANTS.CHANGE_COMMUNITYDETAIL_ERROR,
     error,
   };
 }
@@ -121,7 +121,7 @@ export function changeCommunityDetailError(error) {
  */
 export function deleteCommunityDetail(id) {
   return {
-    type: CONSTANS.DELETE_COMMUNITYDETAIL,
+    type: CONSTANTS.DELETE_COMMUNITYDETAIL,
     id,
   };
 }
@@ -135,7 +135,7 @@ export function deleteCommunityDetail(id) {
  */
 export function deleteCommunityDetailSuccess() {
   return {
-    type: CONSTANS.DELETE_COMMUNITYDETAIL_SUCCESS,
+    type: CONSTANTS.DELETE_COMMUNITYDETAIL_SUCCESS,
   };
 }
 
@@ -148,7 +148,7 @@ export function deleteCommunityDetailSuccess() {
  */
 export function deleteCommunityDetailError(error) {
   return {
-    type: CONSTANS.DELETE_COMMUNITYDETAIL_ERROR,
+    type: CONSTANTS.DELETE_COMMUNITYDETAIL_ERROR,
     error,
   };
 }
@@ -164,7 +164,7 @@ export function deleteCommunityDetailError(error) {
  */
 export function loadCommunityDetailTags(id) {
   return {
-    type: CONSTANS.LOAD_COMMUNITYDETAIL_TAGS,
+    type: CONSTANTS.LOAD_COMMUNITYDETAIL_TAGS,
     id,
   };
 }
@@ -178,7 +178,7 @@ export function loadCommunityDetailTags(id) {
  */
 export function loadCommunityDetailTagsSuccess(communityPopularTags) {
   return {
-    type: CONSTANS.LOAD_COMMUNITYDETAIL_TAGS_SUCCESS,
+    type: CONSTANTS.LOAD_COMMUNITYDETAIL_TAGS_SUCCESS,
     communityPopularTags,
   };
 }
@@ -192,7 +192,7 @@ export function loadCommunityDetailTagsSuccess(communityPopularTags) {
  */
 export function loadCommunityDetailTagsError(errorPopularTags) {
   return {
-    type: CONSTANS.LOAD_COMMUNITYDETAIL_TAGS_ERROR,
+    type: CONSTANTS.LOAD_COMMUNITYDETAIL_TAGS_ERROR,
     errorPopularTags,
   };
 }
@@ -208,7 +208,7 @@ export function loadCommunityDetailTagsError(errorPopularTags) {
  */
 export function uploadCommunityMedia(media) {
   return {
-    type: CONSTANS.UPLOAD_MEDIA,
+    type: CONSTANTS.UPLOAD_MEDIA,
     media,
   };
 }
@@ -222,7 +222,7 @@ export function uploadCommunityMedia(media) {
  */
 export function uploadCommunityMediaSuccess(uploadMedia) {
   return {
-    type: CONSTANS.UPLOAD_MEDIA_SUCCESS,
+    type: CONSTANTS.UPLOAD_MEDIA_SUCCESS,
     uploadMedia,
   };
 }
@@ -236,7 +236,7 @@ export function uploadCommunityMediaSuccess(uploadMedia) {
  */
 export function uploadCommunityMediaError(error) {
   return {
-    type: CONSTANS.UPLOAD_MEDIA_ERROR,
+    type: CONSTANTS.UPLOAD_MEDIA_ERROR,
     error,
   };
 }
@@ -247,7 +247,7 @@ export function uploadCommunityMediaError(error) {
 
 export function loadCommunityFeed(id, page, filter, entity = 'post') {
   return {
-    type: CONSTANS.LOAD_FEEDS,
+    type: CONSTANTS.LOAD_FEEDS,
     id,
     page,
     filter,
@@ -256,7 +256,7 @@ export function loadCommunityFeed(id, page, filter, entity = 'post') {
 }
 export function loadCommunityFeedSuccess(communityFeeds, page, total) {
   return {
-    type: CONSTANS.LOAD_FEEDS_SUCCESS,
+    type: CONSTANTS.LOAD_FEEDS_SUCCESS,
     communityFeeds,
     page,
     total,
@@ -264,7 +264,7 @@ export function loadCommunityFeedSuccess(communityFeeds, page, total) {
 }
 export function loadCommunityFeedError(errorFeeds) {
   return {
-    type: CONSTANS.LOAD_FEEDS_ERROR,
+    type: CONSTANTS.LOAD_FEEDS_ERROR,
     errorFeeds,
   };
 }
@@ -275,21 +275,21 @@ export function loadCommunityFeedError(errorFeeds) {
 
 export function postPublication(publication) {
   return {
-    type: CONSTANS.POST_PUBLICATION,
+    type: CONSTANTS.POST_PUBLICATION,
     publication,
   };
 }
 
 export function postPublicationSuccess(publication) {
   return {
-    type: CONSTANS.POST_PUBLICATION_SUCCESS,
+    type: CONSTANTS.POST_PUBLICATION_SUCCESS,
     publication,
   };
 }
 
 export function postPublicationError(errorPublication) {
   return {
-    type: CONSTANS.POST_PUBLICATION_ERROR,
+    type: CONSTANTS.POST_PUBLICATION_ERROR,
     errorPublication,
   };
 }
@@ -300,46 +300,46 @@ export function postPublicationError(errorPublication) {
 
 export function loadCommunityTags(id) {
   return {
-    type: CONSTANS.LOAD_TAGS,
+    type: CONSTANTS.LOAD_TAGS,
     id,
   };
 }
 export function loadCommunityTagsSuccess(communityTags) {
   return {
-    type: CONSTANS.LOAD_TAGS_SUCCESS,
+    type: CONSTANTS.LOAD_TAGS_SUCCESS,
     communityTags,
   };
 }
 export function loadCommunityTagsError(errorTags) {
   return {
-    type: CONSTANS.LOAD_TAGS_ERROR,
+    type: CONSTANTS.LOAD_TAGS_ERROR,
     errorTags,
   };
 }
 
 export function reportPost(data) {
   return {
-    type: CONSTANS.REPORT_POST,
+    type: CONSTANTS.REPORT_POST,
     data,
   };
 }
 
 export function reportPostSuccess() {
   return {
-    type: CONSTANS.REPORT_POST_SUCCESS,
+    type: CONSTANTS.REPORT_POST_SUCCESS,
   };
 }
 
 export function reportPostError(error) {
   return {
-    type: CONSTANS.REPORT_POST_ERROR,
+    type: CONSTANTS.REPORT_POST_ERROR,
     error,
   };
 }
 
 export function setReportPopup({ opened, _id }) {
   return {
-    type: CONSTANS.SET_REPORT_POPOP,
+    type: CONSTANTS.SET_REPORT_POPOP,
     opened,
     _id,
   };

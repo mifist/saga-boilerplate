@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   hiddenPosts: null,
@@ -9,41 +9,41 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const hiddenPostsReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.LOAD_HIDDEN_POSTS:
+      case CONSTANTS.LOAD_HIDDEN_POSTS:
         draft.hiddenPosts = null;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.LOAD_HIDDEN_POSTS_SUCCESS:
+      case CONSTANTS.LOAD_HIDDEN_POSTS_SUCCESS:
         draft.hiddenPosts = action.hiddenPosts;
         draft.loading = false;
         break;
 
-      case CONSTANS.LOAD_HIDDEN_POSTS_ERROR:
+      case CONSTANTS.LOAD_HIDDEN_POSTS_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
       // UNHIDE POST
-      case CONSTANS.UNHIDE_POST:
+      case CONSTANTS.UNHIDE_POST:
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.UNHIDE_POST_SUCCESS:
+      case CONSTANTS.UNHIDE_POST_SUCCESS:
         draft.loading = false;
         draft.hiddenPosts = draft.hiddenPosts.filter(
-          posts => posts._id !== action.postId,
+          (posts) => posts._id !== action.postId,
         );
         break;
 
-      case CONSTANS.UNHIDE_POST_ERROR:
+      case CONSTANTS.UNHIDE_POST_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

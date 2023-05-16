@@ -4,24 +4,24 @@
  *
  */
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export function defaultAction() {
   return {
-    type: CONSTANS.DEFAULT_ACTION,
+    type: CONSTANTS.DEFAULT_ACTION,
   };
 }
 
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 /**
 export function changeData(filteredProperties) {
   return {
-    type: CONSTANS.CHANGE_DATA,
+    type: CONSTANTS.CHANGE_DATA,
     filteredProperties,
   };
 } */
@@ -33,7 +33,7 @@ export function changeData(filteredProperties) {
  */
 export function loadEvents(typeLayout) {
   return {
-    type: CONSTANS.LOAD_EVENTS,
+    type: CONSTANTS.LOAD_EVENTS,
     typeLayout,
   };
 }
@@ -47,7 +47,7 @@ export function loadEvents(typeLayout) {
  */
 export function loadEventsSuccess(events, replayEvents) {
   return {
-    type: CONSTANS.LOAD_EVENTS_SUCCESS,
+    type: CONSTANTS.LOAD_EVENTS_SUCCESS,
     events,
     replayEvents,
   };
@@ -62,7 +62,7 @@ export function loadEventsSuccess(events, replayEvents) {
  */
 export function loadEventsError(error) {
   return {
-    type: CONSTANS.LOAD_EVENTS_ERROR,
+    type: CONSTANTS.LOAD_EVENTS_ERROR,
     error,
   };
 }

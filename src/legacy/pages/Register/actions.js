@@ -1,28 +1,28 @@
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 // REGISTER
 export function register(data) {
   return {
-    type: CONSTANS.REGISTER,
+    type: CONSTANTS.REGISTER,
     data,
   };
 }
 
 export function registerSuccess() {
   return {
-    type: CONSTANS.REGISTER_SUCCESS,
+    type: CONSTANTS.REGISTER_SUCCESS,
   };
 }
 
 export function registerError(error) {
   return {
-    type: CONSTANS.REGISTER_ERROR,
+    type: CONSTANTS.REGISTER_ERROR,
     error,
   };
 }
@@ -30,7 +30,7 @@ export function registerError(error) {
 // RESEND VERIFY EMAIL
 export function resendVerifyEmail(email) {
   return {
-    type: CONSTANS.RESEND_VERIFY_EMAIL,
+    type: CONSTANTS.RESEND_VERIFY_EMAIL,
     data: {
       email,
     },
@@ -39,13 +39,13 @@ export function resendVerifyEmail(email) {
 
 export function resendVerifyEmailSuccess() {
   return {
-    type: CONSTANS.RESEND_VERIFY_EMAIL_SUCCESS,
+    type: CONSTANTS.RESEND_VERIFY_EMAIL_SUCCESS,
   };
 }
 
 export function resendVerifyEmailError(error) {
   return {
-    type: CONSTANS.RESEND_VERIFY_EMAIL_ERROR,
+    type: CONSTANTS.RESEND_VERIFY_EMAIL_ERROR,
     error,
   };
 }
@@ -53,14 +53,14 @@ export function resendVerifyEmailError(error) {
 // Countries
 export function getDictionaries(dictionaryType) {
   return {
-    type: CONSTANS.GET_DICTIONARIES,
+    type: CONSTANTS.GET_DICTIONARIES,
     dictionaryType,
   };
 }
 
 export function getDictionariesSuccess(data, dictionaryType) {
   return {
-    type: CONSTANS.GET_DICTIONARIES_SUCCESS,
+    type: CONSTANTS.GET_DICTIONARIES_SUCCESS,
     data,
     dictionaryType,
   };
@@ -68,7 +68,7 @@ export function getDictionariesSuccess(data, dictionaryType) {
 
 export function getDictionariesError(error) {
   return {
-    type: CONSTANS.GET_DICTIONARIES_ERROR,
+    type: CONSTANTS.GET_DICTIONARIES_ERROR,
     error,
   };
 }

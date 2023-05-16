@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import classNames from 'classnames';
@@ -16,7 +15,6 @@ import { List, Tag } from 'antd';
 import LinkWrapper from 'legacy/components/LinkWrapper';
 
 function ArticlesList({ items, pagination, className, ...rest }) {
-  const history = useHistory();
   const { t } = useTranslation();
   const childClassNames = classNames('article-lists', className);
 
@@ -29,7 +27,7 @@ function ArticlesList({ items, pagination, className, ...rest }) {
         size="large"
         pagination={pagination}
         dataSource={items}
-        renderItem={article => (
+        renderItem={(article) => (
           <List.Item key={article._id} className="article-list-item" extra="">
             <List.Item.Meta
               title={
@@ -53,9 +51,6 @@ function ArticlesList({ items, pagination, className, ...rest }) {
                     type={'article'}
                     _id={article._id}
                     goBackName="articles.backToArticles"
-                    extraParams={{
-                      currentPage: history.location.currentPage,
-                    }}
                   >
                     {article.title.length > 200
                       ? `${article.title.substring(0, 200)}...`
@@ -90,9 +85,6 @@ function ArticlesList({ items, pagination, className, ...rest }) {
                     type={'article'}
                     _id={article._id}
                     goBackName="articles.backToArticles"
-                    extraParams={{
-                      currentPage: history.location.currentPage,
-                    }}
                   >
                     {t('common.seeMore')}
                   </LinkWrapper>

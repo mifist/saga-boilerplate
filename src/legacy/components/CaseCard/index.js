@@ -38,8 +38,8 @@ class CaseCard extends React.Component {
   render() {
     let { item, user, history, setAuthPopup, t, ...rest } = this.props;
     // Author Output
-    const author = author =>
-      author?.map(auth => {
+    const author = (author) =>
+      author?.map((auth) => {
         const { isEmployee, industryName } = getEmployment(auth);
 
         return (
@@ -106,10 +106,6 @@ class CaseCard extends React.Component {
                 type={'case'}
                 _id={item._id}
                 goBackName="cases.backToCases"
-                extraParams={{
-                  // hash: '#Comments',
-                  currentPage: history.location.currentPage,
-                }}
               >
                 <img
                   alt={item.title}
@@ -129,9 +125,6 @@ class CaseCard extends React.Component {
                 type={'case'}
                 _id={item._id}
                 goBackName="cases.backToCases"
-                extraParams={{
-                  currentPage: history.location.currentPage, // This is not working because goBack() has no params
-                }}
               >
                 {item.title.length > 60
                   ? `${item.title.substring(0, 60)}...`

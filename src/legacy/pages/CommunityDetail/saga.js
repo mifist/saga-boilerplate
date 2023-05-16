@@ -2,7 +2,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 import history from 'utils/history';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
@@ -240,7 +240,9 @@ export function* loadCommunityFeedSaga(action) {
         yield put(ACTIONS.loadCommunityFeedSuccess(false, page, total));
         //  yield put(ACTIONS.setNoMore('post'));
       } else {
-        yield put(ACTIONS.loadCommunityFeedSuccess(communityFeeds, page, total));
+        yield put(
+          ACTIONS.loadCommunityFeedSuccess(communityFeeds, page, total),
+        );
       }
     } else {
       console.error('Unauthorized Error');
@@ -298,7 +300,7 @@ export function* updateLike(action) {
       `posts`,
       {
         _id: action.publication?._id,
-        likes: action.publication?.likes?.map(like => ({ _id: like._id })),
+        likes: action.publication?.likes?.map((like) => ({ _id: like._id })),
         community: action.publication?.community,
       },
       currentUser.token,
@@ -341,21 +343,24 @@ export function* reportPost(action) {
 }
 
 export default function* communityDetailSaga() {
-  yield takeLatest(CONSTANS.LOAD_COMMUNITYDETAIL, loadCommunityDetail);
-  yield takeLatest(CONSTANS.CHANGE_COMMUNITYDETAIL, changeCommunityDetail);
-  yield takeLatest(CONSTANS.DELETE_COMMUNITYDETAIL, deleteCommunityDetail);
+  yield takeLatest(CONSTANTS.LOAD_COMMUNITYDETAIL, loadCommunityDetail);
+  yield takeLatest(CONSTANTS.CHANGE_COMMUNITYDETAIL, changeCommunityDetail);
+  yield takeLatest(CONSTANTS.DELETE_COMMUNITYDETAIL, deleteCommunityDetail);
   // all tags
-  yield takeLatest(CONSTANS.LOAD_TAGS, loadCommunityTags);
+  yield takeLatest(CONSTANTS.LOAD_TAGS, loadCommunityTags);
   // popular tags
-  yield takeLatest(CONSTANS.LOAD_COMMUNITYDETAIL_TAGS, loadCommunityPopularTags);
+  yield takeLatest(
+    CONSTANTS.LOAD_COMMUNITYDETAIL_TAGS,
+    loadCommunityPopularTags,
+  );
   // media
-  yield takeLatest(CONSTANS.UPLOAD_MEDIA, uploadMediaSaga);
+  yield takeLatest(CONSTANTS.UPLOAD_MEDIA, uploadMediaSaga);
   // feeds
-  yield takeLatest(CONSTANS.LOAD_FEEDS, loadCommunityFeedSaga);
+  yield takeLatest(CONSTANTS.LOAD_FEEDS, loadCommunityFeedSaga);
   // post publication
-  yield takeLatest(CONSTANS.POST_PUBLICATION, postPublicationSaga);
+  yield takeLatest(CONSTANTS.POST_PUBLICATION, postPublicationSaga);
 
-  yield takeLatest(CONSTANS.UPDATE_LIKES, updateLike);
+  yield takeLatest(CONSTANTS.UPDATE_LIKES, updateLike);
 
-  yield takeLatest(CONSTANS.REPORT_POST, reportPost);
+  yield takeLatest(CONSTANTS.REPORT_POST, reportPost);
 }

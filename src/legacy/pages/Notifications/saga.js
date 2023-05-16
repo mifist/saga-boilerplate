@@ -2,7 +2,7 @@ import { put, select, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 import { push } from 'redux-first-history';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* loadNotifications(action) {
@@ -17,7 +17,10 @@ export function* loadNotifications(action) {
 
     if (notifications.data.length !== 0) {
       yield put(
-        ACTIONS.loadNotificationsSuccess(notifications.data, notifications.totalCount),
+        ACTIONS.loadNotificationsSuccess(
+          notifications.data,
+          notifications.totalCount,
+        ),
       );
     } else {
       yield put(ACTIONS.loadNotificationsError(true));
@@ -30,7 +33,7 @@ export function* loadNotifications(action) {
 export function* updateNotification(action) {
   try {
     const currentUser = yield JSON.parse(localStorage.getItem('beemed_user'));
-    const {notification} = action;
+    const { notification } = action;
 
     const _id = notification.post?._id;
     const type = notification.post?.type;
@@ -102,6 +105,6 @@ export function* updateNotification(action) {
 
 // Individual exports for testing
 export default function* notificationsSaga() {
-  yield takeLatest(CONSTANS.LOAD_NOTIFICATIONS, loadNotifications);
-  yield takeLatest(CONSTANS.UPDATE_NOTIFICATION, updateNotification);
+  yield takeLatest(CONSTANTS.LOAD_NOTIFICATIONS, loadNotifications);
+  yield takeLatest(CONSTANTS.UPDATE_NOTIFICATION, updateNotification);
 }

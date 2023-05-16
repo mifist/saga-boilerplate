@@ -40,11 +40,14 @@ import RenderTab from './RenderTab';
 import { withUser } from 'appContext/User.context';
 // utils
 import api, { setAuthorizationHeader } from 'appAPI/axiosAPI';
-import { getUrlVars, makeSearchQueryParams, getEmployment } from 'utils/generalHelper';
+import {
+  getUrlVars,
+  makeSearchQueryParams,
+  getEmployment,
+} from 'utils/generalHelper';
 import { specialities, anatomies } from 'utils/categoryHelper';
 // hooks
 import useDeviceDetect from 'appHooks/useDeviceDetect';
-
 
 export function PersonalProfilePage({
   // props
@@ -54,7 +57,7 @@ export function PersonalProfilePage({
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
   const { profileData } = state.PersonalProfilePage;
 
@@ -327,10 +330,7 @@ export function PersonalProfilePage({
                         _id={user._id}
                         className={'ant-btn profile-header__edit'}
                         goBackName="profile.backToMyProfile"
-                        extraParams={{
-                          hash: '#Profile',
-                          currentPage: history.location.currentPage,
-                        }}
+                        extraParams={{ hash: '#Profile' }}
                       >
                         <CustomIcons type="edit" />
                         {t('profile.editMyProfile')}

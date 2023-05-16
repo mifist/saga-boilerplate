@@ -1,28 +1,28 @@
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 export function login(data) {
   return {
-    type: CONSTANS.LOGIN,
+    type: CONSTANTS.LOGIN,
     data,
   };
 }
 
 export function loginSuccess(user) {
   return {
-    type: CONSTANS.LOGIN_SUCCESS,
+    type: CONSTANTS.LOGIN_SUCCESS,
     user,
   };
 }
 
 export function loginError(error) {
   return {
-    type: CONSTANS.LOGIN_ERROR,
+    type: CONSTANTS.LOGIN_ERROR,
     error,
   };
 }

@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
@@ -157,10 +157,10 @@ export function* loadCommunityTags(action) {
 
 // Individual exports for testing
 export default function* caseDetailSaga() {
-  yield takeLatest(CONSTANS.LOAD_CASE, loadCase);
-  yield takeLatest(CONSTANS.UPDATE_CASE, updateCase);
-  yield takeLatest(CONSTANS.ON_DELETE, onDelete);
-  yield takeLatest(CONSTANS.PIN_UNPIN_POST, pinUnpinPost);
-  yield takeLatest(CONSTANS.HIDE_UNHIDE_POST, hideUnhidePost);
-  yield takeLatest(CONSTANS.LOAD_COMMUNITY_TAGS, loadCommunityTags);
+  yield takeLatest(CONSTANTS.LOAD_CASE, loadCase);
+  yield takeLatest(CONSTANTS.UPDATE_CASE, updateCase);
+  yield takeLatest(CONSTANTS.ON_DELETE, onDelete);
+  yield takeLatest(CONSTANTS.PIN_UNPIN_POST, pinUnpinPost);
+  yield takeLatest(CONSTANTS.HIDE_UNHIDE_POST, hideUnhidePost);
+  yield takeLatest(CONSTANTS.LOAD_COMMUNITY_TAGS, loadCommunityTags);
 }

@@ -1,27 +1,27 @@
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
 export function loadHiddenPosts() {
   return {
-    type: CONSTANS.LOAD_HIDDEN_POSTS,
+    type: CONSTANTS.LOAD_HIDDEN_POSTS,
   };
 }
 
 export function loadHiddenPostsSuccess(hiddenPosts) {
   return {
-    type: CONSTANS.LOAD_HIDDEN_POSTS_SUCCESS,
+    type: CONSTANTS.LOAD_HIDDEN_POSTS_SUCCESS,
     hiddenPosts,
   };
 }
 
 export function loadHiddenPostsError(error) {
   return {
-    type: CONSTANS.LOAD_HIDDEN_POSTS_ERROR,
+    type: CONSTANTS.LOAD_HIDDEN_POSTS_ERROR,
     error,
   };
 }
@@ -29,19 +29,19 @@ export function loadHiddenPostsError(error) {
 // UNHIDE POST
 export function unhidePost(postId) {
   return {
-    type: CONSTANS.UNHIDE_POST,
+    type: CONSTANTS.UNHIDE_POST,
     postId,
   };
 }
 export function unhidePostSuccess(postId) {
   return {
-    type: CONSTANS.UNHIDE_POST_SUCCESS,
+    type: CONSTANTS.UNHIDE_POST_SUCCESS,
     postId,
   };
 }
 export function unhidePostError(error) {
   return {
-    type: CONSTANS.UNHIDE_POST_ERROR,
+    type: CONSTANTS.UNHIDE_POST_ERROR,
     error,
   };
 }

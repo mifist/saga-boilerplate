@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -16,25 +16,25 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const uploadContentReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.UPLOAD_CONTENT_FILE:
+      case CONSTANTS.UPLOAD_CONTENT_FILE:
         draft.loading = true;
         draft.error = false;
         draft.uploadedFileType = false;
         break;
 
-      case CONSTANS.UPLOAD_CONTENT_FILE_SUCCESS:
+      case CONSTANTS.UPLOAD_CONTENT_FILE_SUCCESS:
         draft.uploadedFile = action.uploadedFile;
         draft.uploadedFileType = action.uploadedFileType;
         draft.loading = false;
         draft.currentFile = false;
         break;
 
-      case CONSTANS.UPLOAD_CONTENT_FILE_ERROR:
+      case CONSTANTS.UPLOAD_CONTENT_FILE_ERROR:
         draft.error = action.error;
         draft.loading = false;
         draft.uploadedFile = 'error';

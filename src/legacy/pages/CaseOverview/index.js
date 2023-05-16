@@ -23,10 +23,7 @@ import { useQuery } from 'utils/history';
 
 import { flushState, loadCases, createCase } from './actions';
 
-
 export function CaseOverview({ createCase, history }) {
-  console.log('caseOverview');
-
   const { cases, loading, error } = useSelector((state) => {
     return state.CaseOverview;
   });

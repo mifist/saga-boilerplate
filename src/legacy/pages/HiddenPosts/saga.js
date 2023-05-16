@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* loadHiddenPosts() {
@@ -49,6 +49,6 @@ export function* unhidePost(action) {
 
 // Individual exports for testing
 export default function* hiddenPostsSaga() {
-  yield takeLatest(CONSTANS.LOAD_HIDDEN_POSTS, loadHiddenPosts);
-  yield takeLatest(CONSTANS.UNHIDE_POST, unhidePost);
+  yield takeLatest(CONSTANTS.LOAD_HIDDEN_POSTS, loadHiddenPosts);
+  yield takeLatest(CONSTANTS.UNHIDE_POST, unhidePost);
 }

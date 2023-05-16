@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from '@reduxjs/toolkit';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
@@ -35,7 +35,12 @@ import { withUser } from 'appContext/User.context';
 import { useDeviceDetect } from 'appHooks';
 
 export function ArticleDetail({ user, history }) {
-  const { article, loading, deleteSuccessful, error } = useSelector((state) => {
+  const {
+    article: { data: article },
+    loading,
+    deleteSuccessful,
+    error,
+  } = useSelector((state) => {
     return state.ArticleDetail;
   });
 
@@ -47,7 +52,7 @@ export function ArticleDetail({ user, history }) {
 
   useEffect(() => {
     if (initialId) {
-      loadArticle(initialId);
+      dispatch(loadArticle(initialId));
     }
 
     return () => {
@@ -291,5 +296,4 @@ ArticleDetail.propTypes = {
   article: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
 };
 
-
-export default compose(memo, withRouter, withUser)(ArticleDetail);
+export default compose(memo, withUser)(ArticleDetail);

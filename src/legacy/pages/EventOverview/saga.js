@@ -1,7 +1,7 @@
 import requestWrapper from 'utils/requestWrapper';
 import { put, select, takeLatest } from 'redux-saga/effects';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* loadUpcomingEvents(action) {
@@ -14,9 +14,7 @@ export function* loadUpcomingEvents(action) {
       state.currentPageUpcoming
     }${
       state.dateRangeUpcoming[0] !== ''
-        ? `&date_from=${state.dateRangeUpcoming[0]}&date_to=${
-            state.dateRangeUpcoming[1]
-          }`
+        ? `&date_from=${state.dateRangeUpcoming[0]}&date_to=${state.dateRangeUpcoming[1]}`
         : ''
     }${state.accreditedUpcoming ? '&accredited=1' : ''}`;
 
@@ -55,9 +53,7 @@ export function* loadReplayEvents() {
       state.currentPageReplay
     }${
       state.dateRangeReplay[0] !== ''
-        ? `&date_from=${state.dateRangeReplay[0]}&date_to=${
-            state.dateRangeReplay[1]
-          }`
+        ? `&date_from=${state.dateRangeReplay[0]}&date_to=${state.dateRangeReplay[1]}`
         : ''
     }${state.accreditedReplay ? '&accredited=1' : ''}`;
 
@@ -87,6 +83,6 @@ export function* loadReplayEvents() {
 // Individual exports for testing
 export default function* eventOverviewSaga() {
   // See example in containers/HomePage/saga.js
-  yield takeLatest(CONSTANS.LOAD_UPCOMING, loadUpcomingEvents);
-  yield takeLatest(CONSTANS.LOAD_REPLAY, loadReplayEvents);
+  yield takeLatest(CONSTANTS.LOAD_UPCOMING, loadUpcomingEvents);
+  yield takeLatest(CONSTANTS.LOAD_REPLAY, loadReplayEvents);
 }

@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -9,38 +9,38 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const podcastsOverviewReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
       // Load Podcasts by Filter
-      case CONSTANS.LOAD_PODCASTS:
+      case CONSTANTS.LOAD_PODCASTS:
         draft.filter = action.filter;
         draft.loading = true;
         draft.error = false;
         break;
 
-      case CONSTANS.LOAD_PODCASTS_SUCCESS:
+      case CONSTANTS.LOAD_PODCASTS_SUCCESS:
         draft.podcasts = action.podcasts;
         draft.loading = false;
         break;
 
-      case CONSTANS.LOAD_PODCASTS_ERROR:
+      case CONSTANTS.LOAD_PODCASTS_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
 
-      case CONSTANS.CREATE_PODCAST:
+      case CONSTANTS.CREATE_PODCAST:
         draft.loading = false;
         draft.error = false;
         break;
 
-      case CONSTANS.CREATE_PODCAST_SUCCESS:
+      case CONSTANTS.CREATE_PODCAST_SUCCESS:
         draft.loading = false;
         const { data } = action;
         if (state.podcasts) {
-          let i = state.podcasts.data.findIndex(po => po._id === data._id);
+          let i = state.podcasts.data.findIndex((po) => po._id === data._id);
 
           if (i !== -1) {
             draft.podcasts.data[i] = data;
@@ -51,7 +51,7 @@ const podcastsOverviewReducer = (state = initialState, action) =>
 
         break;
 
-      case CONSTANS.CREATE_PODCAST_ERROR:
+      case CONSTANTS.CREATE_PODCAST_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

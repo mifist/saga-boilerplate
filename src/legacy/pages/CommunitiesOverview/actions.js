@@ -4,14 +4,14 @@
  *
  */
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 /**
  * Clearing the state for CommunitiesOverview
  */
-export function flushStateCommunitiesOverview() {
+export function flushState() {
   return {
-    type: CONSTANS.FLUSH_STATE_COMMUNITIESOVERVIEW,
+    type: CONSTANTS.FLUSH_STATE,
   };
 }
 
@@ -26,7 +26,7 @@ export function flushStateCommunitiesOverview() {
  */
 export function loadMyCommunities() {
   return {
-    type: CONSTANS.LOAD_MY_COMMUNITIES,
+    type: CONSTANTS.LOAD_MY_COMMUNITIES,
   };
 }
 
@@ -39,7 +39,7 @@ export function loadMyCommunities() {
  */
 export function loadMyCommunitiesSuccess(myCommunities) {
   return {
-    type: CONSTANS.LOAD_MY_COMMUNITIES_SUCCESS,
+    type: CONSTANTS.LOAD_MY_COMMUNITIES_SUCCESS,
     myCommunities,
   };
 }
@@ -53,7 +53,7 @@ export function loadMyCommunitiesSuccess(myCommunities) {
  */
 export function loadMyCommunitiesError(error) {
   return {
-    type: CONSTANS.LOAD_MY_COMMUNITIES_ERROR,
+    type: CONSTANTS.LOAD_MY_COMMUNITIES_ERROR,
     error,
   };
 }
@@ -65,7 +65,7 @@ export function loadMyCommunitiesError(error) {
  */
 export function loadActiveCommunities(filter) {
   return {
-    type: CONSTANS.LOAD_ACTIVE_COMMUNITIES,
+    type: CONSTANTS.LOAD_ACTIVE_COMMUNITIES,
     filter,
   };
 }
@@ -79,7 +79,7 @@ export function loadActiveCommunities(filter) {
  */
 export function loadActiveCommunitiesSuccess(activeCommunities) {
   return {
-    type: CONSTANS.LOAD_ACTIVE_COMMUNITIES_SUCCESS,
+    type: CONSTANTS.LOAD_ACTIVE_COMMUNITIES_SUCCESS,
     activeCommunities,
   };
 }
@@ -93,7 +93,7 @@ export function loadActiveCommunitiesSuccess(activeCommunities) {
  */
 export function loadActiveCommunitiesError(error) {
   return {
-    type: CONSTANS.LOAD_ACTIVE_COMMUNITIES_ERROR,
+    type: CONSTANTS.LOAD_ACTIVE_COMMUNITIES_ERROR,
     error,
   };
 }
@@ -103,7 +103,7 @@ export function loadActiveCommunitiesError(error) {
  */
 export function updateCommunityRequestJoinsById(id, newCommunityData) {
   return {
-    type: CONSTANS.UPDATE_COMMUNITY_REQUEST_JOINS_BY_ID,
+    type: CONSTANTS.UPDATE_COMMUNITY_REQUEST_JOINS_BY_ID,
     id,
     newCommunityData,
   };
@@ -113,7 +113,7 @@ export function updateCommunityRequestJoinsById(id, newCommunityData) {
  */
 export function updateCommunityInvitationsById(id, newCommunityData) {
   return {
-    type: CONSTANS.UPDATE_COMMUNITY_INVITATIONS_BY_ID,
+    type: CONSTANTS.UPDATE_COMMUNITY_INVITATIONS_BY_ID,
     id,
     newCommunityData,
   };

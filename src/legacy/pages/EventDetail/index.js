@@ -13,10 +13,10 @@ import withRedux from 'HOC/withRedux';
 // actions
 import {
   flushState,
-  loadEvent as loadEventAction,
-  registerEvent as registerEventAction,
-  watchEvent as watchEventAction,
-  closeLiveEventPopup as closeLiveEventPopupAction,
+  loadEvent,
+  registerEvent,
+  watchEvent,
+  closeLiveEventPopup,
 } from './actions';
 
 // assets
@@ -24,11 +24,19 @@ import { UserOutlined } from '@ant-design/icons';
 
 // antd component
 import {
-  Layout, Row, Col, Spin, Empty, Button,
-  Avatar, Space,Tabs, Modal,
+  Layout,
+  Row,
+  Col,
+  Spin,
+  Empty,
+  Button,
+  Avatar,
+  Space,
+  Tabs,
+  Modal,
 } from 'antd';
 // components
-import CommentsOverview from 'containers/CommentsOverview';
+import CommentsOverview from 'legacy/containers/CommentsOverview';
 import GoBackButton from 'legacy/components/GoBackButton';
 import BookmarkAction from 'legacy/components/BookmarkAction';
 import ShareAction from 'legacy/components/ShareAction';
@@ -56,11 +64,10 @@ export function EventDetail({
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
-  const { 
-    event, nextEventId, loading, eventUrl, replayOpen, liveEventPopup
-  } = state.EventDetail;
+  const { event, nextEventId, loading, eventUrl, replayOpen, liveEventPopup } =
+    state.EventDetail;
 
   const { t } = useTranslation();
 
@@ -167,11 +174,13 @@ export function EventDetail({
             if (event.reg_types.length > 0) {
               window.location.replace(`https://beemed.com/econgresses/${id}`);
             } else {
-              dispatch(watchEvent({
-                id,
-                userId: user.userId,
-                eventType: 'live',
-              }));
+              dispatch(
+                watchEvent({
+                  id,
+                  userId: user.userId,
+                  eventType: 'live',
+                }),
+              );
             }
           } else {
             setAuthPopup({ open: true });
@@ -190,11 +199,13 @@ export function EventDetail({
             if (event.reg_types.length > 0) {
               window.location.replace(`https://beemed.com/econgresses/${id}`);
             } else {
-              dispatch(registerEvent({
-                id,
-                userId: user.userId,
-                eventType: 'show',
-              }));
+              dispatch(
+                registerEvent({
+                  id,
+                  userId: user.userId,
+                  eventType: 'show',
+                }),
+              );
 
               setMyEvents((prev) => [...prev, { econgress: { id } }]);
             }
@@ -219,11 +230,13 @@ export function EventDetail({
             if (event.reg_types.length > 0) {
               window.location.replace(`https://beemed.com/econgresses/${id}`);
             } else {
-              dispatch(watchEvent({
-                id,
-                userId: user.userId,
-                eventType: 'replay',
-              }));
+              dispatch(
+                watchEvent({
+                  id,
+                  userId: user.userId,
+                  eventType: 'replay',
+                }),
+              );
             }
           } else {
             setAuthPopup({ open: true });
@@ -242,11 +255,13 @@ export function EventDetail({
             if (event.reg_types.length > 0) {
               window.location.replace(`https://beemed.com/econgresses/${id}`);
             } else {
-              dispatch(registerEvent({
-                id,
-                userId: user.userId,
-                eventType: 'replay',
-              }));
+              dispatch(
+                registerEvent({
+                  id,
+                  userId: user.userId,
+                  eventType: 'replay',
+                }),
+              );
 
               setMyEvents((prev) => [...prev, { econgress: { id } }]);
             }

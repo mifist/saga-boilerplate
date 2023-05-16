@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -16,10 +16,10 @@ export const initialState = {
 const testContainerReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.DEFAULT_ACTION:
+      case CONSTANTS.DEFAULT_ACTION:
         break;
     }
   });

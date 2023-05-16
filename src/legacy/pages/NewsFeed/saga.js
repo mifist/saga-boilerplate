@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 import { notification } from 'antd';
@@ -42,7 +42,7 @@ export function* loadEvents(action) {
       'events',
     );
 
-    events.data.forEach(e => {
+    events.data.forEach((e) => {
       e.type = 'event';
     });
 
@@ -116,7 +116,7 @@ function grouper(arr) {
   let articleArr = [];
   let podcastArr = [];
   let eventArr = [];
-  arr.forEach(el => {
+  arr.forEach((el) => {
     switch (el.type) {
       case 'case':
         caseArr.push(el);
@@ -180,7 +180,7 @@ export function* postPublication(action) {
         'posts',
         {
           _id: publication?._id,
-          likes: publication?.likes?.map(like => ({ _id: like._id })),
+          likes: publication?.likes?.map((like) => ({ _id: like._id })),
         },
         currentUser.token,
       );
@@ -227,10 +227,10 @@ export function* reportPost(action) {
 // Individual exports for testing
 export default function* newsFeedListSaga() {
   // See example in containers/HomePage/saga.js
-  yield takeLatest(CONSTANS.LOAD_POSTS, loadPosts);
-  yield takeLatest(CONSTANS.LOAD_EVENTS, loadEvents);
-  yield takeLatest(CONSTANS.UPLOAD_IMAGES, uploadImages);
-  yield takeLatest(CONSTANS.POST_PUBLICATION, postPublication);
-  yield takeLatest(CONSTANS.UPDATE_LIKES, postPublication);
-  yield takeLatest(CONSTANS.REPORT_POST, reportPost);
+  yield takeLatest(CONSTANTS.LOAD_POSTS, loadPosts);
+  yield takeLatest(CONSTANTS.LOAD_EVENTS, loadEvents);
+  yield takeLatest(CONSTANTS.UPLOAD_IMAGES, uploadImages);
+  yield takeLatest(CONSTANTS.POST_PUBLICATION, postPublication);
+  yield takeLatest(CONSTANTS.UPDATE_LIKES, postPublication);
+  yield takeLatest(CONSTANTS.REPORT_POST, reportPost);
 }

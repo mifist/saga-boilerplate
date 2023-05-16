@@ -1,7 +1,6 @@
 import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 
@@ -26,12 +25,11 @@ import { withAuthPopup } from 'appContext/AuthPopup.context';
 
 function PodcastCard({ item, user, className, setAuthPopup, ...rest }) {
   const childClassNames = classNames('podcast-card', className);
-  const history = useHistory();
   const { t } = useTranslation();
 
   // Author Output
-  const author = author =>
-    author?.map(auth => {
+  const author = (author) =>
+    author?.map((auth) => {
       const { isEmployee, industryName } = getEmployment(auth);
 
       return (
@@ -93,10 +91,6 @@ function PodcastCard({ item, user, className, setAuthPopup, ...rest }) {
               type={'podcast'}
               _id={item._id}
               goBackName="podcasts.backToPodcasts"
-              extraParams={{
-                // hash: '#comments',
-                currentPage: history.location.currentPage,
-              }}
             >
               <img
                 alt={item.title}
@@ -127,10 +121,7 @@ function PodcastCard({ item, user, className, setAuthPopup, ...rest }) {
               type={'podcast'}
               _id={item._id}
               goBackName="podcasts.backToPodcasts"
-              extraParams={{
-                hash: '#Comments',
-                currentPage: history.location.currentPage,
-              }}
+              extraParams={{ hash: '#Comments' }}
             >
               {item.title.length > 56
                 ? `${item.title.substring(0, 56)}...`

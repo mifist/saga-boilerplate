@@ -38,7 +38,7 @@ function PostTabs({ content, tabSelection }) {
 
   const { isMobile } = useDeviceDetect();
 
-  const changeTab = key => {
+  const changeTab = (key) => {
     setActiveTab(key);
   };
 
@@ -60,7 +60,7 @@ function PostTabs({ content, tabSelection }) {
   }, [tabSelection]);
 
   useEffect(() => {
-    if (content?.pictures.length === 0) {
+    if (content?.pictures?.length === 0) {
       if (content?.pictures.length) {
         setActiveTab('tab-image');
       } else if (content?.videos.length > 0) {
@@ -80,7 +80,7 @@ function PostTabs({ content, tabSelection }) {
     // document.onkeydown = checkKey;
   }, []);
 
-  const renderListDocument = array => {
+  const renderListDocument = (array) => {
     return array.map((item, i) => {
       return (
         <div>
@@ -96,7 +96,7 @@ function PostTabs({ content, tabSelection }) {
     });
   };
 
-  const renderIconType = item => {
+  const renderIconType = (item) => {
     const styles = { fontSize: 25, color: '#005d72' };
     const ext = item.split('.')[item.split('.').length - 1];
 
@@ -125,7 +125,7 @@ function PostTabs({ content, tabSelection }) {
   return (
     <div id="preview" className="post-tabs-wrapper" ref={refPostTabs}>
       {content?.videos &&
-      content?.videos.filter(n => n).length === 0 &&
+      content?.videos.filter((n) => n).length === 0 &&
       content?.pictures &&
       content?.pictures.length === 0 &&
       content?.documents &&
@@ -158,7 +158,9 @@ function PostTabs({ content, tabSelection }) {
           <Tabs.TabPane
             tab={
               t(`cases.${isMobile ? 'vid' : 'videos'}`) +
-              ` (${content.videos ? content.videos.filter(n => n).length : 0})`
+              ` (${
+                content.videos ? content.videos.filter((n) => n).length : 0
+              })`
             }
             key="tab-video"
             disabled={!content.videos || content?.videos.length === 0}

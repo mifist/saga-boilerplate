@@ -4,7 +4,7 @@
  *
  */
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -26,31 +26,31 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const personalProfilePageReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.FLUSH_STATE:
+      case CONSTANTS.FLUSH_STATE:
         return initialState;
 
-      case CONSTANS.LOAD_EVENTS:
+      case CONSTANTS.LOAD_EVENTS:
         draft.loadingTab = true;
         draft.errorTab = false;
         draft.dataTab = null;
         draft.isReadyTab = false;
         break;
 
-      case CONSTANS.LOAD_EVENTS_SUCCESS:
+      case CONSTANTS.LOAD_EVENTS_SUCCESS:
         draft.profileEvents = action.dataTab;
         draft.loadingTab = false;
         draft.isReadyTab = true;
 
         break;
 
-      case CONSTANS.LOAD_EVENTS_ERROR:
+      case CONSTANTS.LOAD_EVENTS_ERROR:
         draft.errorTab = action.error;
         draft.loadingTab = false;
         break;
 
-      case CONSTANS.LOAD_PROFILE:
+      case CONSTANTS.LOAD_PROFILE:
         draft.id = action.id;
         draft.loading = true;
         draft.error = false;
@@ -60,7 +60,7 @@ const personalProfilePageReducer = (state = initialState, action) =>
         draft.isReady = false;
         break;
 
-      case CONSTANS.LOAD_PROFILE_SUCCESS:
+      case CONSTANTS.LOAD_PROFILE_SUCCESS:
         draft.profile = action.profile.user;
         draft.profilePosts = action.profile.posts.data;
         draft.profileCases = action.profile.cases.data;
@@ -70,7 +70,7 @@ const personalProfilePageReducer = (state = initialState, action) =>
         draft.isReady = true;
         break;
 
-      case CONSTANS.LOAD_PROFILE_ERROR:
+      case CONSTANTS.LOAD_PROFILE_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

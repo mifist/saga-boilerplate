@@ -1,7 +1,6 @@
 import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 
@@ -34,7 +33,7 @@ const CommunityCard = ({
     'overview-card-wrapper ant-list-item',
     className,
   );
-  const history = useHistory();
+
   const [visible, setVisible] = useState(false);
 
   // this is for wrapping parent element conditionally
@@ -125,9 +124,6 @@ const CommunityCard = ({
           type={'community'}
           _id={community._id}
           goBackName="communities.backToCommunities"
-          extraParams={{
-            currentPage: history.location.currentPage,
-          }}
         >
           {content}
         </LinkWrapper>
@@ -142,7 +138,7 @@ const CommunityCard = ({
               </Button>
               <JoinButton
                 community={community}
-                respond={responseData => {
+                respond={(responseData) => {
                   manageCommunityList !== undefined &&
                     manageCommunityList('request_join', responseData);
                 }}

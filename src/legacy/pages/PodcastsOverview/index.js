@@ -10,16 +10,18 @@ import './style.scss';
 // HOC
 import withRedux from 'HOC/withRedux';
 // actions
-import {
-  flushState as flushStateAction,
-  loadPodcasts as loadPodcastsAction,
-  createPodcast as createPodcastAction,
-} from './actions';
+import { flushState, loadPodcasts, createPodcast } from './actions';
 
 // antd component
 import {
-  Col, DatePicker, Empty, Form, Pagination,
-  Row, Select, Spin,
+  Col,
+  DatePicker,
+  Empty,
+  Form,
+  Pagination,
+  Row,
+  Select,
+  Spin,
 } from 'antd';
 // components
 import PodcastCard from 'legacy/components/PodcastCard';
@@ -32,19 +34,17 @@ import useDeviceDetect from 'appHooks/useDeviceDetect';
 //utils
 import { anatomies, specialities } from 'utils/categoryHelper';
 import { useQuery } from 'utils/history';
-
+import { useNavigate } from 'react-router-dom';
 
 export function PodcastsOverview({
-  // props
-  history,
   // default props
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
   const { error, loading, podcasts } = state.PodcastsOverview;
-
+  const navigate = useNavigate();
   const { isMobile } = useDeviceDetect();
   const query = useQuery();
   const { t, i18n } = useTranslation();
@@ -64,20 +64,22 @@ export function PodcastsOverview({
   };
 
   useEffect(() => {
-    dispatch(loadPodcasts({
-      type: 'podcast',
-      limit: 15,
-      page: initFilter.page,
-      sort: 'date',
-      speciality: initFilter.speciality
-        ? [specialities.find((s) => s.value === initFilter.speciality).label]
-        : [],
-      anatomy: initFilter.anatomy
-        ? [anatomies.find((a) => a.value === initFilter.anatomy).label]
-        : [],
-      dateFrom: moment(initFilter.dateFrom),
-      dateTo: moment(initFilter.dateTo),
-    }));
+    dispatch(
+      loadPodcasts({
+        type: 'podcast',
+        limit: 15,
+        page: initFilter.page,
+        sort: 'date',
+        speciality: initFilter.speciality
+          ? [specialities.find((s) => s.value === initFilter.speciality).label]
+          : [],
+        anatomy: initFilter.anatomy
+          ? [anatomies.find((a) => a.value === initFilter.anatomy).label]
+          : [],
+        dateFrom: moment(initFilter.dateFrom),
+        dateTo: moment(initFilter.dateTo),
+      }),
+    );
   }, [
     initFilter.page,
     initFilter.anatomy,
@@ -95,7 +97,7 @@ export function PodcastsOverview({
   const onPageChange = (page) => {
     initFilter.page = page;
 
-    history.push({
+    navigate('/podcast', {
       search: Object.keys(initFilter)
         .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
         .filter(Boolean)
@@ -213,7 +215,10 @@ export function PodcastsOverview({
       </Helmet>
       <div className="main-side-content__header podcast">
         <h1>{t('common.podcasts')}</h1>
-        <CreatePublicationv2 type="podcast" onSubmit={(data) => dispatch(createPodcast(data))} />
+        <CreatePublicationv2
+          type="podcast"
+          onSubmit={(data) => dispatch(createPodcast(data))}
+        />
       </div>
       <Row className="main-side-content__filter podcast-filter">
         <Col span={24}>{filterOutput()}</Col>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // styles
@@ -11,7 +11,8 @@ import './style.scss';
 import CustomIcons from 'legacy/components/CustomIcons';
 
 const GoBackButton = ({ goTo, label, className, ...rest }) => {
-  const history = useHistory();
+  const location = useLocation();
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   //const location = useLocation();
 
@@ -23,22 +24,21 @@ const GoBackButton = ({ goTo, label, className, ...rest }) => {
 
   // IF the route name back was define
   // Of default Go Back
-  const onClickPrev = e => {
+  const onClickPrev = (e) => {
     e.preventDefault();
-    //console.log(history?.location?.state?.goBackName);
-    if (history?.location?.state?.goBackName === 'Back to cases') {
-      history.push('/case');
-    } else if (history?.location?.state?.goBackName === 'Back to articles') {
-      history.push('/article');
-    } else if (history?.location?.state?.goBackName === 'Back to podcasts') {
-      history.push('/podcast');
+    if (location?.state?.goBackName === 'Back to cases') {
+      navigate('/case');
+    } else if (location?.state?.goBackName === 'Back to articles') {
+      navigate('/article');
+    } else if (location?.state?.goBackName === 'Back to podcasts') {
+      navigate('/podcast');
     } else {
-      if (!history.location?.state?.goBackName) {
-        history.push('/newsfeed');
+      if (!location?.state?.goBackName) {
+        navigate('/newsfeed');
       } else {
-        history.location?.state?.notifications
-          ? history.push('/notifications')
-          : history.goBack();
+        location?.state?.notifications
+          ? navigate('/notifications')
+          : navigate(-1);
       }
     }
   };

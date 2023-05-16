@@ -1,7 +1,7 @@
 const key = `CommunitiesOverview`;
-const path = `src/${key}/`
+const path = `src/${key}/`;
 
-export const FLUSH_STATE_COMMUNITIESOVERVIEW = `${path}FLUSH_STATE_COMMUNITIESOVERVIEW`;
+export const FLUSH_STATE = `${path}FLUSH_STATE`;
 
 export const LOAD_MY_COMMUNITIES = `${path}LOAD_MY_COMMUNITIES`;
 export const LOAD_MY_COMMUNITIES_SUCCESS = `${path}LOAD_MY_COMMUNITIES_SUCCESS`;

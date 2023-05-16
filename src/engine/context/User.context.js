@@ -25,16 +25,17 @@ export const UserContext = React.createContext(defaultContext);
 
 export const askCameraPermissions = () => {
   Camera.checkPermissions()
-    .then(result => {
+    .then((result) => {
       if (result?.camera !== 'granted' || result?.photos !== 'granted') {
-        Camera.requestPermissions().then(result => {
+        Camera.requestPermissions().then((result) => {
           // console.debug('info Camera.requestPermissions: ' + JSON.stringify(result));
         });
       }
     })
-    .catch(error => console.log('info Camera Error: ' + JSON.stringify(error)));
+    .catch((error) =>
+      console.log('info Camera Error: ' + JSON.stringify(error)),
+    );
 };
-
 
 const initialState = {
   events: [],
@@ -106,7 +107,7 @@ export class UserProvider extends React.Component {
     }
   };
 
-  changeChatState = value => {
+  changeChatState = (value) => {
     this.setState({
       chatReady: value,
       chatInit: value,
@@ -122,7 +123,8 @@ export class UserProvider extends React.Component {
       const response = await axios.get(`users/bookmarks/${currentUser._id}`);
       if (response.status === 200) {
         moment.locale(response.data.language);
-        this.props.i18n.changeLanguage(response.data.language);
+        // TODO IMPORTANT THIS GIVES ERROR
+        // this.props.i18n.changeLanguage(response.data.language);
         localStorage.setItem('cometchat:locale', response.data.language);
 
         this.setState({
@@ -136,10 +138,10 @@ export class UserProvider extends React.Component {
     }
   };
 
-  generateChatKeyPair = async userID => {
+  generateChatKeyPair = async (userID) => {
     const localKeyPair = await localStorage.getItem('BeeMedChatKeyPair');
     if (!localKeyPair && userID) {
-   //   let newKeyPair = await generateKeyPair(userID);
+      //   let newKeyPair = await generateKeyPair(userID);
       let newKeyPair = false;
       //console.log('generateChatKeyPair', { userID, newKeyPair });
       newKeyPair &&
@@ -149,7 +151,7 @@ export class UserProvider extends React.Component {
       const localKeyPairObj = JSON.parse(localKeyPair);
       return localKeyPairObj;
     }
-  }; 
+  };
 
   patchUser = async () => {
     console.debug('patchUser');
@@ -173,7 +175,7 @@ export class UserProvider extends React.Component {
       this.state.description.firstname,
       this.state.description.lastname,
       this.state.image.replace(/ /g, '%20'),
-    ).then(resultUser => {
+    ).then((resultUser) => {
       //console.log({ resultUser });
       resultUser && this.setChatUnreadMessageAmount();
     });
@@ -188,20 +190,20 @@ export class UserProvider extends React.Component {
 
   setChatUnreadMessageAmount = async () => {
     return await getChatAmountUnreadMessage()
-      .then(unreadMessageCount => {
+      .then((unreadMessageCount) => {
         this.setState({
           chatUnreadMessageCount: unreadMessageCount || 0,
         });
         return unreadMessageCount;
       })
-      .catch(error => {
+      .catch((error) => {
         this.setState({
           chatUnreadMessageCount: 0,
         });
       });
   };
 
-  handleFinishTour = async currentUser => {
+  handleFinishTour = async (currentUser) => {
     // console.debug(apiURL);
     const response = await axios.patch(`users`, {
       isTourFinished: true,
@@ -212,29 +214,29 @@ export class UserProvider extends React.Component {
     });
   };
 
-  uploadAvatar = body => {
+  uploadAvatar = (body) => {
     const response = axios.post(`posts/upload/`, body);
 
     response
-      .then(response => {
+      .then((response) => {
         if (response.status === 200) {
           this.setState({ image: response.data.url });
         }
       })
-      .catch(error => {
+      .catch((error) => {
         if (error?.response?.data.hasOwnProperty('url')) {
           this.setState({ image: error?.response?.data.url });
         }
       });
   };
 
-  populateUser = async userData => {
+  populateUser = async (userData) => {
     this.setState({
       ...userData,
     });
 
     if (Capacitor.platform !== 'web') {
-      await initCometChat(userData._id).then(async res => {
+      await initCometChat(userData._id).then(async (res) => {
         res && (await this.setChatUnreadMessageAmount());
       });
       await registerPush(userData._id);
@@ -264,7 +266,7 @@ export class UserProvider extends React.Component {
 
       const { [name]: books } = this.state;
 
-      const removed = books.filter(item => {
+      const removed = books.filter((item) => {
         if (typeof item === 'string') {
           return item !== _id;
         } else if (typeof item === 'object') {
@@ -313,7 +315,7 @@ export class UserProvider extends React.Component {
   };
 
   // push into array
-  onPushFollowers = _id => {
+  onPushFollowers = (_id) => {
     const { loading } = this.state;
 
     if (!loading) {
@@ -323,12 +325,12 @@ export class UserProvider extends React.Component {
     }
   };
 
-  onRemoveFollowers = _id => {
+  onRemoveFollowers = (_id) => {
     const { loading } = this.state;
 
     if (!loading) {
       const { followers } = this.state;
-      const removed = followers.filter(item => item !== _id);
+      const removed = followers.filter((item) => item !== _id);
       this.setState({ followers: removed }, () => this.patchUser());
     }
   };
@@ -369,8 +371,9 @@ export class UserProvider extends React.Component {
 
 export default withTranslation()(UserProvider);
 
-export const withUser = Component => props => (
-  <UserContext.Consumer>
-    {store => <Component user={store} {...props} />}
-  </UserContext.Consumer>
-);
+export const withUser = (Component) => (props) =>
+  (
+    <UserContext.Consumer>
+      {(store) => <Component user={store} {...props} />}
+    </UserContext.Consumer>
+  );

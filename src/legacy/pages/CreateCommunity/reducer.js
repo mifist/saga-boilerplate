@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 
 export const initialState = {
   loading: false,
@@ -9,17 +9,17 @@ export const initialState = {
 
 /* eslint-disable default-case, no-param-reassign */
 const createCommunityReducer = (state = initialState, action) =>
-  produce(state, draft => {
+  produce(state, (draft) => {
     switch (action.type) {
-      case CONSTANS.CREATE_COMMUNITY:
+      case CONSTANTS.CREATE_COMMUNITY:
         draft.loading = true;
         draft.error = false;
         break;
-      case CONSTANS.CREATE_COMMUNITY_SUCCESS:
+      case CONSTANTS.CREATE_COMMUNITY_SUCCESS:
         draft.loading = false;
         draft.communityDetail = action;
         break;
-      case CONSTANS.CREATE_COMMUNITY_ERROR:
+      case CONSTANTS.CREATE_COMMUNITY_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;

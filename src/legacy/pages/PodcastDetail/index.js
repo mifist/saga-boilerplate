@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
-import { useParams, withRouter } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { camelCase } from 'lodash';
 import classNames from 'classnames';
@@ -11,12 +11,12 @@ import './style.scss';
 import withRedux from 'HOC/withRedux';
 // actions
 import {
-  updatePodcast as updatePodcastAction,
-  flushState as flushStateAction,
-  loadPodcast as loadPodcastAction,
-  onDelete as onDeleteAction,
-  pinUnpinPost as pinUnpinPostAction,
-  hideUnhidePost as hideUnhidePostAction,
+  updatePodcast,
+  flushState,
+  loadPodcast,
+  onDelete,
+  pinUnpinPost,
+  hideUnhidePost,
 } from './actions';
 
 // assets
@@ -25,7 +25,7 @@ import defaultPodcastImage from 'images/podcast.jpg';
 // antd component
 import { Col, Empty, Layout, Row, Spin } from 'antd';
 // components
-import CommentsOverview from 'containers/CommentsOverview';
+import CommentsOverview from 'legacy/containers/CommentsOverview';
 import GoBackButton from 'legacy/components/GoBackButton';
 import BookmarkAction from 'legacy/components/BookmarkAction';
 import ShareAction from 'legacy/components/ShareAction';
@@ -46,9 +46,14 @@ export function PodcastDetail({
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
-  const { podcast, loading, error, deleteSuccessful } = state.PodcastDetail;
+  const {
+    podcast: { data: podcast },
+    loading,
+    error,
+    deleteSuccessful,
+  } = state.PodcastDetail;
 
   const { t, i18n } = useTranslation();
   const { isMobile } = useDeviceDetect();
@@ -106,7 +111,9 @@ export function PodcastDetail({
                     <CreatePublicationv2
                       type="podcast"
                       initialData={podcast}
-                      onSubmit={(data) => dispatch(updatePodcast(data, 'update'))}
+                      onSubmit={(data) =>
+                        dispatch(updatePodcast(data, 'update'))
+                      }
                     />
                   )}
                 </div>
@@ -223,27 +230,35 @@ export function PodcastDetail({
                   <CommentsOverview
                     onDelete={() => dispatch(onDelete(podcast._id))}
                     onPinUnpinPost={() =>
-                      dispatch(onPinUnpinPost({
-                        postId: podcast._id,
-                        pinned: podcast.pinned ? false : true,
-                      }))
+                      dispatch(
+                        onPinUnpinPost({
+                          postId: podcast._id,
+                          pinned: podcast.pinned ? false : true,
+                        }),
+                      )
                     }
                     onHideUnhidePost={() =>
-                      dispatch(onHideUnhidePost({
-                        postId: podcast._id,
-                        hidden: podcast.hidden ? false : true,
-                      }))
+                      dispatch(
+                        onHideUnhidePost({
+                          postId: podcast._id,
+                          hidden: podcast.hidden ? false : true,
+                        }),
+                      )
                     }
                     commentType="podcast"
                     itemData={podcast}
                     changeItem={(data) =>
-                      dispatch(updatePodcast(
-                        {
-                          _id: data._id,
-                          likes: data.likes.map((like) => ({ _id: like._id })),
-                        },
-                        'like',
-                      ))
+                      dispatch(
+                        updatePodcast(
+                          {
+                            _id: data._id,
+                            likes: data.likes.map((like) => ({
+                              _id: like._id,
+                            })),
+                          },
+                          'like',
+                        ),
+                      )
                     }
                     className="podcasts"
                   />
@@ -266,4 +281,4 @@ export function PodcastDetail({
   );
 }
 
-export default compose(withRedux, withRouter, withUser, memo)(PodcastDetail);
+export default compose(withRedux, withUser, memo)(PodcastDetail);

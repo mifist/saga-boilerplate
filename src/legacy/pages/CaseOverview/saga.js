@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 // Load and Filter cases
@@ -63,7 +63,7 @@ export function* updateLike(action) {
       'posts',
       {
         _id: action.publication._id,
-        likes: action.publication.likes.map(like => ({ _id: like._id })),
+        likes: action.publication.likes.map((like) => ({ _id: like._id })),
       },
       currentUser.token,
     );
@@ -79,7 +79,7 @@ export function* updateLike(action) {
 }
 
 export default function* caseOverviewSaga() {
-  yield takeLatest(CONSTANS.LOAD_CASES, loadCases);
-  yield takeLatest(CONSTANS.CREATE_CASE, createCase);
-  yield takeLatest(CONSTANS.UPDATE_LIKES, updateLike);
+  yield takeLatest(CONSTANTS.LOAD_CASES, loadCases);
+  yield takeLatest(CONSTANTS.CREATE_CASE, createCase);
+  yield takeLatest(CONSTANTS.UPDATE_LIKES, updateLike);
 }

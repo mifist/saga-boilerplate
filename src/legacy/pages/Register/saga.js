@@ -3,7 +3,7 @@ import requestWrapper from 'utils/requestWrapper';
 
 import { notification } from 'antd';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
 
 export function* register(action) {
@@ -69,7 +69,7 @@ export function* getDictionaries(action) {
 
 // Individual exports for testing
 export default function* registerSaga() {
-  yield takeLatest(CONSTANS.REGISTER, register);
-  yield takeLatest(CONSTANS.RESEND_VERIFY_EMAIL, resendVerifyEmail);
-  yield takeEvery(CONSTANS.GET_DICTIONARIES, getDictionaries);
+  yield takeLatest(CONSTANTS.REGISTER, register);
+  yield takeLatest(CONSTANTS.RESEND_VERIFY_EMAIL, resendVerifyEmail);
+  yield takeEvery(CONSTANTS.GET_DICTIONARIES, getDictionaries);
 }

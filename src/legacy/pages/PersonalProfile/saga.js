@@ -2,9 +2,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 import requestWrapper from 'utils/requestWrapper';
 import moment from 'moment';
 
-import * as CONSTANS from './constants';
+import * as CONSTANTS from './constants';
 import * as ACTIONS from './actions';
-
 
 export function* loadEvents(action) {
   try {
@@ -22,7 +21,7 @@ export function* loadEvents(action) {
 
     dataTab = eventsUser;
     if (dataTab.length > 0) {
-      dataTab.sort(function(a, b) {
+      dataTab.sort(function (a, b) {
         return moment(b.econgress.date_from) - moment(a.econgress.date_from);
       });
     }
@@ -76,6 +75,6 @@ export function* loadProfile(action) {
 }
 
 export default function* personalProfilePageSaga() {
-  yield takeLatest(CONSTANS.LOAD_PROFILE, loadProfile);
-  yield takeLatest(CONSTANS.LOAD_EVENTS, loadEvents);
+  yield takeLatest(CONSTANTS.LOAD_PROFILE, loadProfile);
+  yield takeLatest(CONSTANTS.LOAD_EVENTS, loadEvents);
 }
