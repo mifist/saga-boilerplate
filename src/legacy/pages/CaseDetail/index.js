@@ -64,7 +64,7 @@ export function CaseDetail({ history, user, setAuthPopup }) {
 
   useEffect(() => {
     if (error.message == 'Unauthorized') {
-      history.push('/case');
+      navigate('/case');
     }
   }, [error]);
 
@@ -307,7 +307,7 @@ export function CaseDetail({ history, user, setAuthPopup }) {
     user.role === 'industry' &&
     getObjId(caseData.community) !== user.employment.industryCommunity
   ) {
-    history.push('/');
+    navigate('/');
     return null;
   }
 

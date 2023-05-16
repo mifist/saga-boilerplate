@@ -62,6 +62,8 @@ export function* loadPosts(action) {
     const currentUser = yield JSON.parse(localStorage.getItem('beemed_user'));
     const { page } = action;
 
+    console.log('load post ?')
+
     const bodyRequest = {
       limit: 10,
       page: page,

@@ -24,10 +24,9 @@ import { withUser } from 'appContext/User.context';
 import useDeviceDetect from 'appHooks/useDeviceDetect';
 // utils
 import { anatomies, references, specialities } from 'utils/categoryHelper';
-import { useQuery } from 'utils/history';
+import { useSearchParams } from 'react-router-dom';
 
-
-function ArticlesOverview({ history }) {
+function ArticlesOverview({}) {
   const { articles, loading } = useSelector((state) => {
     return state.ArticlesOverview;
   });
@@ -36,14 +35,17 @@ function ArticlesOverview({ history }) {
 
   const { t, i18n } = useTranslation();
   const { isMobile } = useDeviceDetect();
-  const query = useQuery();
 
-  const speciality = query.get('speciality') || null;
-  const anatomy = query.get('anatomy') || null;
-  const reference = query.get('reference') || null;
-  const page = Number(query.get('page')) || 1;
-  const dateFrom = query.get('dateFrom') || null;
-  const dateTo = query.get('dateTo') || null;
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  const {
+    reference = null,
+    page = 1,
+    speciality = null,
+    anatomy = null,
+    dateFrom = null,
+    dateTo = null,
+  } = Object.fromEntries(searchParams.entries());
 
   const initFilter = {
     speciality,
@@ -88,12 +90,7 @@ function ArticlesOverview({ history }) {
   const onPageChange = (page) => {
     initFilter.page = page;
 
-    history.push({
-      search: Object.keys(initFilter)
-        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
-        .filter(Boolean)
-        .join('&'),
-    });
+    setParamsUrl();
   };
 
   const onValuesChange = (changedValues, allValues) => {
@@ -121,12 +118,15 @@ function ArticlesOverview({ history }) {
 
     initFilter.page = null;
 
-    history.push({
-      search: Object.keys(initFilter)
-        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
-        .filter(Boolean)
-        .join('&'),
-    });
+    setParamsUrl();
+  };
+
+  const setParamsUrl = () => {
+    const filteredParamsWithOutNull = Object.fromEntries(
+      Object.entries(initFilter).filter(([_, v]) => v != null),
+    );
+
+    setSearchParams(filteredParamsWithOutNull);
   };
 
   // Filter Form

@@ -35,7 +35,7 @@ const HiddenPosts = ({
     if (user.role === 'admin') {
       dispatch(loadHiddenPosts());
     } else {
-      history.push('/');
+      navigate('/');
     }
 
     return () => {

@@ -7,7 +7,7 @@
 import React, { memo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { compose } from '@reduxjs/toolkit';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // styles
@@ -50,7 +50,7 @@ const MembersTab = ({
   updateInvitations,
 }) => {
   const { t } = useTranslation();
-  const history = useHistory();
+  const history = useNavigate();
   const urlVars = getUrlVars();
 
   const local = localStorage.getItem('beemed_user');

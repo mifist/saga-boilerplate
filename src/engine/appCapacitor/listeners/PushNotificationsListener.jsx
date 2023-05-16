@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { PushNotifications } from '@capacitor/push-notifications';
 import { Capacitor } from '@capacitor/core';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { Device } from '@capacitor/device';
 import axios from 'axios';
@@ -30,7 +30,7 @@ axios.defaults.baseURL = apiURL;
 const baseURL = apiURL;
 
 function PushNotificationsListener () {
-  const history = useHistory();
+  const history = useNavigate();
   const checkParentChild = useCheckPushNotificationParameters();
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function PushNotificationsListener () {
         console.debug('is android then : switch token APN');
         FCM_TOKEN = token.value;
       }
-      
+
       // register the token on cometchat
       /*  try {
         CometChat.registerTokenForPushNotification(FCM_TOKEN).then(result => {
@@ -64,7 +64,7 @@ function PushNotificationsListener () {
 
       // update the user with the corresponding token + uuid
       try {
-        
+
         const res = await axios.post(
           baseURL + 'auth/register',
           {
@@ -74,10 +74,10 @@ function PushNotificationsListener () {
             fcm_token: FCM_TOKEN || '',
           },
         );
-      } catch (err) { 
+      } catch (err) {
         console.debug('auth/register error', JSON.stringify(err));
       }
-   
+
        // console.debug('PushNotifications registration: ', JSON.stringify(token));
       // console.debug('My token: ' + JSON.stringify(token));
     });
@@ -120,7 +120,7 @@ function PushNotificationsListener () {
             console.debug(
             'Push getDeliveredNotifications',
             JSON.stringify(notifications),
-          ); 
+          );
         });  */
 
         const bageAmount = appBage.getBadgeCount();
@@ -138,20 +138,20 @@ function PushNotificationsListener () {
           console.debug('redirect to detail params', JSON.stringify(params));
           checkParentChild(params);
           if (!!params?.responseID && params?.childId) {
-            history.push(`/communications/${params?.responseID}?childId=${params?.childId}&IDComm=${params?.responseID}&needRefresh=true`);
+            navigate(`/communications/${params?.responseID}?childId=${params?.childId}&IDComm=${params?.responseID}&needRefresh=true`);
           } else if (!!params?.communicationId && !params?.childId) {
-            history.push(`/communications/${params?.communicationId}?IDComm=${params?.communicationId}&needRefresh=true`);
+            navigate(`/communications/${params?.communicationId}?IDComm=${params?.communicationId}&needRefresh=true`);
           } else {
-            history.push(slug);
+            navigate(slug);
           }
-          
+
           appBage.decreaseBadge();
         } else {
           // console.debug('redirect to notifications');
-          history.push('/notifications');
+          navigate('/notifications');
           appBage.decreaseBadge();
         }
-        
+
       },
     );
   }, []);

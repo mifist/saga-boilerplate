@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { App } from '@capacitor/app';
 
@@ -44,7 +44,7 @@ function AppListener() {
     // console.debug('GET screenSize: ', JSON.stringify(screenSize));
 
     appStatusBarListener.setupStatusBarListener();
-    
+
   /*  const bageAmount = appBage.getBadgeCount();
     console.debug('GET bageAmount: ', JSON.stringify(bageAmount)); */
     //  appBage.clearBadge();
@@ -82,7 +82,7 @@ function AppListener() {
     App.addListener('appUrlOpen', URLOpenListenerEvent => {
      //  console.debug('GET NEW URL OPENED', URLOpenListenerEvent);
       const url = coreListener.getAppUrlOpen(URLOpenListenerEvent)
-      history.push(url);
+      navigate(url);
     });
 
     App.addListener('backButton', (data) => {
@@ -95,16 +95,16 @@ function AppListener() {
       }
     });
 
-    /** 
+    /**
      * PushNotifications Listener
      */
     setupPushNotificationsListener();
 
-    /** 
+    /**
      * Keyboard Listener
      */
     setupKeyboardListener();
-    
+
   }, []);
 
   return null;

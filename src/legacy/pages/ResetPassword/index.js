@@ -1,6 +1,6 @@
 import React, { memo, useMemo, useEffect } from 'react';
 import { compose } from '@reduxjs/toolkit';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 
@@ -18,18 +18,18 @@ import {
 import { Form, Input, Button, Alert, Typography } from 'antd';
 
 
-const ResetPassword = ({ 
+const ResetPassword = ({
   // core
   state,
   dispatch
 }) => {
-  const { 
+  const {
     loading, error
   } = state.ResetPassword;
 
   const { t, i18n } = useTranslation();
   const { search } = useLocation();
-  const history = useHistory();
+  const history = useNavigate();
   const searchParams = useMemo(() => new URLSearchParams(search), [search]);
 
   const handleResetPassword = (values) => {
@@ -42,7 +42,7 @@ const ResetPassword = ({
 
   useEffect(() => {
     if (!searchParams.get('token') && !searchParams.get('email')) {
-      history.push('/login');
+      navigate('/login');
     }
   }, [searchParams]);
 
@@ -51,7 +51,7 @@ const ResetPassword = ({
 
     const currentUser = JSON.parse(localStorage.getItem('beemed_user'));
     if (currentUser) {
-      history.push('/newsfeed');
+      navigate('/newsfeed');
     }
 
     return () => {

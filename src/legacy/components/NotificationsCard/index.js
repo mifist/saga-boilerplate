@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { List } from 'antd';
@@ -30,7 +30,7 @@ function NotificationsCard({
   }
 
   const { t } = useTranslation();
-  const history = useHistory();
+  const history = useNavigate();
 
   const handleCommunityNameClick = e => {
     e.preventDefault();
@@ -41,7 +41,7 @@ function NotificationsCard({
     );
 
     if (_invitation?.processed && !_invitation?.rejected) {
-      history.push(`/community/detail/${community?._id}`);
+      navigate(`/community/detail/${community?._id}`);
     }
   };
 

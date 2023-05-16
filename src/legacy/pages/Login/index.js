@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useMemo, useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 
@@ -7,13 +7,10 @@ import './style.scss';
 // HOC
 import withRedux from 'HOC/withRedux';
 // actions
-import {
-  login as loginAction,
-  flushState as flushStateAction,
-} from './actions';
+import { login, flushState } from './actions';
 
 // assets
-import logoLogin from 'images/logo-name.svg';
+import logoLogin from 'public/images/logo-name.svg';
 
 // antd component
 import { Form, Input, Button, Alert } from 'antd';
@@ -36,7 +33,7 @@ const Login = ({
 }) => {
   const { loading, error, userAuth } = state.Login;
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { search } = useLocation();
 
@@ -73,7 +70,7 @@ const Login = ({
         setAuthorizationHeader(userAuth.token);
         api.events.getEventById(event).then(({ data }) => {
           if (data.min_price === 'Free') {
-            history.push(`/event/detail/${event}`);
+            navigate(`/event/detail/${event}`);
           } else {
             api.users
               .getEventLinkById({
@@ -114,7 +111,7 @@ const Login = ({
       if (event) {
         api.events.getEventById(event).then(({ data }) => {
           if (data.min_price === 'Free') {
-            history.push(`/event/detail/${event}`);
+            navigate(`/event/detail/${event}`);
           } else {
             api.users
               .getEventLinkById({
@@ -130,11 +127,11 @@ const Login = ({
       }
 
       if (qrcode) {
-        history.push(`/newsfeed?qrcode=${qrcode}`);
+        navigate(`/newsfeed?qrcode=${qrcode}`);
         return;
       }
 
-      history.push('/newsfeed');
+      navigate('/newsfeed');
     }
   }, []);
 

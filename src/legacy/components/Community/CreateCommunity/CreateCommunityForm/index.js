@@ -25,13 +25,15 @@ import RichEditorDescription from 'legacy/components/RichEditorDescription';
 import { anatomies, specialities } from 'utils/categoryHelper';
 import history from 'utils/history';
 import LexicalEditor from 'legacy/components/LexicalEditor';
+import { useNavigate } from 'react-router-dom';
 
 const CreateCommunityForm = ({ onFinish }) => {
+  const navigate = useNavigate()
   const { t } = useTranslation();
   const [createCommunityForm] = Form.useForm();
   const [description, setDescription] = useState('');
 
-  const goBackHandler = () => history.push('/community');
+  const goBackHandler = () => navigate('/community');
 
   return (
     <Layout.Content className="main-single-content">

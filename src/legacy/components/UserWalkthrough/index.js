@@ -70,7 +70,7 @@ function UserWalkthrough({ user }) {
   };
 
   const handleClose = url => {
-    history.push(url);
+    navigate(url);
     setVisible(false);
     localStorage.setItem('beemed_tour', moment());
     localStorage.setItem('beemed_tour_current', current);

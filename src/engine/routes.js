@@ -1,5 +1,6 @@
 export const routes = {
   main: '/',
+  newsfeed: '/newsfeed',
   case: {
     baseUrl: '/case',
     detail: '/case/detail/:id',
@@ -22,5 +23,9 @@ export const routes = {
   },
   auth: {
     login: '/login',
+    register: '/register',
+    forgotPassword: '/forgot-password',
+    verifyEmail: '/verify-email',
+    resetPassword: '/reset-password',
   },
 };

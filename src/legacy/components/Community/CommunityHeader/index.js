@@ -193,7 +193,7 @@ function CommunityHeader({
                 type="primary"
                 icon={<CustomIcons type="chat" />}
                 onClick={() =>
-                  history.push(`/chat/conversations/group/${communityInfo._id}`)
+                  navigate(`/chat/conversations/group/${communityInfo._id}`)
                 }
                 className="chat-btn"
                 style={{ marginLeft: 20 }}

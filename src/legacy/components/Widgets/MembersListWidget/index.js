@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { compose } from '@reduxjs/toolkit';
 import { useTranslation } from 'react-i18next';
 import classNames from 'classnames';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // styles
 import './style.scss';

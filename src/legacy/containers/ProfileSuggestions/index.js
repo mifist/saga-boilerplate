@@ -6,11 +6,7 @@ import { useTranslation } from 'react-i18next';
 import withRedux from 'HOC/withRedux';
 
 import { flushState, loadEvents } from './actions';
-import {
-  makeSelectEvents,
-  makeSelectProfileSuggestions,
-  makeSelectReplayEvents,
-} from './selectors';
+
 
 // components
 import SidebarCardList from 'legacy/components/Sidebar/SidebarCardList';
@@ -23,7 +19,7 @@ function ProfileSuggestions({
   state,
   dispatch
 }) {
-  const { 
+  const {
     profileSuggestions,
     events,
     replayEvents,

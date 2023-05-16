@@ -150,7 +150,7 @@ export function CommunityDetail({
       initialId != getObjId(user?.employment?.industryCommunity)
     ) {
       getObjId(user?.employment?.industryCommunity) &&
-        (history.push(
+        (navigate(
           `/community/detail/${getObjId(user?.employment?.industryCommunity)}`,
         ),
         window.location.reload());
@@ -213,7 +213,7 @@ export function CommunityDetail({
   // on authorization error
   useEffect(() => {
     if (error.message == 'Unauthorized') {
-      history.push('/community');
+      navigate('/community');
     }
   }, [error]);
 

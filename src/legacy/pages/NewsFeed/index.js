@@ -7,7 +7,7 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { convert } from 'html-to-text';
 import moment from 'moment';
@@ -19,22 +19,14 @@ import './style.scss';
 // HOC
 import withRedux from 'HOC/withRedux';
 
-import {
-  flushAction as flush,
-  loadPostsAction as loadPosts,
-  postPublication,
-  uploadImages,
-  setDeletedPostAction,
-  setReportPopup as setReportPopupAction,
-  reportPost as reportPostAction,
-} from './actions';
+import * as ACTIONS from './actions';
 
 // antd component
 import { Col, Row, Skeleton } from 'antd';
 // components
 import QrcodePopup from 'legacy/components/QrcodePopup';
 import NewsFeedPost from 'legacy/components/NewsFeedPost';
-import ProfileSuggestions from 'containers/ProfileSuggestions';
+import ProfileSuggestions from 'legacy/containers/ProfileSuggestions';
 import UserWalkthrough from 'legacy/components/UserWalkthrough';
 import EmptyFeed from 'legacy/components/EmptyFeed';
 import { ReportPopup } from 'legacy/components/ReportPopup';
@@ -45,7 +37,6 @@ import { withUser } from 'appContext/User.context';
 // utils
 import useDeviceDetect from 'appHooks/useDeviceDetect';
 
-
 export function NewsFeedPage({
   // props
   user,
@@ -53,35 +44,45 @@ export function NewsFeedPage({
   className,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
   const {
-    posts, loading, page, loadingPosts, imagesUploaded,
-    noMore, loadingNewPost, deletedPosts, reportPopup,
-  } = state.NewsFeedPage;
+    posts,
+    loading,
+    page,
+    loadingPosts,
+    imagesUploaded,
+    noMore,
+    loadingNewPost,
+    deletedPosts,
+    reportPopup,
+  } = state.NewsFeed;
+
+  console.log(user);
 
   const { i18n } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
+
   const { isMobile } = useDeviceDetect();
   const scrollParentRef = useRef(null);
-  const { search } = useLocation();
-  const searchParams = useMemo(() => new URLSearchParams(search), [search]);
+  const location = useLocation();
+  const searchParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search],
+  );
 
   const handleLoadMore = () => {
-    dispatch(loadPostsAction(page + 1));
+    dispatch(ACTIONS.loadPosts(page + 1));
   };
 
   useEffect(() => {
     if (
-      history?.location?.state?.from == 'case_detail' &&
-      history?.location?.state?.deletedId &&
+      location?.state?.from == 'case_detail' &&
+      location?.state?.deletedId &&
       posts?.length > 0
     ) {
-      const deletedPostsIDs = [
-        ...deletedPosts,
-        history?.location?.state?.deletedId,
-      ];
-      dispatch(addDeletedPost(deletedPostsIDs));
+      const deletedPostsIDs = [...deletedPosts, location?.state?.deletedId];
+      dispatch(ACTIONS.setDeletedPostAction(deletedPostsIDs));
       const infiniteScroll = Array.from(
         document.getElementsByClassName(`InfiniteScroll`),
       );
@@ -89,7 +90,7 @@ export function NewsFeedPage({
       // hide deleted item
       for (let key in nodeList) {
         const elem = nodeList[key];
-        deletedPostsIDs?.map(postId => {
+        deletedPostsIDs?.map((postId) => {
           const elemClass = `${postId}-main-feeds`;
           if (elem.classList.contains(elemClass)) {
             elem.classList.add('hide');
@@ -97,22 +98,23 @@ export function NewsFeedPage({
         });
       }
     }
-  }, [history?.location?.state?.from]);
+  }, [location?.state?.from]);
 
   useEffect(() => {
+    console.log('hello ?')
     if (page === 1) {
-      dispatch(loadPostsAction(page));
+      dispatch(ACTIONS.loadPosts(page));
     }
 
     const elementScroll = document.querySelector('#infinite-scroll-web');
     if (elementScroll) {
-      elementScroll.addEventListener('scroll', function(e) {
+      elementScroll.addEventListener('scroll', function (e) {
         window.requestAnimationFrame(() =>
           localStorage.setItem('newsfeedScroll', elementScroll.scrollTop),
         );
       });
 
-      elementScroll.addEventListener('scroll', function(e) {
+      elementScroll.addEventListener('scroll', function (e) {
         window.onunload = () => localStorage.setItem('newsfeedScroll', 0);
       });
     }
@@ -124,9 +126,9 @@ export function NewsFeedPage({
     }
 
     return () => {
-      if (history?.location?.state?.from !== 'newsfeed_post') {
+      if (location?.state?.from !== 'newsfeed_post') {
         localStorage.setItem('newsfeedScroll', 0);
-        dispatch(flushAction());
+        dispatch(ACTIONS.flush());
         // setDeletedPost([]);
       }
     };
@@ -149,29 +151,31 @@ export function NewsFeedPage({
     ));
   }, [posts, deletedPosts, page, i18n.language]);
 
-  const handleReportNewsFeedPostSubmit = values => {
-    const post = posts.find(post => post._id === reportPopup._id);
+  const handleReportNewsFeedPostSubmit = (values) => {
+    const post = posts.find((post) => post._id === reportPopup._id);
 
-    dispatch(reportPost({
-      postText: post.type
-        ? post.type === 'post'
-          ? convert(post.content, {
-              wordwrap: false,
-              preserveNewlines: true,
-              selectors: [{ selector: 'a', options: { ignoreHref: true } }],
-            }).substring(0, 100)
-          : post.title.substring(0, 100)
-        : post.name.substring(0, 100),
-      userEmail: user?.email,
-      userFullName:
-        user?.description?.firstname + ' ' + user?.description?.lastname,
-      reportType: values.reportType,
-      reportContent: values.reportContent,
-      date: moment().format('YYYY-MM-DD'),
-      userId: user?._id,
-      postId: post._id,
-      url: `/${post.type === 'post' ? 'case' : post.type}/detail/${post._id}`,
-    }));
+    dispatch(
+      ACTIONS.reportPost({
+        postText: post.type
+          ? post.type === 'post'
+            ? convert(post.content, {
+                wordwrap: false,
+                preserveNewlines: true,
+                selectors: [{ selector: 'a', options: { ignoreHref: true } }],
+              }).substring(0, 100)
+            : post.title.substring(0, 100)
+          : post.name.substring(0, 100),
+        userEmail: user?.email,
+        userFullName:
+          user?.description?.firstname + ' ' + user?.description?.lastname,
+        reportType: values.reportType,
+        reportContent: values.reportContent,
+        date: moment().format('YYYY-MM-DD'),
+        userId: user?._id,
+        postId: post._id,
+        url: `/${post.type === 'post' ? 'case' : post.type}/detail/${post._id}`,
+      }),
+    );
   };
 
   return (
@@ -197,7 +201,9 @@ export function NewsFeedPage({
         >
           <CreatePublicationv2
             type="post"
-            onSubmit={publication => dispatch(postPublication(publication))}
+            onSubmit={(publication) =>
+              dispatch(ACTIONS.postPublication(publication))
+            }
           />
           <InfiniteScroll
             className="InfiniteScroll"
@@ -228,7 +234,9 @@ export function NewsFeedPage({
           </InfiniteScroll>
           <ReportPopup
             visible={reportPopup.opened}
-            onClose={() => dispatch(setReportPopup({ opened: false, _id: null }))}
+            onClose={() =>
+              dispatch(ACTIONS.setReportPopup({ opened: false, _id: null }))
+            }
             onSubmit={handleReportNewsFeedPostSubmit}
             loading={loading}
           />
@@ -261,7 +269,4 @@ NewsFeedPage.propTypes = {
   posts: PropTypes.array,
 };
 
-export default compose(
-  withRedux,
-  withUser,
-)(NewsFeedPage);
+export default compose(withRedux, withUser)(NewsFeedPage);
