@@ -134,7 +134,7 @@ function MentionEditor({
           <span
             key={`${mention?._id}-component-${entityKey}`}
             className={`${className} mention-enter-label`}
-            // onClick={() => history.push(`/profile/${mention?._id}`)}
+            // onClick={() => navigate(`/profile/${mention?._id}`)}
           >
             <span>{children}</span>
           </span>

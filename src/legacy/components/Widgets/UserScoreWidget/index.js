@@ -8,7 +8,7 @@ import React, { memo } from 'react';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 import classNames from 'classnames';
-// import { Link, useHistory } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 
 // styles
 import './style.scss';

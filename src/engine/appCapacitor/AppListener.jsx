@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // Capacitor Core
 import { SplashScreen } from '@capacitor/splash-screen';
 import { CapacitorUpdater } from '@capgo/capacitor-updater';
@@ -29,7 +29,7 @@ import AppCoreListener from 'appCapacitor/listeners/AppCoreListener';
 import { useGetLocalUser } from 'appContext/User.context';
 
 function AppListener() {
-  const history = useHistory();
+  const history = useNavigate();
   const getLocalUser = useGetLocalUser();
 
   if (!isWeb && ( isAndroid || isIos )) {
@@ -46,8 +46,8 @@ function AppListener() {
 
   const [downloadProgress, setDownloadProgress] = useState(0);
   const [downloadProgressShow, setDownloadProgressShow] = useState(false);
-  
-  useEffect(() => { 
+
+  useEffect(() => {
     if (downloadProgress > 0) {
       setDownloadProgressShow(true);
     }
@@ -63,13 +63,13 @@ function AppListener() {
       appStatusBar.setupStatusBarListener();
       appStatusBar.setStatusBarBackgroundColor();
 
-      /** 
+      /**
        * START - UPDATE UPLICATION !!!
        */
       appUpdate.appIsReady();
-      
+
       document.addEventListener('deviceready', function(event) {
-        // Your code to use the CapacitorUpdater 
+        // Your code to use the CapacitorUpdater
         // appUpdate.appIsReady();
         console.debug('App deviceready!', JSON.stringify(event));
       });
@@ -79,7 +79,7 @@ function AppListener() {
       //  console.debug('download showDownloadProgress: ', downloadProgress, JSON.stringify(info))
     //    SplashScreen.show();
         appUpdate.appDownloading(info, setDownloadProgress);
-       
+
       });
       // When the download is complete, show an alert
       CapacitorUpdater.addListener('downloadComplete', (bundle) => {
@@ -100,7 +100,7 @@ function AppListener() {
       CapacitorUpdater.addListener('updateAvailable', (bundle) => appUpdate.appUpdateAvailable(bundle));
       // Listen for download fail event in the App, let you know when download has fail finished
       CapacitorUpdater.addListener('appReloaded', (bundle) => {
-    
+
         appUpdate.appReloadedCallback(bundle);
 
         // Re-init token for push notification
@@ -110,7 +110,7 @@ function AppListener() {
         }
       });
 
-      /** 
+      /**
        * END - UPDATE UPLICATION !!!
        */
 

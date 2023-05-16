@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useMemo, useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
@@ -13,7 +13,7 @@ import { getBaseApiUrl } from 'utils/capacitorHelper';
 
 export function VerifyEmail() {
   const { t, i18n } = useTranslation();
-  const history = useHistory();
+  const history = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { search } = useLocation();
@@ -41,7 +41,7 @@ export function VerifyEmail() {
           setLoading(false);
         });
     } else {
-      history.push('/login');
+      navigate('/login');
     }
   }, [searchParams]);
 
@@ -50,7 +50,7 @@ export function VerifyEmail() {
 
     const currentUser = JSON.parse(localStorage.getItem('beemed_user'));
     if (currentUser) {
-      history.push('/newsfeed');
+      navigate('/newsfeed');
     }
   }, []);
 

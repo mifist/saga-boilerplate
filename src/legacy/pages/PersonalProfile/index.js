@@ -260,7 +260,7 @@ export function PersonalProfilePage({
 
   // if (profileData && )
   if (profileData && !loading && profileData.profile.role === 'industry') {
-    history.push('/');
+    navigate('/');
     return null;
   }
 

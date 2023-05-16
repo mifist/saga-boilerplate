@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState, useMemo, useRef } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import './style.scss';
@@ -10,10 +10,10 @@ import './style.scss';
 import withRedux from 'HOC/withRedux';
 
 import {
-  flushState as flushStateAction,
-  getDictionaries as getDictionariesAction,
-  register as registerAction,
-  resendVerifyEmail as resendVerifyEmailAction,
+  flushState,
+  getDictionaries,
+  register,
+  resendVerifyEmail,
 } from './actions';
 
 // antd component
@@ -24,22 +24,18 @@ import QrcodePopup from 'legacy/components/QrcodePopup';
 // utils
 import { professions } from 'utils/categoryHelper';
 
-
 function Register({
-  countries,
-  anatomies,
-  domains,
   // core
   state,
-  dispatch
+  dispatch,
 }) {
-  const { 
-    loading, error, registerSuccess,
-    countries, anatomies, domains,
-  } = state.Register;
+  const { loading, error, registerSuccess, countries, anatomies, domains } =
+    state.Register;
 
   const { t, i18n } = useTranslation();
-  const history = useHistory();
+
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState(null);
   const [isResendEmail, setIsResendEmail] = useState(false);
   const { search } = useLocation();
@@ -73,9 +69,9 @@ function Register({
     if (currentUser) {
       let qrcode = searchParams.get('qrcode');
       if (qrcode) {
-        history.push(`/newsfeed?qrcode=${qrcode}`);
+        navigate(`/newsfeed?qrcode=${qrcode}`);
       } else {
-        history.push('/newsfeed');
+        navigate('/newsfeed');
       }
     }
 
@@ -100,7 +96,9 @@ function Register({
   }) => {
     if (hereby && termsAndConditions && privacyNotice) {
       setEmail(rest.email);
-      dispatch(register({ ...rest, qrcode: searchParams.get('qrcode') || undefined }));
+      dispatch(
+        register({ ...rest, qrcode: searchParams.get('qrcode') || undefined }),
+      );
     }
   };
 

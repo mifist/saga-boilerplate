@@ -9,7 +9,7 @@ const webpackConfig = require(path.join(ROOT_PATH, 'config', 'webpack', 'webpack
 function createWebpackMiddleware(compiler, publicPath) {
   return webpackDevMiddleware(compiler, {
     publicPath,
-    stats: 'errors-warnings',
+    stats: 'errors-only',
   });
 }
 

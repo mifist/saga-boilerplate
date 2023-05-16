@@ -1,25 +1,24 @@
 // colors
-$darkgrey : #252A36;
-$lightgreen : #20D5D6;
+$darkgrey: #252a36;
+$lightgreen: #20d5d6;
 
-$beemedblue1 : #005D72;
-$beemedblue2 : #5995A3;
-$beemedblue3 : #8CB6BF;
-$beemedblue4 : #B0CAD1;
+$beemedblue1: #005d72;
+$beemedblue2: #5995a3;
+$beemedblue3: #8cb6bf;
+$beemedblue4: #b0cad1;
 
-$beemedocre1 : #CBA348;
-$beemedocre2 : #DDC388;
-$beemedocre3 : #EEE2C7;
-$beemedocre4 : #E9DDC2;
-
+$beemedocre1: #cba348;
+$beemedocre2: #ddc388;
+$beemedocre3: #eee2c7;
+$beemedocre4: #e9ddc2;
 
 .walkthrough-notification {
   background: $beemedblue1;
-  background-image: url("../../images/walkthrough.png");
+  background-image: url('../../../../public/images/walkthrough.png');
   color: white;
   padding: 24px;
   .ant-notification-notice-message {
-    color : white;
+    color: white;
     font-weight: bold;
     font-size: 22px;
   }
@@ -29,13 +28,13 @@ $beemedocre4 : #E9DDC2;
   .ant-notification-notice-description {
     font-size: 16px;
     a {
-      color : $beemedocre1;
+      color: $beemedocre1;
       text-decoration: underline;
     }
   }
 }
 .modal-walkthrough {
-  width : 800px !important;
+  width: 800px !important;
 
   .logo-tour {
     width: 150px !important;
@@ -44,22 +43,22 @@ $beemedocre4 : #E9DDC2;
 
   .ant-modal-content {
     background: $beemedblue1;
-    background-image: url("../../images/walkthrough.png");
+    background-image: url('../../../../public/images/walkthrough.png');
     background-size: cover;
     color: white;
-    padding-top : 50px;
-    padding-right : 50px;
-    padding-left : 50px;
+    padding-top: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
 
     .steps-content {
       text-align: center;
       margin-bottom: 50px;
       h2 {
-        color : white;
+        color: white;
         margin-bottom: 0px;
       }
       h3 {
-        color : $beemedocre1;
+        color: $beemedocre1;
       }
       p {
         font-size: 18px;
@@ -67,14 +66,14 @@ $beemedocre4 : #E9DDC2;
       .btn-1 {
         font-weight: bold;
         background-color: transparent;
-        color : $beemedocre1;
+        color: $beemedocre1;
         border-color: $beemedocre1;
       }
       .btn-2 {
         border-color: transparent;
         font-weight: bold;
         background-color: $beemedocre1;
-        color : white;
+        color: white;
       }
       img {
         width: 70px;
@@ -85,7 +84,8 @@ $beemedocre4 : #E9DDC2;
     .steps-action {
       text-align: center;
       margin-bottom: 50px;
-      .btn-next, .btn-done {
+      .btn-next,
+      .btn-done {
         min-width: 150px;
         color: white;
         background: $beemedblue2;
@@ -113,11 +113,9 @@ $beemedocre4 : #E9DDC2;
   }
 
   @media screen and (max-width: 600px) {
-    width : 100% !important;
+    width: 100% !important;
     .ant-modal-content {
-      padding : 10px;
+      padding: 10px;
     }
   }
-
-
 }

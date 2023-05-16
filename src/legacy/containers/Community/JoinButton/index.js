@@ -90,7 +90,7 @@ function JoinButton({
         notification.success({ message: msg });
         setJoinRequestSent(true);
         (community?.private == 'public' || community?.private == 'industry') &&
-          history.push(`/community/detail/${community?._id}`);
+          navigate(`/community/detail/${community?._id}`);
       }
     }
   }, [data]);

@@ -9,7 +9,7 @@ import Helmet from 'react-helmet';
 import AppRouter from 'engine/AppRouter';
 
 // capacitor
-import { appHelper } from 'appCapacitor/helpers';
+// import { appHelper } from 'appCapacitor/helpers';
 // utils
 import useDeviceDetect from 'appHooks/useDeviceDetect';
 
@@ -19,7 +19,7 @@ function App({ }) {
   
   let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
   let isApp = false;
-  if (!appHelper.isWeb || isMobile || width < 800) {
+  if (isMobile || width < 800) {
     isApp = true;
   }
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter, Outlet } from 'react-router-dom';
 
 // routes
 import { routes } from 'engine/routes';
 
 // root layouts
-import MainLayout from 'layouts/MainLayout';
+import MainLayout from 'layouts/MainLayout/MainLayout';
 
 // pages
 import CaseOverview from 'legacy/pages/CaseOverview';
@@ -18,12 +18,17 @@ import ArticlesOverview from 'legacy/pages/ArticlesOverview';
 import ArticleDetail from 'legacy/pages/ArticleDetail';
 import CommunitiesOverview from 'legacy/pages/CommunitiesOverview';
 import CommunityDetail from 'legacy/pages/CommunityDetail';
+import Login from 'legacy/pages/Login';
+import Register from 'legacy/pages/Register';
+import NewsFeed from 'legacy/pages/NewsFeed';
 
 
 export default function AppRouter(props) {
   return (
     <BrowserRouter>
       <Routes>
+      <Route path={routes.auth.login} element={<Login />} />
+        <Route path={routes.auth.register} element={<Register />} />
         <Route path={routes.main} element={<MainLayout {...props} />}>
           <Route path={routes.case.baseUrl} element={<CaseOverview {...props} />} />
           <Route path={routes.case.detail} element={<CaseDetail {...props} />} />

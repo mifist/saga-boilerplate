@@ -67,7 +67,7 @@ function LeaveButton({
         respond !== undefined && respond(data);
       } else {
         respond !== undefined && respond(data);
-        history.push('/community');
+        navigate('/community');
       }
     }
   }, [data]);

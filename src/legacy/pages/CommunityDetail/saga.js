@@ -70,9 +70,7 @@ export function* changeCommunityDetail(action) {
       } else {
         // if new we update the url, item props will be updated
         if (isNew) {
-          history.push({
-            pathname: `/community/detail/` + communityDetailData._id,
-          });
+         navigate(`/community/detail/` + communityDetailData._id);
         }
         yield put(ACTIONS.changeCommunityDetailSuccess(changedCommunityDetail));
       }

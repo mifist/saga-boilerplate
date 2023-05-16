@@ -7,7 +7,7 @@
 import React, { memo, useMemo, useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import { Link, useHistory } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 
 // styles
 import './style.scss';

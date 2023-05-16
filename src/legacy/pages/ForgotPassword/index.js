@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react';
 import { compose } from '@reduxjs/toolkit';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import './style.scss';
@@ -28,7 +28,7 @@ const ForgotPassword = ({
 }) => {
   const { error, loading, success } = state.ForgotPassword;
 
-  const history = useHistory();
+  const history = useNavigate();
   const { t, i18n } = useTranslation();
 
   const handleForgotPassword = (values) => {
@@ -40,7 +40,7 @@ const ForgotPassword = ({
 
     const currentUser = JSON.parse(localStorage.getItem('beemed_user'));
     if (currentUser) {
-      history.push('/newsfeed');
+      navigate('/newsfeed');
     }
 
     return () => {

@@ -105,7 +105,7 @@ export const UserProvider = ({ children }) => {
       if (UserProviderData.isPublicPath()) {
         return false;
       } else {
-        // history.push('/login');
+        // navigate('/login');
       }
 
     }
@@ -210,7 +210,7 @@ export const UserProvider = ({ children }) => {
 
     const logOutTimer = setTimeout(function () {
       //window.location.href = '/login';
-     //  history.push('/login');
+     //  navigate('/login');
     }, 0);
     setLogOutTimer(logOutTimer);
 
@@ -227,15 +227,15 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider value={{
       ...user,
       ...UserProviderData,
-  
+
       // CUSTOM STATES
-  
+
       // fech user data on init
       isLoading,
       isSuccess,
       // token
       token,
-  
+
     }}>
       <UserDispatchContext.Provider value={setUser}>
         {children}

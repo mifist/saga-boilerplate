@@ -57,7 +57,6 @@ export function EventOverview({
 
   const { isMobile } = useDeviceDetect();
   const { t, i18n } = useTranslation();
-  const query = useQuery();
 
   const currentUser = JSON.parse(localStorage.getItem('beemed_user'));
 
