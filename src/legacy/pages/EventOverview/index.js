@@ -58,7 +58,6 @@ export function EventOverview({
   const { isMobile } = useDeviceDetect();
   const { t, i18n } = useTranslation();
   const query = useQuery();
-  let [searchParams, setSearchParams] = useSearchParams();
 
   const currentUser = JSON.parse(localStorage.getItem('beemed_user'));
 
@@ -68,13 +67,17 @@ export function EventOverview({
   const dateMore3Year = moment().add(3, 'years').format('YYYY-MM-DD');
   const dateLess5Year = moment().subtract(5, 'years').format('YYYY-MM-DD');
 
-  const eventType = query.get('eventType') || 'upcoming';
-  const page = Number(query.get('page')) || 1;
-  const speciality = query.get('speciality') || null;
-  const anatomy = query.get('anatomy') || null;
-  const dateFrom = query.get('dateFrom') || null;
-  const dateTo = query.get('dateTo') || null;
-  const accredited = query.get('accredited') || false;
+  let [searchParams, setSearchParams] = useSearchParams();
+
+  const {
+    eventType = 'upcoming',
+    page = 1,
+    speciality = null,
+    anatomy = null,
+    dateFrom = null,
+    dateTo = null,
+    accredited = null,
+  } = Object.fromEntries(searchParams.entries());
 
   const initFilter = {
     eventType,
@@ -165,35 +168,21 @@ export function EventOverview({
   const onPageChange = (page) => {
     initFilter.page = page;
 
-    console.log(initFilter);
-
-    console.log(
-      Object.keys(initFilter)
-        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
-        .filter(Boolean)
-        .join('&'),
-    );
-
-    history.push({
-      search: Object.keys(initFilter)
-        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
-        .filter(Boolean)
-        .join('&'),
-    });
+    setParamsUrl();
   };
 
   const onEventTabChange = (tab) => {
     initFilter.page = null;
     initFilter.eventType = tab;
+    setParamsUrl();
+  };
 
-    console.log(initFilter);
+  const setParamsUrl = () => {
+    const filteredParamsWithOutNull = Object.fromEntries(
+      Object.entries(initFilter).filter(([_, v]) => v != null),
+    );
 
-    history.push({
-      search: Object.keys(initFilter)
-        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
-        .filter(Boolean)
-        .join('&'),
-    });
+    setSearchParams(filteredParamsWithOutNull);
   };
 
   const onValuesChange = (changedValues, _) => {
@@ -221,19 +210,7 @@ export function EventOverview({
 
     initFilter.page = null;
 
-    console.log(
-      Object.keys(initFilter)
-        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
-        .filter(Boolean)
-        .join('&'),
-    );
-
-    history.push({
-      search: Object.keys(initFilter)
-        .map((key) => initFilter[key] && `${key}=${initFilter[key]}`)
-        .filter(Boolean)
-        .join('&'),
-    });
+    setParamsUrl();
   };
 
   const renderLoadingCardEvent = (key) => (
