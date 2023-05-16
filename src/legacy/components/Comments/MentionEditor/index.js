@@ -15,7 +15,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { split } from 'ramda';
 import { useTranslation } from 'react-i18next';
-import _ from 'lodash';
 
 // styles
 import '@draft-js-plugins/mention/lib/plugin.css';

@@ -2,7 +2,7 @@ import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 // styles
 import './style.scss';

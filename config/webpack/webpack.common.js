@@ -114,10 +114,11 @@ module.exports = {
     rules: [
       {
         test: /\.(m?js|jsx?)$/, // Transform all .js files required somewhere with Babel
-        exclude: "/node_modules/",
+        exclude: /(node_modules\/react-dom\/|node_modules\/lodash\/)/,
         use: {
           loader: 'babel-loader',
           options: {
+            compact: true,
             presets: ['@babel/preset-env', '@babel/preset-react'],
            // plugins: ['react-hot-loader/babel'],
            // plugins: ["lodash"],

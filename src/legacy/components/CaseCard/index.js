@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import { withTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 // styles
 import './style.scss';

@@ -25,9 +25,10 @@ module.exports = merge(common, {
   },
   optimization: {
     minimize: false,
-    splitChunks: {
+    runtimeChunk: 'single',
+   /*  splitChunks: {
       chunks: 'all',
-    },
+    }, */
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading

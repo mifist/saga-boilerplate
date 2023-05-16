@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 import './style.scss';
 // HOC

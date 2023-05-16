@@ -6,7 +6,7 @@ import { compose } from '@reduxjs/toolkit';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 import './style.scss';
 

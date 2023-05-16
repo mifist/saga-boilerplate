@@ -3,7 +3,7 @@ import { compose } from '@reduxjs/toolkit';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 import axios from 'axios';
 import classNames from 'classnames';
 

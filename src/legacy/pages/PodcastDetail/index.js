@@ -3,7 +3,7 @@ import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 import classNames from 'classnames';
 
 import './style.scss';

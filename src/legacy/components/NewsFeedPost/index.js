@@ -9,7 +9,7 @@ import moment from 'moment';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 // styles
 import './style.scss';

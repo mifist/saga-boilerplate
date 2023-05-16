@@ -26,7 +26,8 @@ import UploadArticlesIcon from 'public/images/icon/upload-articles.svg';
 import UploadPodcastsIcon from 'public/images/icon/upload-podcasts.svg';
 import UploadMediasIcon from 'public/images/icon/upload-medias.svg';
 
-import { isEqual, camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
+import isEqual from 'lodash/isEqual';
 import moment from 'moment';
 import classNames from 'classnames';
 import { ContentState, convertFromHTML } from 'draft-js';

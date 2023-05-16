@@ -13,7 +13,7 @@ import {
 } from '@capacitor/camera';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 import moment from 'moment';
 
 // styles
@@ -44,7 +44,6 @@ import {
 // global user
 import { withUser } from 'appContext/User.context';
 //import { LOAD_EVENTS } from 'legacy/containers/PersonalSideBar/constants';
-//import { isArray } from 'lodash';
 import GoBackButton from 'legacy/components/GoBackButton';
 import { Keyboard } from '@capacitor/keyboard';
 import { Capacitor } from '@capacitor/core';

@@ -5,7 +5,7 @@ import { Route, Routes, BrowserRouter, Outlet } from 'react-router-dom';
 import { routes } from 'engine/routes';
 
 // root layouts
-import MainLayout from 'layouts/MainLayout/MainLayout';
+import MainLayout from 'layouts/MainLayout';
 
 // pages
 import CaseOverview from 'legacy/pages/CaseOverview';

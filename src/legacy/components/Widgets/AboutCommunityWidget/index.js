@@ -4,7 +4,7 @@ import { compose } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 // styles
 import './style.scss';

@@ -2,7 +2,7 @@ import React, { useState, useMemo, memo } from 'react';
 import { compose } from '@reduxjs/toolkit';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { isEqual } from 'lodash';
+import isEqual from 'lodash/isEqual';
 import axios from 'axios';
 
 import './style.scss';

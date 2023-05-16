@@ -3,7 +3,7 @@ import { compose } from '@reduxjs/toolkit';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { useTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 
 import { anatomies, specialities } from 'utils/categoryHelper';
 

@@ -5,7 +5,7 @@ import moment from 'moment';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { useTranslation } from 'react-i18next';
-import { camelCase } from 'lodash';
+import camelCase from 'lodash/camelCase';
 import { withUser } from 'engine/context/User.context';
 import './style.scss';
 
