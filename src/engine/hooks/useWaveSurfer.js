@@ -111,16 +111,16 @@ const useWaveSurfer = (refContainer, options = {}) => {
   useEffect(() => {
     if (!!waveSurferRef.current) {
       waveSurferRef.current.on('loading', e => {
-        console.log('loading', e);
+        //console.log('loading', e);
       });
       waveSurferRef.current.on('play', e => {
         const dur = waveSurferRef.current.getDuration();
         console.log(e, waveSurferRef.current, dur);
-        
+
         const newPeaks = waveSurferRef.current.drawBuffer();
         const rate = waveSurferRef.current.getPlaybackRate();
         console.log({ newPeaks, rate })
-        
+
       });
       // 'waveform-ready' - Fires after the waveform is drawn when using the MediaElement backend.
       // If you're using the WebAudio backend, you can use 'ready'.
@@ -231,7 +231,7 @@ const useWaveSurfer = (refContainer, options = {}) => {
     setPause(true);
     setPlay(false);
   };
-  
+
   const onPlayPause = () => {
     waveSurferRef.current.playPause();
     setPause(prev => !prev);

@@ -7,7 +7,7 @@ import { BackgroundTask } from '@capawesome/capacitor-background-task';
 import { Browser } from '@capacitor/browser';
 import { Toast } from '@capacitor/toast';
 
-/* 
+/*
 import enviroment_args from 'scripts/enviroment_args';
 
 console.debug('ROOT_PATH envKeys', JSON.stringify(enviroment_args)) */
@@ -61,11 +61,11 @@ function AppCoreListener() {
           lastOpenedApp: newDate,
         });
 
-        /** 
+        /**
          * START - UPDATE UPLICATION !!!
          */
         await appUpdate.checkAndUpdateApp();
-        /** 
+        /**
          * END - UPDATE UPLICATION !!!
          */
 
@@ -78,18 +78,18 @@ function AppCoreListener() {
           lastOpenedApp: newDate,
         });
     }
-    
+
     await getInintNotReadComm();
   };
-  
+
   const getAppUrlOpen = async (URLOpenListenerEvent) => {
     // Example url: https://beerswift.app/tabs/tab2
-    console.debug('GET NEW URL OPENED');
-  
+    //console.debug('GET NEW URL OPENED');
+
     const { url } = URLOpenListenerEvent;
     const code = url.split('oauth').pop();
     const slug = url.split(process.env.APP_URL).pop();
-  
+
     if (url && url.includes('oauth')) {
       Browser.close();
       return `/oauth${code}`;
@@ -104,7 +104,7 @@ function AppCoreListener() {
     }
     // If no match, do nothing - let regular routing
     // logic take over
-  
+
   };
 
   // Start the background task by calling `beforeExit`.
@@ -132,7 +132,7 @@ function AppCoreListener() {
   };
 
 
-  useEffect(() => { 
+  useEffect(() => {
 
     // Listen for changes in the App’s active state (whether the app is in the foreground or background)
     App.addListener('appStateChange', state => {
@@ -184,7 +184,7 @@ function AppCoreListener() {
         App.exitApp();
       }
     });
-    
+
   }, []);
 
   return <></>;

@@ -23,7 +23,7 @@ export function* register(action) {
   } catch (error) {
     if (error.response) {
       const responseBody = yield error.response.json();
-      console.log(responseBody);
+      //console.log(responseBody);
 
       yield put(ACTIONS.registerError(responseBody.message));
     }

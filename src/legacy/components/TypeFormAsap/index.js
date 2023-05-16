@@ -33,11 +33,11 @@ function TypeFormAsap({
       box.style.display = 'none';
     });
     if (window.location.pathname === '/event/asapwebinardiscount') {
-      console.log('/event/asapwebinardiscount');
+      //console.log('/event/asapwebinardiscount');
       setUrlTypeForm('BzOlasZn');
     }
     if (window.location.pathname === '/event/asap') {
-      console.log('/event/asap');
+      //console.log('/event/asap');
       setUrlTypeForm('UVQArv8G');
     }
   }, []);

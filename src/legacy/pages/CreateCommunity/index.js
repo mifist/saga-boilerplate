@@ -19,7 +19,7 @@ import CreateCommunityForm from 'legacy/components/Community/CreateCommunity/Cre
 import MemberInvitationForm from 'legacy/components/Community/CreateCommunity/MemberInvitationForm';
 
 
-const CreateCommunity = ({ 
+const CreateCommunity = ({
   // default props
   className,
   // core
@@ -37,7 +37,7 @@ const CreateCommunity = ({
     setNextStep(true);
   };
 
-  console.log(loading);
+  //console.log(loading);
 
   const handleCreateCommunity = (invitationFormData) => {
     dispatch(createCommunity({ ...formData, ...invitationFormData }));

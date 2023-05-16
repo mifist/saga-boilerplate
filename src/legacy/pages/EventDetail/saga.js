@@ -80,11 +80,11 @@ export function* watchEvent(action) {
     if (url) {
       yield put(ACTIONS.watchEventSuccess(url.result));
     } else {
-      console.debug('second error');
+      //console.debug('second error');
       yield put(ACTIONS.watchEventError(true));
     }
   } catch (err) {
-    console.debug(err);
+    //console.debug(err);
     yield put(ACTIONS.watchEventError(err));
   }
 }

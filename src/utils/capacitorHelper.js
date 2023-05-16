@@ -37,7 +37,7 @@ const getBaseApiUrl = () => {
 /*   console.log({isWeb})
   console.log('process.env: ', process.env)
   console.log('process.env.BASE_ENV: ', process.env.BASE_ENV)
-  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV)  */  
+  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV)  */
   /*   console.debug('process.env.NODE_ENV: ', JSON.stringify(process.env.NODE_ENV))
   console.debug('process.env.BASE_ENV: ', JSON.stringify(process.env.BASE_ENV)) */
 
@@ -202,11 +202,11 @@ const registerPush = userId => {
     },
   );
 };
-
-console.debug(
-  'isPushNotificationsAvailable: ' +
-    JSON.stringify(isPushNotificationsAvailable),
-);
+//
+// console.debug(
+//   'isPushNotificationsAvailable: ' +
+//     JSON.stringify(isPushNotificationsAvailable),
+// );
 
 export {
   // core

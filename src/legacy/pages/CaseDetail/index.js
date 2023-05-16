@@ -50,7 +50,7 @@ export function CaseDetail({ history, user, setAuthPopup }) {
   } = useSelector((state) => {
     return state.CaseDetail;
   });
-  console.log(caseData);
+  //console.log(caseData);
   const dispatch = useDispatch();
 
   const { t } = useTranslation();

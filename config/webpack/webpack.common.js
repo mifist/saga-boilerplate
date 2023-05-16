@@ -119,6 +119,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
+            compact: true,
            // plugins: ['react-hot-loader/babel'],
            // plugins: ["lodash"],
             // @remove-on-eject-end

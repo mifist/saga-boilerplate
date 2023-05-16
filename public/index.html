@@ -7,6 +7,24 @@
     <!-- Allow installing the app to the homescreen -->
     <meta name="mobile-web-app-capable" content="yes" />
 
+    <!-- Allow installing the app to the homescreen -->
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- Smart App Banners -->
+    <meta name="apple-itunes-app" content="app-id=1588569081">
+
+    <title>BeeMed - Unchain Medical Education</title>
+    <meta name="description" content="BeeMed is a unique medical community app to share knowledge through a network of specialists." />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="BeeMed - Unchain Medical Education"
+    />
+    <meta
+      property="og:description"
+      content="BeeMed is a new unique medical platform aimed at encouraging and stimulating knowledge sharing and other forms of learning opportunities."
+    />
+    <meta property="og:image" content="https://beemed.com/images/showcase/app-screens.png"} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,73 +32,23 @@
       rel="stylesheet"
     />
 
-    <style media="screen">
-      *, *::before, *::after {
-          box-sizing: border-box;
-      }
-      /* // preloader */
-      #preloader {
-        position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 99999;
-        width: 100%;
-        height: 100%;
-        background: #005D9F;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .preloader {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 102px;
-        height: 102px;
-      }
-      #preloader .small-circle {
-        stroke-dasharray: 210;
-        stroke-dashoffset: 210;
-        transform-origin: 50%;
-        animation: 1s draw-small infinite alternate;
-      }
-      #preloader .big-circle {
-        stroke-dasharray: 240;
-        stroke-dashoffset: 240;
-        transform-origin: 50%;
-          animation: 1s draw-big infinite alternate 0.5s;
-      }
-      @keyframes draw-small {
-        0% { stroke-dashoffset: 0; transform: rotate(0deg); }
-        100% { stroke-dashoffset: 210; transform: rotate(360deg); }
-      }
-      @keyframes draw-big {
-        0% { stroke-dashoffset: 0; transform: rotateY(180deg) rotate(360deg); }
-        100% { stroke-dashoffset: 240; transform: rotateY(180deg) rotate(0deg); }
-      }
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W1Q0S14Z89"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'G-W1Q0S14Z89');
+    </script>
 
-      .cancel-scan {
-        position: absolute;
-        padding: 10px;
-        background: #FFA500FF;
-        color : white;
-        text-decoration: underline;
-        font-size: 15px;
-      }
-      .center-btn {
-        margin: 0;
-        position: absolute;
-        top: 5%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-      }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
   </head>
 
   <body>
@@ -92,20 +60,7 @@
     >
 
     <!-- The app hooks into this div -->
-    <div id="app" class='scanner-hide'>
-      <div id="preloader">
-        <div class="preloader">
-          <svg viewBox="0 0 102 102" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="big-circle" d="M101 51C101 78.6142 78.6142 101 51 101C23.3858 101 1 78.6142 1 51" stroke="#fff" stroke-width="2"/>
-            <path class="small-circle" d="M91 51C91 28.9086 73.0914 11 51 11C28.9086 11 11 28.9086 11 51" stroke="#fff" stroke-width="2"/>
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="scanner-ui" style="display: none;">
-      <button class="cancel-scan center-btn" onclick='cancelScanning()'>Annuler</button>
-    </div>
+    <div id="app"></div>
 
     <!-- Open Sans Font -->
     <link
@@ -116,26 +71,4 @@
     <!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically injects all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this file. Don't add any assets here! (Check out webpack.dev.babel.js and webpack.prod.babel.js if you want to know more) -->
   </body>
 
-  <script type="text/javascript">
-
-    function cancelScanning() {
-        document.body.classList.remove("qrscanner");
-        BarcodeScanner.showBackground();
-        BarcodeScanner.stopScan();
-    }
-
-    document.addEventListener('DOMContentLoaded', function(event) {
-      try {
-        // console.log("preloader");
-        // Animate loader off screen
-        setTimeout(function() {
-          if ( document.getElementById('preloader') ) {
-            document.getElementById('preloader').style.display = 'none';
-          }
-        }, 600);
-      } catch (e) {
-        console.log(e);
-      }
-    });
-  </script>
 </html>
